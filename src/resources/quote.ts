@@ -1,0 +1,1034 @@
+import * as resources from ".";
+import {RequestWrapper} from "../request_wrapper";
+import {Model} from "./model";
+import {ChargeBee} from "../chargebee";
+import {filter} from "../filter";
+
+export class Quote extends Model {
+  public id: string;
+  public name?: string;
+  public po_number?: string;
+  public customer_id: string;
+  public subscription_id?: string;
+  public invoice_id?: string;
+  public status: string;
+  public operation_type: string;
+  public vat_number?: string;
+  public price_type: string;
+  public valid_till: number;
+  public date: number;
+  public total_payable?: number;
+  public charge_on_acceptance?: number;
+  public sub_total: number;
+  public total?: number;
+  public credits_applied?: number;
+  public amount_paid?: number;
+  public amount_due?: number;
+  public version?: number;
+  public resource_version?: number;
+  public updated_at?: number;
+  public line_items?: Array<resources.QuoteLineItem>;
+  public discounts?: Array<resources.QuoteDiscount>;
+  public line_item_discounts?: Array<resources.QuoteLineItemDiscount>;
+  public taxes?: Array<resources.QuoteTax>;
+  public line_item_taxes?: Array<resources.QuoteLineItemTax>;
+  public currency_code: string;
+  public notes?: any;
+  public shipping_address?: resources.QuoteShippingAddress;
+  public billing_address?: resources.QuoteBillingAddress;
+  public contract_term_start?: number;
+  public contract_term_end?: number;
+  public contract_term_termination_fee?: number;
+
+  
+
+  // OPERATIONS
+  //-----------
+
+  public static retrieve(quote_id: string, params?: any) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'retrieve',
+      'httpMethod': 'GET',
+      'urlPrefix': '/quotes',
+      'urlSuffix': null,
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static create_sub_for_customer_quote(customer_id: string, params?: _quote.create_sub_for_customer_quote_params) {
+    return new RequestWrapper([customer_id, params], {
+      'methodName': 'create_sub_for_customer_quote',
+      'httpMethod': 'POST',
+      'urlPrefix': '/customers',
+      'urlSuffix': '/create_subscription_quote',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static edit_create_sub_for_customer_quote(quote_id: string, params?: _quote.edit_create_sub_for_customer_quote_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'edit_create_sub_for_customer_quote',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/edit_create_subscription_quote',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static update_subscription_quote(params?: _quote.update_subscription_quote_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'update_subscription_quote',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/update_subscription_quote',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static edit_update_subscription_quote(quote_id: string, params?: _quote.edit_update_subscription_quote_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'edit_update_subscription_quote',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/edit_update_subscription_quote',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static create_for_onetime_charges(params?: _quote.create_for_onetime_charges_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create_for_onetime_charges',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/create_for_onetime_charges',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static edit_one_time_quote(quote_id: string, params?: _quote.edit_one_time_quote_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'edit_one_time_quote',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/edit_one_time_quote',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static list(params?: _quote.quote_list_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'list',
+      'httpMethod': 'GET',
+      'urlPrefix': '/quotes',
+      'urlSuffix': null,
+      'hasIdInUrl': false,
+      'isListReq': true,
+    }, ChargeBee._env)
+  }
+
+  public static quote_line_groups_for_quote(quote_id: string, params?: any) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'quote_line_groups_for_quote',
+      'httpMethod': 'GET',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/quote_line_groups',
+      'hasIdInUrl': true,
+      'isListReq': true,
+    }, ChargeBee._env)
+  }
+
+  public static convert(quote_id: string, params?: _quote.convert_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'convert',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/convert',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static update_status(quote_id: string, params?: _quote.update_status_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'update_status',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/update_status',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static extend_expiry_date(quote_id: string, params?: _quote.extend_expiry_date_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'extend_expiry_date',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/extend_expiry_date',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static delete(quote_id: string, params?: _quote.delete_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'delete',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/delete',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static pdf(quote_id: string, params?: _quote.pdf_params) {
+    return new RequestWrapper([quote_id, params], {
+      'methodName': 'pdf',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/pdf',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+} // ~Quote
+
+
+
+  // REQUEST PARAMS
+  //---------------
+
+export namespace _quote {
+  export interface create_sub_for_customer_quote_params {
+    name?: string;
+    notes?: string;
+    expires_at?: number;
+    billing_cycles?: number;
+    mandatory_addons_to_remove?: Array<string>;
+    terms_to_charge?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    subscription?: subscription_create_sub_for_customer_quote_params;
+    shipping_address?: shipping_address_create_sub_for_customer_quote_params;
+    contract_term?: contract_term_create_sub_for_customer_quote_params;
+    addons?: Array<addons_create_sub_for_customer_quote_params>;
+    event_based_addons?: Array<event_based_addons_create_sub_for_customer_quote_params>;
+  }
+  export interface edit_create_sub_for_customer_quote_params {
+    notes?: string;
+    expires_at?: number;
+    billing_cycles?: number;
+    mandatory_addons_to_remove?: Array<string>;
+    terms_to_charge?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    subscription?: subscription_edit_create_sub_for_customer_quote_params;
+    shipping_address?: shipping_address_edit_create_sub_for_customer_quote_params;
+    contract_term?: contract_term_edit_create_sub_for_customer_quote_params;
+    addons?: Array<addons_edit_create_sub_for_customer_quote_params>;
+    event_based_addons?: Array<event_based_addons_edit_create_sub_for_customer_quote_params>;
+  }
+  export interface update_subscription_quote_params {
+    name?: string;
+    notes?: string;
+    expires_at?: number;
+    replace_addon_list?: boolean;
+    mandatory_addons_to_remove?: Array<string>;
+    billing_cycles?: number;
+    terms_to_charge?: number;
+    reactivate_from?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    replace_coupon_list?: boolean;
+    force_term_reset?: boolean;
+    reactivate?: boolean;
+    subscription?: subscription_update_subscription_quote_params;
+    billing_address?: billing_address_update_subscription_quote_params;
+    shipping_address?: shipping_address_update_subscription_quote_params;
+    customer?: customer_update_subscription_quote_params;
+    contract_term?: contract_term_update_subscription_quote_params;
+    addons?: Array<addons_update_subscription_quote_params>;
+    event_based_addons?: Array<event_based_addons_update_subscription_quote_params>;
+  }
+  export interface edit_update_subscription_quote_params {
+    notes?: string;
+    expires_at?: number;
+    replace_addon_list?: boolean;
+    mandatory_addons_to_remove?: Array<string>;
+    billing_cycles?: number;
+    terms_to_charge?: number;
+    reactivate_from?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    replace_coupon_list?: boolean;
+    force_term_reset?: boolean;
+    reactivate?: boolean;
+    subscription?: subscription_edit_update_subscription_quote_params;
+    billing_address?: billing_address_edit_update_subscription_quote_params;
+    shipping_address?: shipping_address_edit_update_subscription_quote_params;
+    customer?: customer_edit_update_subscription_quote_params;
+    contract_term?: contract_term_edit_update_subscription_quote_params;
+    addons?: Array<addons_edit_update_subscription_quote_params>;
+    event_based_addons?: Array<event_based_addons_edit_update_subscription_quote_params>;
+  }
+  export interface create_for_onetime_charges_params {
+    name?: string;
+    customer_id: string;
+    po_number?: string;
+    notes?: string;
+    expires_at?: number;
+    currency_code?: string;
+    coupon?: string;
+    shipping_address?: shipping_address_create_for_onetime_charges_params;
+    addons?: Array<addons_create_for_onetime_charges_params>;
+    charges?: Array<charges_create_for_onetime_charges_params>;
+  }
+  export interface edit_one_time_quote_params {
+    po_number?: string;
+    notes?: string;
+    expires_at?: number;
+    currency_code?: string;
+    coupon?: string;
+    shipping_address?: shipping_address_edit_one_time_quote_params;
+    addons?: Array<addons_edit_one_time_quote_params>;
+    charges?: Array<charges_edit_one_time_quote_params>;
+  }
+  export interface quote_list_params {
+    limit?: number;
+    offset?: string;
+    include_deleted?: boolean;
+    id?: filter._string;
+    customer_id?: filter._string;
+    subscription_id?: filter._string;
+    status?: filter._enum;
+    date?: filter._timestamp;
+    updated_at?: filter._timestamp;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
+  }
+  export interface convert_params {
+    subscription?: subscription_convert_params;
+  }
+  export interface update_status_params {
+    status: string;
+    comment?: string;
+  }
+  export interface extend_expiry_date_params {
+    valid_till: number;
+  }
+  export interface delete_params {
+    comment?: string;
+  }
+  export interface pdf_params {
+    consolidated_view?: boolean;
+    disposition_type?: string;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    id?: string;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    plan_id: string;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    plan_quantity?: number;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    plan_unit_price?: number;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    setup_fee?: number;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    start_date?: number;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    email?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    company?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    city?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    state?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    country?: string;
+  }
+  export interface shipping_address_create_sub_for_customer_quote_params {
+    validation_status?: string;
+  }
+  export interface contract_term_create_sub_for_customer_quote_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_create_sub_for_customer_quote_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface addons_create_sub_for_customer_quote_params {
+    id?: string;
+  }
+  export interface addons_create_sub_for_customer_quote_params {
+    quantity?: number;
+  }
+  export interface addons_create_sub_for_customer_quote_params {
+    unit_price?: number;
+  }
+  export interface addons_create_sub_for_customer_quote_params {
+    billing_cycles?: number;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    id?: string;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    quantity?: number;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    unit_price?: number;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    service_period_in_days?: number;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    on_event?: string;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    charge_once?: boolean;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    charge_on?: string;
+  }
+  export interface addons_create_sub_for_customer_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    id?: string;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    plan_id: string;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    plan_quantity?: number;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    plan_unit_price?: number;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    setup_fee?: number;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    start_date?: number;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    first_name?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    last_name?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    email?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    company?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    phone?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    line1?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    line2?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    line3?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    city?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    state_code?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    state?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    zip?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    country?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    validation_status?: string;
+  }
+  export interface contract_term_edit_create_sub_for_customer_quote_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_edit_create_sub_for_customer_quote_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface addons_edit_create_sub_for_customer_quote_params {
+    id?: string;
+  }
+  export interface addons_edit_create_sub_for_customer_quote_params {
+    quantity?: number;
+  }
+  export interface addons_edit_create_sub_for_customer_quote_params {
+    unit_price?: number;
+  }
+  export interface addons_edit_create_sub_for_customer_quote_params {
+    billing_cycles?: number;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    id?: string;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    quantity?: number;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    unit_price?: number;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    service_period_in_days?: number;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    on_event?: string;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    charge_once?: boolean;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    charge_on?: string;
+  }
+  export interface addons_edit_create_sub_for_customer_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_update_subscription_quote_params {
+    id: string;
+  }
+  export interface subscription_update_subscription_quote_params {
+    plan_id?: string;
+  }
+  export interface subscription_update_subscription_quote_params {
+    plan_quantity?: number;
+  }
+  export interface subscription_update_subscription_quote_params {
+    plan_unit_price?: number;
+  }
+  export interface subscription_update_subscription_quote_params {
+    setup_fee?: number;
+  }
+  export interface subscription_update_subscription_quote_params {
+    start_date?: number;
+  }
+  export interface subscription_update_subscription_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_update_subscription_quote_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    first_name?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    last_name?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    email?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    company?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    phone?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    line1?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    line2?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    line3?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    city?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    state_code?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    state?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    zip?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    country?: string;
+  }
+  export interface billing_address_update_subscription_quote_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    first_name?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    last_name?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    email?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    company?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    phone?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    line1?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    line2?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    line3?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    city?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    state_code?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    state?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    zip?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    country?: string;
+  }
+  export interface shipping_address_update_subscription_quote_params {
+    validation_status?: string;
+  }
+  export interface customer_update_subscription_quote_params {
+    vat_number?: string;
+  }
+  export interface customer_update_subscription_quote_params {
+    registered_for_gst?: boolean;
+  }
+  export interface contract_term_update_subscription_quote_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_update_subscription_quote_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_update_subscription_quote_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface addons_update_subscription_quote_params {
+    id?: string;
+  }
+  export interface addons_update_subscription_quote_params {
+    quantity?: number;
+  }
+  export interface addons_update_subscription_quote_params {
+    unit_price?: number;
+  }
+  export interface addons_update_subscription_quote_params {
+    billing_cycles?: number;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    id?: string;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    quantity?: number;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    unit_price?: number;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    service_period_in_days?: number;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    charge_on?: string;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    on_event?: string;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    charge_once?: boolean;
+  }
+  export interface addons_update_subscription_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    plan_id?: string;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    plan_quantity?: number;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    plan_unit_price?: number;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    setup_fee?: number;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    start_date?: number;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    first_name?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    last_name?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    email?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    company?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    phone?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    line1?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    line2?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    line3?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    city?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    state_code?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    state?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    zip?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    country?: string;
+  }
+  export interface billing_address_edit_update_subscription_quote_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    first_name?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    last_name?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    email?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    company?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    phone?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    line1?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    line2?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    line3?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    city?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    state_code?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    state?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    zip?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    country?: string;
+  }
+  export interface shipping_address_edit_update_subscription_quote_params {
+    validation_status?: string;
+  }
+  export interface customer_edit_update_subscription_quote_params {
+    vat_number?: string;
+  }
+  export interface customer_edit_update_subscription_quote_params {
+    registered_for_gst?: boolean;
+  }
+  export interface contract_term_edit_update_subscription_quote_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_edit_update_subscription_quote_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    id?: string;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    quantity?: number;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    unit_price?: number;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    billing_cycles?: number;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    id?: string;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    quantity?: number;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    unit_price?: number;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    service_period_in_days?: number;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    charge_on?: string;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    on_event?: string;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    charge_once?: boolean;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    trial_end?: number;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    email?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    company?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    city?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    state?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    country?: string;
+  }
+  export interface shipping_address_create_for_onetime_charges_params {
+    validation_status?: string;
+  }
+  export interface addons_create_for_onetime_charges_params {
+    id?: string;
+  }
+  export interface addons_create_for_onetime_charges_params {
+    quantity?: number;
+  }
+  export interface addons_create_for_onetime_charges_params {
+    unit_price?: number;
+  }
+  export interface addons_create_for_onetime_charges_params {
+    service_period?: number;
+  }
+  export interface charges_create_for_onetime_charges_params {
+    amount?: number;
+  }
+  export interface charges_create_for_onetime_charges_params {
+    description?: string;
+  }
+  export interface charges_create_for_onetime_charges_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_create_for_onetime_charges_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_create_for_onetime_charges_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_create_for_onetime_charges_params {
+    service_period?: number;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    first_name?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    last_name?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    email?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    company?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    phone?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    line1?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    line2?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    line3?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    city?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    state_code?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    state?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    zip?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    country?: string;
+  }
+  export interface shipping_address_edit_one_time_quote_params {
+    validation_status?: string;
+  }
+  export interface addons_edit_one_time_quote_params {
+    id?: string;
+  }
+  export interface addons_edit_one_time_quote_params {
+    quantity?: number;
+  }
+  export interface addons_edit_one_time_quote_params {
+    unit_price?: number;
+  }
+  export interface addons_edit_one_time_quote_params {
+    service_period?: number;
+  }
+  export interface charges_edit_one_time_quote_params {
+    amount?: number;
+  }
+  export interface charges_edit_one_time_quote_params {
+    description?: string;
+  }
+  export interface charges_edit_one_time_quote_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_edit_one_time_quote_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_edit_one_time_quote_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_edit_one_time_quote_params {
+    service_period?: number;
+  }
+  export interface subscription_convert_params {
+    id?: string;
+  }
+  export interface subscription_convert_params {
+    auto_collection?: string;
+  }
+  export interface subscription_convert_params {
+    po_number?: string;
+  }
+}
