@@ -8,7 +8,7 @@ export class Result {
         let _subscription = this.get(
             'subscription',
             'Subscription',
-            {'subscription_items': 'SubscriptionSubscriptionItem', 'item_tiers': 'SubscriptionItemTier', 'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'contract_term': 'SubscriptionContractTerm'}
+            {'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'contract_term': 'SubscriptionContractTerm'}
         );
         return _subscription;
     }
@@ -305,44 +305,6 @@ export class Result {
         );
         return _payment_intent;
     }
-    get custom_field_config() {
-        let _custom_field_config = this.get(
-            'custom_field_config',
-            'CustomFieldConfig'
-        );
-        return _custom_field_config;
-    }
-    get item_family() {
-        let _item_family = this.get(
-            'item_family',
-            'ItemFamily'
-        );
-        return _item_family;
-    }
-    get item() {
-        let _item = this.get(
-            'item',
-            'Item',
-            {'applicable_items': 'ItemApplicableItem'}
-        );
-        return _item;
-    }
-    get item_price() {
-        let _item_price = this.get(
-            'item_price',
-            'ItemPrice',
-            {'tiers': 'ItemPriceTier', 'tax_detail': 'ItemPriceTaxDetail', 'accounting_detail': 'ItemPriceAccountingDetail'}
-        );
-        return _item_price;
-    }
-    get attached_item() {
-        let _attached_item = this.get(
-            'attached_item',
-            'AttachedItem'
-        );
-        return _attached_item;
-    }
-
     get unbilled_charges() {
         let _unbilled_charges = this.get_list(
             'unbilled_charges',

@@ -17,7 +17,7 @@ export class PortalSession extends Model {
   public logout_at?: number;
   public login_ipaddress?: string;
   public logout_ipaddress?: string;
-  public linked_customers?: Array<resources.PortalSessionLinkedCustomer>;
+  public linked_customers?: Array<LinkedCustomer>;
 
   
 
@@ -69,6 +69,14 @@ export class PortalSession extends Model {
   }
 
 } // ~PortalSession
+
+export class LinkedCustomer extends Model {
+  public customer_id: string;
+  public email?: string;
+  public has_billing_address: boolean;
+  public has_payment_method: boolean;
+  public has_active_subscription: boolean;
+} // ~LinkedCustomer
 
 
 

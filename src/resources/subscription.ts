@@ -48,17 +48,18 @@ export class Subscription extends Model {
   public mrr?: number;
   public exchange_rate?: number;
   public base_currency_code?: string;
-  public addons?: Array<resources.SubscriptionAddon>;
-  public event_based_addons?: Array<resources.SubscriptionEventBasedAddon>;
-  public charged_event_based_addons?: Array<resources.SubscriptionChargedEventBasedAddon>;
+  public addons?: Array<Addon>;
+  public event_based_addons?: Array<EventBasedAddon>;
+  public charged_event_based_addons?: Array<ChargedEventBasedAddon>;
   public coupon?: string;
-  public coupons?: Array<resources.SubscriptionCoupon>;
-  public shipping_address?: resources.SubscriptionShippingAddress;
-  public referral_info?: resources.SubscriptionReferralInfo;
+  public coupons?: Array<Coupon>;
+  public shipping_address?: ShippingAddress;
+  public referral_info?: ReferralInfo;
   public invoice_notes?: string;
   public meta_data?: any;
   public deleted: boolean;
-  public contract_term?: resources.SubscriptionContractTerm;
+  public contract_term?: ContractTerm;
+  public cancel_reason_code?: string;
 
   
 
@@ -342,6 +343,111 @@ export class Subscription extends Model {
 
 } // ~Subscription
 
+export class SubscriptionItem extends Model {
+  public item_price_id: string;
+  public item_type: string;
+  public quantity?: number;
+  public unit_price?: number;
+  public amount?: number;
+  public item_free_quantity?: number;
+  public trial_end?: number;
+  public billing_cycles?: number;
+  public service_period_in_days?: number;
+  public on_event?: string;
+  public charge_once?: boolean;
+  public charge_on?: string;
+} // ~SubscriptionItem
+
+export class ItemTier extends Model {
+  public item_price_id: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public price: number;
+} // ~ItemTier
+
+export class ChargedItem extends Model {
+  public item_price_id: string;
+  public last_charged_at: number;
+} // ~ChargedItem
+
+export class Addon extends Model {
+  public id: string;
+  public quantity?: number;
+  public unit_price?: number;
+  public amount?: number;
+  public trial_end?: number;
+  public remaining_billing_cycles?: number;
+} // ~Addon
+
+export class EventBasedAddon extends Model {
+  public id: string;
+  public quantity: number;
+  public unit_price: number;
+  public service_period_in_days?: number;
+  public on_event: string;
+  public charge_once: boolean;
+} // ~EventBasedAddon
+
+export class ChargedEventBasedAddon extends Model {
+  public id: string;
+  public last_charged_at: number;
+} // ~ChargedEventBasedAddon
+
+export class Coupon extends Model {
+  public coupon_id: string;
+  public apply_till?: number;
+  public applied_count: number;
+  public coupon_code?: string;
+} // ~Coupon
+
+export class ShippingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~ShippingAddress
+
+export class ReferralInfo extends Model {
+  public referral_code?: string;
+  public coupon_code?: string;
+  public referrer_id?: string;
+  public external_reference_id?: string;
+  public reward_status?: string;
+  public referral_system?: string;
+  public account_id: string;
+  public campaign_id: string;
+  public external_campaign_id?: string;
+  public friend_offer_type?: string;
+  public referrer_reward_type?: string;
+  public notify_referral_system?: string;
+  public destination_url?: string;
+  public post_purchase_widget_enabled: boolean;
+} // ~ReferralInfo
+
+export class ContractTerm extends Model {
+  public id: string;
+  public status: string;
+  public contract_start: number;
+  public contract_end: number;
+  public billing_cycle: number;
+  public action_at_term_end: string;
+  public total_contract_value: number;
+  public cancellation_cutoff_period?: number;
+  public created_at: number;
+  public subscription_id: string;
+  public remaining_billing_cycles?: number;
+} // ~ContractTerm
+
 
 
   // REQUEST PARAMS
@@ -427,8 +533,17 @@ export namespace _subscription {
     id?: filter._string;
     customer_id?: filter._string;
     plan_id?: filter._string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_id?: filter._string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_price_id?: filter._string;
     status?: filter._enum;
     cancel_reason?: filter._enum;
+    cancel_reason_code?: filter._string;
     remaining_billing_cycles?: filter._number;
     created_at?: filter._timestamp;
     activated_at?: filter._timestamp;
@@ -615,6 +730,7 @@ export namespace _subscription {
     account_receivables_handling?: string;
     refundable_credits_handling?: string;
     contract_term_cancel_option?: string;
+    cancel_reason_code?: string;
     event_based_addons?: Array<event_based_addons_cancel_params>;
   }
   export interface resume_params {

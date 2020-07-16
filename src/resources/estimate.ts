@@ -239,7 +239,12 @@ export namespace _estimate {
   }
   export interface create_invoice_params {
     currency_code?: string;
+    invoice_notes?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     coupon?: string;
+    coupon_ids?: Array<string>;
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;
@@ -729,6 +734,9 @@ export namespace _estimate {
     customer_id: string;
   }
   export interface invoice_create_invoice_params {
+    subscription_id?: string;
+  }
+  export interface invoice_create_invoice_params {
     po_number?: string;
   }
   export interface shipping_address_create_invoice_params {
@@ -808,5 +816,17 @@ export namespace _estimate {
   }
   export interface charges_create_invoice_params {
     date_to?: number;
+  }
+  export interface charges_create_invoice_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_invoice_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_invoice_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_invoice_params {
+    taxjar_product_code?: string;
   }
 }

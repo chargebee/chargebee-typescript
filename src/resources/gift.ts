@@ -13,9 +13,9 @@ export class Gift extends Model {
   public claim_expiry_date?: number;
   public resource_version?: number;
   public updated_at?: number;
-  public gifter: resources.GiftGifter;
-  public gift_receiver: resources.GiftGiftReceiver;
-  public gift_timelines?: Array<resources.GiftGiftTimeline>;
+  public gifter: Gifter;
+  public gift_receiver: GiftReceiver;
+  public gift_timelines?: Array<GiftTimeline>;
 
   
 
@@ -89,6 +89,26 @@ export class Gift extends Model {
   }
 
 } // ~Gift
+
+export class Gifter extends Model {
+  public customer_id: string;
+  public invoice_id?: string;
+  public signature?: string;
+  public note?: string;
+} // ~Gifter
+
+export class GiftReceiver extends Model {
+  public customer_id: string;
+  public subscription_id: string;
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+} // ~GiftReceiver
+
+export class GiftTimeline extends Model {
+  public status: string;
+  public occurred_at?: number;
+} // ~GiftTimeline
 
 
 

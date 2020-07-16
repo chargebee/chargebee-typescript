@@ -37,27 +37,27 @@ export class Customer extends Model {
   public fraud_flag?: string;
   public primary_payment_source_id?: string;
   public backup_payment_source_id?: string;
-  public billing_address?: resources.CustomerBillingAddress;
-  public referral_urls?: Array<resources.CustomerReferralUrl>;
-  public contacts?: Array<resources.CustomerContact>;
-  public payment_method?: resources.CustomerPaymentMethod;
+  public billing_address?: BillingAddress;
+  public referral_urls?: Array<ReferralUrl>;
+  public contacts?: Array<Contact>;
+  public payment_method?: PaymentMethod;
   public invoice_notes?: string;
   public preferred_currency_code?: string;
   public promotional_credits: number;
   public unbilled_charges: number;
   public refundable_credits: number;
   public excess_payments: number;
-  public balances?: Array<resources.CustomerBalance>;
+  public balances?: Array<Balance>;
   public meta_data?: any;
   public deleted: boolean;
   public registered_for_gst?: boolean;
   public customer_type?: string;
   public business_customer_without_vat_number?: boolean;
   public client_profile_id?: string;
-  public relationship?: resources.CustomerRelationship;
+  public relationship?: Relationship;
   public use_default_hierarchy_settings?: boolean;
-  public parent_account_access?: resources.CustomerParentAccountAccess;
-  public child_account_access?: resources.CustomerChildAccountAccess;
+  public parent_account_access?: ParentAccountAccess;
+  public child_account_access?: ChildAccountAccess;
 
   
 
@@ -340,6 +340,85 @@ export class Customer extends Model {
   }
 
 } // ~Customer
+
+export class BillingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~BillingAddress
+
+export class ReferralUrl extends Model {
+  public external_customer_id?: string;
+  public referral_sharing_url: string;
+  public created_at: number;
+  public updated_at: number;
+  public referral_campaign_id: string;
+  public referral_account_id: string;
+  public referral_external_campaign_id?: string;
+  public referral_system: string;
+} // ~ReferralUrl
+
+export class Contact extends Model {
+  public id: string;
+  public first_name?: string;
+  public last_name?: string;
+  public email: string;
+  public phone?: string;
+  public label?: string;
+  public enabled: boolean;
+  public send_account_email: boolean;
+  public send_billing_email: boolean;
+} // ~Contact
+
+export class PaymentMethod extends Model {
+  public type: string;
+  public gateway: string;
+  public gateway_account_id?: string;
+  public status: string;
+  public reference_id: string;
+} // ~PaymentMethod
+
+export class Balance extends Model {
+  public promotional_credits: number;
+  public excess_payments: number;
+  public refundable_credits: number;
+  public unbilled_charges: number;
+  public currency_code: string;
+  public balance_currency_code: string;
+} // ~Balance
+
+export class Relationship extends Model {
+  public parent_id?: string;
+  public payment_owner_id: string;
+  public invoice_owner_id: string;
+} // ~Relationship
+
+export class ParentAccountAccess extends Model {
+  public portal_edit_child_subscriptions?: string;
+  public portal_download_child_invoices?: string;
+  public send_subscription_emails: boolean;
+  public send_invoice_emails: boolean;
+  public send_payment_emails: boolean;
+} // ~ParentAccountAccess
+
+export class ChildAccountAccess extends Model {
+  public portal_edit_subscriptions?: string;
+  public portal_download_invoices?: string;
+  public send_subscription_emails: boolean;
+  public send_invoice_emails: boolean;
+  public send_payment_emails: boolean;
+} // ~ChildAccountAccess
 
 
 

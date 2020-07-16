@@ -21,7 +21,7 @@ export class UnbilledCharge extends Model {
   public entity_id?: string;
   public is_voided: boolean;
   public voided_at?: number;
-  public tiers?: Array<resources.UnbilledChargeTier>;
+  public tiers?: Array<Tier>;
   public deleted: boolean;
 
   
@@ -75,6 +75,13 @@ export class UnbilledCharge extends Model {
 
 } // ~UnbilledCharge
 
+export class Tier extends Model {
+  public starting_unit: number;
+  public ending_unit?: number;
+  public quantity_used: number;
+  public unit_amount: number;
+} // ~Tier
+
 
 
   // REQUEST PARAMS
@@ -89,6 +96,7 @@ export namespace _unbilled_charge {
     limit?: number;
     offset?: string;
     include_deleted?: boolean;
+    is_voided?: boolean;
     subscription_id?: filter._string;
     customer_id?: filter._string;
   }

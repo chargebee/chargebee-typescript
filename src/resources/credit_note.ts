@@ -10,7 +10,7 @@ export class CreditNote extends Model {
   public subscription_id?: string;
   public reference_invoice_id: string;
   public type: string;
-  public reason_code: string;
+  public reason_code?: string;
   public status: string;
   public vat_number?: string;
   public date?: number;
@@ -30,15 +30,16 @@ export class CreditNote extends Model {
   public local_currency_code?: string;
   public round_off_amount?: number;
   public fractional_correction?: number;
-  public line_items?: Array<resources.CreditNoteLineItem>;
-  public discounts?: Array<resources.CreditNoteDiscount>;
-  public line_item_discounts?: Array<resources.CreditNoteLineItemDiscount>;
-  public line_item_tiers?: Array<resources.CreditNoteLineItemTier>;
-  public taxes?: Array<resources.CreditNoteTax>;
-  public line_item_taxes?: Array<resources.CreditNoteLineItemTax>;
-  public linked_refunds?: Array<resources.CreditNoteLinkedRefund>;
-  public allocations?: Array<resources.CreditNoteAllocation>;
+  public line_items?: Array<LineItem>;
+  public discounts?: Array<Discount>;
+  public line_item_discounts?: Array<LineItemDiscount>;
+  public line_item_tiers?: Array<LineItemTier>;
+  public taxes?: Array<Tax>;
+  public line_item_taxes?: Array<LineItemTax>;
+  public linked_refunds?: Array<LinkedRefund>;
+  public allocations?: Array<Allocation>;
   public deleted: boolean;
+  public create_reason_code?: string;
 
   
 
@@ -146,6 +147,89 @@ export class CreditNote extends Model {
 
 } // ~CreditNote
 
+export class LineItem extends Model {
+  public id?: string;
+  public subscription_id?: string;
+  public date_from: number;
+  public date_to: number;
+  public unit_amount: number;
+  public quantity?: number;
+  public amount?: number;
+  public pricing_model?: string;
+  public is_taxed: boolean;
+  public tax_amount?: number;
+  public tax_rate?: number;
+  public discount_amount?: number;
+  public item_level_discount_amount?: number;
+  public description: string;
+  public entity_description: string;
+  public entity_type: string;
+  public tax_exempt_reason?: string;
+  public entity_id?: string;
+  public customer_id?: string;
+} // ~LineItem
+
+export class Discount extends Model {
+  public amount: number;
+  public description?: string;
+  public entity_type: string;
+  public entity_id?: string;
+} // ~Discount
+
+export class LineItemDiscount extends Model {
+  public line_item_id: string;
+  public discount_type: string;
+  public coupon_id?: string;
+  public discount_amount: number;
+} // ~LineItemDiscount
+
+export class LineItemTier extends Model {
+  public line_item_id?: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public quantity_used: number;
+  public unit_amount: number;
+} // ~LineItemTier
+
+export class Tax extends Model {
+  public name: string;
+  public amount: number;
+  public description?: string;
+} // ~Tax
+
+export class LineItemTax extends Model {
+  public line_item_id?: string;
+  public tax_name: string;
+  public tax_rate: number;
+  public is_partial_tax_applied?: boolean;
+  public is_non_compliance_tax?: boolean;
+  public taxable_amount: number;
+  public tax_amount: number;
+  public tax_juris_type?: string;
+  public tax_juris_name?: string;
+  public tax_juris_code?: string;
+  public tax_amount_in_local_currency?: number;
+  public local_currency_code?: string;
+} // ~LineItemTax
+
+export class LinkedRefund extends Model {
+  public txn_id: string;
+  public applied_amount: number;
+  public applied_at: number;
+  public txn_status?: string;
+  public txn_date?: number;
+  public txn_amount?: number;
+  public refund_reason_code?: string;
+} // ~LinkedRefund
+
+export class Allocation extends Model {
+  public invoice_id: string;
+  public allocated_amount: number;
+  public allocated_at: number;
+  public invoice_date?: number;
+  public invoice_status: string;
+} // ~Allocation
+
 
 
   // REQUEST PARAMS
@@ -156,7 +240,8 @@ export namespace _credit_note {
     reference_invoice_id: string;
     total?: number;
     type: string;
-    reason_code: string;
+    reason_code?: string;
+    create_reason_code?: string;
     date?: number;
     customer_notes?: string;
     comment?: string;
@@ -188,6 +273,7 @@ export namespace _credit_note {
     reference_invoice_id?: filter._string;
     type?: filter._enum;
     reason_code?: filter._enum;
+    create_reason_code?: filter._string;
     status?: filter._enum;
     date?: filter._timestamp;
     total?: filter._number;

@@ -17,7 +17,7 @@ export class PaymentIntent extends Model {
   public modified_at: number;
   public customer_id: string;
   public gateway?: string;
-  public active_payment_attempt?: resources.PaymentIntentPaymentAttempt;
+  public active_payment_attempt?: PaymentAttempt;
 
   
 
@@ -58,6 +58,17 @@ export class PaymentIntent extends Model {
   }
 
 } // ~PaymentIntent
+
+export class PaymentAttempt extends Model {
+  public id?: string;
+  public status: string;
+  public payment_method_type?: string;
+  public id_at_gateway?: string;
+  public error_code?: string;
+  public error_text?: string;
+  public created_at: number;
+  public modified_at: number;
+} // ~PaymentAttempt
 
 
 

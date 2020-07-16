@@ -13,7 +13,7 @@ export class Event extends Model {
   public user?: string;
   public webhook_status: string;
   public webhook_failure_reason?: string;
-  public webhooks?: Array<resources.EventWebhook>;
+  public webhooks?: Array<Webhook>;
   public event_type?: string;
   public api_version?: string;
 
@@ -67,6 +67,11 @@ export class Event extends Model {
   }
 
 } // ~Event
+
+export class Webhook extends Model {
+  public id: string;
+  public webhook_status: string;
+} // ~Webhook
 
 
 

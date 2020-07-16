@@ -11,7 +11,7 @@ export class Export extends Model {
   public mime_type: string;
   public status: string;
   public created_at: number;
-  public download?: resources.ExportDownload;
+  public download?: Download;
 
   public static wait_for_export_completion(exportId: string): ProcessWait {
     let count = 0;
@@ -179,6 +179,11 @@ export class Export extends Model {
 
 } // ~Export
 
+export class Download extends Model {
+  public download_url: string;
+  public valid_till: number;
+} // ~Download
+
 
 
   // REQUEST PARAMS
@@ -194,6 +199,7 @@ export namespace _export {
     report_to_year: number;
     include_discounts?: boolean;
     payment_owner?: filter._string;
+    cancel_reason_code?: filter._string;
     invoice?: invoice_revenue_recognition_params;
     subscription?: subscription_revenue_recognition_params;
     customer?: customer_revenue_recognition_params;
@@ -208,6 +214,7 @@ export namespace _export {
     report_to_year: number;
     include_discounts?: boolean;
     payment_owner?: filter._string;
+    cancel_reason_code?: filter._string;
     invoice?: invoice_deferred_revenue_params;
     subscription?: subscription_deferred_revenue_params;
     customer?: customer_deferred_revenue_params;
@@ -227,6 +234,7 @@ export namespace _export {
     relationship?: relationship_customers_params;
   }
   export interface subscriptions_params {
+    cancel_reason_code?: filter._string;
     subscription?: subscription_subscriptions_params;
   }
   export interface invoices_params {
@@ -689,6 +697,9 @@ export namespace _export {
   }
   export interface credit_note_credit_notes_params {
     reason_code?: filter._enum;
+  }
+  export interface credit_note_credit_notes_params {
+    create_reason_code?: filter._string;
   }
   export interface credit_note_credit_notes_params {
     status?: filter._enum;

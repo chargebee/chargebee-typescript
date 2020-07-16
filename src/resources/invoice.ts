@@ -41,21 +41,21 @@ export class Invoice extends Model {
   public expected_payment_date?: number;
   public amount_to_collect?: number;
   public round_off_amount?: number;
-  public line_items?: Array<resources.InvoiceLineItem>;
-  public discounts?: Array<resources.InvoiceDiscount>;
-  public line_item_discounts?: Array<resources.InvoiceLineItemDiscount>;
-  public taxes?: Array<resources.InvoiceTax>;
-  public line_item_taxes?: Array<resources.InvoiceLineItemTax>;
-  public line_item_tiers?: Array<resources.InvoiceLineItemTier>;
-  public linked_payments?: Array<resources.InvoiceLinkedPayment>;
-  public dunning_attempts?: Array<resources.InvoiceDunningAttempt>;
-  public applied_credits?: Array<resources.InvoiceAppliedCredit>;
-  public adjustment_credit_notes?: Array<resources.InvoiceAdjustmentCreditNote>;
-  public issued_credit_notes?: Array<resources.InvoiceIssuedCreditNote>;
-  public linked_orders?: Array<resources.InvoiceLinkedOrder>;
-  public notes?: Array<resources.InvoiceNote>;
-  public shipping_address?: resources.InvoiceShippingAddress;
-  public billing_address?: resources.InvoiceBillingAddress;
+  public line_items?: Array<LineItem>;
+  public discounts?: Array<Discount>;
+  public line_item_discounts?: Array<LineItemDiscount>;
+  public taxes?: Array<Tax>;
+  public line_item_taxes?: Array<LineItemTax>;
+  public line_item_tiers?: Array<LineItemTier>;
+  public linked_payments?: Array<LinkedPayment>;
+  public dunning_attempts?: Array<DunningAttempt>;
+  public applied_credits?: Array<AppliedCredit>;
+  public adjustment_credit_notes?: Array<AdjustmentCreditNote>;
+  public issued_credit_notes?: Array<IssuedCreditNote>;
+  public linked_orders?: Array<LinkedOrder>;
+  public notes?: Array<Note>;
+  public shipping_address?: ShippingAddress;
+  public billing_address?: BillingAddress;
   public payment_owner?: string;
   public void_reason_code?: string;
   public deleted: boolean;
@@ -342,6 +342,168 @@ export class Invoice extends Model {
 
 } // ~Invoice
 
+export class LineItem extends Model {
+  public id?: string;
+  public subscription_id?: string;
+  public date_from: number;
+  public date_to: number;
+  public unit_amount: number;
+  public quantity?: number;
+  public amount?: number;
+  public pricing_model?: string;
+  public is_taxed: boolean;
+  public tax_amount?: number;
+  public tax_rate?: number;
+  public discount_amount?: number;
+  public item_level_discount_amount?: number;
+  public description: string;
+  public entity_description: string;
+  public entity_type: string;
+  public tax_exempt_reason?: string;
+  public entity_id?: string;
+  public customer_id?: string;
+} // ~LineItem
+
+export class Discount extends Model {
+  public amount: number;
+  public description?: string;
+  public entity_type: string;
+  public entity_id?: string;
+} // ~Discount
+
+export class LineItemDiscount extends Model {
+  public line_item_id: string;
+  public discount_type: string;
+  public coupon_id?: string;
+  public discount_amount: number;
+} // ~LineItemDiscount
+
+export class Tax extends Model {
+  public name: string;
+  public amount: number;
+  public description?: string;
+} // ~Tax
+
+export class LineItemTax extends Model {
+  public line_item_id?: string;
+  public tax_name: string;
+  public tax_rate: number;
+  public is_partial_tax_applied?: boolean;
+  public is_non_compliance_tax?: boolean;
+  public taxable_amount: number;
+  public tax_amount: number;
+  public tax_juris_type?: string;
+  public tax_juris_name?: string;
+  public tax_juris_code?: string;
+  public tax_amount_in_local_currency?: number;
+  public local_currency_code?: string;
+} // ~LineItemTax
+
+export class LineItemTier extends Model {
+  public line_item_id?: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public quantity_used: number;
+  public unit_amount: number;
+} // ~LineItemTier
+
+export class LinkedPayment extends Model {
+  public txn_id: string;
+  public applied_amount: number;
+  public applied_at: number;
+  public txn_status?: string;
+  public txn_date?: number;
+  public txn_amount?: number;
+} // ~LinkedPayment
+
+export class DunningAttempt extends Model {
+  public attempt: number;
+  public transaction_id?: string;
+  public dunning_type: string;
+  public created_at?: number;
+  public txn_status?: string;
+  public txn_amount?: number;
+} // ~DunningAttempt
+
+export class AppliedCredit extends Model {
+  public cn_id: string;
+  public applied_amount: number;
+  public applied_at: number;
+  public cn_reason_code?: string;
+  public cn_create_reason_code?: string;
+  public cn_date?: number;
+  public cn_status: string;
+} // ~AppliedCredit
+
+export class AdjustmentCreditNote extends Model {
+  public cn_id: string;
+  public cn_reason_code?: string;
+  public cn_create_reason_code?: string;
+  public cn_date?: number;
+  public cn_total?: number;
+  public cn_status: string;
+} // ~AdjustmentCreditNote
+
+export class IssuedCreditNote extends Model {
+  public cn_id: string;
+  public cn_reason_code?: string;
+  public cn_create_reason_code?: string;
+  public cn_date?: number;
+  public cn_total?: number;
+  public cn_status: string;
+} // ~IssuedCreditNote
+
+export class LinkedOrder extends Model {
+  public id: string;
+  public document_number?: string;
+  public status?: string;
+  public order_type?: string;
+  public reference_id?: string;
+  public fulfillment_status?: string;
+  public batch_id?: string;
+  public created_at: number;
+} // ~LinkedOrder
+
+export class Note extends Model {
+  public entity_type: string;
+  public note: string;
+  public entity_id?: string;
+} // ~Note
+
+export class ShippingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~ShippingAddress
+
+export class BillingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~BillingAddress
+
 
 
   // REQUEST PARAMS
@@ -350,9 +512,16 @@ export class Invoice extends Model {
 export namespace _invoice {
   export interface create_params {
     customer_id: string;
+    subscription_id?: string;
     currency_code?: string;
-    coupon?: string;
+    invoice_note?: string;
+    remove_general_note?: boolean;
     po_number?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+    coupon_ids?: Array<string>;
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;
@@ -361,6 +530,7 @@ export namespace _invoice {
     payment_intent?: payment_intent_create_params;
     addons?: Array<addons_create_params>;
     charges?: Array<charges_create_params>;
+    notes_to_remove?: Array<notes_to_remove_create_params>;
   }
   export interface charge_params {
     customer_id?: string;
@@ -475,6 +645,9 @@ export namespace _invoice {
   }
   export interface close_params {
     comment?: string;
+    invoice_note?: string;
+    remove_general_note?: boolean;
+    notes_to_remove?: Array<notes_to_remove_close_params>;
   }
   export interface collect_payment_params {
     amount?: number;
@@ -617,6 +790,24 @@ export namespace _invoice {
   }
   export interface charges_create_params {
     date_to?: number;
+  }
+  export interface charges_create_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_params {
+    taxjar_product_code?: string;
+  }
+  export interface notes_to_remove_create_params {
+    entity_type?: string;
+  }
+  export interface notes_to_remove_create_params {
+    entity_id?: string;
   }
   export interface billing_address_import_invoice_params {
     first_name?: string;
@@ -852,6 +1043,12 @@ export namespace _invoice {
   export interface line_item_add_addon_charge_params {
     date_to?: number;
   }
+  export interface notes_to_remove_close_params {
+    entity_type?: string;
+  }
+  export interface notes_to_remove_close_params {
+    entity_id?: string;
+  }
   export interface transaction_record_payment_params {
     amount?: number;
   }
@@ -879,6 +1076,9 @@ export namespace _invoice {
   export interface credit_note_refund_params {
     reason_code?: string;
   }
+  export interface credit_note_refund_params {
+    create_reason_code?: string;
+  }
   export interface transaction_record_refund_params {
     amount?: number;
   }
@@ -893,6 +1093,9 @@ export namespace _invoice {
   }
   export interface credit_note_record_refund_params {
     reason_code?: string;
+  }
+  export interface credit_note_record_refund_params {
+    create_reason_code?: string;
   }
   export interface transaction_remove_payment_params {
     id: string;

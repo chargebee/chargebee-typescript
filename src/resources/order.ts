@@ -40,15 +40,15 @@ export class Order extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public cancelled_at?: number;
-  public order_line_items?: Array<resources.OrderOrderLineItem>;
-  public shipping_address?: resources.OrderShippingAddress;
-  public billing_address?: resources.OrderBillingAddress;
+  public order_line_items?: Array<OrderLineItem>;
+  public shipping_address?: ShippingAddress;
+  public billing_address?: BillingAddress;
   public discount?: number;
   public sub_total?: number;
   public total?: number;
-  public line_item_taxes?: Array<resources.OrderLineItemTax>;
-  public line_item_discounts?: Array<resources.OrderLineItemDiscount>;
-  public linked_credit_notes?: Array<resources.OrderLinkedCreditNote>;
+  public line_item_taxes?: Array<LineItemTax>;
+  public line_item_discounts?: Array<LineItemDiscount>;
+  public linked_credit_notes?: Array<LinkedCreditNote>;
   public deleted: boolean;
   public currency_code?: string;
   public is_gifted?: boolean;
@@ -78,6 +78,17 @@ export class Order extends Model {
       'urlPrefix': '/orders',
       'urlSuffix': null,
       'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static import_order(params?: _order.import_order_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'import_order',
+      'httpMethod': 'POST',
+      'urlPrefix': '/orders',
+      'urlSuffix': '/import_order',
+      'hasIdInUrl': false,
       'isListReq': false,
     }, ChargeBee._env)
   }
@@ -137,6 +148,17 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
+  public static delete(order_id: string, params?: any) {
+    return new RequestWrapper([order_id, params], {
+      'methodName': 'delete',
+      'httpMethod': 'POST',
+      'urlPrefix': '/orders',
+      'urlSuffix': '/delete',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static list(params?: _order.order_list_params) {
     return new RequestWrapper([params], {
       'methodName': 'list',
@@ -160,6 +182,94 @@ export class Order extends Model {
   }
 
 } // ~Order
+
+export class OrderLineItem extends Model {
+  public id: string;
+  public invoice_id: string;
+  public invoice_line_item_id: string;
+  public unit_price?: number;
+  public description?: string;
+  public amount?: number;
+  public fulfillment_quantity?: number;
+  public fulfillment_amount?: number;
+  public tax_amount?: number;
+  public amount_paid?: number;
+  public amount_adjusted?: number;
+  public refundable_credits_issued?: number;
+  public refundable_credits?: number;
+  public is_shippable: boolean;
+  public sku?: string;
+  public status?: string;
+  public entity_type: string;
+  public item_level_discount_amount?: number;
+  public discount_amount?: number;
+  public entity_id?: string;
+} // ~OrderLineItem
+
+export class ShippingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~ShippingAddress
+
+export class BillingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~BillingAddress
+
+export class LineItemTax extends Model {
+  public line_item_id?: string;
+  public tax_name: string;
+  public tax_rate: number;
+  public is_partial_tax_applied?: boolean;
+  public is_non_compliance_tax?: boolean;
+  public taxable_amount: number;
+  public tax_amount: number;
+  public tax_juris_type?: string;
+  public tax_juris_name?: string;
+  public tax_juris_code?: string;
+  public tax_amount_in_local_currency?: number;
+  public local_currency_code?: string;
+} // ~LineItemTax
+
+export class LineItemDiscount extends Model {
+  public line_item_id: string;
+  public discount_type: string;
+  public coupon_id?: string;
+  public discount_amount: number;
+} // ~LineItemDiscount
+
+export class LinkedCreditNote extends Model {
+  public amount?: number;
+  public type: string;
+  public id: string;
+  public status: string;
+  public amount_adjusted?: number;
+  public amount_refunded?: number;
+} // ~LinkedCreditNote
 
 
 
@@ -193,6 +303,31 @@ export namespace _order {
     status?: string;
     shipping_address?: shipping_address_update_params;
     order_line_items?: Array<order_line_items_update_params>;
+  }
+  export interface import_order_params {
+    id?: string;
+    document_number?: string;
+    invoice_id: string;
+    status: string;
+    subscription_id?: string;
+    customer_id?: string;
+    created_at: number;
+    order_date: number;
+    shipping_date: number;
+    reference_id?: string;
+    fulfillment_status?: string;
+    note?: string;
+    tracking_id?: string;
+    batch_id?: string;
+    shipment_carrier?: string;
+    shipping_cut_off_date?: number;
+    delivered_at?: number;
+    shipped_at?: number;
+    cancelled_at?: number;
+    cancellation_reason?: string;
+    refundable_credits_issued?: number;
+    shipping_address?: shipping_address_import_order_params;
+    billing_address?: billing_address_import_order_params;
   }
   export interface cancel_params {
     cancellation_reason: string;
@@ -275,6 +410,90 @@ export namespace _order {
   }
   export interface order_line_items_update_params {
     sku?: string;
+  }
+  export interface shipping_address_import_order_params {
+    first_name?: string;
+  }
+  export interface shipping_address_import_order_params {
+    last_name?: string;
+  }
+  export interface shipping_address_import_order_params {
+    email?: string;
+  }
+  export interface shipping_address_import_order_params {
+    company?: string;
+  }
+  export interface shipping_address_import_order_params {
+    phone?: string;
+  }
+  export interface shipping_address_import_order_params {
+    line1?: string;
+  }
+  export interface shipping_address_import_order_params {
+    line2?: string;
+  }
+  export interface shipping_address_import_order_params {
+    line3?: string;
+  }
+  export interface shipping_address_import_order_params {
+    city?: string;
+  }
+  export interface shipping_address_import_order_params {
+    state_code?: string;
+  }
+  export interface shipping_address_import_order_params {
+    state?: string;
+  }
+  export interface shipping_address_import_order_params {
+    zip?: string;
+  }
+  export interface shipping_address_import_order_params {
+    country?: string;
+  }
+  export interface shipping_address_import_order_params {
+    validation_status?: string;
+  }
+  export interface billing_address_import_order_params {
+    first_name?: string;
+  }
+  export interface billing_address_import_order_params {
+    last_name?: string;
+  }
+  export interface billing_address_import_order_params {
+    email?: string;
+  }
+  export interface billing_address_import_order_params {
+    company?: string;
+  }
+  export interface billing_address_import_order_params {
+    phone?: string;
+  }
+  export interface billing_address_import_order_params {
+    line1?: string;
+  }
+  export interface billing_address_import_order_params {
+    line2?: string;
+  }
+  export interface billing_address_import_order_params {
+    line3?: string;
+  }
+  export interface billing_address_import_order_params {
+    city?: string;
+  }
+  export interface billing_address_import_order_params {
+    state_code?: string;
+  }
+  export interface billing_address_import_order_params {
+    state?: string;
+  }
+  export interface billing_address_import_order_params {
+    zip?: string;
+  }
+  export interface billing_address_import_order_params {
+    country?: string;
+  }
+  export interface billing_address_import_order_params {
+    validation_status?: string;
   }
   export interface credit_note_cancel_params {
     total?: number;

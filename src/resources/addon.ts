@@ -38,7 +38,7 @@ export class Addon extends Model {
   public taxable?: boolean;
   public tax_profile_id?: string;
   public meta_data?: any;
-  public tiers?: Array<resources.AddonTier>;
+  public tiers?: Array<Tier>;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
 
@@ -125,6 +125,12 @@ export class Addon extends Model {
   }
 
 } // ~Addon
+
+export class Tier extends Model {
+  public starting_unit: number;
+  public ending_unit?: number;
+  public price: number;
+} // ~Tier
 
 
 

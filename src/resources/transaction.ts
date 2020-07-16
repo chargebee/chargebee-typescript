@@ -37,10 +37,10 @@ export class Transaction extends Model {
   public reference_authorization_id?: string;
   public amount_capturable?: number;
   public reversal_transaction_id?: string;
-  public linked_invoices?: Array<resources.TransactionLinkedInvoice>;
-  public linked_credit_notes?: Array<resources.TransactionLinkedCreditNote>;
-  public linked_refunds?: Array<resources.TransactionLinkedRefund>;
-  public linked_payments?: Array<resources.TransactionLinkedPayment>;
+  public linked_invoices?: Array<LinkedInvoice>;
+  public linked_credit_notes?: Array<LinkedCreditNote>;
+  public linked_refunds?: Array<LinkedRefund>;
+  public linked_payments?: Array<LinkedPayment>;
   public deleted: boolean;
 
   
@@ -148,6 +148,41 @@ export class Transaction extends Model {
   }
 
 } // ~Transaction
+
+export class LinkedInvoice extends Model {
+  public invoice_id: string;
+  public applied_amount: number;
+  public applied_at: number;
+  public invoice_date?: number;
+  public invoice_total?: number;
+  public invoice_status: string;
+} // ~LinkedInvoice
+
+export class LinkedCreditNote extends Model {
+  public cn_id: string;
+  public applied_amount: number;
+  public applied_at: number;
+  public cn_reason_code?: string;
+  public cn_create_reason_code?: string;
+  public cn_date?: number;
+  public cn_total?: number;
+  public cn_status: string;
+  public cn_reference_invoice_id: string;
+} // ~LinkedCreditNote
+
+export class LinkedRefund extends Model {
+  public txn_id: string;
+  public txn_status: string;
+  public txn_date: number;
+  public txn_amount: number;
+} // ~LinkedRefund
+
+export class LinkedPayment extends Model {
+  public id: string;
+  public status?: string;
+  public amount?: number;
+  public date?: number;
+} // ~LinkedPayment
 
 
 

@@ -16,7 +16,6 @@ export class ContractTerm extends Model {
   public created_at: number;
   public subscription_id: string;
   public remaining_billing_cycles?: number;
-  public total_amount_raised: number;
 
   
 

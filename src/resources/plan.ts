@@ -47,10 +47,10 @@ export class Plan extends Model {
   public taxable?: boolean;
   public tax_profile_id?: string;
   public meta_data?: any;
-  public tiers?: Array<resources.PlanTier>;
-  public applicable_addons?: Array<resources.PlanApplicableAddon>;
-  public attached_addons?: Array<resources.PlanAttachedAddon>;
-  public event_based_addons?: Array<resources.PlanEventBasedAddon>;
+  public tiers?: Array<Tier>;
+  public applicable_addons?: Array<ApplicableAddon>;
+  public attached_addons?: Array<AttachedAddon>;
+  public event_based_addons?: Array<EventBasedAddon>;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
 
@@ -137,6 +137,30 @@ export class Plan extends Model {
   }
 
 } // ~Plan
+
+export class Tier extends Model {
+  public starting_unit: number;
+  public ending_unit?: number;
+  public price: number;
+} // ~Tier
+
+export class ApplicableAddon extends Model {
+  public id: string;
+} // ~ApplicableAddon
+
+export class AttachedAddon extends Model {
+  public id: string;
+  public quantity: number;
+  public billing_cycles?: number;
+  public type: string;
+} // ~AttachedAddon
+
+export class EventBasedAddon extends Model {
+  public id: string;
+  public quantity: number;
+  public on_event: string;
+  public charge_once: boolean;
+} // ~EventBasedAddon
 
 
 
