@@ -30,6 +30,7 @@ export class Card extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public ip_address?: string;
+  public powered_by?: string;
   public customer_id: string;
   public masked_number?: string;
 

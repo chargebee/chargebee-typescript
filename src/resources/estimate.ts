@@ -346,8 +346,10 @@ export namespace _estimate {
   export interface customer_create_subscription_params {
   }
   export interface subscription_create_subscription_params {
+    free_period?: number;
   }
   export interface subscription_create_subscription_params {
+    free_period_unit?: string;
   }
   export interface subscription_create_subscription_params {
   }
@@ -450,8 +452,10 @@ export namespace _estimate {
     validation_status?: string;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
+    free_period?: number;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
+    free_period_unit?: string;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
   }
@@ -582,8 +586,10 @@ export namespace _estimate {
     registered_for_gst?: boolean;
   }
   export interface subscription_update_subscription_params {
+    free_period?: number;
   }
   export interface subscription_update_subscription_params {
+    free_period_unit?: string;
   }
   export interface subscription_update_subscription_params {
   }
@@ -731,7 +737,7 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface invoice_create_invoice_params {
-    customer_id: string;
+    customer_id?: string;
   }
   export interface invoice_create_invoice_params {
     subscription_id?: string;

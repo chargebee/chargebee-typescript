@@ -135,16 +135,16 @@ export namespace _coupon {
      */
     discount_quantity?: number;
     apply_on: string;
-    plan_constraint?: string;
-    addon_constraint?: string;
-    plan_ids?: Array<string>;
-    addon_ids?: Array<string>;
     duration_type: string;
     duration_month?: number;
     valid_till?: number;
     max_redemptions?: number;
     invoice_notes?: string;
     meta_data?: any;
+    plan_constraint?: string;
+    addon_constraint?: string;
+    plan_ids?: Array<string>;
+    addon_ids?: Array<string>;
     status?: string;
   }
   export interface coupon_list_params {
@@ -158,6 +158,7 @@ export namespace _coupon {
     apply_on?: filter._enum;
     created_at?: filter._timestamp;
     updated_at?: filter._timestamp;
+    currency_code?: filter._string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }
@@ -169,16 +170,16 @@ export namespace _coupon {
     currency_code?: string;
     discount_percentage?: number;
     apply_on?: string;
-    plan_constraint?: string;
-    addon_constraint?: string;
-    plan_ids?: Array<string>;
-    addon_ids?: Array<string>;
     duration_type?: string;
     duration_month?: number;
     valid_till?: number;
     max_redemptions?: number;
     invoice_notes?: string;
     meta_data?: any;
+    plan_constraint?: string;
+    addon_constraint?: string;
+    plan_ids?: Array<string>;
+    addon_ids?: Array<string>;
   }
   export interface copy_params {
     from_site: string;

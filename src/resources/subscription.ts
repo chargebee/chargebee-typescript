@@ -60,6 +60,8 @@ export class Subscription extends Model {
   public deleted: boolean;
   public contract_term?: ContractTerm;
   public cancel_reason_code?: string;
+  public free_period?: number;
+  public free_period_unit?: string;
 
   
 
@@ -259,6 +261,17 @@ export class Subscription extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/customers',
       'urlSuffix': '/import_subscription',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static import_contract_term(subscription_id: string, params?: _subscription.import_contract_term_params) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'import_contract_term',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/import_contract_term',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -482,6 +495,8 @@ export namespace _subscription {
     invoice_notes?: string;
     meta_data?: any;
     invoice_immediately?: boolean;
+    free_period?: number;
+    free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;
     client_profile_id?: string;
     customer?: customer_create_params;
@@ -519,6 +534,8 @@ export namespace _subscription {
     invoice_notes?: string;
     meta_data?: any;
     invoice_immediately?: boolean;
+    free_period?: number;
+    free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;
     shipping_address?: shipping_address_create_for_customer_params;
     payment_intent?: payment_intent_create_for_customer_params;
@@ -591,6 +608,8 @@ export namespace _subscription {
     invoice_immediately?: boolean;
     override_relationship?: boolean;
     contract_term_billing_cycle_on_renewal?: number;
+    free_period?: number;
+    free_period_unit?: string;
     card?: card_update_params;
     bank_account?: bank_account_update_params;
     payment_method?: payment_method_update_params;
@@ -710,6 +729,10 @@ export namespace _subscription {
     addons?: Array<addons_import_for_customer_params>;
     event_based_addons?: Array<event_based_addons_import_for_customer_params>;
     charged_event_based_addons?: Array<charged_event_based_addons_import_for_customer_params>;
+  }
+  export interface import_contract_term_params {
+    contract_term_billing_cycle_on_renewal?: number;
+    contract_term?: contract_term_import_contract_term_params;
   }
   export interface override_billing_profile_params {
     payment_source_id?: string;
@@ -1497,10 +1520,10 @@ export namespace _subscription {
     contract_start?: number;
   }
   export interface contract_term_import_subscription_params {
-    total_amount_raised?: number;
+    billing_cycle?: number;
   }
   export interface contract_term_import_subscription_params {
-    billing_cycle?: number;
+    total_amount_raised?: number;
   }
   export interface contract_term_import_subscription_params {
     action_at_term_end?: string;
@@ -1741,10 +1764,10 @@ export namespace _subscription {
     contract_start?: number;
   }
   export interface contract_term_import_for_customer_params {
-    total_amount_raised?: number;
+    billing_cycle?: number;
   }
   export interface contract_term_import_for_customer_params {
-    billing_cycle?: number;
+    total_amount_raised?: number;
   }
   export interface contract_term_import_for_customer_params {
     action_at_term_end?: string;
@@ -1841,6 +1864,36 @@ export namespace _subscription {
   }
   export interface charged_event_based_addons_import_for_customer_params {
     last_charged_at?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    id?: string;
+  }
+  export interface contract_term_import_contract_term_params {
+    created_at?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    contract_start?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    contract_end?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    status?: string;
+  }
+  export interface contract_term_import_contract_term_params {
+    total_amount_raised?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    total_contract_value?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    billing_cycle?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_import_contract_term_params {
+    cancellation_cutoff_period?: number;
   }
   export interface event_based_addons_cancel_params {
     id?: string;

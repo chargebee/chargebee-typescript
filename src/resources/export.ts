@@ -221,12 +221,15 @@ export namespace _export {
     relationship?: relationship_deferred_revenue_params;
   }
   export interface plans_params {
+    currency_code?: filter._string;
     plan?: plan_plans_params;
   }
   export interface addons_params {
+    currency_code?: filter._string;
     addon?: addon_addons_params;
   }
   export interface coupons_params {
+    currency_code?: filter._string;
     coupon?: coupon_coupons_params;
   }
   export interface customers_params {

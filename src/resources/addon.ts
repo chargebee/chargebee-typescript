@@ -228,6 +228,7 @@ export namespace _addon {
     period_unit?: filter._enum;
     status?: filter._enum;
     updated_at?: filter._timestamp;
+    currency_code?: filter._string;
   }
   export interface copy_params {
     from_site: string;

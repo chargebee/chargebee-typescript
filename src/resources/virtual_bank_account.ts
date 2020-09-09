@@ -70,6 +70,17 @@ export class VirtualBankAccount extends Model {
     }, ChargeBee._env)
   }
 
+  public static delete(virtual_bank_account_id: string, params?: any) {
+    return new RequestWrapper([virtual_bank_account_id, params], {
+      'methodName': 'delete',
+      'httpMethod': 'POST',
+      'urlPrefix': '/virtual_bank_accounts',
+      'urlSuffix': '/delete',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static delete_local(virtual_bank_account_id: string, params?: any) {
     return new RequestWrapper([virtual_bank_account_id, params], {
       'methodName': 'delete_local',

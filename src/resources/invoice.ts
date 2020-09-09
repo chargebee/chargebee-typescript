@@ -511,7 +511,7 @@ export class BillingAddress extends Model {
 
 export namespace _invoice {
   export interface create_params {
-    customer_id: string;
+    customer_id?: string;
     subscription_id?: string;
     currency_code?: string;
     invoice_note?: string;
