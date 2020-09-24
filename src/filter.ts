@@ -44,7 +44,7 @@ export namespace filter {
     is?: any;
     is_not?: any;
     is_present?: any;
-    in?: [any];
-    not_in?: [any];
+    in?: Array<any>;
+    not_in?: Array<any>;
   }
 }
