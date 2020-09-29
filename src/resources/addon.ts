@@ -34,6 +34,7 @@ export class Addon extends Model {
   public shipping_frequency_period_unit?: string;
   public resource_version?: number;
   public updated_at?: number;
+  public included_in_mrr?: boolean;
   public invoice_notes?: string;
   public taxable?: boolean;
   public tax_profile_id?: string;
@@ -171,6 +172,7 @@ export namespace _addon {
     is_shippable?: boolean;
     shipping_frequency_period?: number;
     shipping_frequency_period_unit?: string;
+    included_in_mrr?: boolean;
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     status?: string;
@@ -208,6 +210,7 @@ export namespace _addon {
     is_shippable?: boolean;
     shipping_frequency_period?: number;
     shipping_frequency_period_unit?: string;
+    included_in_mrr?: boolean;
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     tiers?: Array<tiers_update_params>;

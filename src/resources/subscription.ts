@@ -42,6 +42,7 @@ export class Subscription extends Model {
   public has_scheduled_changes: boolean;
   public payment_source_id?: string;
   public auto_collection?: string;
+  public offline_payment_method?: string;
   public due_invoices_count?: number;
   public due_since?: number;
   public total_dues?: number;
@@ -356,33 +357,6 @@ export class Subscription extends Model {
 
 } // ~Subscription
 
-export class SubscriptionItem extends Model {
-  public item_price_id: string;
-  public item_type: string;
-  public quantity?: number;
-  public unit_price?: number;
-  public amount?: number;
-  public item_free_quantity?: number;
-  public trial_end?: number;
-  public billing_cycles?: number;
-  public service_period_in_days?: number;
-  public on_event?: string;
-  public charge_once?: boolean;
-  public charge_on?: string;
-} // ~SubscriptionItem
-
-export class ItemTier extends Model {
-  public item_price_id: string;
-  public starting_unit: number;
-  public ending_unit?: number;
-  public price: number;
-} // ~ItemTier
-
-export class ChargedItem extends Model {
-  public item_price_id: string;
-  public last_charged_at: number;
-} // ~ChargedItem
-
 export class Addon extends Model {
   public id: string;
   public quantity?: number;
@@ -484,6 +458,7 @@ export namespace _subscription {
     auto_collection?: string;
     terms_to_charge?: number;
     billing_alignment_mode?: string;
+    offline_payment_method?: string;
     po_number?: string;
     coupon_ids?: Array<string>;
     token_id?: string;
@@ -527,6 +502,7 @@ export namespace _subscription {
     auto_collection?: string;
     terms_to_charge?: number;
     billing_alignment_mode?: string;
+    offline_payment_method?: string;
     po_number?: string;
     coupon_ids?: Array<string>;
     payment_source_id?: string;
@@ -568,6 +544,7 @@ export namespace _subscription {
     cancelled_at?: filter._timestamp;
     has_scheduled_changes?: filter._boolean;
     updated_at?: filter._timestamp;
+    offline_payment_method?: filter._enum;
     override_relationship?: filter._boolean;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
@@ -595,6 +572,8 @@ export namespace _subscription {
     terms_to_charge?: number;
     reactivate_from?: number;
     billing_alignment_mode?: string;
+    auto_collection?: string;
+    offline_payment_method?: string;
     po_number?: string;
     coupon_ids?: Array<string>;
     replace_coupon_list?: boolean;
@@ -801,6 +780,9 @@ export namespace _subscription {
   }
   export interface customer_create_params {
     auto_collection?: string;
+  }
+  export interface customer_create_params {
+    offline_payment_method?: string;
   }
   export interface customer_create_params {
     allow_direct_debit?: boolean;

@@ -449,6 +449,9 @@ export namespace _quote {
   }
   export interface subscription_create_sub_for_customer_quote_params {
   }
+  export interface subscription_create_sub_for_customer_quote_params {
+    offline_payment_method?: string;
+  }
   export interface shipping_address_create_sub_for_customer_quote_params {
     first_name?: string;
   }
@@ -558,6 +561,9 @@ export namespace _quote {
     start_date?: number;
   }
   export interface subscription_edit_create_sub_for_customer_quote_params {
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    offline_payment_method?: string;
   }
   export interface shipping_address_edit_create_sub_for_customer_quote_params {
     first_name?: string;
@@ -672,6 +678,12 @@ export namespace _quote {
      * @deprecated Please refer API docs to use other attributes
      */
     coupon?: string;
+  }
+  export interface subscription_update_subscription_quote_params {
+    auto_collection?: string;
+  }
+  export interface subscription_update_subscription_quote_params {
+    offline_payment_method?: string;
   }
   export interface billing_address_update_subscription_quote_params {
     first_name?: string;
@@ -833,6 +845,12 @@ export namespace _quote {
      * @deprecated Please refer API docs to use other attributes
      */
     coupon?: string;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    auto_collection?: string;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    offline_payment_method?: string;
   }
   export interface billing_address_edit_update_subscription_quote_params {
     first_name?: string;

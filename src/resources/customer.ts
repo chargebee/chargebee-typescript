@@ -13,6 +13,7 @@ export class Customer extends Model {
   public company?: string;
   public vat_number?: string;
   public auto_collection: string;
+  public offline_payment_method?: string;
   public net_term_days: number;
   public vat_number_validated_time?: number;
   public vat_number_status?: string;
@@ -27,7 +28,6 @@ export class Customer extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public locale?: string;
-  public consolidated_invoicing?: boolean;
   public billing_date?: number;
   public billing_date_mode?: string;
   public billing_day_of_week?: string;
@@ -51,6 +51,7 @@ export class Customer extends Model {
   public meta_data?: any;
   public deleted: boolean;
   public registered_for_gst?: boolean;
+  public consolidated_invoicing?: boolean;
   public customer_type?: string;
   public business_customer_without_vat_number?: boolean;
   public client_profile_id?: string;
@@ -449,6 +450,7 @@ export namespace _customer {
     entity_code?: string;
     exempt_number?: string;
     meta_data?: any;
+    offline_payment_method?: string;
     consolidated_invoicing?: boolean;
     token_id?: string;
     /**
@@ -476,6 +478,7 @@ export namespace _customer {
     taxability?: filter._enum;
     created_at?: filter._timestamp;
     updated_at?: filter._timestamp;
+    offline_payment_method?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
     relationship?: relationship_customer_list_params;
@@ -498,6 +501,7 @@ export namespace _customer {
     locale?: string;
     entity_code?: string;
     exempt_number?: string;
+    offline_payment_method?: string;
     invoice_notes?: string;
     meta_data?: any;
     fraud_flag?: string;

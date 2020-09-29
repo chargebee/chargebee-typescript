@@ -57,6 +57,7 @@ export class Core {
             params = {};
         }
         if (httpMethod === 'GET') {
+            params = this.serialize(params)
             let queryParam = isListReq ? this.encodeListParams(params) : this.encodeParams(params);
             path += "?" + queryParam;
             params = {};
@@ -99,16 +100,29 @@ export class Core {
         return env.site + env.hostSuffix;
     }
 
-    static encodeListParams(paramObj) {
+    static serialize(paramObj) {
         let key, value;
         for (key in paramObj) {
             value = paramObj[key];
-            if(typeof value !== 'undefined' && value !== null && Util.isArray(value)){
+            if (typeof value === 'object' && Util.isObject(value)) {
+                let old_key = key;
+                let child_key;
+                for (child_key in value) {
+                    key = key + "[" + child_key + "]";
+                    paramObj[key] = value[child_key];
+                }
+                delete paramObj[old_key];
+                this.serialize(paramObj);
+            } else if (typeof value === 'object' && Util.isArray(value)) {
                 paramObj[key] = JSON.stringify(value);
-            }else{
+            } else {
                 paramObj[key] = value;
             }
         }
+        return paramObj;
+    }
+
+    static encodeListParams(paramObj) {
         return this.encodeParams(paramObj);
     }
 

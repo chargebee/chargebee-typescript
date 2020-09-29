@@ -196,6 +196,7 @@ export namespace _hosted_page {
     pass_thru_content?: string;
     embed?: boolean;
     iframe_messaging?: boolean;
+    allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_new_params;
     customer?: customer_checkout_new_params;
     card?: card_checkout_new_params;
@@ -220,6 +221,7 @@ export namespace _hosted_page {
     pass_thru_content?: string;
     embed?: boolean;
     iframe_messaging?: boolean;
+    allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_existing_params;
     customer?: customer_checkout_existing_params;
     card?: card_checkout_existing_params;
@@ -340,6 +342,9 @@ export namespace _hosted_page {
   }
   export interface subscription_checkout_new_params {
     auto_collection?: string;
+  }
+  export interface subscription_checkout_new_params {
+    offline_payment_method?: string;
   }
   export interface subscription_checkout_new_params {
     invoice_notes?: string;
@@ -516,6 +521,12 @@ export namespace _hosted_page {
      * @deprecated Please refer API docs to use other attributes
      */
     coupon?: string;
+  }
+  export interface subscription_checkout_existing_params {
+    auto_collection?: string;
+  }
+  export interface subscription_checkout_existing_params {
+    offline_payment_method?: string;
   }
   export interface subscription_checkout_existing_params {
     invoice_notes?: string;

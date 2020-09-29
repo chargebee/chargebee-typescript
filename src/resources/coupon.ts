@@ -26,6 +26,7 @@ export class Coupon extends Model {
   public archived_at?: number;
   public resource_version?: number;
   public updated_at?: number;
+  public included_in_mrr?: boolean;
   public plan_ids?: Array<string>;
   public addon_ids?: Array<string>;
   public redemptions?: number;
@@ -141,6 +142,7 @@ export namespace _coupon {
     max_redemptions?: number;
     invoice_notes?: string;
     meta_data?: any;
+    included_in_mrr?: boolean;
     plan_constraint?: string;
     addon_constraint?: string;
     plan_ids?: Array<string>;
@@ -176,6 +178,7 @@ export namespace _coupon {
     max_redemptions?: number;
     invoice_notes?: string;
     meta_data?: any;
+    included_in_mrr?: boolean;
     plan_constraint?: string;
     addon_constraint?: string;
     plan_ids?: Array<string>;

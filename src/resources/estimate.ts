@@ -280,6 +280,9 @@ export namespace _estimate {
      */
     coupon?: string;
   }
+  export interface subscription_create_subscription_params {
+    offline_payment_method?: string;
+  }
   export interface billing_address_create_subscription_params {
     line1?: string;
   }
@@ -427,6 +430,9 @@ export namespace _estimate {
   }
   export interface subscription_create_sub_for_customer_estimate_params {
   }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    offline_payment_method?: string;
+  }
   export interface shipping_address_create_sub_for_customer_estimate_params {
     line1?: string;
   }
@@ -530,6 +536,12 @@ export namespace _estimate {
      * @deprecated Please refer API docs to use other attributes
      */
     coupon?: string;
+  }
+  export interface subscription_update_subscription_params {
+    auto_collection?: string;
+  }
+  export interface subscription_update_subscription_params {
+    offline_payment_method?: string;
   }
   export interface billing_address_update_subscription_params {
     line1?: string;

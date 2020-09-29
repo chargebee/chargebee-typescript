@@ -329,6 +329,9 @@ export namespace _export {
   export interface subscription_revenue_recognition_params {
     updated_at?: filter._timestamp;
   }
+  export interface subscription_revenue_recognition_params {
+    offline_payment_method?: filter._enum;
+  }
   export interface customer_revenue_recognition_params {
     id?: filter._string;
   }
@@ -367,6 +370,9 @@ export namespace _export {
   }
   export interface relationship_revenue_recognition_params {
     invoice_owner_id?: filter._string;
+  }
+  export interface customer_revenue_recognition_params {
+    offline_payment_method?: filter._enum;
   }
   export interface invoice_deferred_revenue_params {
     id?: filter._string;
@@ -443,6 +449,9 @@ export namespace _export {
   export interface subscription_deferred_revenue_params {
     updated_at?: filter._timestamp;
   }
+  export interface subscription_deferred_revenue_params {
+    offline_payment_method?: filter._enum;
+  }
   export interface customer_deferred_revenue_params {
     id?: filter._string;
   }
@@ -481,6 +490,9 @@ export namespace _export {
   }
   export interface relationship_deferred_revenue_params {
     invoice_owner_id?: filter._string;
+  }
+  export interface customer_deferred_revenue_params {
+    offline_payment_method?: filter._enum;
   }
   export interface plan_plans_params {
     id?: filter._string;
@@ -602,6 +614,9 @@ export namespace _export {
   export interface relationship_customers_params {
     invoice_owner_id?: filter._string;
   }
+  export interface customer_customers_params {
+    offline_payment_method?: filter._enum;
+  }
   export interface subscription_subscriptions_params {
     id?: filter._string;
   }
@@ -637,6 +652,9 @@ export namespace _export {
   }
   export interface subscription_subscriptions_params {
     updated_at?: filter._timestamp;
+  }
+  export interface subscription_subscriptions_params {
+    offline_payment_method?: filter._enum;
   }
   export interface invoice_invoices_params {
     id?: filter._string;
