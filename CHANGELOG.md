@@ -1,3 +1,7 @@
+### v2.0.4 (2020-10-16)
+* * *
+* New optional attribute quoted_subscriptions has been added to the resource quote
+* New optional attributes resource_version and updated_at are added to the resource payment_intent
 ### v2.0.3 (2020-09-29)
 * * *
 

@@ -33,7 +33,7 @@ export class RequestWrapper {
       if (this.apiCall.hasIdInUrl) {
         this.args[1] = { ...this.args[1], ...custom_param };
       } else {
-        this.args[1] = { ...this.args[0], ...custom_param };
+        this.args[0] = { ...this.args[0], ...custom_param };
       }
       return this;
     }

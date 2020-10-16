@@ -15,6 +15,8 @@ export class PaymentIntent extends Model {
   public payment_method_type?: string;
   public created_at: number;
   public modified_at: number;
+  public resource_version?: number;
+  public updated_at?: number;
   public customer_id: string;
   public gateway?: string;
   public active_payment_attempt?: PaymentAttempt;

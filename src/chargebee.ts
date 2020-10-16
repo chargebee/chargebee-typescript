@@ -2,6 +2,7 @@ import {Util} from "./util";
 import * as resources from "./resources";
 export {_subscription} from "./resources/subscription";
 export {_contract_term} from "./resources/contract_term";
+export {_advance_invoice_schedule} from "./resources/advance_invoice_schedule";
 export {_customer} from "./resources/customer";
 export {_hierarchy} from "./resources/hierarchy";
 export {_contact} from "./resources/contact";
@@ -20,6 +21,7 @@ export {_transaction} from "./resources/transaction";
 export {_hosted_page} from "./resources/hosted_page";
 export {_estimate} from "./resources/estimate";
 export {_quote} from "./resources/quote";
+export {_quoted_subscription} from "./resources/quoted_subscription";
 export {_quote_line_group} from "./resources/quote_line_group";
 export {_plan} from "./resources/plan";
 export {_addon} from "./resources/addon";
@@ -49,6 +51,9 @@ export class ChargeBee {
     }
     get contract_term() {
         return resources.ContractTerm;
+    }
+    get advance_invoice_schedule() {
+        return resources.AdvanceInvoiceSchedule;
     }
     get customer() {
         return resources.Customer;
@@ -103,6 +108,9 @@ export class ChargeBee {
     }
     get quote() {
         return resources.Quote;
+    }
+    get quoted_subscription() {
+        return resources.QuotedSubscription;
     }
     get quote_line_group() {
         return resources.QuoteLineGroup;

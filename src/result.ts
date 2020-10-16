@@ -19,6 +19,14 @@ export class Result {
         );
         return _contract_term;
     }
+    get advance_invoice_schedule() {
+        let _advance_invoice_schedule = this.get(
+            'advance_invoice_schedule',
+            'AdvanceInvoiceSchedule',
+            {'fixed_interval_schedule': 'AdvanceInvoiceScheduleFixedIntervalSchedule', 'specific_dates_schedule': 'AdvanceInvoiceScheduleSpecificDatesSchedule'}
+        );
+        return _advance_invoice_schedule;
+    }
     get customer() {
         let _customer = this.get(
             'customer',
@@ -186,6 +194,14 @@ export class Result {
         );
         return _quote;
     }
+    get quoted_subscription() {
+        let _quoted_subscription = this.get(
+            'quoted_subscription',
+            'QuotedSubscription',
+            {'addons': 'QuotedSubscriptionAddon', 'event_based_addons': 'QuotedSubscriptionEventBasedAddon', 'coupons': 'QuotedSubscriptionCoupon'}
+        );
+        return _quoted_subscription;
+    }
     get quote_line_group() {
         let _quote_line_group = this.get(
             'quote_line_group',
@@ -305,6 +321,7 @@ export class Result {
         );
         return _payment_intent;
     }
+
     get unbilled_charges() {
         let _unbilled_charges = this.get_list(
             'unbilled_charges',
@@ -320,6 +337,14 @@ export class Result {
             {'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation'}
         );
         return _credit_notes;
+    }
+    get advance_invoice_schedules() {
+        let _advance_invoice_schedules = this.get_list(
+            'advance_invoice_schedules',
+            'AdvanceInvoiceSchedule',
+            {'fixed_interval_schedule': 'AdvanceInvoiceScheduleFixedIntervalSchedule', 'specific_dates_schedule': 'AdvanceInvoiceScheduleSpecificDatesSchedule'}
+        );
+        return _advance_invoice_schedules;
     }
     get hierarchies() {
         let _hierarchies = this.get_list(

@@ -6,25 +6,26 @@ import {filter} from "../filter";
 
 export class Subscription extends Model {
   public id: string;
-  public customer_id: string;
   public currency_code: string;
   public plan_id: string;
   public plan_quantity: number;
   public plan_unit_price?: number;
   public setup_fee?: number;
-  public plan_amount?: number;
   public billing_period?: number;
   public billing_period_unit?: string;
+  public start_date?: number;
+  public trial_end?: number;
+  public remaining_billing_cycles?: number;
+  public po_number?: string;
+  public auto_collection?: string;
+  public customer_id: string;
+  public plan_amount?: number;
   public plan_free_quantity?: number;
   public status: string;
-  public start_date?: number;
   public trial_start?: number;
-  public trial_end?: number;
   public current_term_start?: number;
   public current_term_end?: number;
   public next_billing_at?: number;
-  public remaining_billing_cycles?: number;
-  public po_number?: string;
   public created_at?: number;
   public started_at?: number;
   public activated_at?: number;
@@ -41,7 +42,6 @@ export class Subscription extends Model {
   public updated_at?: number;
   public has_scheduled_changes: boolean;
   public payment_source_id?: string;
-  public auto_collection?: string;
   public offline_payment_method?: string;
   public due_invoices_count?: number;
   public due_since?: number;
@@ -526,14 +526,6 @@ export namespace _subscription {
     id?: filter._string;
     customer_id?: filter._string;
     plan_id?: filter._string;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    item_id?: filter._string;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    item_price_id?: filter._string;
     status?: filter._enum;
     cancel_reason?: filter._enum;
     cancel_reason_code?: filter._string;
@@ -638,6 +630,8 @@ export namespace _subscription {
   }
   export interface charge_future_renewals_params {
     terms_to_charge?: number;
+    fixed_interval_schedule?: fixed_interval_schedule_charge_future_renewals_params;
+    specific_dates_schedule?: Array<specific_dates_schedule_charge_future_renewals_params>;
   }
   export interface import_subscription_params {
     id?: string;
@@ -1447,6 +1441,18 @@ export namespace _subscription {
      */
     gw_payment_method_id?: string;
   }
+  export interface fixed_interval_schedule_charge_future_renewals_params {
+  }
+  export interface fixed_interval_schedule_charge_future_renewals_params {
+  }
+  export interface fixed_interval_schedule_charge_future_renewals_params {
+  }
+  export interface fixed_interval_schedule_charge_future_renewals_params {
+  }
+  export interface specific_dates_schedule_charge_future_renewals_params {
+  }
+  export interface specific_dates_schedule_charge_future_renewals_params {
+  }
   export interface customer_import_subscription_params {
     id?: string;
   }
@@ -1491,6 +1497,8 @@ export namespace _subscription {
   }
   export interface customer_import_subscription_params {
     allow_direct_debit?: boolean;
+  }
+  export interface customer_import_subscription_params {
   }
   export interface contract_term_import_subscription_params {
     id?: string;

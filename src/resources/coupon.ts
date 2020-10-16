@@ -163,6 +163,8 @@ export namespace _coupon {
     currency_code?: filter._string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
+    plan?: plan_coupon_list_params;
+    addon?: addon_coupon_list_params;
   }
   export interface update_params {
     name?: string;
@@ -189,5 +191,9 @@ export namespace _coupon {
     id_at_from_site: string;
     id?: string;
     for_site_merging?: boolean;
+  }
+  export interface plan_coupon_list_params {
+  }
+  export interface addon_coupon_list_params {
   }
 }
