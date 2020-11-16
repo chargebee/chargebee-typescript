@@ -317,6 +317,12 @@ export namespace _hosted_page {
     phone?: string;
   }
   export interface subscription_checkout_new_params {
+    plan_unit_price_in_decimal?: string;
+  }
+  export interface subscription_checkout_new_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_checkout_new_params {
     plan_id: string;
   }
   export interface subscription_checkout_new_params {
@@ -469,7 +475,13 @@ export namespace _hosted_page {
     quantity?: number;
   }
   export interface addons_checkout_new_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_checkout_new_params {
     unit_price?: number;
+  }
+  export interface addons_checkout_new_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_checkout_new_params {
     billing_cycles?: number;
@@ -482,6 +494,12 @@ export namespace _hosted_page {
   }
   export interface event_based_addons_checkout_new_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_checkout_new_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_checkout_new_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_checkout_new_params {
     service_period_in_days?: number;
@@ -509,6 +527,12 @@ export namespace _hosted_page {
   }
   export interface subscription_checkout_existing_params {
     setup_fee?: number;
+  }
+  export interface subscription_checkout_existing_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_checkout_existing_params {
+    plan_unit_price_in_decimal?: string;
   }
   export interface subscription_checkout_existing_params {
     start_date?: number;
@@ -588,6 +612,18 @@ export namespace _hosted_page {
   }
   export interface event_based_addons_checkout_existing_params {
     charge_once?: boolean;
+  }
+  export interface addons_checkout_existing_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_checkout_existing_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface event_based_addons_checkout_existing_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_checkout_existing_params {
+    unit_price_in_decimal?: string;
   }
   export interface customer_update_card_params {
     id: string;
@@ -678,6 +714,9 @@ export namespace _hosted_page {
     plan_quantity?: number;
   }
   export interface subscription_checkout_gift_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_checkout_gift_params {
     coupon?: string;
   }
   export interface addons_checkout_gift_params {
@@ -685,6 +724,9 @@ export namespace _hosted_page {
   }
   export interface addons_checkout_gift_params {
     quantity?: number;
+  }
+  export interface addons_checkout_gift_params {
+    quantity_in_decimal?: string;
   }
   export interface gift_claim_gift_params {
     id: string;

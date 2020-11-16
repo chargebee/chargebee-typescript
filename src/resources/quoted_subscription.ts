@@ -35,6 +35,9 @@ export class Addon extends Model {
   public amount?: number;
   public trial_end?: number;
   public remaining_billing_cycles?: number;
+  public quantity_in_decimal?: string;
+  public unit_price_in_decimal?: string;
+  public amount_in_decimal?: string;
 } // ~Addon
 
 export class EventBasedAddon extends Model {
@@ -44,6 +47,8 @@ export class EventBasedAddon extends Model {
   public service_period_in_days?: number;
   public on_event: string;
   public charge_once: boolean;
+  public quantity_in_decimal?: string;
+  public unit_price_in_decimal?: string;
 } // ~EventBasedAddon
 
 export class Coupon extends Model {

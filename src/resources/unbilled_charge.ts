@@ -21,6 +21,9 @@ export class UnbilledCharge extends Model {
   public entity_id?: string;
   public is_voided: boolean;
   public voided_at?: number;
+  public unit_amount_in_decimal?: string;
+  public quantity_in_decimal?: string;
+  public amount_in_decimal?: string;
   public tiers?: Array<Tier>;
   public deleted: boolean;
 
@@ -80,6 +83,10 @@ export class Tier extends Model {
   public ending_unit?: number;
   public quantity_used: number;
   public unit_amount: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public quantity_used_in_decimal?: string;
+  public unit_amount_in_decimal?: string;
 } // ~Tier
 
 

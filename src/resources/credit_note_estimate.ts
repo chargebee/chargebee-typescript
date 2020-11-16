@@ -41,6 +41,9 @@ export class LineItem extends Model {
   public is_taxed: boolean;
   public tax_amount?: number;
   public tax_rate?: number;
+  public unit_amount_in_decimal?: string;
+  public quantity_in_decimal?: string;
+  public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public description: string;
@@ -92,6 +95,10 @@ export class LineItemTier extends Model {
   public ending_unit?: number;
   public quantity_used: number;
   public unit_amount: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public quantity_used_in_decimal?: string;
+  public unit_amount_in_decimal?: string;
 } // ~LineItemTier
 
 

@@ -81,6 +81,17 @@ export class Transaction extends Model {
     }, ChargeBee._env)
   }
 
+  public static refund(transaction_id: string, params?: _transaction.refund_params) {
+    return new RequestWrapper([transaction_id, params], {
+      'methodName': 'refund',
+      'httpMethod': 'POST',
+      'urlPrefix': '/transactions',
+      'urlSuffix': '/refund',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static list(params?: _transaction.transaction_list_params) {
     return new RequestWrapper([params], {
       'methodName': 'list',
@@ -201,6 +212,10 @@ export namespace _transaction {
     payment_method: string;
     date: number;
     reference_number?: string;
+    comment?: string;
+  }
+  export interface refund_params {
+    amount?: number;
     comment?: string;
   }
   export interface transaction_list_params {

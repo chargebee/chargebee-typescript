@@ -8,6 +8,7 @@ export class PromotionalCredit extends Model {
   public id: string;
   public customer_id: string;
   public type: string;
+  public amount_in_decimal?: string;
   public amount: number;
   public currency_code: string;
   public description: string;
@@ -87,7 +88,8 @@ export class PromotionalCredit extends Model {
 export namespace _promotional_credit {
   export interface add_params {
     customer_id: string;
-    amount: number;
+    amount?: number;
+    amount_in_decimal?: string;
     currency_code?: string;
     description: string;
     credit_type?: string;
@@ -95,7 +97,8 @@ export namespace _promotional_credit {
   }
   export interface deduct_params {
     customer_id: string;
-    amount: number;
+    amount?: number;
+    amount_in_decimal?: string;
     currency_code?: string;
     description: string;
     credit_type?: string;
@@ -103,7 +106,8 @@ export namespace _promotional_credit {
   }
   export interface set_params {
     customer_id: string;
-    amount: number;
+    amount?: number;
+    amount_in_decimal?: string;
     currency_code?: string;
     description: string;
     credit_type?: string;

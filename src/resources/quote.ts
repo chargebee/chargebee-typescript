@@ -213,6 +213,9 @@ export class LineItem extends Model {
   public is_taxed: boolean;
   public tax_amount?: number;
   public tax_rate?: number;
+  public unit_amount_in_decimal?: string;
+  public quantity_in_decimal?: string;
+  public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public description: string;
@@ -430,6 +433,12 @@ export namespace _quote {
   export interface subscription_create_sub_for_customer_quote_params {
   }
   export interface subscription_create_sub_for_customer_quote_params {
+    plan_unit_price_in_decimal?: string;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_create_sub_for_customer_quote_params {
     plan_id: string;
   }
   export interface subscription_create_sub_for_customer_quote_params {
@@ -510,7 +519,13 @@ export namespace _quote {
     quantity?: number;
   }
   export interface addons_create_sub_for_customer_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_sub_for_customer_quote_params {
     unit_price?: number;
+  }
+  export interface addons_create_sub_for_customer_quote_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_create_sub_for_customer_quote_params {
     billing_cycles?: number;
@@ -523,6 +538,12 @@ export namespace _quote {
   }
   export interface event_based_addons_create_sub_for_customer_quote_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_create_sub_for_customer_quote_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_create_sub_for_customer_quote_params {
     service_period_in_days?: number;
@@ -543,6 +564,12 @@ export namespace _quote {
     id?: string;
   }
   export interface subscription_edit_create_sub_for_customer_quote_params {
+    plan_unit_price_in_decimal?: string;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
     plan_id: string;
   }
   export interface subscription_edit_create_sub_for_customer_quote_params {
@@ -623,7 +650,13 @@ export namespace _quote {
     quantity?: number;
   }
   export interface addons_edit_create_sub_for_customer_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_edit_create_sub_for_customer_quote_params {
     unit_price?: number;
+  }
+  export interface addons_edit_create_sub_for_customer_quote_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_edit_create_sub_for_customer_quote_params {
     billing_cycles?: number;
@@ -636,6 +669,12 @@ export namespace _quote {
   }
   export interface event_based_addons_edit_create_sub_for_customer_quote_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_edit_create_sub_for_customer_quote_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_edit_create_sub_for_customer_quote_params {
     service_period_in_days?: number;
@@ -668,6 +707,12 @@ export namespace _quote {
     setup_fee?: number;
   }
   export interface subscription_update_subscription_quote_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_update_subscription_quote_params {
+    plan_unit_price_in_decimal?: string;
+  }
+  export interface subscription_update_subscription_quote_params {
     start_date?: number;
   }
   export interface subscription_update_subscription_quote_params {
@@ -816,6 +861,18 @@ export namespace _quote {
   }
   export interface event_based_addons_update_subscription_quote_params {
     charge_once?: boolean;
+  }
+  export interface addons_update_subscription_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_update_subscription_quote_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_update_subscription_quote_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_update_subscription_quote_params {
     trial_end?: number;
@@ -835,6 +892,12 @@ export namespace _quote {
     setup_fee?: number;
   }
   export interface subscription_edit_update_subscription_quote_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
+    plan_unit_price_in_decimal?: string;
+  }
+  export interface subscription_edit_update_subscription_quote_params {
     start_date?: number;
   }
   export interface subscription_edit_update_subscription_quote_params {
@@ -985,6 +1048,18 @@ export namespace _quote {
     charge_once?: boolean;
   }
   export interface addons_edit_update_subscription_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_edit_update_subscription_quote_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_edit_update_subscription_quote_params {
     trial_end?: number;
   }
   export interface shipping_address_create_for_onetime_charges_params {
@@ -1036,13 +1111,22 @@ export namespace _quote {
     quantity?: number;
   }
   export interface addons_create_for_onetime_charges_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_for_onetime_charges_params {
     unit_price?: number;
+  }
+  export interface addons_create_for_onetime_charges_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_create_for_onetime_charges_params {
     service_period?: number;
   }
   export interface charges_create_for_onetime_charges_params {
     amount?: number;
+  }
+  export interface charges_create_for_onetime_charges_params {
+    amount_in_decimal?: string;
   }
   export interface charges_create_for_onetime_charges_params {
     description?: string;
@@ -1108,13 +1192,22 @@ export namespace _quote {
     quantity?: number;
   }
   export interface addons_edit_one_time_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_edit_one_time_quote_params {
     unit_price?: number;
+  }
+  export interface addons_edit_one_time_quote_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_edit_one_time_quote_params {
     service_period?: number;
   }
   export interface charges_edit_one_time_quote_params {
     amount?: number;
+  }
+  export interface charges_edit_one_time_quote_params {
+    amount_in_decimal?: string;
   }
   export interface charges_edit_one_time_quote_params {
     description?: string;

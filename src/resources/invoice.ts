@@ -354,6 +354,9 @@ export class LineItem extends Model {
   public is_taxed: boolean;
   public tax_amount?: number;
   public tax_rate?: number;
+  public unit_amount_in_decimal?: string;
+  public quantity_in_decimal?: string;
+  public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public description: string;
@@ -405,6 +408,10 @@ export class LineItemTier extends Model {
   public ending_unit?: number;
   public quantity_used: number;
   public unit_amount: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public quantity_used_in_decimal?: string;
+  public unit_amount_in_decimal?: string;
 } // ~LineItemTier
 
 export class LinkedPayment extends Model {
@@ -536,7 +543,8 @@ export namespace _invoice {
     customer_id?: string;
     subscription_id?: string;
     currency_code?: string;
-    amount: number;
+    amount?: number;
+    amount_in_decimal?: string;
     description: string;
     date_from?: number;
     date_to?: number;
@@ -553,6 +561,8 @@ export namespace _invoice {
     addon_id: string;
     addon_quantity?: number;
     addon_unit_price?: number;
+    addon_quantity_in_decimal?: string;
+    addon_unit_price_in_decimal?: string;
     date_from?: number;
     date_to?: number;
     coupon?: string;
@@ -640,6 +650,8 @@ export namespace _invoice {
     addon_id: string;
     addon_quantity?: number;
     addon_unit_price?: number;
+    addon_quantity_in_decimal?: string;
+    addon_unit_price_in_decimal?: string;
     comment?: string;
     line_item?: line_item_add_addon_charge_params;
   }
@@ -647,6 +659,7 @@ export namespace _invoice {
     comment?: string;
     invoice_note?: string;
     remove_general_note?: boolean;
+    invoice_date?: number;
     notes_to_remove?: Array<notes_to_remove_close_params>;
   }
   export interface collect_payment_params {
@@ -765,6 +778,12 @@ export namespace _invoice {
     unit_price?: number;
   }
   export interface addons_create_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_create_params {
     date_from?: number;
   }
   export interface addons_create_params {
@@ -772,6 +791,9 @@ export namespace _invoice {
   }
   export interface charges_create_params {
     amount?: number;
+  }
+  export interface charges_create_params {
+    amount_in_decimal?: string;
   }
   export interface charges_create_params {
     description?: string;
@@ -915,6 +937,15 @@ export namespace _invoice {
     amount?: number;
   }
   export interface line_items_import_invoice_params {
+    unit_amount_in_decimal?: string;
+  }
+  export interface line_items_import_invoice_params {
+    quantity_in_decimal?: string;
+  }
+  export interface line_items_import_invoice_params {
+    amount_in_decimal?: string;
+  }
+  export interface line_items_import_invoice_params {
     entity_type?: string;
   }
   export interface line_items_import_invoice_params {
@@ -960,16 +991,28 @@ export namespace _invoice {
     line_item_id: string;
   }
   export interface line_item_tiers_import_invoice_params {
-    starting_unit: number;
+    starting_unit?: number;
   }
   export interface line_item_tiers_import_invoice_params {
-    ending_unit: number;
+    ending_unit?: number;
   }
   export interface line_item_tiers_import_invoice_params {
-    quantity_used: number;
+    quantity_used?: number;
   }
   export interface line_item_tiers_import_invoice_params {
-    unit_amount: number;
+    unit_amount?: number;
+  }
+  export interface line_item_tiers_import_invoice_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface line_item_tiers_import_invoice_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface line_item_tiers_import_invoice_params {
+    quantity_used_in_decimal?: string;
+  }
+  export interface line_item_tiers_import_invoice_params {
+    unit_amount_in_decimal?: string;
   }
   export interface discounts_import_invoice_params {
     entity_type: string;

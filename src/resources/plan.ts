@@ -43,6 +43,8 @@ export class Plan extends Model {
   public updated_at?: number;
   public giftable: boolean;
   public claim_url?: string;
+  public free_quantity_in_decimal?: string;
+  public price_in_decimal?: string;
   public invoice_notes?: string;
   public taxable?: boolean;
   public tax_profile_id?: string;
@@ -142,6 +144,9 @@ export class Tier extends Model {
   public starting_unit: number;
   public ending_unit?: number;
   public price: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public price_in_decimal?: string;
 } // ~Tier
 
 export class ApplicableAddon extends Model {
@@ -153,6 +158,7 @@ export class AttachedAddon extends Model {
   public quantity: number;
   public billing_cycles?: number;
   public type: string;
+  public quantity_in_decimal?: string;
 } // ~AttachedAddon
 
 export class EventBasedAddon extends Model {
@@ -160,6 +166,7 @@ export class EventBasedAddon extends Model {
   public quantity: number;
   public on_event: string;
   public charge_once: boolean;
+  public quantity_in_decimal?: string;
 } // ~EventBasedAddon
 
 
@@ -179,6 +186,7 @@ export namespace _plan {
     period_unit?: string;
     setup_cost?: number;
     price?: number;
+    price_in_decimal?: string;
     currency_code?: string;
     billing_cycles?: number;
     pricing_model?: string;
@@ -187,6 +195,7 @@ export namespace _plan {
      */
     charge_model?: string;
     free_quantity?: number;
+    free_quantity_in_decimal?: string;
     addon_applicability?: string;
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -231,6 +240,7 @@ export namespace _plan {
     period_unit?: string;
     setup_cost?: number;
     price?: number;
+    price_in_decimal?: string;
     currency_code?: string;
     billing_cycles?: number;
     pricing_model?: string;
@@ -239,6 +249,7 @@ export namespace _plan {
      */
     charge_model?: string;
     free_quantity?: number;
+    free_quantity_in_decimal?: string;
     addon_applicability?: string;
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -306,6 +317,15 @@ export namespace _plan {
   export interface tiers_create_params {
     price?: number;
   }
+  export interface tiers_create_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    price_in_decimal?: string;
+  }
   export interface applicable_addons_create_params {
     id?: string;
   }
@@ -314,6 +334,9 @@ export namespace _plan {
   }
   export interface event_based_addons_create_params {
     quantity?: number;
+  }
+  export interface event_based_addons_create_params {
+    quantity_in_decimal?: string;
   }
   export interface event_based_addons_create_params {
     on_event?: string;
@@ -326,6 +349,9 @@ export namespace _plan {
   }
   export interface attached_addons_create_params {
     quantity?: number;
+  }
+  export interface attached_addons_create_params {
+    quantity_in_decimal?: string;
   }
   export interface attached_addons_create_params {
     billing_cycles?: number;
@@ -342,6 +368,15 @@ export namespace _plan {
   export interface tiers_update_params {
     price?: number;
   }
+  export interface tiers_update_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    price_in_decimal?: string;
+  }
   export interface applicable_addons_update_params {
     id?: string;
   }
@@ -350,6 +385,9 @@ export namespace _plan {
   }
   export interface event_based_addons_update_params {
     quantity?: number;
+  }
+  export interface event_based_addons_update_params {
+    quantity_in_decimal?: string;
   }
   export interface event_based_addons_update_params {
     on_event?: string;
@@ -362,6 +400,9 @@ export namespace _plan {
   }
   export interface attached_addons_update_params {
     quantity?: number;
+  }
+  export interface attached_addons_update_params {
+    quantity_in_decimal?: string;
   }
   export interface attached_addons_update_params {
     billing_cycles?: number;

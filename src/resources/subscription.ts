@@ -42,6 +42,10 @@ export class Subscription extends Model {
   public updated_at?: number;
   public has_scheduled_changes: boolean;
   public payment_source_id?: string;
+  public plan_free_quantity_in_decimal?: string;
+  public plan_quantity_in_decimal?: string;
+  public plan_unit_price_in_decimal?: string;
+  public plan_amount_in_decimal?: string;
   public offline_payment_method?: string;
   public due_invoices_count?: number;
   public due_since?: number;
@@ -364,6 +368,9 @@ export class Addon extends Model {
   public amount?: number;
   public trial_end?: number;
   public remaining_billing_cycles?: number;
+  public quantity_in_decimal?: string;
+  public unit_price_in_decimal?: string;
+  public amount_in_decimal?: string;
 } // ~Addon
 
 export class EventBasedAddon extends Model {
@@ -373,6 +380,8 @@ export class EventBasedAddon extends Model {
   public service_period_in_days?: number;
   public on_event: string;
   public charge_once: boolean;
+  public quantity_in_decimal?: string;
+  public unit_price_in_decimal?: string;
 } // ~EventBasedAddon
 
 export class ChargedEventBasedAddon extends Model {
@@ -443,6 +452,8 @@ export class ContractTerm extends Model {
 export namespace _subscription {
   export interface create_params {
     id?: string;
+    plan_unit_price_in_decimal?: string;
+    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_unit_price?: number;
@@ -487,6 +498,8 @@ export namespace _subscription {
   }
   export interface create_for_customer_params {
     id?: string;
+    plan_unit_price_in_decimal?: string;
+    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_unit_price?: number;
@@ -554,6 +567,8 @@ export namespace _subscription {
     setup_fee?: number;
     replace_addon_list?: boolean;
     mandatory_addons_to_remove?: Array<string>;
+    plan_quantity_in_decimal?: string;
+    plan_unit_price_in_decimal?: string;
     start_date?: number;
     trial_end?: number;
     billing_cycles?: number;
@@ -613,8 +628,9 @@ export namespace _subscription {
     payment_intent?: payment_intent_reactivate_params;
   }
   export interface add_charge_at_term_end_params {
-    amount: number;
+    amount?: number;
     description: string;
+    amount_in_decimal?: string;
     avalara_sale_type?: string;
     avalara_transaction_type?: number;
     avalara_service_type?: number;
@@ -625,6 +641,8 @@ export namespace _subscription {
     addon_id: string;
     addon_quantity?: number;
     addon_unit_price?: number;
+    addon_quantity_in_decimal?: string;
+    addon_unit_price_in_decimal?: string;
     date_from?: number;
     date_to?: number;
   }
@@ -636,6 +654,8 @@ export namespace _subscription {
   export interface import_subscription_params {
     id?: string;
     client_profile_id?: string;
+    plan_unit_price_in_decimal?: string;
+    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_unit_price?: number;
@@ -673,6 +693,8 @@ export namespace _subscription {
   }
   export interface import_for_customer_params {
     id?: string;
+    plan_unit_price_in_decimal?: string;
+    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_unit_price?: number;
@@ -1040,7 +1062,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface addons_create_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_params {
     unit_price?: number;
+  }
+  export interface addons_create_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_create_params {
     billing_cycles?: number;
@@ -1053,6 +1081,12 @@ export namespace _subscription {
   }
   export interface event_based_addons_create_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_create_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_create_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_create_params {
     service_period_in_days?: number;
@@ -1142,7 +1176,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface addons_create_for_customer_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_for_customer_params {
     unit_price?: number;
+  }
+  export interface addons_create_for_customer_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_create_for_customer_params {
     billing_cycles?: number;
@@ -1155,6 +1195,12 @@ export namespace _subscription {
   }
   export interface event_based_addons_create_for_customer_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_create_for_customer_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_create_for_customer_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_create_for_customer_params {
     service_period_in_days?: number;
@@ -1413,6 +1459,18 @@ export namespace _subscription {
   }
   export interface event_based_addons_update_params {
     charge_once?: boolean;
+  }
+  export interface addons_update_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_update_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface event_based_addons_update_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_update_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_update_params {
     trial_end?: number;
@@ -1715,7 +1773,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface addons_import_subscription_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_import_subscription_params {
     unit_price?: number;
+  }
+  export interface addons_import_subscription_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_import_subscription_params {
     billing_cycles?: number;
@@ -1728,6 +1792,12 @@ export namespace _subscription {
   }
   export interface event_based_addons_import_subscription_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_import_subscription_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_import_subscription_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_import_subscription_params {
     service_period_in_days?: number;
@@ -1826,7 +1896,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface addons_import_for_customer_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_import_for_customer_params {
     unit_price?: number;
+  }
+  export interface addons_import_for_customer_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_import_for_customer_params {
     billing_cycles?: number;
@@ -1839,6 +1915,12 @@ export namespace _subscription {
   }
   export interface event_based_addons_import_for_customer_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_import_for_customer_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_import_for_customer_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_import_for_customer_params {
     service_period_in_days?: number;

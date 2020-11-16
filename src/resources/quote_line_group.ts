@@ -39,6 +39,9 @@ export class LineItem extends Model {
   public is_taxed: boolean;
   public tax_amount?: number;
   public tax_rate?: number;
+  public unit_amount_in_decimal?: string;
+  public quantity_in_decimal?: string;
+  public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public description: string;

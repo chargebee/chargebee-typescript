@@ -34,6 +34,7 @@ export class Addon extends Model {
   public shipping_frequency_period_unit?: string;
   public resource_version?: number;
   public updated_at?: number;
+  public price_in_decimal?: string;
   public included_in_mrr?: boolean;
   public invoice_notes?: string;
   public taxable?: boolean;
@@ -131,6 +132,9 @@ export class Tier extends Model {
   public starting_unit: number;
   public ending_unit?: number;
   public price: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public price_in_decimal?: string;
 } // ~Tier
 
 
@@ -175,6 +179,7 @@ export namespace _addon {
     included_in_mrr?: boolean;
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
+    price_in_decimal?: string;
     status?: string;
     tiers?: Array<tiers_create_params>;
   }
@@ -213,6 +218,7 @@ export namespace _addon {
     included_in_mrr?: boolean;
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
+    price_in_decimal?: string;
     tiers?: Array<tiers_update_params>;
   }
   export interface addon_list_params {
@@ -248,6 +254,15 @@ export namespace _addon {
   export interface tiers_create_params {
     price?: number;
   }
+  export interface tiers_create_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    price_in_decimal?: string;
+  }
   export interface tiers_update_params {
     starting_unit?: number;
   }
@@ -256,5 +271,14 @@ export namespace _addon {
   }
   export interface tiers_update_params {
     price?: number;
+  }
+  export interface tiers_update_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    price_in_decimal?: string;
   }
 }

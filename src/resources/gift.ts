@@ -170,6 +170,9 @@ export namespace _gift {
   export interface subscription_create_params {
     plan_quantity?: number;
   }
+  export interface subscription_create_params {
+    plan_quantity_in_decimal?: string;
+  }
   export interface payment_intent_create_params {
     id?: string;
   }
@@ -235,6 +238,9 @@ export namespace _gift {
   }
   export interface addons_create_params {
     quantity?: number;
+  }
+  export interface addons_create_params {
+    quantity_in_decimal?: string;
   }
   export interface gift_receiver_gift_list_params {
     email?: filter._string;

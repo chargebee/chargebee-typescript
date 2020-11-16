@@ -257,6 +257,12 @@ export namespace _estimate {
     id?: string;
   }
   export interface subscription_create_subscription_params {
+    plan_unit_price_in_decimal?: string;
+  }
+  export interface subscription_create_subscription_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_create_subscription_params {
     plan_id: string;
   }
   export interface subscription_create_subscription_params {
@@ -378,7 +384,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface addons_create_subscription_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_subscription_params {
     unit_price?: number;
+  }
+  export interface addons_create_subscription_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_create_subscription_params {
     billing_cycles?: number;
@@ -391,6 +403,12 @@ export namespace _estimate {
   }
   export interface event_based_addons_create_subscription_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_create_subscription_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_create_subscription_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_create_subscription_params {
     service_period_in_days?: number;
@@ -409,6 +427,12 @@ export namespace _estimate {
   }
   export interface subscription_create_sub_for_customer_estimate_params {
     id?: string;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    plan_unit_price_in_decimal?: string;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    plan_quantity_in_decimal?: string;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
     plan_id: string;
@@ -481,7 +505,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface addons_create_sub_for_customer_estimate_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_sub_for_customer_estimate_params {
     unit_price?: number;
+  }
+  export interface addons_create_sub_for_customer_estimate_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_create_sub_for_customer_estimate_params {
     billing_cycles?: number;
@@ -494,6 +524,12 @@ export namespace _estimate {
   }
   export interface event_based_addons_create_sub_for_customer_estimate_params {
     unit_price?: number;
+  }
+  export interface event_based_addons_create_sub_for_customer_estimate_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_create_sub_for_customer_estimate_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_create_sub_for_customer_estimate_params {
     service_period_in_days?: number;
@@ -524,6 +560,12 @@ export namespace _estimate {
   }
   export interface subscription_update_subscription_params {
     setup_fee?: number;
+  }
+  export interface subscription_update_subscription_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_update_subscription_params {
+    plan_unit_price_in_decimal?: string;
   }
   export interface subscription_update_subscription_params {
     start_date?: number;
@@ -647,6 +689,18 @@ export namespace _estimate {
     charge_once?: boolean;
   }
   export interface addons_update_subscription_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_update_subscription_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface event_based_addons_update_subscription_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_update_subscription_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_update_subscription_params {
     trial_end?: number;
   }
   export interface subscription_pause_subscription_params {
@@ -700,6 +754,9 @@ export namespace _estimate {
   export interface subscription_gift_subscription_params {
     plan_quantity?: number;
   }
+  export interface subscription_gift_subscription_params {
+    plan_quantity_in_decimal?: string;
+  }
   export interface shipping_address_gift_subscription_params {
     first_name?: string;
   }
@@ -747,6 +804,9 @@ export namespace _estimate {
   }
   export interface addons_gift_subscription_params {
     quantity?: number;
+  }
+  export interface addons_gift_subscription_params {
+    quantity_in_decimal?: string;
   }
   export interface invoice_create_invoice_params {
     customer_id?: string;
@@ -806,7 +866,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface addons_create_invoice_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_invoice_params {
     unit_price?: number;
+  }
+  export interface addons_create_invoice_params {
+    unit_price_in_decimal?: string;
   }
   export interface addons_create_invoice_params {
     date_from?: number;
@@ -816,6 +882,9 @@ export namespace _estimate {
   }
   export interface charges_create_invoice_params {
     amount?: number;
+  }
+  export interface charges_create_invoice_params {
+    amount_in_decimal?: string;
   }
   export interface charges_create_invoice_params {
     description?: string;
