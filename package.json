@@ -1,45 +1,47 @@
 {
-   "name": "chargebee-typescript",
-   "version": "2.0.5",
-   "description": "A library in typescript for integrating with Chargebee.",
-   "keywords": [
-      "payments",
-      "billing",
-      "subscription",
-      "chargebee",
-      "chargebee-typescript"
-   ],
-   "homepage": "http://github.com/chargebee/chargebee-typescript",
-   "author": "Navaneedhan <navaneedhan@chargebee.com> (https://www.chargebee.com)",
-   "main": "lib/chargebee.js",
-   "types": "lib/chargebee.d.ts",
-   "files": [
-      "lib/**/*"
-   ],
-   "dependencies": {
-      "@types/node": "^13.13.4",
-      "@types/q": "^1.5.2",
-      "q": ">=1.0.1",
-      "typescript": "^3.9.3"
-   },
-   "directories": {
-      "lib": "./lib"
-   },
-   "repository": {
-      "type": "git",
-      "url": "http://github.com/chargebee/chargebee-typescript.git"
-   },
-   "engines": {
-      "node": ">=8.0.0"
-   },
-   "bugs": {
-      "url": "http://support.chargebee.com",
-      "email": "support@chargebee.com"
-   },
-   "licenses": [
-      {
-         "type": "MIT",
-         "url": "http://github.com/chargebee/chargebee-typescript/blob/master/LICENSE"
-      }
-   ]
+  "name": "chargebee-typescript",
+  "version": "2.0.5",
+  "description": "A library in typescript for integrating with Chargebee.",
+  "keywords": [
+    "payments",
+    "billing",
+    "subscription",
+    "chargebee",
+    "chargebee-typescript"
+  ],
+  "homepage": "http://github.com/chargebee/chargebee-typescript",
+  "author": "Navaneedhan <navaneedhan@chargebee.com> (https://www.chargebee.com)",
+  "main": "lib/chargebee.js",
+  "types": "lib/chargebee.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "q": ">=1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "@types/q": "^1.5.2",
+    "typescript": "^3.9.3"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/chargebee/chargebee-typescript.git"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "bugs": {
+    "url": "http://support.chargebee.com",
+    "email": "support@chargebee.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/chargebee/chargebee-typescript/blob/master/LICENSE"
+    }
+  ]
 }
