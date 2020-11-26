@@ -20,6 +20,8 @@ export class QuotedSubscription extends Model {
   public addons?: Array<Addon>;
   public event_based_addons?: Array<EventBasedAddon>;
   public coupons?: Array<Coupon>;
+  public subscription_items?: Array<SubscriptionItem>;
+  public item_tiers?: Array<ItemTier>;
 
   
 
@@ -57,6 +59,28 @@ export class Coupon extends Model {
   public applied_count: number;
   public coupon_code?: string;
 } // ~Coupon
+
+export class SubscriptionItem extends Model {
+  public item_price_id: string;
+  public item_type: string;
+  public quantity?: number;
+  public unit_price?: number;
+  public amount?: number;
+  public free_quantity?: number;
+  public trial_end?: number;
+  public billing_cycles?: number;
+  public service_period_days?: number;
+  public charge_on_event?: string;
+  public charge_once?: boolean;
+  public charge_on_option?: string;
+} // ~SubscriptionItem
+
+export class ItemTier extends Model {
+  public item_price_id: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public price: number;
+} // ~ItemTier
 
 
 

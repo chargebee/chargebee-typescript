@@ -78,6 +78,17 @@ export class Quote extends Model {
     }, ChargeBee._env)
   }
 
+  public static create_sub_items_for_customer_quote(customer_id: string, params?: _quote.create_sub_items_for_customer_quote_params) {
+    return new RequestWrapper([customer_id, params], {
+      'methodName': 'create_sub_items_for_customer_quote',
+      'httpMethod': 'POST',
+      'urlPrefix': '/customers',
+      'urlSuffix': '/create_subscription_quote_for_items',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static update_subscription_quote(params?: _quote.update_subscription_quote_params) {
     return new RequestWrapper([params], {
       'methodName': 'update_subscription_quote',
@@ -100,12 +111,34 @@ export class Quote extends Model {
     }, ChargeBee._env)
   }
 
+  public static update_subscription_quote_for_items(params?: _quote.update_subscription_quote_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'update_subscription_quote_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/update_subscription_quote_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static create_for_onetime_charges(params?: _quote.create_for_onetime_charges_params) {
     return new RequestWrapper([params], {
       'methodName': 'create_for_onetime_charges',
       'httpMethod': 'POST',
       'urlPrefix': '/quotes',
       'urlSuffix': '/create_for_onetime_charges',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static create_for_charge_items_and_charges(params?: _quote.create_for_charge_items_and_charges_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create_for_charge_items_and_charges',
+      'httpMethod': 'POST',
+      'urlPrefix': '/quotes',
+      'urlSuffix': '/create_for_charge_items_and_charges',
       'hasIdInUrl': false,
       'isListReq': false,
     }, ChargeBee._env)
@@ -330,6 +363,20 @@ export namespace _quote {
     addons?: Array<addons_edit_create_sub_for_customer_quote_params>;
     event_based_addons?: Array<event_based_addons_edit_create_sub_for_customer_quote_params>;
   }
+  export interface create_sub_items_for_customer_quote_params {
+    name?: string;
+    notes?: string;
+    expires_at?: number;
+    billing_cycles?: number;
+    mandatory_items_to_remove?: Array<string>;
+    terms_to_charge?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    subscription?: subscription_create_sub_items_for_customer_quote_params;
+    shipping_address?: shipping_address_create_sub_items_for_customer_quote_params;
+    subscription_items?: Array<subscription_items_create_sub_items_for_customer_quote_params>;
+    item_tiers?: Array<item_tiers_create_sub_items_for_customer_quote_params>;
+  }
   export interface update_subscription_quote_params {
     name?: string;
     notes?: string;
@@ -373,6 +420,27 @@ export namespace _quote {
     addons?: Array<addons_edit_update_subscription_quote_params>;
     event_based_addons?: Array<event_based_addons_edit_update_subscription_quote_params>;
   }
+  export interface update_subscription_quote_for_items_params {
+    name?: string;
+    notes?: string;
+    expires_at?: number;
+    mandatory_items_to_remove?: Array<string>;
+    replace_items_list?: boolean;
+    billing_cycles?: number;
+    terms_to_charge?: number;
+    reactivate_from?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    replace_coupon_list?: boolean;
+    force_term_reset?: boolean;
+    reactivate?: boolean;
+    subscription?: subscription_update_subscription_quote_for_items_params;
+    billing_address?: billing_address_update_subscription_quote_for_items_params;
+    shipping_address?: shipping_address_update_subscription_quote_for_items_params;
+    customer?: customer_update_subscription_quote_for_items_params;
+    subscription_items?: Array<subscription_items_update_subscription_quote_for_items_params>;
+    item_tiers?: Array<item_tiers_update_subscription_quote_for_items_params>;
+  }
   export interface create_for_onetime_charges_params {
     name?: string;
     customer_id: string;
@@ -384,6 +452,19 @@ export namespace _quote {
     shipping_address?: shipping_address_create_for_onetime_charges_params;
     addons?: Array<addons_create_for_onetime_charges_params>;
     charges?: Array<charges_create_for_onetime_charges_params>;
+  }
+  export interface create_for_charge_items_and_charges_params {
+    name?: string;
+    customer_id: string;
+    po_number?: string;
+    notes?: string;
+    expires_at?: number;
+    currency_code?: string;
+    coupon?: string;
+    shipping_address?: shipping_address_create_for_charge_items_and_charges_params;
+    item_prices?: Array<item_prices_create_for_charge_items_and_charges_params>;
+    item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
+    charges?: Array<charges_create_for_charge_items_and_charges_params>;
   }
   export interface edit_one_time_quote_params {
     po_number?: string;
@@ -690,6 +771,123 @@ export namespace _quote {
   }
   export interface addons_edit_create_sub_for_customer_quote_params {
     trial_end?: number;
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+    id?: string;
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+    start_date?: number;
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
+    offline_payment_method?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    email?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    company?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    city?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    state?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    country?: string;
+  }
+  export interface shipping_address_create_sub_items_for_customer_quote_params {
+    validation_status?: string;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    quantity?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    charge_on_option?: string;
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+    price?: number;
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
   }
   export interface subscription_update_subscription_quote_params {
     id: string;
@@ -1062,6 +1260,174 @@ export namespace _quote {
   export interface addons_edit_update_subscription_quote_params {
     trial_end?: number;
   }
+  export interface subscription_update_subscription_quote_for_items_params {
+    id: string;
+  }
+  export interface subscription_update_subscription_quote_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+  }
+  export interface subscription_update_subscription_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_update_subscription_quote_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_update_subscription_quote_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+  }
+  export interface subscription_update_subscription_quote_for_items_params {
+    auto_collection?: string;
+  }
+  export interface subscription_update_subscription_quote_for_items_params {
+    offline_payment_method?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    first_name?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    last_name?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    email?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    company?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    phone?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    line1?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    line2?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    line3?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    city?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    state_code?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    state?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    zip?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    country?: string;
+  }
+  export interface billing_address_update_subscription_quote_for_items_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    email?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    company?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    state?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_update_subscription_quote_for_items_params {
+    validation_status?: string;
+  }
+  export interface customer_update_subscription_quote_for_items_params {
+    vat_number?: string;
+  }
+  export interface customer_update_subscription_quote_for_items_params {
+    registered_for_gst?: boolean;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    charge_on_option?: string;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+    price?: number;
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+  }
   export interface shipping_address_create_for_onetime_charges_params {
     first_name?: string;
   }
@@ -1141,6 +1507,96 @@ export namespace _quote {
     avalara_service_type?: number;
   }
   export interface charges_create_for_onetime_charges_params {
+    service_period?: number;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    email?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    company?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    city?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    state?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    country?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    validation_status?: string;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    item_price_id?: string;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    quantity?: number;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    unit_price?: number;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    date_from?: number;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    date_to?: number;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    price?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    amount?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    amount_in_decimal?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    description?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
     service_period?: number;
   }
   export interface shipping_address_edit_one_time_quote_params {

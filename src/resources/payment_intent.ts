@@ -13,6 +13,8 @@ export class PaymentIntent extends Model {
   public expires_at: number;
   public reference_id?: string;
   public payment_method_type?: string;
+  public success_url?: string;
+  public failure_url?: string;
   public created_at: number;
   public modified_at: number;
   public resource_version?: number;
@@ -85,11 +87,15 @@ export namespace _payment_intent {
     gateway_account_id?: string;
     reference_id?: string;
     payment_method_type?: string;
+    success_url?: string;
+    failure_url?: string;
   }
   export interface update_params {
     amount?: number;
     currency_code?: string;
     gateway_account_id?: string;
     payment_method_type?: string;
+    success_url?: string;
+    failure_url?: string;
   }
 }

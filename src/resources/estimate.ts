@@ -40,6 +40,17 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
+  public static create_sub_item_for_customer_estimate(customer_id: string, params?: _estimate.create_sub_item_for_customer_estimate_params) {
+    return new RequestWrapper([customer_id, params], {
+      'methodName': 'create_sub_item_for_customer_estimate',
+      'httpMethod': 'POST',
+      'urlPrefix': '/customers',
+      'urlSuffix': '/create_subscription_for_items_estimate',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static update_subscription(params?: _estimate.update_subscription_params) {
     return new RequestWrapper([params], {
       'methodName': 'update_subscription',
@@ -51,12 +62,34 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
+  public static update_subscription_for_items(params?: _estimate.update_subscription_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'update_subscription_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/estimates',
+      'urlSuffix': '/update_subscription_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static renewal_estimate(subscription_id: string, params?: _estimate.renewal_estimate_params) {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'renewal_estimate',
       'httpMethod': 'GET',
       'urlPrefix': '/subscriptions',
       'urlSuffix': '/renewal_estimate',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static advance_invoice_estimate(subscription_id: string, params?: _estimate.advance_invoice_estimate_params) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'advance_invoice_estimate',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/advance_invoice_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -139,6 +172,17 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
+  public static create_invoice_for_items(params?: _estimate.create_invoice_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create_invoice_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/estimates',
+      'urlSuffix': '/create_invoice_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~Estimate
 
 
@@ -177,6 +221,19 @@ export namespace _estimate {
     addons?: Array<addons_create_sub_for_customer_estimate_params>;
     event_based_addons?: Array<event_based_addons_create_sub_for_customer_estimate_params>;
   }
+  export interface create_sub_item_for_customer_estimate_params {
+    use_existing_balances?: boolean;
+    invoice_immediately?: boolean;
+    billing_cycles?: number;
+    mandatory_items_to_remove?: Array<string>;
+    terms_to_charge?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    subscription?: subscription_create_sub_item_for_customer_estimate_params;
+    shipping_address?: shipping_address_create_sub_item_for_customer_estimate_params;
+    subscription_items?: Array<subscription_items_create_sub_item_for_customer_estimate_params>;
+    item_tiers?: Array<item_tiers_create_sub_item_for_customer_estimate_params>;
+  }
   export interface update_subscription_params {
     replace_addon_list?: boolean;
     mandatory_addons_to_remove?: Array<string>;
@@ -200,11 +257,41 @@ export namespace _estimate {
     addons?: Array<addons_update_subscription_params>;
     event_based_addons?: Array<event_based_addons_update_subscription_params>;
   }
+  export interface update_subscription_for_items_params {
+    mandatory_items_to_remove?: Array<string>;
+    replace_items_list?: boolean;
+    billing_cycles?: number;
+    terms_to_charge?: number;
+    reactivate_from?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    replace_coupon_list?: boolean;
+    prorate?: boolean;
+    end_of_term?: boolean;
+    force_term_reset?: boolean;
+    reactivate?: boolean;
+    include_delayed_charges?: boolean;
+    use_existing_balances?: boolean;
+    invoice_immediately?: boolean;
+    subscription?: subscription_update_subscription_for_items_params;
+    billing_address?: billing_address_update_subscription_for_items_params;
+    shipping_address?: shipping_address_update_subscription_for_items_params;
+    customer?: customer_update_subscription_for_items_params;
+    subscription_items?: Array<subscription_items_update_subscription_for_items_params>;
+    item_tiers?: Array<item_tiers_update_subscription_for_items_params>;
+  }
   export interface renewal_estimate_params {
     include_delayed_charges?: boolean;
     use_existing_balances?: boolean;
     ignore_scheduled_cancellation?: boolean;
     ignore_scheduled_changes?: boolean;
+  }
+  export interface advance_invoice_estimate_params {
+    terms_to_charge?: number;
+    invoice_immediately?: boolean;
+    schedule_type?: string;
+    fixed_interval_schedule?: fixed_interval_schedule_advance_invoice_estimate_params;
+    specific_dates_schedule?: Array<specific_dates_schedule_advance_invoice_estimate_params>;
   }
   export interface change_term_end_params {
     term_ends_at?: number;
@@ -252,6 +339,18 @@ export namespace _estimate {
     shipping_address?: shipping_address_create_invoice_params;
     addons?: Array<addons_create_invoice_params>;
     charges?: Array<charges_create_invoice_params>;
+  }
+  export interface create_invoice_for_items_params {
+    currency_code?: string;
+    coupon?: string;
+    authorization_transaction_id?: string;
+    payment_source_id?: string;
+    auto_collection?: string;
+    invoice?: invoice_create_invoice_for_items_params;
+    shipping_address?: shipping_address_create_invoice_for_items_params;
+    item_prices?: Array<item_prices_create_invoice_for_items_params>;
+    item_tiers?: Array<item_tiers_create_invoice_for_items_params>;
+    charges?: Array<charges_create_invoice_for_items_params>;
   }
   export interface subscription_create_subscription_params {
     id?: string;
@@ -546,6 +645,109 @@ export namespace _estimate {
   export interface addons_create_sub_for_customer_estimate_params {
     trial_end?: number;
   }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    id?: string;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    trial_end?: number;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    start_date?: number;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    offline_payment_method?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    city?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    country?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    validation_status?: string;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    free_period?: number;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    free_period_unit?: string;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    quantity?: number;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    charge_on_option?: string;
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    price?: number;
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+  }
   export interface subscription_update_subscription_params {
     id: string;
   }
@@ -702,6 +904,172 @@ export namespace _estimate {
   }
   export interface addons_update_subscription_params {
     trial_end?: number;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    id: string;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    auto_collection?: string;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    offline_payment_method?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    line1?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    line2?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    line3?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    city?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    state_code?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    zip?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    country?: string;
+  }
+  export interface billing_address_update_subscription_for_items_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_update_subscription_for_items_params {
+    validation_status?: string;
+  }
+  export interface customer_update_subscription_for_items_params {
+    vat_number?: string;
+  }
+  export interface customer_update_subscription_for_items_params {
+    registered_for_gst?: boolean;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    free_period?: number;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    free_period_unit?: string;
+  }
+  export interface subscription_update_subscription_for_items_params {
+  }
+  export interface customer_update_subscription_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    taxability?: string;
+  }
+  export interface customer_update_subscription_for_items_params {
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    charge_on_option?: string;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+    price?: number;
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+  }
+  export interface fixed_interval_schedule_advance_invoice_estimate_params {
+    number_of_occurrences?: number;
+  }
+  export interface fixed_interval_schedule_advance_invoice_estimate_params {
+    days_before_renewal?: number;
+  }
+  export interface fixed_interval_schedule_advance_invoice_estimate_params {
+    end_schedule_on?: string;
+  }
+  export interface fixed_interval_schedule_advance_invoice_estimate_params {
+    end_date?: number;
+  }
+  export interface specific_dates_schedule_advance_invoice_estimate_params {
+    terms_to_charge?: number;
+  }
+  export interface specific_dates_schedule_advance_invoice_estimate_params {
+    date?: number;
   }
   export interface subscription_pause_subscription_params {
     pause_date?: number;
@@ -915,5 +1283,107 @@ export namespace _estimate {
   }
   export interface charges_create_invoice_params {
     taxjar_product_code?: string;
+  }
+  export interface invoice_create_invoice_for_items_params {
+    customer_id: string;
+  }
+  export interface invoice_create_invoice_for_items_params {
+    subscription_id?: string;
+  }
+  export interface invoice_create_invoice_for_items_params {
+    po_number?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    email?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    company?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    state?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_create_invoice_for_items_params {
+    validation_status?: string;
+  }
+  export interface item_prices_create_invoice_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_prices_create_invoice_for_items_params {
+    quantity?: number;
+  }
+  export interface item_prices_create_invoice_for_items_params {
+    unit_price?: number;
+  }
+  export interface item_prices_create_invoice_for_items_params {
+    date_from?: number;
+  }
+  export interface item_prices_create_invoice_for_items_params {
+    date_to?: number;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    price?: number;
+  }
+  export interface charges_create_invoice_for_items_params {
+    amount?: number;
+  }
+  export interface charges_create_invoice_for_items_params {
+    amount_in_decimal?: string;
+  }
+  export interface charges_create_invoice_for_items_params {
+    description?: string;
+  }
+  export interface charges_create_invoice_for_items_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_create_invoice_for_items_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_create_invoice_for_items_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_create_invoice_for_items_params {
+    date_from?: number;
+  }
+  export interface charges_create_invoice_for_items_params {
+    date_to?: number;
   }
 }

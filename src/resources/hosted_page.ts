@@ -34,12 +34,34 @@ export class HostedPage extends Model {
     }, ChargeBee._env)
   }
 
+  public static checkout_new_for_items(params?: _hosted_page.checkout_new_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'checkout_new_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/checkout_new_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static checkout_existing(params?: _hosted_page.checkout_existing_params) {
     return new RequestWrapper([params], {
       'methodName': 'checkout_existing',
       'httpMethod': 'POST',
       'urlPrefix': '/hosted_pages',
       'urlSuffix': '/checkout_existing',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static checkout_existing_for_items(params?: _hosted_page.checkout_existing_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'checkout_existing_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/checkout_existing_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
     }, ChargeBee._env)
@@ -206,6 +228,23 @@ export namespace _hosted_page {
     addons?: Array<addons_checkout_new_params>;
     event_based_addons?: Array<event_based_addons_checkout_new_params>;
   }
+  export interface checkout_new_for_items_params {
+    billing_cycles?: number;
+    mandatory_items_to_remove?: Array<string>;
+    terms_to_charge?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    redirect_url?: string;
+    cancel_url?: string;
+    pass_thru_content?: string;
+    subscription?: subscription_checkout_new_for_items_params;
+    customer?: customer_checkout_new_for_items_params;
+    card?: card_checkout_new_for_items_params;
+    billing_address?: billing_address_checkout_new_for_items_params;
+    shipping_address?: shipping_address_checkout_new_for_items_params;
+    subscription_items?: Array<subscription_items_checkout_new_for_items_params>;
+    item_tiers?: Array<item_tiers_checkout_new_for_items_params>;
+  }
   export interface checkout_existing_params {
     replace_addon_list?: boolean;
     mandatory_addons_to_remove?: Array<string>;
@@ -228,6 +267,26 @@ export namespace _hosted_page {
     contract_term?: contract_term_checkout_existing_params;
     addons?: Array<addons_checkout_existing_params>;
     event_based_addons?: Array<event_based_addons_checkout_existing_params>;
+  }
+  export interface checkout_existing_for_items_params {
+    mandatory_items_to_remove?: Array<string>;
+    replace_items_list?: boolean;
+    billing_cycles?: number;
+    terms_to_charge?: number;
+    reactivate_from?: number;
+    billing_alignment_mode?: string;
+    coupon_ids?: Array<string>;
+    reactivate?: boolean;
+    force_term_reset?: boolean;
+    redirect_url?: string;
+    cancel_url?: string;
+    pass_thru_content?: string;
+    subscription?: subscription_checkout_existing_for_items_params;
+    customer?: customer_checkout_existing_for_items_params;
+    card?: card_checkout_existing_for_items_params;
+    contract_term?: contract_term_checkout_existing_for_items_params;
+    subscription_items?: Array<subscription_items_checkout_existing_for_items_params>;
+    item_tiers?: Array<item_tiers_checkout_existing_for_items_params>;
   }
   export interface update_card_params {
     redirect_url?: string;
@@ -513,6 +572,209 @@ export namespace _hosted_page {
   export interface event_based_addons_checkout_new_params {
     charge_on?: string;
   }
+  export interface subscription_checkout_new_for_items_params {
+    id?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    id?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    email?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    first_name?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    last_name?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    company?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    taxability?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    locale?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    phone?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    coupon?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    auto_collection?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    offline_payment_method?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    invoice_notes?: string;
+  }
+  export interface card_checkout_new_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_checkout_new_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    vat_number?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    first_name?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    last_name?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    email?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    company?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    phone?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    line1?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    line2?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    line3?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    city?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    state_code?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    state?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    zip?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    country?: string;
+  }
+  export interface billing_address_checkout_new_for_items_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    email?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    company?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    state?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_checkout_new_for_items_params {
+    validation_status?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    affiliate_token?: string;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    charge_on_option?: string;
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+    price?: number;
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+  }
   export interface subscription_checkout_existing_params {
     id: string;
   }
@@ -624,6 +886,112 @@ export namespace _hosted_page {
   }
   export interface event_based_addons_checkout_existing_params {
     unit_price_in_decimal?: string;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    id: string;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    auto_collection?: string;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    offline_payment_method?: string;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    invoice_notes?: string;
+  }
+  export interface customer_checkout_existing_for_items_params {
+    vat_number?: string;
+  }
+  export interface customer_checkout_existing_for_items_params {
+  }
+  export interface card_checkout_existing_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_checkout_existing_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface customer_checkout_existing_for_items_params {
+  }
+  export interface contract_term_checkout_existing_for_items_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_checkout_existing_for_items_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_checkout_existing_for_items_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    charge_on_option?: string;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+    price?: number;
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
   }
   export interface customer_update_card_params {
     id: string;

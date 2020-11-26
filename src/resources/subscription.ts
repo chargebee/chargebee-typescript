@@ -40,6 +40,7 @@ export class Subscription extends Model {
   public created_from_ip?: string;
   public resource_version?: number;
   public updated_at?: number;
+  public has_scheduled_advance_invoices: boolean;
   public has_scheduled_changes: boolean;
   public payment_source_id?: string;
   public plan_free_quantity_in_decimal?: string;
@@ -47,6 +48,9 @@ export class Subscription extends Model {
   public plan_unit_price_in_decimal?: string;
   public plan_amount_in_decimal?: string;
   public offline_payment_method?: string;
+  public subscription_items?: Array<SubscriptionItem>;
+  public item_tiers?: Array<ItemTier>;
+  public charged_items?: Array<ChargedItem>;
   public due_invoices_count?: number;
   public due_since?: number;
   public total_dues?: number;
@@ -62,6 +66,7 @@ export class Subscription extends Model {
   public referral_info?: ReferralInfo;
   public invoice_notes?: string;
   public meta_data?: any;
+  public metadata?: any;
   public deleted: boolean;
   public contract_term?: ContractTerm;
   public cancel_reason_code?: string;
@@ -90,6 +95,17 @@ export class Subscription extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/customers',
       'urlSuffix': '/subscriptions',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static create_with_items(customer_id: string, params?: _subscription.create_with_items_params) {
+    return new RequestWrapper([customer_id, params], {
+      'methodName': 'create_with_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/customers',
+      'urlSuffix': '/subscription_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -194,6 +210,17 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
+  public static update_for_items(subscription_id: string, params?: _subscription.update_for_items_params) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'update_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/update_for_items',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static change_term_end(subscription_id: string, params?: _subscription.change_term_end_params) {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'change_term_end',
@@ -249,6 +276,39 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
+  public static edit_advance_invoice_schedule(subscription_id: string, params?: _subscription.edit_advance_invoice_schedule_params) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'edit_advance_invoice_schedule',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/edit_advance_invoice_schedule',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static retrieve_advance_invoice_schedule(subscription_id: string, params?: any) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'retrieve_advance_invoice_schedule',
+      'httpMethod': 'GET',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/retrieve_advance_invoice_schedule',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static remove_advance_invoice_schedule(subscription_id: string, params?: _subscription.remove_advance_invoice_schedule_params) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'remove_advance_invoice_schedule',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/remove_advance_invoice_schedule',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static import_subscription(params?: _subscription.import_subscription_params) {
     return new RequestWrapper([params], {
       'methodName': 'import_subscription',
@@ -277,6 +337,17 @@ export class Subscription extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/subscriptions',
       'urlSuffix': '/import_contract_term',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static import_for_items(customer_id: string, params?: _subscription.import_for_items_params) {
+    return new RequestWrapper([customer_id, params], {
+      'methodName': 'import_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/customers',
+      'urlSuffix': '/import_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -326,6 +397,17 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
+  public static cancel_for_items(subscription_id: string, params?: _subscription.cancel_for_items_params) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'cancel_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/cancel_for_items',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static resume(subscription_id: string, params?: _subscription.resume_params) {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'resume',
@@ -360,6 +442,33 @@ export class Subscription extends Model {
   }
 
 } // ~Subscription
+
+export class SubscriptionItem extends Model {
+  public item_price_id: string;
+  public item_type: string;
+  public quantity?: number;
+  public unit_price?: number;
+  public amount?: number;
+  public free_quantity?: number;
+  public trial_end?: number;
+  public billing_cycles?: number;
+  public service_period_days?: number;
+  public charge_on_event?: string;
+  public charge_once?: boolean;
+  public charge_on_option?: string;
+} // ~SubscriptionItem
+
+export class ItemTier extends Model {
+  public item_price_id: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public price: number;
+} // ~ItemTier
+
+export class ChargedItem extends Model {
+  public item_price_id: string;
+  public last_charged_at: number;
+} // ~ChargedItem
 
 export class Addon extends Model {
   public id: string;
@@ -532,6 +641,40 @@ export namespace _subscription {
     addons?: Array<addons_create_for_customer_params>;
     event_based_addons?: Array<event_based_addons_create_for_customer_params>;
   }
+  export interface create_with_items_params {
+    id?: string;
+    trial_end?: number;
+    billing_cycles?: number;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+    mandatory_items_to_remove?: Array<string>;
+    start_date?: number;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+    auto_collection?: string;
+    terms_to_charge?: number;
+    billing_alignment_mode?: string;
+    offline_payment_method?: string;
+    po_number?: string;
+    coupon_ids?: Array<string>;
+    payment_source_id?: string;
+    override_relationship?: boolean;
+    invoice_notes?: string;
+    meta_data?: any;
+    invoice_immediately?: boolean;
+    free_period?: number;
+    free_period_unit?: string;
+    contract_term_billing_cycle_on_renewal?: number;
+    shipping_address?: shipping_address_create_with_items_params;
+    payment_intent?: payment_intent_create_with_items_params;
+    contract_term?: contract_term_create_with_items_params;
+    subscription_items?: Array<subscription_items_create_with_items_params>;
+    item_tiers?: Array<item_tiers_create_with_items_params>;
+  }
   export interface subscription_list_params {
     limit?: number;
     offset?: string;
@@ -539,6 +682,8 @@ export namespace _subscription {
     id?: filter._string;
     customer_id?: filter._string;
     plan_id?: filter._string;
+    item_id?: filter._string;
+    item_price_id?: filter._string;
     status?: filter._enum;
     cancel_reason?: filter._enum;
     cancel_reason_code?: filter._string;
@@ -607,6 +752,51 @@ export namespace _subscription {
     addons?: Array<addons_update_params>;
     event_based_addons?: Array<event_based_addons_update_params>;
   }
+  export interface update_for_items_params {
+    mandatory_items_to_remove?: Array<string>;
+    replace_items_list?: boolean;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+    start_date?: number;
+    trial_end?: number;
+    billing_cycles?: number;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+    terms_to_charge?: number;
+    reactivate_from?: number;
+    billing_alignment_mode?: string;
+    auto_collection?: string;
+    offline_payment_method?: string;
+    po_number?: string;
+    coupon_ids?: Array<string>;
+    replace_coupon_list?: boolean;
+    prorate?: boolean;
+    end_of_term?: boolean;
+    force_term_reset?: boolean;
+    reactivate?: boolean;
+    token_id?: string;
+    invoice_notes?: string;
+    meta_data?: any;
+    invoice_immediately?: boolean;
+    override_relationship?: boolean;
+    contract_term_billing_cycle_on_renewal?: number;
+    free_period?: number;
+    free_period_unit?: string;
+    card?: card_update_for_items_params;
+    bank_account?: bank_account_update_for_items_params;
+    payment_method?: payment_method_update_for_items_params;
+    payment_intent?: payment_intent_update_for_items_params;
+    billing_address?: billing_address_update_for_items_params;
+    shipping_address?: shipping_address_update_for_items_params;
+    customer?: customer_update_for_items_params;
+    contract_term?: contract_term_update_for_items_params;
+    subscription_items?: Array<subscription_items_update_for_items_params>;
+    item_tiers?: Array<item_tiers_update_for_items_params>;
+  }
   export interface change_term_end_params {
     term_ends_at: number;
     prorate?: boolean;
@@ -648,8 +838,19 @@ export namespace _subscription {
   }
   export interface charge_future_renewals_params {
     terms_to_charge?: number;
+    invoice_immediately?: boolean;
+    schedule_type?: string;
     fixed_interval_schedule?: fixed_interval_schedule_charge_future_renewals_params;
     specific_dates_schedule?: Array<specific_dates_schedule_charge_future_renewals_params>;
+  }
+  export interface edit_advance_invoice_schedule_params {
+    terms_to_charge?: number;
+    schedule_type?: string;
+    fixed_interval_schedule?: fixed_interval_schedule_edit_advance_invoice_schedule_params;
+    specific_dates_schedule?: Array<specific_dates_schedule_edit_advance_invoice_schedule_params>;
+  }
+  export interface remove_advance_invoice_schedule_params {
+    specific_dates_schedule?: Array<specific_dates_schedule_remove_advance_invoice_schedule_params>;
   }
   export interface import_subscription_params {
     id?: string;
@@ -729,6 +930,38 @@ export namespace _subscription {
     contract_term_billing_cycle_on_renewal?: number;
     contract_term?: contract_term_import_contract_term_params;
   }
+  export interface import_for_items_params {
+    id?: string;
+    trial_end?: number;
+    billing_cycles?: number;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+    start_date?: number;
+    auto_collection?: string;
+    po_number?: string;
+    coupon_ids?: Array<string>;
+    payment_source_id?: string;
+    status: string;
+    current_term_end?: number;
+    current_term_start?: number;
+    trial_start?: number;
+    cancelled_at?: number;
+    started_at?: number;
+    pause_date?: number;
+    resume_date?: number;
+    contract_term_billing_cycle_on_renewal?: number;
+    create_current_term_invoice?: boolean;
+    invoice_notes?: string;
+    meta_data?: any;
+    contract_term?: contract_term_import_for_items_params;
+    transaction?: transaction_import_for_items_params;
+    shipping_address?: shipping_address_import_for_items_params;
+    subscription_items?: Array<subscription_items_import_for_items_params>;
+    charged_items?: Array<charged_items_import_for_items_params>;
+    item_tiers?: Array<item_tiers_import_for_items_params>;
+  }
   export interface override_billing_profile_params {
     payment_source_id?: string;
     auto_collection?: string;
@@ -750,6 +983,17 @@ export namespace _subscription {
     contract_term_cancel_option?: string;
     cancel_reason_code?: string;
     event_based_addons?: Array<event_based_addons_cancel_params>;
+  }
+  export interface cancel_for_items_params {
+    end_of_term?: boolean;
+    cancel_at?: number;
+    credit_option_for_current_term_charges?: string;
+    unbilled_charges_option?: string;
+    account_receivables_handling?: string;
+    refundable_credits_handling?: string;
+    contract_term_cancel_option?: string;
+    cancel_reason_code?: string;
+    subscription_items?: Array<subscription_items_cancel_for_items_params>;
   }
   export interface resume_params {
     resume_option?: string;
@@ -1217,6 +1461,123 @@ export namespace _subscription {
   export interface addons_create_for_customer_params {
     trial_end?: number;
   }
+  export interface shipping_address_create_with_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    email?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    company?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    city?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    state?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    country?: string;
+  }
+  export interface shipping_address_create_with_items_params {
+    validation_status?: string;
+  }
+  export interface payment_intent_create_with_items_params {
+    id?: string;
+  }
+  export interface payment_intent_create_with_items_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_intent_create_with_items_params {
+    gw_token?: string;
+  }
+  export interface payment_intent_create_with_items_params {
+    reference_id?: string;
+  }
+  export interface payment_intent_create_with_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gw_payment_method_id?: string;
+  }
+  export interface contract_term_create_with_items_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_create_with_items_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_items_create_with_items_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_create_with_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_create_with_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_create_with_items_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_create_with_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_create_with_items_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_create_with_items_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_create_with_items_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_create_with_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface subscription_items_create_with_items_params {
+    charge_on_option?: string;
+  }
+  export interface item_tiers_create_with_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_create_with_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_with_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_with_items_params {
+    price?: number;
+  }
+  export interface item_tiers_create_with_items_params {
+  }
+  export interface item_tiers_create_with_items_params {
+  }
+  export interface item_tiers_create_with_items_params {
+  }
   export interface card_update_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -1475,6 +1836,267 @@ export namespace _subscription {
   export interface addons_update_params {
     trial_end?: number;
   }
+  export interface card_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_update_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface card_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    tmp_token?: string;
+  }
+  export interface bank_account_update_for_items_params {
+  }
+  export interface bank_account_update_for_items_params {
+  }
+  export interface bank_account_update_for_items_params {
+  }
+  export interface bank_account_update_for_items_params {
+  }
+  export interface bank_account_update_for_items_params {
+  }
+  export interface bank_account_update_for_items_params {
+  }
+  export interface payment_method_update_for_items_params {
+    type?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    reference_id?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    tmp_token?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    issuing_country?: string;
+  }
+  export interface card_update_for_items_params {
+    first_name?: string;
+  }
+  export interface card_update_for_items_params {
+    last_name?: string;
+  }
+  export interface card_update_for_items_params {
+    number?: string;
+  }
+  export interface card_update_for_items_params {
+    expiry_month?: number;
+  }
+  export interface card_update_for_items_params {
+    expiry_year?: number;
+  }
+  export interface card_update_for_items_params {
+    cvv?: string;
+  }
+  export interface card_update_for_items_params {
+    billing_addr1?: string;
+  }
+  export interface card_update_for_items_params {
+    billing_addr2?: string;
+  }
+  export interface card_update_for_items_params {
+    billing_city?: string;
+  }
+  export interface card_update_for_items_params {
+    billing_state_code?: string;
+  }
+  export interface card_update_for_items_params {
+    billing_state?: string;
+  }
+  export interface card_update_for_items_params {
+    billing_zip?: string;
+  }
+  export interface card_update_for_items_params {
+    billing_country?: string;
+  }
+  export interface card_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    ip_address?: string;
+  }
+  export interface payment_intent_update_for_items_params {
+    id?: string;
+  }
+  export interface payment_intent_update_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_intent_update_for_items_params {
+    gw_token?: string;
+  }
+  export interface payment_intent_update_for_items_params {
+    reference_id?: string;
+  }
+  export interface payment_intent_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gw_payment_method_id?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    first_name?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    last_name?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    email?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    company?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    phone?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    line1?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    line2?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    line3?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    city?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    state_code?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    state?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    zip?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    country?: string;
+  }
+  export interface billing_address_update_for_items_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    email?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    company?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    state?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_update_for_items_params {
+    validation_status?: string;
+  }
+  export interface customer_update_for_items_params {
+    vat_number?: string;
+  }
+  export interface customer_update_for_items_params {
+    business_customer_without_vat_number?: boolean;
+  }
+  export interface customer_update_for_items_params {
+    registered_for_gst?: boolean;
+  }
+  export interface contract_term_update_for_items_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_update_for_items_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_update_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_update_for_items_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_update_for_items_params {
+    charge_on_option?: string;
+  }
+  export interface subscription_items_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface item_tiers_update_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_update_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_update_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_update_for_items_params {
+    price?: number;
+  }
+  export interface item_tiers_update_for_items_params {
+  }
+  export interface item_tiers_update_for_items_params {
+  }
+  export interface item_tiers_update_for_items_params {
+  }
   export interface contract_term_reactivate_params {
     action_at_term_end?: string;
   }
@@ -1500,16 +2122,46 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface fixed_interval_schedule_charge_future_renewals_params {
+    number_of_occurrences?: number;
   }
   export interface fixed_interval_schedule_charge_future_renewals_params {
+    days_before_renewal?: number;
   }
   export interface fixed_interval_schedule_charge_future_renewals_params {
+    end_schedule_on?: string;
   }
   export interface fixed_interval_schedule_charge_future_renewals_params {
+    end_date?: number;
   }
   export interface specific_dates_schedule_charge_future_renewals_params {
+    terms_to_charge?: number;
   }
   export interface specific_dates_schedule_charge_future_renewals_params {
+    date?: number;
+  }
+  export interface fixed_interval_schedule_edit_advance_invoice_schedule_params {
+    number_of_occurrences?: number;
+  }
+  export interface fixed_interval_schedule_edit_advance_invoice_schedule_params {
+    days_before_renewal?: number;
+  }
+  export interface fixed_interval_schedule_edit_advance_invoice_schedule_params {
+    end_schedule_on?: string;
+  }
+  export interface fixed_interval_schedule_edit_advance_invoice_schedule_params {
+    end_date?: number;
+  }
+  export interface specific_dates_schedule_edit_advance_invoice_schedule_params {
+    id?: string;
+  }
+  export interface specific_dates_schedule_edit_advance_invoice_schedule_params {
+    terms_to_charge?: number;
+  }
+  export interface specific_dates_schedule_edit_advance_invoice_schedule_params {
+    date?: number;
+  }
+  export interface specific_dates_schedule_remove_advance_invoice_schedule_params {
+    id?: string;
   }
   export interface customer_import_subscription_params {
     id?: string;
@@ -1967,6 +2619,135 @@ export namespace _subscription {
   export interface contract_term_import_contract_term_params {
     cancellation_cutoff_period?: number;
   }
+  export interface contract_term_import_for_items_params {
+    id?: string;
+  }
+  export interface contract_term_import_for_items_params {
+    created_at?: number;
+  }
+  export interface contract_term_import_for_items_params {
+    contract_start?: number;
+  }
+  export interface contract_term_import_for_items_params {
+    billing_cycle?: number;
+  }
+  export interface contract_term_import_for_items_params {
+    total_amount_raised?: number;
+  }
+  export interface contract_term_import_for_items_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_import_for_items_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface transaction_import_for_items_params {
+    amount?: number;
+  }
+  export interface transaction_import_for_items_params {
+    payment_method?: string;
+  }
+  export interface transaction_import_for_items_params {
+    reference_number?: string;
+  }
+  export interface transaction_import_for_items_params {
+    date?: number;
+  }
+  export interface shipping_address_import_for_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    email?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    company?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    state?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_import_for_items_params {
+    validation_status?: string;
+  }
+  export interface subscription_items_import_for_items_params {
+    item_price_id: string;
+  }
+  export interface subscription_items_import_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_import_for_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_import_for_items_params {
+    billing_cycles?: number;
+  }
+  export interface subscription_items_import_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_items_import_for_items_params {
+    service_period_days?: number;
+  }
+  export interface subscription_items_import_for_items_params {
+    charge_on_event?: string;
+  }
+  export interface subscription_items_import_for_items_params {
+    charge_once?: boolean;
+  }
+  export interface subscription_items_import_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    item_type?: string;
+  }
+  export interface charged_items_import_for_items_params {
+    item_price_id?: string;
+  }
+  export interface charged_items_import_for_items_params {
+    last_charged_at?: number;
+  }
+  export interface item_tiers_import_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_import_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_import_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_import_for_items_params {
+    price?: number;
+  }
+  export interface item_tiers_import_for_items_params {
+  }
+  export interface item_tiers_import_for_items_params {
+  }
+  export interface item_tiers_import_for_items_params {
+  }
   export interface event_based_addons_cancel_params {
     id?: string;
   }
@@ -1978,6 +2759,18 @@ export namespace _subscription {
   }
   export interface event_based_addons_cancel_params {
     service_period_in_days?: number;
+  }
+  export interface subscription_items_cancel_for_items_params {
+    item_price_id?: string;
+  }
+  export interface subscription_items_cancel_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_cancel_for_items_params {
+    unit_price?: number;
+  }
+  export interface subscription_items_cancel_for_items_params {
+    service_period_days?: number;
   }
   export interface payment_intent_resume_params {
     id?: string;

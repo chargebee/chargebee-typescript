@@ -8,7 +8,7 @@ export class Result {
         let _subscription = this.get(
             'subscription',
             'Subscription',
-            {'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'contract_term': 'SubscriptionContractTerm'}
+            {'subscription_items': 'SubscriptionSubscriptionItem', 'item_tiers': 'SubscriptionItemTier', 'charged_items': 'SubscriptionChargedItem', 'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'contract_term': 'SubscriptionContractTerm'}
         );
         return _subscription;
     }
@@ -198,7 +198,7 @@ export class Result {
         let _quoted_subscription = this.get(
             'quoted_subscription',
             'QuotedSubscription',
-            {'addons': 'QuotedSubscriptionAddon', 'event_based_addons': 'QuotedSubscriptionEventBasedAddon', 'coupons': 'QuotedSubscriptionCoupon'}
+            {'addons': 'QuotedSubscriptionAddon', 'event_based_addons': 'QuotedSubscriptionEventBasedAddon', 'coupons': 'QuotedSubscriptionCoupon', 'subscription_items': 'QuotedSubscriptionSubscriptionItem', 'item_tiers': 'QuotedSubscriptionItemTier'}
         );
         return _quoted_subscription;
     }
@@ -229,7 +229,8 @@ export class Result {
     get coupon() {
         let _coupon = this.get(
             'coupon',
-            'Coupon'
+            'Coupon',
+            {'item_constraints': 'CouponItemConstraint', 'item_constraint_criteria': 'CouponItemConstraintCriteria'}
         );
         return _coupon;
     }
@@ -321,6 +322,44 @@ export class Result {
         );
         return _payment_intent;
     }
+    get item_family() {
+        let _item_family = this.get(
+            'item_family',
+            'ItemFamily'
+        );
+        return _item_family;
+    }
+    get item() {
+        let _item = this.get(
+            'item',
+            'Item',
+            {'applicable_items': 'ItemApplicableItem'}
+        );
+        return _item;
+    }
+    get item_price() {
+        let _item_price = this.get(
+            'item_price',
+            'ItemPrice',
+            {'tiers': 'ItemPriceTier', 'tax_detail': 'ItemPriceTaxDetail', 'accounting_detail': 'ItemPriceAccountingDetail'}
+        );
+        return _item_price;
+    }
+    get attached_item() {
+        let _attached_item = this.get(
+            'attached_item',
+            'AttachedItem'
+        );
+        return _attached_item;
+    }
+    get differential_price() {
+        let _differential_price = this.get(
+            'differential_price',
+            'DifferentialPrice',
+            {'tiers': 'DifferentialPriceTier', 'parent_periods': 'DifferentialPriceParentPeriod'}
+        );
+        return _differential_price;
+    }
 
     get unbilled_charges() {
         let _unbilled_charges = this.get_list(
@@ -361,6 +400,14 @@ export class Result {
             {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'billing_address': 'InvoiceBillingAddress'}
         );
         return _invoices;
+    }
+    get differential_prices() {
+        let _differential_prices = this.get_list(
+            'differential_prices',
+            'DifferentialPrice',
+            {'tiers': 'DifferentialPriceTier', 'parent_periods': 'DifferentialPriceParentPeriod'}
+        );
+        return _differential_prices;
     }
 
     get response() {

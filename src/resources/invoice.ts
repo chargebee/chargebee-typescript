@@ -76,6 +76,17 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
+  public static create_for_charge_items_and_charges(params?: _invoice.create_for_charge_items_and_charges_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create_for_charge_items_and_charges',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/create_for_charge_items_and_charges',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static charge(params?: _invoice.charge_params) {
     return new RequestWrapper([params], {
       'methodName': 'charge',
@@ -93,6 +104,17 @@ export class Invoice extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/invoices',
       'urlSuffix': '/charge_addon',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static create_for_charge_item(params?: _invoice.create_for_charge_item_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create_for_charge_item',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/create_for_charge_item',
       'hasIdInUrl': false,
       'isListReq': false,
     }, ChargeBee._env)
@@ -214,6 +236,17 @@ export class Invoice extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/invoices',
       'urlSuffix': '/add_addon_charge',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static add_charge_item(invoice_id: string, params?: _invoice.add_charge_item_params) {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'add_charge_item',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/add_charge_item',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -539,6 +572,27 @@ export namespace _invoice {
     charges?: Array<charges_create_params>;
     notes_to_remove?: Array<notes_to_remove_create_params>;
   }
+  export interface create_for_charge_items_and_charges_params {
+    customer_id?: string;
+    subscription_id?: string;
+    currency_code?: string;
+    invoice_notes?: string;
+    po_number?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
+    coupon_ids?: Array<string>;
+    authorization_transaction_id?: string;
+    payment_source_id?: string;
+    auto_collection?: string;
+    replace_primary_payment_source?: boolean;
+    shipping_address?: shipping_address_create_for_charge_items_and_charges_params;
+    payment_intent?: payment_intent_create_for_charge_items_and_charges_params;
+    item_prices?: Array<item_prices_create_for_charge_items_and_charges_params>;
+    item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
+    charges?: Array<charges_create_for_charge_items_and_charges_params>;
+  }
   export interface charge_params {
     customer_id?: string;
     subscription_id?: string;
@@ -568,6 +622,15 @@ export namespace _invoice {
     coupon?: string;
     po_number?: string;
     payment_source_id?: string;
+  }
+  export interface create_for_charge_item_params {
+    customer_id?: string;
+    subscription_id?: string;
+    po_number?: string;
+    coupon?: string;
+    payment_source_id?: string;
+    item_price?: item_price_create_for_charge_item_params;
+    item_tiers?: Array<item_tiers_create_for_charge_item_params>;
   }
   export interface stop_dunning_params {
     comment?: string;
@@ -654,6 +717,11 @@ export namespace _invoice {
     addon_unit_price_in_decimal?: string;
     comment?: string;
     line_item?: line_item_add_addon_charge_params;
+  }
+  export interface add_charge_item_params {
+    comment?: string;
+    item_price?: item_price_add_charge_item_params;
+    item_tiers?: Array<item_tiers_add_charge_item_params>;
   }
   export interface close_params {
     comment?: string;
@@ -830,6 +898,153 @@ export namespace _invoice {
   }
   export interface notes_to_remove_create_params {
     entity_id?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    email?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    company?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    city?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    state?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    country?: string;
+  }
+  export interface shipping_address_create_for_charge_items_and_charges_params {
+    validation_status?: string;
+  }
+  export interface payment_intent_create_for_charge_items_and_charges_params {
+    id?: string;
+  }
+  export interface payment_intent_create_for_charge_items_and_charges_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_intent_create_for_charge_items_and_charges_params {
+    gw_token?: string;
+  }
+  export interface payment_intent_create_for_charge_items_and_charges_params {
+    reference_id?: string;
+  }
+  export interface payment_intent_create_for_charge_items_and_charges_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gw_payment_method_id?: string;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    item_price_id?: string;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    quantity?: number;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    unit_price?: number;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    date_from?: number;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    date_to?: number;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    price?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    amount?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    amount_in_decimal?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    description?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    date_from?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    date_to?: number;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    taxjar_product_code?: string;
+  }
+  export interface item_price_create_for_charge_item_params {
+    item_price_id: string;
+  }
+  export interface item_price_create_for_charge_item_params {
+    quantity?: number;
+  }
+  export interface item_price_create_for_charge_item_params {
+    unit_price?: number;
+  }
+  export interface item_price_create_for_charge_item_params {
+    date_from?: number;
+  }
+  export interface item_price_create_for_charge_item_params {
+    date_to?: number;
+  }
+  export interface item_tiers_create_for_charge_item_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_for_charge_item_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_for_charge_item_params {
+    price?: number;
   }
   export interface billing_address_import_invoice_params {
     first_name?: string;
@@ -1085,6 +1300,30 @@ export namespace _invoice {
   }
   export interface line_item_add_addon_charge_params {
     date_to?: number;
+  }
+  export interface item_price_add_charge_item_params {
+    item_price_id: string;
+  }
+  export interface item_price_add_charge_item_params {
+    quantity?: number;
+  }
+  export interface item_price_add_charge_item_params {
+    unit_price?: number;
+  }
+  export interface item_price_add_charge_item_params {
+    date_from?: number;
+  }
+  export interface item_price_add_charge_item_params {
+    date_to?: number;
+  }
+  export interface item_tiers_add_charge_item_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_add_charge_item_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_add_charge_item_params {
+    price?: number;
   }
   export interface notes_to_remove_close_params {
     entity_type?: string;

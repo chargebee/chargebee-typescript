@@ -29,6 +29,8 @@ export class Coupon extends Model {
   public included_in_mrr?: boolean;
   public plan_ids?: Array<string>;
   public addon_ids?: Array<string>;
+  public item_constraints?: Array<ItemConstraint>;
+  public item_constraint_criteria?: Array<ItemConstraintCriteria>;
   public redemptions?: number;
   public invoice_notes?: string;
   public meta_data?: any;
@@ -45,6 +47,28 @@ export class Coupon extends Model {
       'urlPrefix': '/coupons',
       'urlSuffix': null,
       'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static create_for_items(params?: _coupon.create_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/coupons',
+      'urlSuffix': '/create_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static update_for_items(coupon_id: string, params?: _coupon.update_for_items_params) {
+    return new RequestWrapper([coupon_id, params], {
+      'methodName': 'update_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/coupons',
+      'urlSuffix': '/update_for_items',
+      'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
   }
@@ -117,6 +141,19 @@ export class Coupon extends Model {
 
 } // ~Coupon
 
+export class ItemConstraint extends Model {
+  public item_type: string;
+  public constraint: string;
+  public item_price_ids?: any;
+} // ~ItemConstraint
+
+export class ItemConstraintCriteria extends Model {
+  public item_type: string;
+  public currencies?: any;
+  public item_family_ids?: any;
+  public item_price_periods?: any;
+} // ~ItemConstraintCriteria
+
 
 
   // REQUEST PARAMS
@@ -148,6 +185,48 @@ export namespace _coupon {
     plan_ids?: Array<string>;
     addon_ids?: Array<string>;
     status?: string;
+  }
+  export interface create_for_items_params {
+    id: string;
+    name: string;
+    invoice_name?: string;
+    discount_type: string;
+    discount_amount?: number;
+    currency_code?: string;
+    discount_percentage?: number;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    discount_quantity?: number;
+    apply_on: string;
+    duration_type: string;
+    duration_month?: number;
+    valid_till?: number;
+    max_redemptions?: number;
+    invoice_notes?: string;
+    meta_data?: any;
+    included_in_mrr?: boolean;
+    status?: string;
+    item_constraints?: Array<item_constraints_create_for_items_params>;
+    item_constraint_criteria?: Array<item_constraint_criteria_create_for_items_params>;
+  }
+  export interface update_for_items_params {
+    name?: string;
+    invoice_name?: string;
+    discount_type?: string;
+    discount_amount?: number;
+    currency_code?: string;
+    discount_percentage?: number;
+    apply_on?: string;
+    duration_type?: string;
+    duration_month?: number;
+    valid_till?: number;
+    max_redemptions?: number;
+    invoice_notes?: string;
+    meta_data?: any;
+    included_in_mrr?: boolean;
+    item_constraints?: Array<item_constraints_update_for_items_params>;
+    item_constraint_criteria?: Array<item_constraint_criteria_update_for_items_params>;
   }
   export interface coupon_list_params {
     limit?: number;
@@ -191,6 +270,48 @@ export namespace _coupon {
     id_at_from_site: string;
     id?: string;
     for_site_merging?: boolean;
+  }
+  export interface item_constraints_create_for_items_params {
+    constraint: string;
+  }
+  export interface item_constraints_create_for_items_params {
+    item_type: string;
+  }
+  export interface item_constraints_create_for_items_params {
+    item_price_ids?: any;
+  }
+  export interface item_constraint_criteria_create_for_items_params {
+    item_type?: string;
+  }
+  export interface item_constraint_criteria_create_for_items_params {
+    item_family_ids?: any;
+  }
+  export interface item_constraint_criteria_create_for_items_params {
+    currencies?: any;
+  }
+  export interface item_constraint_criteria_create_for_items_params {
+    item_price_periods?: any;
+  }
+  export interface item_constraints_update_for_items_params {
+    constraint: string;
+  }
+  export interface item_constraints_update_for_items_params {
+    item_type: string;
+  }
+  export interface item_constraints_update_for_items_params {
+    item_price_ids?: any;
+  }
+  export interface item_constraint_criteria_update_for_items_params {
+    item_type?: string;
+  }
+  export interface item_constraint_criteria_update_for_items_params {
+    item_family_ids?: any;
+  }
+  export interface item_constraint_criteria_update_for_items_params {
+    currencies?: any;
+  }
+  export interface item_constraint_criteria_update_for_items_params {
+    item_price_periods?: any;
   }
   export interface plan_coupon_list_params {
   }

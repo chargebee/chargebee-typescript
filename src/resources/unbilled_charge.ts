@@ -32,6 +32,17 @@ export class UnbilledCharge extends Model {
   // OPERATIONS
   //-----------
 
+  public static create(params?: _unbilled_charge.create_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create',
+      'httpMethod': 'POST',
+      'urlPrefix': '/unbilled_charges',
+      'urlSuffix': null,
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static invoice_unbilled_charges(params?: _unbilled_charge.invoice_unbilled_charges_params) {
     return new RequestWrapper([params], {
       'methodName': 'invoice_unbilled_charges',
@@ -95,6 +106,13 @@ export class Tier extends Model {
   //---------------
 
 export namespace _unbilled_charge {
+  export interface create_params {
+    subscription_id: string;
+    currency_code?: string;
+    item_prices?: Array<item_prices_create_params>;
+    item_tiers?: Array<item_tiers_create_params>;
+    charges?: Array<charges_create_params>;
+  }
   export interface invoice_unbilled_charges_params {
     subscription_id?: string;
     customer_id?: string;
@@ -110,5 +128,59 @@ export namespace _unbilled_charge {
   export interface invoice_now_estimate_params {
     subscription_id?: string;
     customer_id?: string;
+  }
+  export interface item_prices_create_params {
+    item_price_id?: string;
+  }
+  export interface item_prices_create_params {
+    quantity?: number;
+  }
+  export interface item_prices_create_params {
+    unit_price?: number;
+  }
+  export interface item_prices_create_params {
+    date_from?: number;
+  }
+  export interface item_prices_create_params {
+    date_to?: number;
+  }
+  export interface item_tiers_create_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_create_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_create_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_create_params {
+    price?: number;
+  }
+  export interface charges_create_params {
+    amount?: number;
+  }
+  export interface charges_create_params {
+    amount_in_decimal?: string;
+  }
+  export interface charges_create_params {
+    description?: string;
+  }
+  export interface charges_create_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_create_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_create_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_create_params {
+    date_from?: number;
+  }
+  export interface charges_create_params {
+    date_to?: number;
+  }
+  export interface charges_create_params {
+    taxable?: boolean;
   }
 }

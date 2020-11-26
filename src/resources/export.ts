@@ -177,6 +177,61 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
+  public static item_families(params?: _export.item_families_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'item_families',
+      'httpMethod': 'POST',
+      'urlPrefix': '/exports',
+      'urlSuffix': '/item_families',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static items(params?: _export.items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/exports',
+      'urlSuffix': '/items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static item_prices(params?: _export.item_prices_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'item_prices',
+      'httpMethod': 'POST',
+      'urlPrefix': '/exports',
+      'urlSuffix': '/item_prices',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static attached_items(params?: _export.attached_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'attached_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/exports',
+      'urlSuffix': '/attached_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static differential_prices(params?: _export.differential_prices_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'differential_prices',
+      'httpMethod': 'POST',
+      'urlPrefix': '/exports',
+      'urlSuffix': '/differential_prices',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~Export
 
 export class Download extends Model {
@@ -199,6 +254,8 @@ export namespace _export {
     report_to_year: number;
     include_discounts?: boolean;
     payment_owner?: filter._string;
+    item_id?: filter._string;
+    item_price_id?: filter._string;
     cancel_reason_code?: filter._string;
     invoice?: invoice_revenue_recognition_params;
     subscription?: subscription_revenue_recognition_params;
@@ -214,6 +271,8 @@ export namespace _export {
     report_to_year: number;
     include_discounts?: boolean;
     payment_owner?: filter._string;
+    item_id?: filter._string;
+    item_price_id?: filter._string;
     cancel_reason_code?: filter._string;
     invoice?: invoice_deferred_revenue_params;
     subscription?: subscription_deferred_revenue_params;
@@ -239,6 +298,8 @@ export namespace _export {
     relationship?: relationship_customers_params;
   }
   export interface subscriptions_params {
+    item_id?: filter._string;
+    item_price_id?: filter._string;
     cancel_reason_code?: filter._string;
     subscription?: subscription_subscriptions_params;
   }
@@ -255,6 +316,26 @@ export namespace _export {
   export interface orders_params {
     total?: filter._number;
     order?: order_orders_params;
+  }
+  export interface item_families_params {
+    item_family?: item_family_item_families_params;
+  }
+  export interface items_params {
+    item?: item_items_params;
+  }
+  export interface item_prices_params {
+    item_family_id?: filter._string;
+    item_type?: filter._enum;
+    currency_code?: filter._string;
+    item_price?: item_price_item_prices_params;
+  }
+  export interface attached_items_params {
+    item_type?: filter._enum;
+    attached_item?: attached_item_attached_items_params;
+  }
+  export interface differential_prices_params {
+    item_id?: filter._string;
+    differential_price?: differential_price_differential_prices_params;
   }
   export interface invoice_revenue_recognition_params {
     id?: filter._string;
@@ -845,5 +926,95 @@ export namespace _export {
   }
   export interface order_orders_params {
     updated_at?: filter._timestamp;
+  }
+  export interface item_family_item_families_params {
+    id?: filter._string;
+  }
+  export interface item_family_item_families_params {
+    name?: filter._string;
+  }
+  export interface item_items_params {
+    id?: filter._string;
+  }
+  export interface item_items_params {
+    item_family_id?: filter._string;
+  }
+  export interface item_items_params {
+    type?: filter._enum;
+  }
+  export interface item_items_params {
+    name?: filter._string;
+  }
+  export interface item_items_params {
+    item_applicability?: filter._enum;
+  }
+  export interface item_items_params {
+    status?: filter._enum;
+  }
+  export interface item_items_params {
+    is_giftable?: filter._boolean;
+  }
+  export interface item_items_params {
+    updated_at?: filter._timestamp;
+  }
+  export interface item_items_params {
+    enabled_for_checkout?: filter._boolean;
+  }
+  export interface item_items_params {
+    enabled_in_portal?: filter._boolean;
+  }
+  export interface item_price_item_prices_params {
+    id?: filter._string;
+  }
+  export interface item_price_item_prices_params {
+    name?: filter._string;
+  }
+  export interface item_price_item_prices_params {
+    pricing_model?: filter._enum;
+  }
+  export interface item_price_item_prices_params {
+    item_id?: filter._string;
+  }
+  export interface item_price_item_prices_params {
+    trial_period?: filter._number;
+  }
+  export interface item_price_item_prices_params {
+    trial_period_unit?: filter._enum;
+  }
+  export interface item_price_item_prices_params {
+    status?: filter._enum;
+  }
+  export interface item_price_item_prices_params {
+    updated_at?: filter._timestamp;
+  }
+  export interface item_price_item_prices_params {
+    period_unit?: filter._enum;
+  }
+  export interface item_price_item_prices_params {
+    period?: filter._number;
+  }
+  export interface attached_item_attached_items_params {
+    id?: filter._string;
+  }
+  export interface attached_item_attached_items_params {
+    item_id?: filter._string;
+  }
+  export interface attached_item_attached_items_params {
+    type?: filter._enum;
+  }
+  export interface attached_item_attached_items_params {
+    charge_on_event?: filter._enum;
+  }
+  export interface attached_item_attached_items_params {
+    parent_item_id?: filter._string;
+  }
+  export interface differential_price_differential_prices_params {
+    item_price_id?: filter._string;
+  }
+  export interface differential_price_differential_prices_params {
+    id?: filter._string;
+  }
+  export interface differential_price_differential_prices_params {
+    parent_item_id?: filter._string;
   }
 }

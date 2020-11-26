@@ -38,6 +38,11 @@ export {_resource_migration} from "./resources/resource_migration";
 export {_time_machine} from "./resources/time_machine";
 export {_export} from "./resources/export";
 export {_payment_intent} from "./resources/payment_intent";
+export {_item_family} from "./resources/item_family";
+export {_item} from "./resources/item";
+export {_item_price} from "./resources/item_price";
+export {_attached_item} from "./resources/attached_item";
+export {_differential_price} from "./resources/differential_price";
 
 export class ChargeBee {
     static _env = require('./environment');
@@ -159,6 +164,21 @@ export class ChargeBee {
     }
     get payment_intent() {
         return resources.PaymentIntent;
+    }
+    get item_family() {
+        return resources.ItemFamily;
+    }
+    get item() {
+        return resources.Item;
+    }
+    get item_price() {
+        return resources.ItemPrice;
+    }
+    get attached_item() {
+        return resources.AttachedItem;
+    }
+    get differential_price() {
+        return resources.DifferentialPrice;
     }
 }
 
