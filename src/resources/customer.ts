@@ -744,6 +744,9 @@ export namespace _customer {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_params {
+    additional_info?: any;
+  }
+  export interface payment_intent_create_params {
   }
   export interface billing_address_create_params {
     first_name?: string;
@@ -1002,6 +1005,9 @@ export namespace _customer {
   }
   export interface payment_intent_collect_payment_params {
     reference_id?: string;
+  }
+  export interface payment_intent_collect_payment_params {
+    additional_info?: any;
   }
   export interface bank_account_collect_payment_params {
   }

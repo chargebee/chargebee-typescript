@@ -310,6 +310,9 @@ export namespace _payment_source {
      */
     gw_payment_method_id?: string;
   }
+  export interface payment_intent_create_using_payment_intent_params {
+    additional_info?: any;
+  }
   export interface card_create_card_params {
     gateway_account_id?: string;
   }

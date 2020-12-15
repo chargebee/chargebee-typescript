@@ -309,6 +309,17 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
+  public static regenerate_invoice(subscription_id: string, params?: _subscription.regenerate_invoice_params) {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'regenerate_invoice',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/regenerate_invoice',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static import_subscription(params?: _subscription.import_subscription_params) {
     return new RequestWrapper([params], {
       'methodName': 'import_subscription',
@@ -463,6 +474,9 @@ export class ItemTier extends Model {
   public starting_unit: number;
   public ending_unit?: number;
   public price: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public price_in_decimal?: string;
 } // ~ItemTier
 
 export class ChargedItem extends Model {
@@ -852,6 +866,12 @@ export namespace _subscription {
   export interface remove_advance_invoice_schedule_params {
     specific_dates_schedule?: Array<specific_dates_schedule_remove_advance_invoice_schedule_params>;
   }
+  export interface regenerate_invoice_params {
+    date_from?: number;
+    date_to?: number;
+    prorate?: boolean;
+    invoice_immediately?: boolean;
+  }
   export interface import_subscription_params {
     id?: string;
     client_profile_id?: string;
@@ -1194,6 +1214,9 @@ export namespace _subscription {
      */
     gw_payment_method_id?: string;
   }
+  export interface payment_intent_create_params {
+    additional_info?: any;
+  }
   export interface billing_address_create_params {
     first_name?: string;
   }
@@ -1407,6 +1430,9 @@ export namespace _subscription {
      */
     gw_payment_method_id?: string;
   }
+  export interface payment_intent_create_for_customer_params {
+    additional_info?: any;
+  }
   export interface contract_term_create_for_customer_params {
     action_at_term_end?: string;
   }
@@ -1520,6 +1546,9 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
+  }
+  export interface payment_intent_create_with_items_params {
+    additional_info?: any;
   }
   export interface contract_term_create_with_items_params {
     action_at_term_end?: string;
@@ -1688,6 +1717,9 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
+  }
+  export interface payment_intent_update_params {
+    additional_info?: any;
   }
   export interface billing_address_update_params {
     first_name?: string;
@@ -1947,6 +1979,9 @@ export namespace _subscription {
      */
     gw_payment_method_id?: string;
   }
+  export interface payment_intent_update_for_items_params {
+    additional_info?: any;
+  }
   export interface billing_address_update_for_items_params {
     first_name?: string;
   }
@@ -2120,6 +2155,9 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
+  }
+  export interface payment_intent_reactivate_params {
+    additional_info?: any;
   }
   export interface fixed_interval_schedule_charge_future_renewals_params {
     number_of_occurrences?: number;
@@ -2789,5 +2827,8 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
+  }
+  export interface payment_intent_resume_params {
+    additional_info?: any;
   }
 }

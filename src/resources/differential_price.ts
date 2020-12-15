@@ -84,6 +84,9 @@ export class Tier extends Model {
   public starting_unit: number;
   public ending_unit?: number;
   public price: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public price_in_decimal?: string;
 } // ~Tier
 
 export class ParentPeriod extends Model {

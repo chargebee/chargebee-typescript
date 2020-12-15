@@ -318,6 +318,7 @@ export namespace _hosted_page {
     card?: card_collect_now_params;
   }
   export interface accept_quote_params {
+    redirect_url?: string;
     quote?: quote_accept_quote_params;
   }
   export interface extend_subscription_params {

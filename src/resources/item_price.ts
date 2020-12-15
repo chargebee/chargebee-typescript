@@ -37,6 +37,8 @@ export class ItemPrice extends Model {
   public item_type?: string;
   public archivable?: boolean;
   public parent_item_id?: string;
+  public show_description_in_invoices?: boolean;
+  public show_description_in_quotes?: boolean;
 
   
 
@@ -104,6 +106,9 @@ export class Tier extends Model {
   public starting_unit: number;
   public ending_unit?: number;
   public price: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public price_in_decimal?: string;
 } // ~Tier
 
 export class TaxDetail extends Model {
@@ -139,6 +144,8 @@ export namespace _item_price {
     is_taxable?: boolean;
     free_quantity?: number;
     metadata?: any;
+    show_description_in_invoices?: boolean;
+    show_description_in_quotes?: boolean;
     pricing_model?: string;
     price?: number;
     period_unit?: string;
@@ -171,6 +178,8 @@ export namespace _item_price {
     shipping_period?: number;
     shipping_period_unit?: string;
     billing_cycles?: number;
+    show_description_in_invoices?: boolean;
+    show_description_in_quotes?: boolean;
     tax_detail?: tax_detail_update_params;
     accounting_detail?: accounting_detail_update_params;
     tiers?: Array<tiers_update_params>;

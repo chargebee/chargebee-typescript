@@ -565,8 +565,13 @@ export namespace _invoice {
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;
+    token_id?: string;
     replace_primary_payment_source?: boolean;
+    retain_payment_source?: boolean;
     shipping_address?: shipping_address_create_params;
+    card?: card_create_params;
+    bank_account?: bank_account_create_params;
+    payment_method?: payment_method_create_params;
     payment_intent?: payment_intent_create_params;
     addons?: Array<addons_create_params>;
     charges?: Array<charges_create_params>;
@@ -586,8 +591,13 @@ export namespace _invoice {
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;
+    token_id?: string;
     replace_primary_payment_source?: boolean;
+    retain_payment_source?: boolean;
     shipping_address?: shipping_address_create_for_charge_items_and_charges_params;
+    card?: card_create_for_charge_items_and_charges_params;
+    bank_account?: bank_account_create_for_charge_items_and_charges_params;
+    payment_method?: payment_method_create_for_charge_items_and_charges_params;
     payment_intent?: payment_intent_create_for_charge_items_and_charges_params;
     item_prices?: Array<item_prices_create_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
@@ -818,6 +828,132 @@ export namespace _invoice {
   export interface shipping_address_create_params {
     validation_status?: string;
   }
+  export interface card_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_create_params {
+    gateway_account_id?: string;
+  }
+  export interface card_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    tmp_token?: string;
+  }
+  export interface bank_account_create_params {
+    gateway_account_id?: string;
+  }
+  export interface bank_account_create_params {
+    iban?: string;
+  }
+  export interface bank_account_create_params {
+    first_name?: string;
+  }
+  export interface bank_account_create_params {
+    last_name?: string;
+  }
+  export interface bank_account_create_params {
+    company?: string;
+  }
+  export interface bank_account_create_params {
+    email?: string;
+  }
+  export interface bank_account_create_params {
+    bank_name?: string;
+  }
+  export interface bank_account_create_params {
+    account_number?: string;
+  }
+  export interface bank_account_create_params {
+    routing_number?: string;
+  }
+  export interface bank_account_create_params {
+    bank_code?: string;
+  }
+  export interface bank_account_create_params {
+    account_type?: string;
+  }
+  export interface bank_account_create_params {
+    account_holder_type?: string;
+  }
+  export interface bank_account_create_params {
+    echeck_type?: string;
+  }
+  export interface bank_account_create_params {
+    issuing_country?: string;
+  }
+  export interface bank_account_create_params {
+    swedish_identity_number?: string;
+  }
+  export interface payment_method_create_params {
+    type?: string;
+  }
+  export interface payment_method_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface payment_method_create_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_method_create_params {
+    reference_id?: string;
+  }
+  export interface payment_method_create_params {
+    tmp_token?: string;
+  }
+  export interface payment_method_create_params {
+    issuing_country?: string;
+  }
+  export interface card_create_params {
+    first_name?: string;
+  }
+  export interface card_create_params {
+    last_name?: string;
+  }
+  export interface card_create_params {
+    number?: string;
+  }
+  export interface card_create_params {
+    expiry_month?: number;
+  }
+  export interface card_create_params {
+    expiry_year?: number;
+  }
+  export interface card_create_params {
+    cvv?: string;
+  }
+  export interface card_create_params {
+    billing_addr1?: string;
+  }
+  export interface card_create_params {
+    billing_addr2?: string;
+  }
+  export interface card_create_params {
+    billing_city?: string;
+  }
+  export interface card_create_params {
+    billing_state_code?: string;
+  }
+  export interface card_create_params {
+    billing_state?: string;
+  }
+  export interface card_create_params {
+    billing_zip?: string;
+  }
+  export interface card_create_params {
+    billing_country?: string;
+  }
+  export interface card_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    ip_address?: string;
+  }
   export interface payment_intent_create_params {
     id?: string;
   }
@@ -835,6 +971,9 @@ export namespace _invoice {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
+  }
+  export interface payment_intent_create_params {
+    additional_info?: any;
   }
   export interface addons_create_params {
     id?: string;
@@ -941,6 +1080,132 @@ export namespace _invoice {
   export interface shipping_address_create_for_charge_items_and_charges_params {
     validation_status?: string;
   }
+  export interface card_create_for_charge_items_and_charges_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    gateway_account_id?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    tmp_token?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    gateway_account_id?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    iban?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    first_name?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    last_name?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    company?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    email?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    bank_name?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    account_number?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    routing_number?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    bank_code?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    account_type?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    account_holder_type?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    echeck_type?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    issuing_country?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    swedish_identity_number?: string;
+  }
+  export interface payment_method_create_for_charge_items_and_charges_params {
+    type?: string;
+  }
+  export interface payment_method_create_for_charge_items_and_charges_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface payment_method_create_for_charge_items_and_charges_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_method_create_for_charge_items_and_charges_params {
+    reference_id?: string;
+  }
+  export interface payment_method_create_for_charge_items_and_charges_params {
+    tmp_token?: string;
+  }
+  export interface payment_method_create_for_charge_items_and_charges_params {
+    issuing_country?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    first_name?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    last_name?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    number?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    expiry_month?: number;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    expiry_year?: number;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    cvv?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_addr1?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_addr2?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_city?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_state_code?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_state?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_zip?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_country?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    ip_address?: string;
+  }
   export interface payment_intent_create_for_charge_items_and_charges_params {
     id?: string;
   }
@@ -958,6 +1223,9 @@ export namespace _invoice {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
+  }
+  export interface payment_intent_create_for_charge_items_and_charges_params {
+    additional_info?: any;
   }
   export interface item_prices_create_for_charge_items_and_charges_params {
     item_price_id?: string;

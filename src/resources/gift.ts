@@ -33,6 +33,17 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
+  public static create_for_items(params?: _gift.create_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'create_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/gifts',
+      'urlSuffix': '/create_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static retrieve(gift_id: string, params?: any) {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'retrieve',
@@ -124,10 +135,22 @@ export namespace _gift {
     coupon_ids?: Array<string>;
     gifter?: gifter_create_params;
     gift_receiver?: gift_receiver_create_params;
-    subscription?: subscription_create_params;
     payment_intent?: payment_intent_create_params;
     shipping_address?: shipping_address_create_params;
+    subscription?: subscription_create_params;
     addons?: Array<addons_create_params>;
+  }
+  export interface create_for_items_params {
+    scheduled_at?: number;
+    auto_claim?: boolean;
+    no_expiry?: boolean;
+    claim_expiry_date?: number;
+    coupon_ids?: Array<string>;
+    gifter?: gifter_create_for_items_params;
+    gift_receiver?: gift_receiver_create_for_items_params;
+    payment_intent?: payment_intent_create_for_items_params;
+    shipping_address?: shipping_address_create_for_items_params;
+    subscription_items?: Array<subscription_items_create_for_items_params>;
   }
   export interface gift_list_params {
     limit?: number;
@@ -164,15 +187,6 @@ export namespace _gift {
   export interface gift_receiver_create_params {
     email: string;
   }
-  export interface subscription_create_params {
-    plan_id: string;
-  }
-  export interface subscription_create_params {
-    plan_quantity?: number;
-  }
-  export interface subscription_create_params {
-    plan_quantity_in_decimal?: string;
-  }
   export interface payment_intent_create_params {
     id?: string;
   }
@@ -190,6 +204,9 @@ export namespace _gift {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
+  }
+  export interface payment_intent_create_params {
+    additional_info?: any;
   }
   export interface shipping_address_create_params {
     first_name?: string;
@@ -233,6 +250,15 @@ export namespace _gift {
   export interface shipping_address_create_params {
     validation_status?: string;
   }
+  export interface subscription_create_params {
+    plan_id: string;
+  }
+  export interface subscription_create_params {
+    plan_quantity?: number;
+  }
+  export interface subscription_create_params {
+    plan_quantity_in_decimal?: string;
+  }
   export interface addons_create_params {
     id?: string;
   }
@@ -241,6 +267,99 @@ export namespace _gift {
   }
   export interface addons_create_params {
     quantity_in_decimal?: string;
+  }
+  export interface gifter_create_for_items_params {
+    customer_id: string;
+  }
+  export interface gifter_create_for_items_params {
+    signature: string;
+  }
+  export interface gifter_create_for_items_params {
+    note?: string;
+  }
+  export interface gifter_create_for_items_params {
+    payment_src_id?: string;
+  }
+  export interface gift_receiver_create_for_items_params {
+    customer_id: string;
+  }
+  export interface gift_receiver_create_for_items_params {
+    first_name: string;
+  }
+  export interface gift_receiver_create_for_items_params {
+    last_name: string;
+  }
+  export interface gift_receiver_create_for_items_params {
+    email: string;
+  }
+  export interface payment_intent_create_for_items_params {
+    id?: string;
+  }
+  export interface payment_intent_create_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_intent_create_for_items_params {
+    gw_token?: string;
+  }
+  export interface payment_intent_create_for_items_params {
+    reference_id?: string;
+  }
+  export interface payment_intent_create_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gw_payment_method_id?: string;
+  }
+  export interface payment_intent_create_for_items_params {
+    additional_info?: any;
+  }
+  export interface shipping_address_create_for_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    email?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    company?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    state?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_create_for_items_params {
+    validation_status?: string;
+  }
+  export interface subscription_items_create_for_items_params {
+    item_price_id?: string;
+  }
+  export interface subscription_items_create_for_items_params {
+    quantity?: number;
   }
   export interface gift_receiver_gift_list_params {
     email?: filter._string;

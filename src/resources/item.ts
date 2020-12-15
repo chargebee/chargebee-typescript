@@ -119,7 +119,6 @@ export namespace _item {
     name?: string;
     description?: string;
     is_shippable?: boolean;
-    is_giftable?: boolean;
     item_family_id?: string;
     enabled_in_portal?: boolean;
     redirect_url?: string;
