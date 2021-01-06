@@ -15,18 +15,18 @@ Then import the library as:
 
     import {ChargeBee} from 'chargebee-typescript';
 	var chargebee = new ChargeBee();
-	
+
 ## Usage
 
 ### To create a customer & subscription
 ```typescript
 import {
-     ChargeBee, 
+     ChargeBee,
      _subscription
    } from 'chargebee-typescript';
-   
+
    var chargebee = new ChargeBee();
-   
+
    chargebee.configure({site : "mannar-test",
      api_key : "test___dev__2d2aopx6Dh6tzq5qI3FuV7TuWMbxaudy"});
    chargebee.subscription.create({
@@ -65,7 +65,7 @@ import {
 ### Use of Filters In List API
 ```typescript
 import {
-  ChargeBee, 
+  ChargeBee,
   _subscription
 } from 'chargebee-typescript';
 
@@ -100,7 +100,7 @@ chargebee.subscription.list({
 ### To create subscription with custom headers and custom fields:
 ```typescript
 import {
-  ChargeBee, 
+  ChargeBee,
   _subscription
 } from 'chargebee-typescript';
 
@@ -129,13 +129,13 @@ chargebee.subscription.create({
 ### Error handling:
 ```typescript
 import {
-  ChargeBee, 
+  ChargeBee,
   _subscription
 } from 'chargebee-typescript';
 
 var chargebee = new ChargeBee();
 
-//The callback function that you provide needs to take in two arguments. The first being error object and the 
+//The callback function that you provide needs to take in two arguments. The first being error object and the
 //second being the response. Incase of error, the error object is passed.
 chargebee.subscription.create({
   //create params...
@@ -148,25 +148,24 @@ chargebee.subscription.create({
 });
 
 function handleCreateSubscriptionError(ex) {
-  if (ex.type == "payment") {    
+  if (ex.type == "payment") {
     // First check for card parameters entered by the user.
     // We recommend you to validate the input at the client side itself to catch simple mistakes.
     if ("card[number]" == ex.param) {
-      // Ask your user to recheck the card number. A better way is to use 
-      // Stripe's https://github.com/stripe/jquery.payment for validating it in the client side itself.   
-      
-    //}else if(<other card params> == ex.param){ 
+      // Ask your user to recheck the card number. A better way is to use
+      // Stripe's https://github.com/stripe/jquery.payment for validating it in the client side itself.
+    //}else if(<other card params> == ex.param){
       //Similarly check for other card parameters entered by the user.
       //....
-      
+
     } else {
       // Verfication or processing failures.
       // Provide a standard message to your user to recheck his card details or provide a different card.
-      // Like  'Sorry,there was a problem when processing your card, please check the details and try again'. 
+      // Like  'Sorry,there was a problem when processing your card, please check the details and try again'.
     }
-    
+
   } else if (ex.type == "invalid_request") {
-    // For coupons you could decide to provide specific messages by using 
+    // For coupons you could decide to provide specific messages by using
     // the 'api_error_code' attribute in the ex.
     if ("coupon" == ex.param) {
       if ("resource_not_found" == ex.api_error_code) {
@@ -179,13 +178,13 @@ function handleCreateSubscriptionError(ex) {
         // Inform user to recheck his coupon code.
       }
     } else {
-      // Since you would have validated all other parameters on your side itself, 
+      // Since you would have validated all other parameters on your side itself,
       // this could probably be a bug in your code. Provide a generic message to your users.
     }
   } else if (ex.type == "operation_failed") {
     // Indicates that the request parameters were right but the request couldn't be completed.
     // The reasons might be "api_request_limit_exceeded" or could be due to an issue in ChargeBee side.
-    // These should occur very rarely and mostly be of temporary nature. 
+    // These should occur very rarely and mostly be of temporary nature.
     // You could ask your user to retry after some time.
   } else if (ex.type == "io_error") {
     // Handle IO exceptions such as connection timeout, request timeout etc.
