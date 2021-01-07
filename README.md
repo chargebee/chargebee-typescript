@@ -18,6 +18,38 @@ Then import the library as:
 
 ## Usage
 
+### Before getting started
+This library lazily requests data only upon trying to access it. This means that if you are trying to get back a list of subscriptions for a customer, you need to access the parent of every field you want.
+```typescript
+chargebee.subscription.list({/* params */})
+.request(function(error,result) {
+  if(error){
+    //handle error
+    console.log(error);
+  }else{
+    // An empty Result object
+    console.log(result)
+    // A list of empty Result objects
+    console.log(result.list)
+    // A list of Subscription objects
+    console.log(result.list.map((obj) => obj.subscription))
+    }
+  });
+```
+
+If you have a `result` (or children further down the line) and are unsure what properties are available, you can use `Object.keys` to get a list of available accessor properties. Using `Object.keys` in the previous example would yield
+```typescript
+    // ['list', 'next_offset']
+    console.log(Object.keys(result))
+    // ['1', '2', '3'], e.g. `result.list` is an array with 3 entries
+    console.log(Object.keys(result.list))
+    // ['activated_at', 'base_currency_code', ...]
+    // ['activated_at', 'base_currency_code', ...]
+    // ['activated_at', 'base_currency_code', ...]
+    // Which means we've reached the bottom and should have all the information available from this request
+    console.log(result.list.map((obj) => obj.subscription))
+```
+
 ### To create a customer & subscription
 ```typescript
 import {
@@ -197,6 +229,7 @@ function handleCreateSubscriptionError(ex) {
 }
 
 ```
+
 ## Documentation
 
 The full documentation can be found on the chargebee site here:
