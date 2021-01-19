@@ -255,6 +255,13 @@ export class Result {
         );
         return _address;
     }
+    get usage() {
+        let _usage = this.get(
+            'usage',
+            'Usage'
+        );
+        return _usage;
+    }
     get event() {
         let _event = this.get(
             'event',

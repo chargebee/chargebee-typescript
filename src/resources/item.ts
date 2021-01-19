@@ -22,6 +22,8 @@ export class Item extends Model {
   public item_applicability: string;
   public gift_claim_redirect_url?: string;
   public unit?: string;
+  public metered: boolean;
+  public usage_calculation?: string;
   public applicable_items?: Array<ApplicableItem>;
   public metadata?: any;
 
@@ -113,6 +115,8 @@ export namespace _item {
     unit?: string;
     gift_claim_redirect_url?: string;
     included_in_mrr?: boolean;
+    metered?: boolean;
+    usage_calculation?: string;
     metadata?: any;
   }
   export interface update_params {
@@ -147,5 +151,7 @@ export namespace _item {
     updated_at?: filter._timestamp;
     enabled_for_checkout?: filter._boolean;
     enabled_in_portal?: filter._boolean;
+    metered?: filter._boolean;
+    usage_calculation?: filter._enum;
   }
 }

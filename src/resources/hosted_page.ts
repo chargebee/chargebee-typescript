@@ -34,6 +34,17 @@ export class HostedPage extends Model {
     }, ChargeBee._env)
   }
 
+  public static checkout_one_time(params?: _hosted_page.checkout_one_time_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'checkout_one_time',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/checkout_one_time',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static checkout_new_for_items(params?: _hosted_page.checkout_new_for_items_params) {
     return new RequestWrapper([params], {
       'methodName': 'checkout_new_for_items',
@@ -227,6 +238,22 @@ export namespace _hosted_page {
     contract_term?: contract_term_checkout_new_params;
     addons?: Array<addons_checkout_new_params>;
     event_based_addons?: Array<event_based_addons_checkout_new_params>;
+  }
+  export interface checkout_one_time_params {
+    currency_code?: string;
+    coupon_ids?: Array<string>;
+    redirect_url?: string;
+    cancel_url?: string;
+    pass_thru_content?: string;
+    embed?: boolean;
+    iframe_messaging?: boolean;
+    customer?: customer_checkout_one_time_params;
+    invoice?: invoice_checkout_one_time_params;
+    card?: card_checkout_one_time_params;
+    billing_address?: billing_address_checkout_one_time_params;
+    shipping_address?: shipping_address_checkout_one_time_params;
+    addons?: Array<addons_checkout_one_time_params>;
+    charges?: Array<charges_checkout_one_time_params>;
   }
   export interface checkout_new_for_items_params {
     billing_cycles?: number;
@@ -572,6 +599,177 @@ export namespace _hosted_page {
   }
   export interface event_based_addons_checkout_new_params {
     charge_on?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    id?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    email?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    first_name?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    last_name?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    company?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    taxability?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    locale?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    phone?: string;
+  }
+  export interface invoice_checkout_one_time_params {
+    po_number?: string;
+  }
+  export interface card_checkout_one_time_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_checkout_one_time_params {
+    gateway_account_id?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    vat_number?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    consolidated_invoicing?: boolean;
+  }
+  export interface billing_address_checkout_one_time_params {
+    first_name?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    last_name?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    email?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    company?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    phone?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    line1?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    line2?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    line3?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    city?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    state_code?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    state?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    zip?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    country?: string;
+  }
+  export interface billing_address_checkout_one_time_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    first_name?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    last_name?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    email?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    company?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    phone?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    line1?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    line2?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    line3?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    city?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    state_code?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    state?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    zip?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    country?: string;
+  }
+  export interface shipping_address_checkout_one_time_params {
+    validation_status?: string;
+  }
+  export interface addons_checkout_one_time_params {
+    id?: string;
+  }
+  export interface addons_checkout_one_time_params {
+    quantity?: number;
+  }
+  export interface addons_checkout_one_time_params {
+    unit_price?: number;
+  }
+  export interface addons_checkout_one_time_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_checkout_one_time_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_checkout_one_time_params {
+    date_from?: number;
+  }
+  export interface addons_checkout_one_time_params {
+    date_to?: number;
+  }
+  export interface charges_checkout_one_time_params {
+    amount?: number;
+  }
+  export interface charges_checkout_one_time_params {
+    amount_in_decimal?: string;
+  }
+  export interface charges_checkout_one_time_params {
+    description?: string;
+  }
+  export interface charges_checkout_one_time_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_checkout_one_time_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_checkout_one_time_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_checkout_one_time_params {
+    date_from?: number;
+  }
+  export interface charges_checkout_one_time_params {
+    date_to?: number;
   }
   export interface subscription_checkout_new_for_items_params {
     id?: string;

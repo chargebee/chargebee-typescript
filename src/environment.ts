@@ -3,7 +3,7 @@ let environment = {
     hostSuffix: '.chargebee.com',
     apiPath: '/api/v2',
     timeout: 40000,
-    clientVersion: 'v2.0.7',
+    clientVersion: 'v2.0.8',
     port: 443,
     timemachineWaitInMillis: 3000,
     exportWaitInMillis: 3000

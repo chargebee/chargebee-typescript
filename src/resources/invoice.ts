@@ -717,6 +717,7 @@ export namespace _invoice {
     avalara_transaction_type?: number;
     avalara_service_type?: number;
     comment?: string;
+    subscription_id?: string;
     line_item?: line_item_add_charge_params;
   }
   export interface add_addon_charge_params {
@@ -726,10 +727,12 @@ export namespace _invoice {
     addon_quantity_in_decimal?: string;
     addon_unit_price_in_decimal?: string;
     comment?: string;
+    subscription_id?: string;
     line_item?: line_item_add_addon_charge_params;
   }
   export interface add_charge_item_params {
     comment?: string;
+    subscription_id?: string;
     item_price?: item_price_add_charge_item_params;
     item_tiers?: Array<item_tiers_add_charge_item_params>;
   }

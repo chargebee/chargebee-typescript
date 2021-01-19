@@ -29,6 +29,7 @@ export {_coupon} from "./resources/coupon";
 export {_coupon_set} from "./resources/coupon_set";
 export {_coupon_code} from "./resources/coupon_code";
 export {_address} from "./resources/address";
+export {_usage} from "./resources/usage";
 export {_event} from "./resources/event";
 export {_comment} from "./resources/comment";
 export {_download} from "./resources/download";
@@ -137,6 +138,9 @@ export class ChargeBee {
     }
     get address() {
         return resources.Address;
+    }
+    get usage() {
+        return resources.Usage;
     }
     get event() {
         return resources.Event;

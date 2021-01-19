@@ -154,3 +154,4 @@ export {AttachedItem} from "./attached_item";
 export {DifferentialPrice} from "./differential_price";
 export {Tier as DifferentialPriceTier} from "./differential_price";
 export {ParentPeriod as DifferentialPriceParentPeriod} from "./differential_price";
+export {Usage as Usage} from  "./usage";

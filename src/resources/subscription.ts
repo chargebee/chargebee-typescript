@@ -72,6 +72,8 @@ export class Subscription extends Model {
   public cancel_reason_code?: string;
   public free_period?: number;
   public free_period_unit?: string;
+  public create_pending_invoices?: boolean;
+  public auto_close_invoices?: boolean;
 
   
 
@@ -458,6 +460,8 @@ export class SubscriptionItem extends Model {
   public item_price_id: string;
   public item_type: string;
   public quantity?: number;
+  public metered_quantity?: string;
+  public last_calculated_at?: number;
   public unit_price?: number;
   public amount?: number;
   public free_quantity?: number;
@@ -683,6 +687,9 @@ export namespace _subscription {
     free_period?: number;
     free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;
+    create_pending_invoices?: boolean;
+    auto_close_invoices?: boolean;
+    first_invoice_pending?: boolean;
     shipping_address?: shipping_address_create_with_items_params;
     payment_intent?: payment_intent_create_with_items_params;
     contract_term?: contract_term_create_with_items_params;
@@ -709,6 +716,8 @@ export namespace _subscription {
     has_scheduled_changes?: filter._boolean;
     updated_at?: filter._timestamp;
     offline_payment_method?: filter._enum;
+    auto_close_invoices?: filter._boolean;
+    create_pending_invoices?: filter._boolean;
     override_relationship?: filter._boolean;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
@@ -800,6 +809,8 @@ export namespace _subscription {
     contract_term_billing_cycle_on_renewal?: number;
     free_period?: number;
     free_period_unit?: string;
+    create_pending_invoices?: boolean;
+    auto_close_invoices?: boolean;
     card?: card_update_for_items_params;
     bank_account?: bank_account_update_for_items_params;
     payment_method?: payment_method_update_for_items_params;
@@ -975,6 +986,8 @@ export namespace _subscription {
     create_current_term_invoice?: boolean;
     invoice_notes?: string;
     meta_data?: any;
+    create_pending_invoices?: boolean;
+    auto_close_invoices?: boolean;
     contract_term?: contract_term_import_for_items_params;
     transaction?: transaction_import_for_items_params;
     shipping_address?: shipping_address_import_for_items_params;

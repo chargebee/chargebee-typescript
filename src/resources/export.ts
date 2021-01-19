@@ -415,6 +415,9 @@ export namespace _export {
   export interface subscription_revenue_recognition_params {
     offline_payment_method?: filter._enum;
   }
+  export interface subscription_revenue_recognition_params {
+    auto_close_invoices?: filter._boolean;
+  }
   export interface customer_revenue_recognition_params {
     id?: filter._string;
   }
@@ -456,6 +459,9 @@ export namespace _export {
   }
   export interface customer_revenue_recognition_params {
     offline_payment_method?: filter._enum;
+  }
+  export interface customer_revenue_recognition_params {
+    auto_close_invoices?: filter._boolean;
   }
   export interface invoice_deferred_revenue_params {
     id?: filter._string;
@@ -535,6 +541,9 @@ export namespace _export {
   export interface subscription_deferred_revenue_params {
     offline_payment_method?: filter._enum;
   }
+  export interface subscription_deferred_revenue_params {
+    auto_close_invoices?: filter._boolean;
+  }
   export interface customer_deferred_revenue_params {
     id?: filter._string;
   }
@@ -576,6 +585,9 @@ export namespace _export {
   }
   export interface customer_deferred_revenue_params {
     offline_payment_method?: filter._enum;
+  }
+  export interface customer_deferred_revenue_params {
+    auto_close_invoices?: filter._boolean;
   }
   export interface plan_plans_params {
     id?: filter._string;
@@ -708,6 +720,9 @@ export namespace _export {
   export interface customer_customers_params {
     offline_payment_method?: filter._enum;
   }
+  export interface customer_customers_params {
+    auto_close_invoices?: filter._boolean;
+  }
   export interface subscription_subscriptions_params {
     id?: filter._string;
   }
@@ -746,6 +761,9 @@ export namespace _export {
   }
   export interface subscription_subscriptions_params {
     offline_payment_method?: filter._enum;
+  }
+  export interface subscription_subscriptions_params {
+    auto_close_invoices?: filter._boolean;
   }
   export interface invoice_invoices_params {
     id?: filter._string;
@@ -962,6 +980,12 @@ export namespace _export {
   }
   export interface item_items_params {
     enabled_in_portal?: filter._boolean;
+  }
+  export interface item_items_params {
+    metered?: filter._boolean;
+  }
+  export interface item_items_params {
+    usage_calculation?: filter._enum;
   }
   export interface item_price_item_prices_params {
     id?: filter._string;

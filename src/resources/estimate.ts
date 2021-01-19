@@ -435,6 +435,7 @@ export namespace _estimate {
   export interface create_invoice_for_items_params {
     currency_code?: string;
     coupon?: string;
+    coupon_ids?: Array<string>;
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;

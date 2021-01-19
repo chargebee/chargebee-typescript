@@ -33,6 +33,7 @@ export class Customer extends Model {
   public billing_day_of_week?: string;
   public billing_day_of_week_mode?: string;
   public pii_cleared?: string;
+  public auto_close_invoices?: boolean;
   public card_status?: string;
   public fraud_flag?: string;
   public primary_payment_source_id?: string;
@@ -451,6 +452,7 @@ export namespace _customer {
     exempt_number?: string;
     meta_data?: any;
     offline_payment_method?: string;
+    auto_close_invoices?: boolean;
     consolidated_invoicing?: boolean;
     token_id?: string;
     /**
@@ -479,6 +481,7 @@ export namespace _customer {
     created_at?: filter._timestamp;
     updated_at?: filter._timestamp;
     offline_payment_method?: filter._enum;
+    auto_close_invoices?: filter._boolean;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
     relationship?: relationship_customer_list_params;
@@ -503,6 +506,7 @@ export namespace _customer {
     exempt_number?: string;
     offline_payment_method?: string;
     invoice_notes?: string;
+    auto_close_invoices?: boolean;
     meta_data?: any;
     fraud_flag?: string;
     consolidated_invoicing?: boolean;
@@ -1040,7 +1044,7 @@ export namespace _customer {
   export interface bank_account_collect_payment_params {
   }
   export interface invoice_allocations_collect_payment_params {
-    invoice_id?: string;
+    invoice_id: string;
   }
   export interface invoice_allocations_collect_payment_params {
     allocation_amount?: number;
