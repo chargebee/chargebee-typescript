@@ -102,6 +102,7 @@ export class Core {
 
     static serialize(paramObj) {
         let key, value;
+        let array_ops = ["in", "not_in", "between"];
         for (key in paramObj) {
             value = paramObj[key];
             if (typeof value === 'object' && Util.isObject(value)) {
@@ -110,11 +111,12 @@ export class Core {
                 for (child_key in value) {
                     key = key + "[" + child_key + "]";
                     paramObj[key] = value[child_key];
+                    if (array_ops.includes(child_key)) {
+                        paramObj[key]=JSON.stringify(value[child_key]);
+                    }
                 }
                 delete paramObj[old_key];
                 this.serialize(paramObj);
-            } else if (typeof value === 'object' && Util.isArray(value)) {
-                paramObj[key] = JSON.stringify(value);
             } else {
                 paramObj[key] = value;
             }

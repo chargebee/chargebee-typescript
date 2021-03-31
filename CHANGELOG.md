@@ -1,3 +1,7 @@
+### v2.0.9 (2021-03-31)
+* * *
+* Bug fix: Issue with request parameters serialization
+
 ### v2.0.8 (2021-01-19)
 * * *
 ##### New resources:
