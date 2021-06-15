@@ -38,7 +38,7 @@ export class RequestWrapper {
       return this;
     }
 
-    public request(callBack, envOptions?): Q.Promise<any> {
+    public request(callBack = undefined, envOptions?): Q.Promise<any> {
         let env = {};
         let jsonConstructor =  {}.constructor;
         Util.extend(true, env, this.envArg);
