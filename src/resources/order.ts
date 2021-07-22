@@ -21,6 +21,7 @@ export class Order extends Model {
   public shipping_date?: number;
   public note?: string;
   public tracking_id?: string;
+  public tracking_url?: string;
   public batch_id?: string;
   public created_by?: string;
   public shipment_carrier?: string;
@@ -40,6 +41,9 @@ export class Order extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public cancelled_at?: number;
+  public resent_status?: string;
+  public is_resent: boolean;
+  public original_order_id?: string;
   public order_line_items?: Array<OrderLineItem>;
   public shipping_address?: ShippingAddress;
   public billing_address?: BillingAddress;
@@ -54,6 +58,8 @@ export class Order extends Model {
   public is_gifted?: boolean;
   public gift_note?: string;
   public gift_id?: string;
+  public resend_reason?: string;
+  public resent_orders?: Array<ResentOrder>;
 
   
 
@@ -181,6 +187,17 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
+  public static resend(order_id: string, params?: _order.resend_params) {
+    return new RequestWrapper([order_id, params], {
+      'methodName': 'resend',
+      'httpMethod': 'POST',
+      'urlPrefix': '/orders',
+      'urlSuffix': '/resend',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~Order
 
 export class OrderLineItem extends Model {
@@ -271,6 +288,12 @@ export class LinkedCreditNote extends Model {
   public amount_refunded?: number;
 } // ~LinkedCreditNote
 
+export class ResentOrder extends Model {
+  public order_id: string;
+  public reason?: string;
+  public amount?: number;
+} // ~ResentOrder
+
 
 
   // REQUEST PARAMS
@@ -285,6 +308,7 @@ export namespace _order {
     fulfillment_status?: string;
     note?: string;
     tracking_id?: string;
+    tracking_url?: string;
     batch_id?: string;
   }
   export interface update_params {
@@ -297,6 +321,7 @@ export namespace _order {
     cancellation_reason?: string;
     shipped_at?: number;
     delivered_at?: number;
+    tracking_url?: string;
     tracking_id?: string;
     shipment_carrier?: string;
     fulfillment_status?: string;
@@ -318,6 +343,7 @@ export namespace _order {
     fulfillment_status?: string;
     note?: string;
     tracking_id?: string;
+    tracking_url?: string;
     batch_id?: string;
     shipment_carrier?: string;
     shipping_cut_off_date?: number;
@@ -357,8 +383,16 @@ export namespace _order {
     paid_on?: filter._timestamp;
     updated_at?: filter._timestamp;
     created_at?: filter._timestamp;
+    resent_status?: filter._enum;
+    is_resent?: filter._boolean;
+    original_order_id?: filter._string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
+  }
+  export interface resend_params {
+    shipping_date?: number;
+    resend_reason?: string;
+    order_line_items?: Array<order_line_items_resend_params>;
   }
   export interface shipping_address_update_params {
     first_name?: string;
@@ -503,5 +537,11 @@ export namespace _order {
   }
   export interface credit_note_create_refundable_credit_note_params {
     total: number;
+  }
+  export interface order_line_items_resend_params {
+    id?: string;
+  }
+  export interface order_line_items_resend_params {
+    fulfillment_quantity?: number;
   }
 }

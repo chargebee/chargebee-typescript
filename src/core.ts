@@ -64,8 +64,9 @@ export class Core {
         }
         let data = this.encodeParams(params);
         let protocol = (env.protocol === 'http' ? this.http : this.https);
+
         Util.extend(true, headers, {
-            'Authorization': 'Basic ' + new Buffer(env.api_key + ':').toString('base64'),
+            'Authorization': 'Basic ' + Buffer.from(env.api_key + ':').toString('base64'),
             'Accept': 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
             "Content-Length": data.length,

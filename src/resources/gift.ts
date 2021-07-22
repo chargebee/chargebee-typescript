@@ -206,7 +206,9 @@ export namespace _gift {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_params {
-    additional_info?: any;
+  }
+  export interface payment_intent_create_params {
+    additional_information?: any;
   }
   export interface shipping_address_create_params {
     first_name?: string;
@@ -311,7 +313,9 @@ export namespace _gift {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_for_items_params {
-    additional_info?: any;
+  }
+  export interface payment_intent_create_for_items_params {
+    additional_information?: any;
   }
   export interface shipping_address_create_for_items_params {
     first_name?: string;
@@ -360,6 +364,9 @@ export namespace _gift {
   }
   export interface subscription_items_create_for_items_params {
     quantity?: number;
+  }
+  export interface subscription_items_create_for_items_params {
+    quantity_in_decimal?: string;
   }
   export interface gift_receiver_gift_list_params {
     email?: filter._string;

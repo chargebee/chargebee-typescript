@@ -361,7 +361,7 @@ export namespace _estimate {
     invoice_immediately?: boolean;
   }
   export interface change_term_end_params {
-    term_ends_at?: number;
+    term_ends_at: number;
     prorate?: boolean;
     invoice_immediately?: boolean;
   }
@@ -418,7 +418,8 @@ export namespace _estimate {
   }
   export interface create_invoice_params {
     currency_code?: string;
-    invoice_notes?: string;
+    invoice_note?: string;
+    remove_general_note?: boolean;
     /**
      * @deprecated Please refer API docs to use other attributes
      */
@@ -431,9 +432,15 @@ export namespace _estimate {
     shipping_address?: shipping_address_create_invoice_params;
     addons?: Array<addons_create_invoice_params>;
     charges?: Array<charges_create_invoice_params>;
+    notes_to_remove?: Array<notes_to_remove_create_invoice_params>;
   }
   export interface create_invoice_for_items_params {
     currency_code?: string;
+    invoice_note?: string;
+    remove_general_note?: boolean;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     coupon?: string;
     coupon_ids?: Array<string>;
     authorization_transaction_id?: string;
@@ -444,15 +451,10 @@ export namespace _estimate {
     item_prices?: Array<item_prices_create_invoice_for_items_params>;
     item_tiers?: Array<item_tiers_create_invoice_for_items_params>;
     charges?: Array<charges_create_invoice_for_items_params>;
+    notes_to_remove?: Array<notes_to_remove_create_invoice_for_items_params>;
   }
   export interface subscription_create_subscription_params {
     id?: string;
-  }
-  export interface subscription_create_subscription_params {
-    plan_unit_price_in_decimal?: string;
-  }
-  export interface subscription_create_subscription_params {
-    plan_quantity_in_decimal?: string;
   }
   export interface subscription_create_subscription_params {
     plan_id: string;
@@ -461,7 +463,13 @@ export namespace _estimate {
     plan_quantity?: number;
   }
   export interface subscription_create_subscription_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_create_subscription_params {
     plan_unit_price?: number;
+  }
+  export interface subscription_create_subscription_params {
+    plan_unit_price_in_decimal?: string;
   }
   export interface subscription_create_subscription_params {
     setup_fee?: number;
@@ -533,6 +541,9 @@ export namespace _estimate {
     vat_number?: string;
   }
   export interface customer_create_subscription_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_create_subscription_params {
     registered_for_gst?: boolean;
   }
   export interface customer_create_subscription_params {
@@ -562,6 +573,9 @@ export namespace _estimate {
   }
   export interface subscription_create_subscription_params {
     contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface subscription_create_subscription_params {
+    trial_end_action?: string;
   }
   export interface customer_create_subscription_params {
     exemption_details?: any;
@@ -693,6 +707,9 @@ export namespace _estimate {
     vat_number?: string;
   }
   export interface customer_create_sub_item_estimate_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_create_sub_item_estimate_params {
     registered_for_gst?: boolean;
   }
   export interface customer_create_sub_item_estimate_params {
@@ -729,6 +746,9 @@ export namespace _estimate {
   export interface subscription_create_sub_item_estimate_params {
     contract_term_billing_cycle_on_renewal?: number;
   }
+  export interface subscription_create_sub_item_estimate_params {
+    trial_end_action?: string;
+  }
   export interface subscription_items_create_sub_item_estimate_params {
     item_price_id: string;
   }
@@ -736,7 +756,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface subscription_items_create_sub_item_estimate_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_create_sub_item_estimate_params {
     unit_price?: number;
+  }
+  export interface subscription_items_create_sub_item_estimate_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_create_sub_item_estimate_params {
     billing_cycles?: number;
@@ -775,19 +801,16 @@ export namespace _estimate {
     price?: number;
   }
   export interface item_tiers_create_sub_item_estimate_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_create_sub_item_estimate_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_create_sub_item_estimate_params {
+    price_in_decimal?: string;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
     id?: string;
-  }
-  export interface subscription_create_sub_for_customer_estimate_params {
-    plan_unit_price_in_decimal?: string;
-  }
-  export interface subscription_create_sub_for_customer_estimate_params {
-    plan_quantity_in_decimal?: string;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
     plan_id: string;
@@ -796,7 +819,13 @@ export namespace _estimate {
     plan_quantity?: number;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
     plan_unit_price?: number;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    plan_unit_price_in_decimal?: string;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
     setup_fee?: number;
@@ -852,6 +881,9 @@ export namespace _estimate {
   }
   export interface subscription_create_sub_for_customer_estimate_params {
     contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    trial_end_action?: string;
   }
   export interface addons_create_sub_for_customer_estimate_params {
     id?: string;
@@ -962,6 +994,9 @@ export namespace _estimate {
   export interface subscription_create_sub_item_for_customer_estimate_params {
     contract_term_billing_cycle_on_renewal?: number;
   }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    trial_end_action?: string;
+  }
   export interface subscription_items_create_sub_item_for_customer_estimate_params {
     item_price_id: string;
   }
@@ -969,7 +1004,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
     unit_price?: number;
+  }
+  export interface subscription_items_create_sub_item_for_customer_estimate_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_create_sub_item_for_customer_estimate_params {
     billing_cycles?: number;
@@ -1008,10 +1049,13 @@ export namespace _estimate {
     price?: number;
   }
   export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    price_in_decimal?: string;
   }
   export interface subscription_update_subscription_params {
     id: string;
@@ -1104,6 +1148,9 @@ export namespace _estimate {
     vat_number?: string;
   }
   export interface customer_update_subscription_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_update_subscription_params {
     registered_for_gst?: boolean;
   }
   export interface subscription_update_subscription_params {
@@ -1121,6 +1168,9 @@ export namespace _estimate {
     taxability?: string;
   }
   export interface customer_update_subscription_params {
+  }
+  export interface subscription_update_subscription_params {
+    trial_end_action?: string;
   }
   export interface addons_update_subscription_params {
     id?: string;
@@ -1249,6 +1299,9 @@ export namespace _estimate {
     vat_number?: string;
   }
   export interface customer_update_subscription_for_items_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_update_subscription_for_items_params {
     registered_for_gst?: boolean;
   }
   export interface subscription_update_subscription_for_items_params {
@@ -1267,6 +1320,9 @@ export namespace _estimate {
   }
   export interface customer_update_subscription_for_items_params {
   }
+  export interface subscription_update_subscription_for_items_params {
+    trial_end_action?: string;
+  }
   export interface subscription_items_update_subscription_for_items_params {
     item_price_id: string;
   }
@@ -1274,7 +1330,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface subscription_items_update_subscription_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_update_subscription_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_update_subscription_for_items_params {
     billing_cycles?: number;
@@ -1313,10 +1375,13 @@ export namespace _estimate {
     price?: number;
   }
   export interface item_tiers_update_subscription_for_items_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_update_subscription_for_items_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_update_subscription_for_items_params {
+    price_in_decimal?: string;
   }
   export interface fixed_interval_schedule_advance_invoice_estimate_params {
     number_of_occurrences?: number;
@@ -1355,7 +1420,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface subscription_items_cancel_subscription_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_cancel_subscription_for_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_cancel_subscription_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_cancel_subscription_for_items_params {
     service_period_days?: number;
@@ -1424,7 +1495,7 @@ export namespace _estimate {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_gift_subscription_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface shipping_address_gift_subscription_params {
     first_name?: string;
@@ -1541,7 +1612,7 @@ export namespace _estimate {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_gift_subscription_for_items_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface shipping_address_gift_subscription_for_items_params {
     first_name?: string;
@@ -1590,6 +1661,9 @@ export namespace _estimate {
   }
   export interface subscription_items_gift_subscription_for_items_params {
     quantity?: number;
+  }
+  export interface subscription_items_gift_subscription_for_items_params {
+    quantity_in_decimal?: string;
   }
   export interface invoice_create_invoice_params {
     customer_id?: string;
@@ -1673,6 +1747,18 @@ export namespace _estimate {
     description?: string;
   }
   export interface charges_create_invoice_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_invoice_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_invoice_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_invoice_params {
+    taxjar_product_code?: string;
+  }
+  export interface charges_create_invoice_params {
     avalara_sale_type?: string;
   }
   export interface charges_create_invoice_params {
@@ -1687,17 +1773,11 @@ export namespace _estimate {
   export interface charges_create_invoice_params {
     date_to?: number;
   }
-  export interface charges_create_invoice_params {
-    taxable?: boolean;
+  export interface notes_to_remove_create_invoice_params {
+    entity_type?: string;
   }
-  export interface charges_create_invoice_params {
-    tax_profile_id?: string;
-  }
-  export interface charges_create_invoice_params {
-    avalara_tax_code?: string;
-  }
-  export interface charges_create_invoice_params {
-    taxjar_product_code?: string;
+  export interface notes_to_remove_create_invoice_params {
+    entity_id?: string;
   }
   export interface invoice_create_invoice_for_items_params {
     customer_id: string;
@@ -1757,7 +1837,13 @@ export namespace _estimate {
     quantity?: number;
   }
   export interface item_prices_create_invoice_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface item_prices_create_invoice_for_items_params {
     unit_price?: number;
+  }
+  export interface item_prices_create_invoice_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface item_prices_create_invoice_for_items_params {
     date_from?: number;
@@ -1777,6 +1863,15 @@ export namespace _estimate {
   export interface item_tiers_create_invoice_for_items_params {
     price?: number;
   }
+  export interface item_tiers_create_invoice_for_items_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    price_in_decimal?: string;
+  }
   export interface charges_create_invoice_for_items_params {
     amount?: number;
   }
@@ -1785,6 +1880,18 @@ export namespace _estimate {
   }
   export interface charges_create_invoice_for_items_params {
     description?: string;
+  }
+  export interface charges_create_invoice_for_items_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_invoice_for_items_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_invoice_for_items_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_invoice_for_items_params {
+    taxjar_product_code?: string;
   }
   export interface charges_create_invoice_for_items_params {
     avalara_sale_type?: string;
@@ -1800,5 +1907,11 @@ export namespace _estimate {
   }
   export interface charges_create_invoice_for_items_params {
     date_to?: number;
+  }
+  export interface notes_to_remove_create_invoice_for_items_params {
+    entity_type?: string;
+  }
+  export interface notes_to_remove_create_invoice_for_items_params {
+    entity_id?: string;
   }
 }

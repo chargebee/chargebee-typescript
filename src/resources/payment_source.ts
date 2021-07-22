@@ -236,6 +236,7 @@ export namespace _payment_source {
     tmp_token: string;
     issuing_country?: string;
     replace_primary_payment_source?: boolean;
+    additional_information?: any;
   }
   export interface create_using_permanent_token_params {
     customer_id: string;
@@ -244,6 +245,7 @@ export namespace _payment_source {
     reference_id: string;
     issuing_country?: string;
     replace_primary_payment_source?: boolean;
+    additional_information?: any;
   }
   export interface create_using_token_params {
     customer_id: string;
@@ -283,6 +285,8 @@ export namespace _payment_source {
     status?: filter._enum;
     updated_at?: filter._timestamp;
     created_at?: filter._timestamp;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
   }
   export interface switch_gateway_account_params {
     gateway_account_id: string;
@@ -312,6 +316,9 @@ export namespace _payment_source {
   }
   export interface payment_intent_create_using_payment_intent_params {
     additional_info?: any;
+  }
+  export interface payment_intent_create_using_payment_intent_params {
+    additional_information?: any;
   }
   export interface card_create_card_params {
     gateway_account_id?: string;
@@ -355,6 +362,9 @@ export namespace _payment_source {
   export interface card_create_card_params {
     billing_country?: string;
   }
+  export interface card_create_card_params {
+    additional_information?: any;
+  }
   export interface bank_account_create_bank_account_params {
     gateway_account_id?: string;
   }
@@ -396,6 +406,9 @@ export namespace _payment_source {
   }
   export interface bank_account_create_bank_account_params {
     swedish_identity_number?: string;
+  }
+  export interface bank_account_create_bank_account_params {
+    billing_address?: any;
   }
   export interface card_update_card_params {
     first_name?: string;

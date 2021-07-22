@@ -24,6 +24,7 @@ export class Item extends Model {
   public unit?: string;
   public metered: boolean;
   public usage_calculation?: string;
+  public archived_at?: number;
   public applicable_items?: Array<ApplicableItem>;
   public metadata?: any;
 
@@ -137,6 +138,7 @@ export namespace _item {
     gift_claim_redirect_url?: string;
     metadata?: any;
     included_in_mrr?: boolean;
+    status?: string;
   }
   export interface item_list_params {
     limit?: number;
@@ -153,5 +155,7 @@ export namespace _item {
     enabled_in_portal?: filter._boolean;
     metered?: filter._boolean;
     usage_calculation?: filter._enum;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
   }
 }

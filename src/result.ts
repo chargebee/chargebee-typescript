@@ -120,7 +120,7 @@ export class Result {
         let _order = this.get(
             'order',
             'Order',
-            {'order_line_items': 'OrderOrderLineItem', 'shipping_address': 'OrderShippingAddress', 'billing_address': 'OrderBillingAddress', 'line_item_taxes': 'OrderLineItemTax', 'line_item_discounts': 'OrderLineItemDiscount', 'linked_credit_notes': 'OrderLinkedCreditNote'}
+            {'order_line_items': 'OrderOrderLineItem', 'shipping_address': 'OrderShippingAddress', 'billing_address': 'OrderBillingAddress', 'line_item_taxes': 'OrderLineItemTax', 'line_item_discounts': 'OrderLineItemDiscount', 'linked_credit_notes': 'OrderLinkedCreditNote', 'resent_orders': 'OrderResentOrder'}
         );
         return _order;
     }
@@ -190,7 +190,7 @@ export class Result {
         let _quote = this.get(
             'quote',
             'Quote',
-            {'line_items': 'QuoteLineItem', 'discounts': 'QuoteDiscount', 'line_item_discounts': 'QuoteLineItemDiscount', 'taxes': 'QuoteTax', 'line_item_taxes': 'QuoteLineItemTax', 'shipping_address': 'QuoteShippingAddress', 'billing_address': 'QuoteBillingAddress'}
+            {'line_items': 'QuoteLineItem', 'discounts': 'QuoteDiscount', 'line_item_discounts': 'QuoteLineItemDiscount', 'taxes': 'QuoteTax', 'line_item_taxes': 'QuoteLineItemTax', 'line_item_tiers': 'QuoteLineItemTier', 'shipping_address': 'QuoteShippingAddress', 'billing_address': 'QuoteBillingAddress'}
         );
         return _quote;
     }
@@ -198,7 +198,7 @@ export class Result {
         let _quoted_subscription = this.get(
             'quoted_subscription',
             'QuotedSubscription',
-            {'addons': 'QuotedSubscriptionAddon', 'event_based_addons': 'QuotedSubscriptionEventBasedAddon', 'coupons': 'QuotedSubscriptionCoupon', 'subscription_items': 'QuotedSubscriptionSubscriptionItem', 'item_tiers': 'QuotedSubscriptionItemTier'}
+            {'addons': 'QuotedSubscriptionAddon', 'event_based_addons': 'QuotedSubscriptionEventBasedAddon', 'coupons': 'QuotedSubscriptionCoupon', 'discounts': 'QuotedSubscriptionDiscount', 'subscription_items': 'QuotedSubscriptionSubscriptionItem', 'item_tiers': 'QuotedSubscriptionItemTier', 'quoted_contract_term': 'QuotedSubscriptionQuotedContractTerm'}
         );
         return _quoted_subscription;
     }

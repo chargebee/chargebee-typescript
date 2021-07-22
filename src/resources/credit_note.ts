@@ -40,6 +40,7 @@ export class CreditNote extends Model {
   public allocations?: Array<Allocation>;
   public deleted: boolean;
   public create_reason_code?: string;
+  public vat_number_prefix?: string;
 
   
 
@@ -183,6 +184,7 @@ export class LineItemDiscount extends Model {
   public line_item_id: string;
   public discount_type: string;
   public coupon_id?: string;
+  public entity_id?: string;
   public discount_amount: number;
 } // ~LineItemDiscount
 

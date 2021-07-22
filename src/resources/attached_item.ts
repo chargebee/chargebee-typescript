@@ -11,6 +11,7 @@ export class AttachedItem extends Model {
   public type: string;
   public status?: string;
   public quantity?: number;
+  public quantity_in_decimal?: string;
   public billing_cycles?: number;
   public charge_on_event: string;
   public charge_once: boolean;
@@ -102,6 +103,7 @@ export namespace _attached_item {
     type?: string;
     billing_cycles?: number;
     quantity?: number;
+    quantity_in_decimal?: string;
     charge_on_event?: string;
     charge_once?: boolean;
   }
@@ -110,6 +112,7 @@ export namespace _attached_item {
     type?: string;
     billing_cycles?: number;
     quantity?: number;
+    quantity_in_decimal?: string;
     charge_on_event?: string;
     charge_once?: boolean;
   }

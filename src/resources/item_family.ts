@@ -90,6 +90,7 @@ export namespace _item_family {
     offset?: string;
     id?: filter._string;
     name?: filter._string;
+    updated_at?: filter._timestamp;
   }
   export interface update_params {
     name?: string;

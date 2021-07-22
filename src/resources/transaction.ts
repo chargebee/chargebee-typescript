@@ -16,6 +16,7 @@ export class Transaction extends Model {
   public type: string;
   public date?: number;
   public settled_at?: number;
+  public exchange_rate?: number;
   public currency_code: string;
   public amount?: number;
   public id_at_gateway?: string;
@@ -42,6 +43,7 @@ export class Transaction extends Model {
   public linked_refunds?: Array<LinkedRefund>;
   public linked_payments?: Array<LinkedPayment>;
   public deleted: boolean;
+  public merchant_reference_id?: string;
 
   
 

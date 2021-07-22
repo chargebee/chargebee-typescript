@@ -8,6 +8,7 @@ export class SubscriptionEstimate extends Model {
   public id?: string;
   public currency_code: string;
   public status?: string;
+  public trial_end_action?: string;
   public next_billing_at?: number;
   public pause_date?: number;
   public resume_date?: number;

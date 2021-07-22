@@ -16,6 +16,7 @@ export class Invoice extends Model {
   public date?: number;
   public due_date?: number;
   public net_term_days?: number;
+  public exchange_rate?: number;
   public currency_code: string;
   public total?: number;
   public amount_paid?: number;
@@ -35,6 +36,7 @@ export class Invoice extends Model {
   public local_currency_code?: string;
   public tax: number;
   public first_invoice?: boolean;
+  public new_sales_amount?: number;
   public has_advance_charges?: boolean;
   public term_finalized: boolean;
   public is_gifted: boolean;
@@ -59,6 +61,7 @@ export class Invoice extends Model {
   public payment_owner?: string;
   public void_reason_code?: string;
   public deleted: boolean;
+  public vat_number_prefix?: string;
 
   
 
@@ -411,6 +414,7 @@ export class LineItemDiscount extends Model {
   public line_item_id: string;
   public discount_type: string;
   public coupon_id?: string;
+  public entity_id?: string;
   public discount_amount: number;
 } // ~LineItemDiscount
 
@@ -581,7 +585,8 @@ export namespace _invoice {
     customer_id?: string;
     subscription_id?: string;
     currency_code?: string;
-    invoice_notes?: string;
+    invoice_note?: string;
+    remove_general_note?: boolean;
     po_number?: string;
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -602,6 +607,7 @@ export namespace _invoice {
     item_prices?: Array<item_prices_create_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
     charges?: Array<charges_create_for_charge_items_and_charges_params>;
+    notes_to_remove?: Array<notes_to_remove_create_for_charge_items_and_charges_params>;
   }
   export interface charge_params {
     customer_id?: string;
@@ -654,6 +660,7 @@ export namespace _invoice {
     price_type?: string;
     tax_override_reason?: string;
     vat_number?: string;
+    vat_number_prefix?: string;
     date: number;
     total: number;
     round_off?: number;
@@ -784,6 +791,7 @@ export namespace _invoice {
   }
   export interface update_details_params {
     vat_number?: string;
+    vat_number_prefix?: string;
     po_number?: string;
     comment?: string;
     billing_address?: billing_address_update_details_params;
@@ -891,6 +899,9 @@ export namespace _invoice {
   export interface bank_account_create_params {
     swedish_identity_number?: string;
   }
+  export interface bank_account_create_params {
+    billing_address?: any;
+  }
   export interface payment_method_create_params {
     type?: string;
   }
@@ -911,6 +922,9 @@ export namespace _invoice {
   }
   export interface payment_method_create_params {
     issuing_country?: string;
+  }
+  export interface payment_method_create_params {
+    additional_information?: any;
   }
   export interface card_create_params {
     first_name?: string;
@@ -957,6 +971,9 @@ export namespace _invoice {
      */
     ip_address?: string;
   }
+  export interface card_create_params {
+    additional_information?: any;
+  }
   export interface payment_intent_create_params {
     id?: string;
   }
@@ -976,7 +993,7 @@ export namespace _invoice {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface addons_create_params {
     id?: string;
@@ -1009,6 +1026,18 @@ export namespace _invoice {
     description?: string;
   }
   export interface charges_create_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_params {
+    taxjar_product_code?: string;
+  }
+  export interface charges_create_params {
     avalara_sale_type?: string;
   }
   export interface charges_create_params {
@@ -1022,18 +1051,6 @@ export namespace _invoice {
   }
   export interface charges_create_params {
     date_to?: number;
-  }
-  export interface charges_create_params {
-    taxable?: boolean;
-  }
-  export interface charges_create_params {
-    tax_profile_id?: string;
-  }
-  export interface charges_create_params {
-    avalara_tax_code?: string;
-  }
-  export interface charges_create_params {
-    taxjar_product_code?: string;
   }
   export interface notes_to_remove_create_params {
     entity_type?: string;
@@ -1143,6 +1160,9 @@ export namespace _invoice {
   export interface bank_account_create_for_charge_items_and_charges_params {
     swedish_identity_number?: string;
   }
+  export interface bank_account_create_for_charge_items_and_charges_params {
+    billing_address?: any;
+  }
   export interface payment_method_create_for_charge_items_and_charges_params {
     type?: string;
   }
@@ -1163,6 +1183,9 @@ export namespace _invoice {
   }
   export interface payment_method_create_for_charge_items_and_charges_params {
     issuing_country?: string;
+  }
+  export interface payment_method_create_for_charge_items_and_charges_params {
+    additional_information?: any;
   }
   export interface card_create_for_charge_items_and_charges_params {
     first_name?: string;
@@ -1209,6 +1232,9 @@ export namespace _invoice {
      */
     ip_address?: string;
   }
+  export interface card_create_for_charge_items_and_charges_params {
+    additional_information?: any;
+  }
   export interface payment_intent_create_for_charge_items_and_charges_params {
     id?: string;
   }
@@ -1228,7 +1254,7 @@ export namespace _invoice {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_for_charge_items_and_charges_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface item_prices_create_for_charge_items_and_charges_params {
     item_price_id?: string;
@@ -1237,7 +1263,13 @@ export namespace _invoice {
     quantity?: number;
   }
   export interface item_prices_create_for_charge_items_and_charges_params {
+    quantity_in_decimal?: string;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
     unit_price?: number;
+  }
+  export interface item_prices_create_for_charge_items_and_charges_params {
+    unit_price_in_decimal?: string;
   }
   export interface item_prices_create_for_charge_items_and_charges_params {
     date_from?: number;
@@ -1257,6 +1289,15 @@ export namespace _invoice {
   export interface item_tiers_create_for_charge_items_and_charges_params {
     price?: number;
   }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    price_in_decimal?: string;
+  }
   export interface charges_create_for_charge_items_and_charges_params {
     amount?: number;
   }
@@ -1265,6 +1306,18 @@ export namespace _invoice {
   }
   export interface charges_create_for_charge_items_and_charges_params {
     description?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_for_charge_items_and_charges_params {
+    taxjar_product_code?: string;
   }
   export interface charges_create_for_charge_items_and_charges_params {
     avalara_sale_type?: string;
@@ -1281,17 +1334,11 @@ export namespace _invoice {
   export interface charges_create_for_charge_items_and_charges_params {
     date_to?: number;
   }
-  export interface charges_create_for_charge_items_and_charges_params {
-    taxable?: boolean;
+  export interface notes_to_remove_create_for_charge_items_and_charges_params {
+    entity_type?: string;
   }
-  export interface charges_create_for_charge_items_and_charges_params {
-    tax_profile_id?: string;
-  }
-  export interface charges_create_for_charge_items_and_charges_params {
-    avalara_tax_code?: string;
-  }
-  export interface charges_create_for_charge_items_and_charges_params {
-    taxjar_product_code?: string;
+  export interface notes_to_remove_create_for_charge_items_and_charges_params {
+    entity_id?: string;
   }
   export interface item_price_create_for_charge_item_params {
     item_price_id: string;
@@ -1300,7 +1347,13 @@ export namespace _invoice {
     quantity?: number;
   }
   export interface item_price_create_for_charge_item_params {
+    quantity_in_decimal?: string;
+  }
+  export interface item_price_create_for_charge_item_params {
     unit_price?: number;
+  }
+  export interface item_price_create_for_charge_item_params {
+    unit_price_in_decimal?: string;
   }
   export interface item_price_create_for_charge_item_params {
     date_from?: number;
@@ -1316,6 +1369,15 @@ export namespace _invoice {
   }
   export interface item_tiers_create_for_charge_item_params {
     price?: number;
+  }
+  export interface item_tiers_create_for_charge_item_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_for_charge_item_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_for_charge_item_params {
+    price_in_decimal?: string;
   }
   export interface billing_address_import_invoice_params {
     first_name?: string;
@@ -1501,6 +1563,9 @@ export namespace _invoice {
     unit_amount_in_decimal?: string;
   }
   export interface discounts_import_invoice_params {
+    line_item_id?: string;
+  }
+  export interface discounts_import_invoice_params {
     entity_type: string;
   }
   export interface discounts_import_invoice_params {
@@ -1579,7 +1644,13 @@ export namespace _invoice {
     quantity?: number;
   }
   export interface item_price_add_charge_item_params {
+    quantity_in_decimal?: string;
+  }
+  export interface item_price_add_charge_item_params {
     unit_price?: number;
+  }
+  export interface item_price_add_charge_item_params {
+    unit_price_in_decimal?: string;
   }
   export interface item_price_add_charge_item_params {
     date_from?: number;
@@ -1595,6 +1666,15 @@ export namespace _invoice {
   }
   export interface item_tiers_add_charge_item_params {
     price?: number;
+  }
+  export interface item_tiers_add_charge_item_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface item_tiers_add_charge_item_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface item_tiers_add_charge_item_params {
+    price_in_decimal?: string;
   }
   export interface notes_to_remove_close_params {
     entity_type?: string;

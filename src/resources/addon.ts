@@ -29,6 +29,8 @@ export class Addon extends Model {
   public accounting_code?: string;
   public accounting_category1?: string;
   public accounting_category2?: string;
+  public accounting_category3?: string;
+  public accounting_category4?: string;
   public is_shippable?: boolean;
   public shipping_frequency_period?: number;
   public shipping_frequency_period_unit?: string;
@@ -173,6 +175,8 @@ export namespace _addon {
     accounting_code?: string;
     accounting_category1?: string;
     accounting_category2?: string;
+    accounting_category3?: string;
+    accounting_category4?: string;
     is_shippable?: boolean;
     shipping_frequency_period?: number;
     shipping_frequency_period_unit?: string;
@@ -212,6 +216,8 @@ export namespace _addon {
     accounting_code?: string;
     accounting_category1?: string;
     accounting_category2?: string;
+    accounting_category3?: string;
+    accounting_category4?: string;
     is_shippable?: boolean;
     shipping_frequency_period?: number;
     shipping_frequency_period_unit?: string;

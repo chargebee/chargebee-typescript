@@ -18,11 +18,14 @@ export class Subscription extends Model {
   public remaining_billing_cycles?: number;
   public po_number?: string;
   public auto_collection?: string;
+  public plan_quantity_in_decimal?: string;
+  public plan_unit_price_in_decimal?: string;
   public customer_id: string;
   public plan_amount?: number;
   public plan_free_quantity?: number;
   public status: string;
   public trial_start?: number;
+  public trial_end_action?: string;
   public current_term_start?: number;
   public current_term_end?: number;
   public next_billing_at?: number;
@@ -44,9 +47,8 @@ export class Subscription extends Model {
   public has_scheduled_changes: boolean;
   public payment_source_id?: string;
   public plan_free_quantity_in_decimal?: string;
-  public plan_quantity_in_decimal?: string;
-  public plan_unit_price_in_decimal?: string;
   public plan_amount_in_decimal?: string;
+  public cancel_schedule_created_at?: number;
   public offline_payment_method?: string;
   public subscription_items?: Array<SubscriptionItem>;
   public item_tiers?: Array<ItemTier>;
@@ -460,11 +462,15 @@ export class SubscriptionItem extends Model {
   public item_price_id: string;
   public item_type: string;
   public quantity?: number;
+  public quantity_in_decimal?: string;
   public metered_quantity?: string;
   public last_calculated_at?: number;
   public unit_price?: number;
+  public unit_price_in_decimal?: string;
   public amount?: number;
+  public amount_in_decimal?: string;
   public free_quantity?: number;
+  public free_quantity_in_decimal?: string;
   public trial_end?: number;
   public billing_cycles?: number;
   public service_period_days?: number;
@@ -579,11 +585,11 @@ export class ContractTerm extends Model {
 export namespace _subscription {
   export interface create_params {
     id?: string;
-    plan_unit_price_in_decimal?: string;
-    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
+    plan_quantity_in_decimal?: string;
     plan_unit_price?: number;
+    plan_unit_price_in_decimal?: string;
     setup_fee?: number;
     trial_end?: number;
     billing_cycles?: number;
@@ -611,6 +617,7 @@ export namespace _subscription {
     free_period?: number;
     free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;
+    trial_end_action?: string;
     client_profile_id?: string;
     customer?: customer_create_params;
     card?: card_create_params;
@@ -625,11 +632,11 @@ export namespace _subscription {
   }
   export interface create_for_customer_params {
     id?: string;
-    plan_unit_price_in_decimal?: string;
-    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
+    plan_quantity_in_decimal?: string;
     plan_unit_price?: number;
+    plan_unit_price_in_decimal?: string;
     setup_fee?: number;
     trial_end?: number;
     billing_cycles?: number;
@@ -653,6 +660,7 @@ export namespace _subscription {
     free_period?: number;
     free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;
+    trial_end_action?: string;
     shipping_address?: shipping_address_create_for_customer_params;
     payment_intent?: payment_intent_create_for_customer_params;
     contract_term?: contract_term_create_for_customer_params;
@@ -690,6 +698,7 @@ export namespace _subscription {
     create_pending_invoices?: boolean;
     auto_close_invoices?: boolean;
     first_invoice_pending?: boolean;
+    trial_end_action?: string;
     shipping_address?: shipping_address_create_with_items_params;
     payment_intent?: payment_intent_create_with_items_params;
     contract_term?: contract_term_create_with_items_params;
@@ -764,6 +773,7 @@ export namespace _subscription {
     contract_term_billing_cycle_on_renewal?: number;
     free_period?: number;
     free_period_unit?: string;
+    trial_end_action?: string;
     card?: card_update_params;
     bank_account?: bank_account_update_params;
     payment_method?: payment_method_update_params;
@@ -811,6 +821,7 @@ export namespace _subscription {
     free_period_unit?: string;
     create_pending_invoices?: boolean;
     auto_close_invoices?: boolean;
+    trial_end_action?: string;
     card?: card_update_for_items_params;
     bank_account?: bank_account_update_for_items_params;
     payment_method?: payment_method_update_for_items_params;
@@ -886,11 +897,11 @@ export namespace _subscription {
   export interface import_subscription_params {
     id?: string;
     client_profile_id?: string;
-    plan_unit_price_in_decimal?: string;
-    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
+    plan_quantity_in_decimal?: string;
     plan_unit_price?: number;
+    plan_unit_price_in_decimal?: string;
     setup_fee?: number;
     trial_end?: number;
     billing_cycles?: number;
@@ -925,11 +936,11 @@ export namespace _subscription {
   }
   export interface import_for_customer_params {
     id?: string;
-    plan_unit_price_in_decimal?: string;
-    plan_quantity_in_decimal?: string;
     plan_id: string;
     plan_quantity?: number;
+    plan_quantity_in_decimal?: string;
     plan_unit_price?: number;
+    plan_unit_price_in_decimal?: string;
     setup_fee?: number;
     trial_end?: number;
     billing_cycles?: number;
@@ -1143,6 +1154,9 @@ export namespace _subscription {
   export interface bank_account_create_params {
     swedish_identity_number?: string;
   }
+  export interface bank_account_create_params {
+    billing_address?: any;
+  }
   export interface payment_method_create_params {
     type?: string;
   }
@@ -1163,6 +1177,9 @@ export namespace _subscription {
   }
   export interface payment_method_create_params {
     issuing_country?: string;
+  }
+  export interface payment_method_create_params {
+    additional_information?: any;
   }
   export interface card_create_params {
     first_name?: string;
@@ -1209,6 +1226,9 @@ export namespace _subscription {
      */
     ip_address?: string;
   }
+  export interface card_create_params {
+    additional_information?: any;
+  }
   export interface payment_intent_create_params {
     id?: string;
   }
@@ -1228,7 +1248,7 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface billing_address_create_params {
     first_name?: string;
@@ -1316,6 +1336,9 @@ export namespace _subscription {
   }
   export interface customer_create_params {
     vat_number?: string;
+  }
+  export interface customer_create_params {
+    vat_number_prefix?: string;
   }
   export interface customer_create_params {
     registered_for_gst?: boolean;
@@ -1444,7 +1467,7 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_for_customer_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface contract_term_create_for_customer_params {
     action_at_term_end?: string;
@@ -1561,7 +1584,7 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_with_items_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface contract_term_create_with_items_params {
     action_at_term_end?: string;
@@ -1576,7 +1599,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface subscription_items_create_with_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_create_with_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_create_with_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_create_with_items_params {
     billing_cycles?: number;
@@ -1615,10 +1644,13 @@ export namespace _subscription {
     price?: number;
   }
   export interface item_tiers_create_with_items_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_create_with_items_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_create_with_items_params {
+    price_in_decimal?: string;
   }
   export interface card_update_params {
     /**
@@ -1668,6 +1700,9 @@ export namespace _subscription {
   export interface payment_method_update_params {
     issuing_country?: string;
   }
+  export interface payment_method_update_params {
+    additional_information?: any;
+  }
   export interface card_update_params {
     first_name?: string;
   }
@@ -1713,6 +1748,9 @@ export namespace _subscription {
      */
     ip_address?: string;
   }
+  export interface card_update_params {
+    additional_information?: any;
+  }
   export interface payment_intent_update_params {
     id?: string;
   }
@@ -1732,7 +1770,7 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_update_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface billing_address_update_params {
     first_name?: string;
@@ -1820,6 +1858,9 @@ export namespace _subscription {
   }
   export interface customer_update_params {
     vat_number?: string;
+  }
+  export interface customer_update_params {
+    vat_number_prefix?: string;
   }
   export interface customer_update_params {
     business_customer_without_vat_number?: boolean;
@@ -1929,6 +1970,9 @@ export namespace _subscription {
   export interface payment_method_update_for_items_params {
     issuing_country?: string;
   }
+  export interface payment_method_update_for_items_params {
+    additional_information?: any;
+  }
   export interface card_update_for_items_params {
     first_name?: string;
   }
@@ -1974,6 +2018,9 @@ export namespace _subscription {
      */
     ip_address?: string;
   }
+  export interface card_update_for_items_params {
+    additional_information?: any;
+  }
   export interface payment_intent_update_for_items_params {
     id?: string;
   }
@@ -1993,7 +2040,7 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_update_for_items_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface billing_address_update_for_items_params {
     first_name?: string;
@@ -2083,6 +2130,9 @@ export namespace _subscription {
     vat_number?: string;
   }
   export interface customer_update_for_items_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_update_for_items_params {
     business_customer_without_vat_number?: boolean;
   }
   export interface customer_update_for_items_params {
@@ -2101,7 +2151,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface subscription_items_update_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_update_for_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_update_for_items_params {
     billing_cycles?: number;
@@ -2140,10 +2196,13 @@ export namespace _subscription {
     price?: number;
   }
   export interface item_tiers_update_for_items_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_update_for_items_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_update_for_items_params {
+    price_in_decimal?: string;
   }
   export interface contract_term_reactivate_params {
     action_at_term_end?: string;
@@ -2170,7 +2229,7 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_reactivate_params {
-    additional_info?: any;
+    additional_information?: any;
   }
   export interface fixed_interval_schedule_charge_future_renewals_params {
     number_of_occurrences?: number;
@@ -2329,6 +2388,9 @@ export namespace _subscription {
   export interface payment_method_import_subscription_params {
     issuing_country?: string;
   }
+  export interface payment_method_import_subscription_params {
+    additional_information?: any;
+  }
   export interface card_import_subscription_params {
     first_name?: string;
   }
@@ -2369,6 +2431,9 @@ export namespace _subscription {
     billing_country?: string;
   }
   export interface card_import_subscription_params {
+  }
+  export interface card_import_subscription_params {
+    additional_information?: any;
   }
   export interface billing_address_import_subscription_params {
     first_name?: string;
@@ -2456,6 +2521,9 @@ export namespace _subscription {
   }
   export interface customer_import_subscription_params {
     vat_number?: string;
+  }
+  export interface customer_import_subscription_params {
+    vat_number_prefix?: string;
   }
   export interface transaction_import_subscription_params {
     amount?: number;
@@ -2752,7 +2820,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface subscription_items_import_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_import_for_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_import_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_import_for_items_params {
     billing_cycles?: number;
@@ -2794,10 +2868,13 @@ export namespace _subscription {
     price?: number;
   }
   export interface item_tiers_import_for_items_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_import_for_items_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_import_for_items_params {
+    price_in_decimal?: string;
   }
   export interface event_based_addons_cancel_params {
     id?: string;
@@ -2818,7 +2895,13 @@ export namespace _subscription {
     quantity?: number;
   }
   export interface subscription_items_cancel_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_cancel_for_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_cancel_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_cancel_for_items_params {
     service_period_days?: number;
@@ -2842,6 +2925,6 @@ export namespace _subscription {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_resume_params {
-    additional_info?: any;
+    additional_information?: any;
   }
 }

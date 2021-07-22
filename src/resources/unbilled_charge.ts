@@ -136,7 +136,13 @@ export namespace _unbilled_charge {
     quantity?: number;
   }
   export interface item_prices_create_params {
+    quantity_in_decimal?: string;
+  }
+  export interface item_prices_create_params {
     unit_price?: number;
+  }
+  export interface item_prices_create_params {
+    unit_price_in_decimal?: string;
   }
   export interface item_prices_create_params {
     date_from?: number;
@@ -156,6 +162,15 @@ export namespace _unbilled_charge {
   export interface item_tiers_create_params {
     price?: number;
   }
+  export interface item_tiers_create_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface item_tiers_create_params {
+    price_in_decimal?: string;
+  }
   export interface charges_create_params {
     amount?: number;
   }
@@ -164,6 +179,18 @@ export namespace _unbilled_charge {
   }
   export interface charges_create_params {
     description?: string;
+  }
+  export interface charges_create_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_params {
+    taxjar_product_code?: string;
   }
   export interface charges_create_params {
     avalara_sale_type?: string;
@@ -179,8 +206,5 @@ export namespace _unbilled_charge {
   }
   export interface charges_create_params {
     date_to?: number;
-  }
-  export interface charges_create_params {
-    taxable?: boolean;
   }
 }

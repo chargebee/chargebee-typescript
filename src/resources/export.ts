@@ -945,11 +945,23 @@ export namespace _export {
   export interface order_orders_params {
     updated_at?: filter._timestamp;
   }
+  export interface order_orders_params {
+    resent_status?: filter._enum;
+  }
+  export interface order_orders_params {
+    is_resent?: filter._boolean;
+  }
+  export interface order_orders_params {
+    original_order_id?: filter._string;
+  }
   export interface item_family_item_families_params {
     id?: filter._string;
   }
   export interface item_family_item_families_params {
     name?: filter._string;
+  }
+  export interface item_family_item_families_params {
+    updated_at?: filter._timestamp;
   }
   export interface item_items_params {
     id?: filter._string;

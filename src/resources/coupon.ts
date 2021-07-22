@@ -27,6 +27,8 @@ export class Coupon extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public included_in_mrr?: boolean;
+  public period?: number;
+  public period_unit?: string;
   public plan_ids?: Array<string>;
   public addon_ids?: Array<string>;
   public item_constraints?: Array<ItemConstraint>;
@@ -180,6 +182,8 @@ export namespace _coupon {
     invoice_notes?: string;
     meta_data?: any;
     included_in_mrr?: boolean;
+    period?: number;
+    period_unit?: string;
     plan_constraint?: string;
     addon_constraint?: string;
     plan_ids?: Array<string>;
@@ -206,6 +210,8 @@ export namespace _coupon {
     invoice_notes?: string;
     meta_data?: any;
     included_in_mrr?: boolean;
+    period?: number;
+    period_unit?: string;
     status?: string;
     item_constraints?: Array<item_constraints_create_for_items_params>;
     item_constraint_criteria?: Array<item_constraint_criteria_create_for_items_params>;
@@ -225,6 +231,8 @@ export namespace _coupon {
     invoice_notes?: string;
     meta_data?: any;
     included_in_mrr?: boolean;
+    period?: number;
+    period_unit?: string;
     item_constraints?: Array<item_constraints_update_for_items_params>;
     item_constraint_criteria?: Array<item_constraint_criteria_update_for_items_params>;
   }
@@ -260,6 +268,8 @@ export namespace _coupon {
     invoice_notes?: string;
     meta_data?: any;
     included_in_mrr?: boolean;
+    period?: number;
+    period_unit?: string;
     plan_constraint?: string;
     addon_constraint?: string;
     plan_ids?: Array<string>;

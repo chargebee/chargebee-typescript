@@ -14,20 +14,22 @@ export class ItemPrice extends Model {
   public external_name?: string;
   public pricing_model: string;
   public price?: number;
+  public price_in_decimal?: string;
   public period?: number;
   public currency_code: string;
   public period_unit?: string;
   public trial_period?: number;
   public trial_period_unit?: string;
+  public trial_end_action?: string;
   public shipping_period?: number;
   public shipping_period_unit?: string;
   public billing_cycles?: number;
   public free_quantity: number;
   public free_quantity_in_decimal?: string;
-  public price_in_decimal?: string;
   public resource_version?: number;
   public updated_at?: number;
   public created_at: number;
+  public archived_at?: number;
   public invoice_notes?: string;
   public tiers?: Array<Tier>;
   public is_taxable?: boolean;
@@ -125,6 +127,8 @@ export class AccountingDetail extends Model {
   public accounting_code?: string;
   public accounting_category1?: string;
   public accounting_category2?: string;
+  public accounting_category3?: string;
+  public accounting_category4?: string;
 } // ~AccountingDetail
 
 
@@ -143,11 +147,13 @@ export namespace _item_price {
     currency_code?: string;
     is_taxable?: boolean;
     free_quantity?: number;
+    free_quantity_in_decimal?: string;
     metadata?: any;
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     pricing_model?: string;
     price?: number;
+    price_in_decimal?: string;
     period_unit?: string;
     period?: number;
     trial_period_unit?: string;
@@ -155,6 +161,7 @@ export namespace _item_price {
     shipping_period?: number;
     shipping_period_unit?: string;
     billing_cycles?: number;
+    trial_end_action?: string;
     tax_detail?: tax_detail_create_params;
     accounting_detail?: accounting_detail_create_params;
     tiers?: Array<tiers_create_params>;
@@ -168,9 +175,11 @@ export namespace _item_price {
     invoice_notes?: string;
     is_taxable?: boolean;
     free_quantity?: number;
+    free_quantity_in_decimal?: string;
     metadata?: any;
     pricing_model?: string;
     price?: number;
+    price_in_decimal?: string;
     period_unit?: string;
     period?: number;
     trial_period_unit?: string;
@@ -178,6 +187,7 @@ export namespace _item_price {
     shipping_period?: number;
     shipping_period_unit?: string;
     billing_cycles?: number;
+    trial_end_action?: string;
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     tax_detail?: tax_detail_update_params;
@@ -200,6 +210,8 @@ export namespace _item_price {
     updated_at?: filter._timestamp;
     period_unit?: filter._enum;
     period?: filter._number;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
   }
   export interface tax_detail_create_params {
     tax_profile_id?: string;
@@ -246,6 +258,15 @@ export namespace _item_price {
   export interface tiers_create_params {
     price?: number;
   }
+  export interface tiers_create_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    price_in_decimal?: string;
+  }
   export interface tax_detail_update_params {
     tax_profile_id?: string;
   }
@@ -290,5 +311,14 @@ export namespace _item_price {
   }
   export interface tiers_update_params {
     price?: number;
+  }
+  export interface tiers_update_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    price_in_decimal?: string;
   }
 }

@@ -63,6 +63,7 @@ export class LineItemDiscount extends Model {
   public line_item_id: string;
   public discount_type: string;
   public coupon_id?: string;
+  public entity_id?: string;
   public discount_amount: number;
 } // ~LineItemDiscount
 

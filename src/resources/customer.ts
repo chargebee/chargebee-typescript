@@ -60,6 +60,7 @@ export class Customer extends Model {
   public use_default_hierarchy_settings?: boolean;
   public parent_account_access?: ParentAccountAccess;
   public child_account_access?: ChildAccountAccess;
+  public vat_number_prefix?: string;
 
   
 
@@ -440,6 +441,7 @@ export namespace _customer {
     net_term_days?: number;
     allow_direct_debit?: boolean;
     vat_number?: string;
+    vat_number_prefix?: string;
     registered_for_gst?: boolean;
     taxability?: string;
     exemption_details?: any;
@@ -516,6 +518,7 @@ export namespace _customer {
   }
   export interface update_billing_info_params {
     vat_number?: string;
+    vat_number_prefix?: string;
     registered_for_gst?: boolean;
     business_customer_without_vat_number?: boolean;
     billing_address?: billing_address_update_billing_info_params;
@@ -663,6 +666,9 @@ export namespace _customer {
   export interface bank_account_create_params {
     swedish_identity_number?: string;
   }
+  export interface bank_account_create_params {
+    billing_address?: any;
+  }
   export interface payment_method_create_params {
     type?: string;
   }
@@ -683,6 +689,9 @@ export namespace _customer {
   }
   export interface payment_method_create_params {
     issuing_country?: string;
+  }
+  export interface payment_method_create_params {
+    additional_information?: any;
   }
   export interface card_create_params {
     first_name?: string;
@@ -729,6 +738,9 @@ export namespace _customer {
      */
     ip_address?: string;
   }
+  export interface card_create_params {
+    additional_information?: any;
+  }
   export interface payment_intent_create_params {
     id?: string;
   }
@@ -748,7 +760,9 @@ export namespace _customer {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_params {
-    additional_info?: any;
+  }
+  export interface payment_intent_create_params {
+    additional_information?: any;
   }
   export interface payment_intent_create_params {
   }
@@ -823,6 +837,9 @@ export namespace _customer {
   }
   export interface payment_method_update_payment_method_params {
     issuing_country?: string;
+  }
+  export interface payment_method_update_payment_method_params {
+    additional_information?: any;
   }
   export interface billing_address_update_billing_info_params {
     first_name?: string;
@@ -950,6 +967,9 @@ export namespace _customer {
   export interface payment_method_collect_payment_params {
     tmp_token?: string;
   }
+  export interface payment_method_collect_payment_params {
+    additional_information?: any;
+  }
   export interface card_collect_payment_params {
     gateway_account_id?: string;
   }
@@ -992,6 +1012,9 @@ export namespace _customer {
   export interface card_collect_payment_params {
     billing_country?: string;
   }
+  export interface card_collect_payment_params {
+    additional_information?: any;
+  }
   export interface payment_intent_collect_payment_params {
     id?: string;
   }
@@ -1011,7 +1034,11 @@ export namespace _customer {
     reference_id?: string;
   }
   export interface payment_intent_collect_payment_params {
-    additional_info?: any;
+  }
+  export interface payment_intent_collect_payment_params {
+    additional_information?: any;
+  }
+  export interface bank_account_collect_payment_params {
   }
   export interface bank_account_collect_payment_params {
   }

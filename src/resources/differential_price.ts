@@ -9,6 +9,7 @@ export class DifferentialPrice extends Model {
   public item_price_id: string;
   public parent_item_id: string;
   public price?: number;
+  public price_in_decimal?: string;
   public status?: string;
   public resource_version?: number;
   public updated_at?: number;
@@ -103,6 +104,7 @@ export namespace _differential_price {
   export interface create_params {
     parent_item_id: string;
     price?: number;
+    price_in_decimal?: string;
     parent_periods?: Array<parent_periods_create_params>;
     tiers?: Array<tiers_create_params>;
   }
@@ -112,6 +114,7 @@ export namespace _differential_price {
   export interface update_params {
     item_price_id: string;
     price?: number;
+    price_in_decimal?: string;
     parent_periods?: Array<parent_periods_update_params>;
     tiers?: Array<tiers_update_params>;
   }
@@ -141,6 +144,15 @@ export namespace _differential_price {
   export interface tiers_create_params {
     price?: number;
   }
+  export interface tiers_create_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_create_params {
+    price_in_decimal?: string;
+  }
   export interface parent_periods_update_params {
     period_unit: string;
   }
@@ -155,5 +167,14 @@ export namespace _differential_price {
   }
   export interface tiers_update_params {
     price?: number;
+  }
+  export interface tiers_update_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    price_in_decimal?: string;
   }
 }

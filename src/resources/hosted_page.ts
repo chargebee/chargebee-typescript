@@ -45,6 +45,17 @@ export class HostedPage extends Model {
     }, ChargeBee._env)
   }
 
+  public static checkout_one_time_for_items(params?: _hosted_page.checkout_one_time_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'checkout_one_time_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/checkout_one_time_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static checkout_new_for_items(params?: _hosted_page.checkout_new_for_items_params) {
     return new RequestWrapper([params], {
       'methodName': 'checkout_new_for_items',
@@ -155,6 +166,17 @@ export class HostedPage extends Model {
     }, ChargeBee._env)
   }
 
+  public static checkout_gift_for_items(params?: _hosted_page.checkout_gift_for_items_params) {
+    return new RequestWrapper([params], {
+      'methodName': 'checkout_gift_for_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/checkout_gift_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static claim_gift(params?: _hosted_page.claim_gift_params) {
     return new RequestWrapper([params], {
       'methodName': 'claim_gift',
@@ -241,6 +263,7 @@ export namespace _hosted_page {
   }
   export interface checkout_one_time_params {
     currency_code?: string;
+    invoice_note?: string;
     coupon_ids?: Array<string>;
     redirect_url?: string;
     cancel_url?: string;
@@ -255,6 +278,22 @@ export namespace _hosted_page {
     addons?: Array<addons_checkout_one_time_params>;
     charges?: Array<charges_checkout_one_time_params>;
   }
+  export interface checkout_one_time_for_items_params {
+    invoice_note?: string;
+    coupon_ids?: Array<string>;
+    currency_code?: string;
+    redirect_url?: string;
+    cancel_url?: string;
+    pass_thru_content?: string;
+    customer?: customer_checkout_one_time_for_items_params;
+    invoice?: invoice_checkout_one_time_for_items_params;
+    card?: card_checkout_one_time_for_items_params;
+    billing_address?: billing_address_checkout_one_time_for_items_params;
+    shipping_address?: shipping_address_checkout_one_time_for_items_params;
+    item_prices?: Array<item_prices_checkout_one_time_for_items_params>;
+    item_tiers?: Array<item_tiers_checkout_one_time_for_items_params>;
+    charges?: Array<charges_checkout_one_time_for_items_params>;
+  }
   export interface checkout_new_for_items_params {
     billing_cycles?: number;
     mandatory_items_to_remove?: Array<string>;
@@ -264,11 +303,13 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
+    allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_new_for_items_params;
     customer?: customer_checkout_new_for_items_params;
     card?: card_checkout_new_for_items_params;
     billing_address?: billing_address_checkout_new_for_items_params;
     shipping_address?: shipping_address_checkout_new_for_items_params;
+    contract_term?: contract_term_checkout_new_for_items_params;
     subscription_items?: Array<subscription_items_checkout_new_for_items_params>;
     item_tiers?: Array<item_tiers_checkout_new_for_items_params>;
   }
@@ -308,6 +349,7 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
+    allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_existing_for_items_params;
     customer?: customer_checkout_existing_for_items_params;
     card?: card_checkout_existing_for_items_params;
@@ -360,6 +402,12 @@ export namespace _hosted_page {
     subscription?: subscription_checkout_gift_params;
     addons?: Array<addons_checkout_gift_params>;
   }
+  export interface checkout_gift_for_items_params {
+    redirect_url?: string;
+    coupon_ids?: Array<string>;
+    gifter?: gifter_checkout_gift_for_items_params;
+    subscription_items?: Array<subscription_items_checkout_gift_for_items_params>;
+  }
   export interface claim_gift_params {
     redirect_url?: string;
     gift?: gift_claim_gift_params;
@@ -404,19 +452,19 @@ export namespace _hosted_page {
     phone?: string;
   }
   export interface subscription_checkout_new_params {
-    plan_unit_price_in_decimal?: string;
-  }
-  export interface subscription_checkout_new_params {
-    plan_quantity_in_decimal?: string;
-  }
-  export interface subscription_checkout_new_params {
     plan_id: string;
   }
   export interface subscription_checkout_new_params {
     plan_quantity?: number;
   }
   export interface subscription_checkout_new_params {
+    plan_quantity_in_decimal?: string;
+  }
+  export interface subscription_checkout_new_params {
     plan_unit_price?: number;
+  }
+  export interface subscription_checkout_new_params {
+    plan_unit_price_in_decimal?: string;
   }
   export interface subscription_checkout_new_params {
     setup_fee?: number;
@@ -453,6 +501,9 @@ export namespace _hosted_page {
   }
   export interface customer_checkout_new_params {
     vat_number?: string;
+  }
+  export interface customer_checkout_new_params {
+    vat_number_prefix?: string;
   }
   export interface customer_checkout_new_params {
   }
@@ -640,6 +691,9 @@ export namespace _hosted_page {
     vat_number?: string;
   }
   export interface customer_checkout_one_time_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_checkout_one_time_params {
     consolidated_invoicing?: boolean;
   }
   export interface billing_address_checkout_one_time_params {
@@ -757,6 +811,18 @@ export namespace _hosted_page {
     description?: string;
   }
   export interface charges_checkout_one_time_params {
+    taxable?: boolean;
+  }
+  export interface charges_checkout_one_time_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_checkout_one_time_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_checkout_one_time_params {
+    taxjar_product_code?: string;
+  }
+  export interface charges_checkout_one_time_params {
     avalara_sale_type?: string;
   }
   export interface charges_checkout_one_time_params {
@@ -769,6 +835,213 @@ export namespace _hosted_page {
     date_from?: number;
   }
   export interface charges_checkout_one_time_params {
+    date_to?: number;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    id?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    email?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    first_name?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    last_name?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    company?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    taxability?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    locale?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    phone?: string;
+  }
+  export interface invoice_checkout_one_time_for_items_params {
+    po_number?: string;
+  }
+  export interface card_checkout_one_time_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_checkout_one_time_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    vat_number?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    consolidated_invoicing?: boolean;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    first_name?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    last_name?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    email?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    company?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    phone?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    line1?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    line2?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    line3?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    city?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    state_code?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    state?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    zip?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    country?: string;
+  }
+  export interface billing_address_checkout_one_time_for_items_params {
+    validation_status?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    first_name?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    last_name?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    email?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    company?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    phone?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    line1?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    line2?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    line3?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    city?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    state_code?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    state?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    zip?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    country?: string;
+  }
+  export interface shipping_address_checkout_one_time_for_items_params {
+    validation_status?: string;
+  }
+  export interface item_prices_checkout_one_time_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_prices_checkout_one_time_for_items_params {
+    quantity?: number;
+  }
+  export interface item_prices_checkout_one_time_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface item_prices_checkout_one_time_for_items_params {
+    unit_price?: number;
+  }
+  export interface item_prices_checkout_one_time_for_items_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface item_prices_checkout_one_time_for_items_params {
+    date_from?: number;
+  }
+  export interface item_prices_checkout_one_time_for_items_params {
+    date_to?: number;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    price?: number;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    price_in_decimal?: string;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    amount?: number;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    amount_in_decimal?: string;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    description?: string;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    taxable?: boolean;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    taxjar_product_code?: string;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_checkout_one_time_for_items_params {
+    date_from?: number;
+  }
+  export interface charges_checkout_one_time_for_items_params {
     date_to?: number;
   }
   export interface subscription_checkout_new_for_items_params {
@@ -835,6 +1108,9 @@ export namespace _hosted_page {
     vat_number?: string;
   }
   export interface customer_checkout_new_for_items_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
   }
   export interface billing_address_checkout_new_for_items_params {
     first_name?: string;
@@ -919,6 +1195,15 @@ export namespace _hosted_page {
   }
   export interface shipping_address_checkout_new_for_items_params {
     validation_status?: string;
+  }
+  export interface contract_term_checkout_new_for_items_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_checkout_new_for_items_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface subscription_checkout_new_for_items_params {
     affiliate_token?: string;
@@ -930,7 +1215,13 @@ export namespace _hosted_page {
     quantity?: number;
   }
   export interface subscription_items_checkout_new_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_checkout_new_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_checkout_new_for_items_params {
     billing_cycles?: number;
@@ -969,10 +1260,13 @@ export namespace _hosted_page {
     price?: number;
   }
   export interface item_tiers_checkout_new_for_items_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_checkout_new_for_items_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_checkout_new_for_items_params {
+    price_in_decimal?: string;
   }
   export interface subscription_checkout_existing_params {
     id: string;
@@ -1018,6 +1312,9 @@ export namespace _hosted_page {
   }
   export interface customer_checkout_existing_params {
     vat_number?: string;
+  }
+  export interface customer_checkout_existing_params {
+    vat_number_prefix?: string;
   }
   export interface customer_checkout_existing_params {
   }
@@ -1120,6 +1417,9 @@ export namespace _hosted_page {
     vat_number?: string;
   }
   export interface customer_checkout_existing_for_items_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_checkout_existing_for_items_params {
   }
   export interface card_checkout_existing_for_items_params {
     /**
@@ -1148,7 +1448,13 @@ export namespace _hosted_page {
     quantity?: number;
   }
   export interface subscription_items_checkout_existing_for_items_params {
+    quantity_in_decimal?: string;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
     unit_price?: number;
+  }
+  export interface subscription_items_checkout_existing_for_items_params {
+    unit_price_in_decimal?: string;
   }
   export interface subscription_items_checkout_existing_for_items_params {
     billing_cycles?: number;
@@ -1187,10 +1493,13 @@ export namespace _hosted_page {
     price?: number;
   }
   export interface item_tiers_checkout_existing_for_items_params {
+    starting_unit_in_decimal?: string;
   }
   export interface item_tiers_checkout_existing_for_items_params {
+    ending_unit_in_decimal?: string;
   }
   export interface item_tiers_checkout_existing_for_items_params {
+    price_in_decimal?: string;
   }
   export interface customer_update_card_params {
     id: string;
@@ -1200,6 +1509,12 @@ export namespace _hosted_page {
      * @deprecated Please refer API docs to use other attributes
      */
     vat_number?: string;
+  }
+  export interface customer_update_card_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    vat_number_prefix?: string;
   }
   export interface card_update_card_params {
     /**
@@ -1220,6 +1535,12 @@ export namespace _hosted_page {
      * @deprecated Please refer API docs to use other attributes
      */
     vat_number?: string;
+  }
+  export interface customer_update_payment_method_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    vat_number_prefix?: string;
   }
   export interface card_update_payment_method_params {
     /**
@@ -1293,6 +1614,21 @@ export namespace _hosted_page {
     quantity?: number;
   }
   export interface addons_checkout_gift_params {
+    quantity_in_decimal?: string;
+  }
+  export interface gifter_checkout_gift_for_items_params {
+    customer_id?: string;
+  }
+  export interface gifter_checkout_gift_for_items_params {
+    locale?: string;
+  }
+  export interface subscription_items_checkout_gift_for_items_params {
+    item_price_id?: string;
+  }
+  export interface subscription_items_checkout_gift_for_items_params {
+    quantity?: number;
+  }
+  export interface subscription_items_checkout_gift_for_items_params {
     quantity_in_decimal?: string;
   }
   export interface gift_claim_gift_params {

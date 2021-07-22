@@ -15,6 +15,7 @@ export class Plan extends Model {
   public period_unit: string;
   public trial_period?: number;
   public trial_period_unit?: string;
+  public trial_end_action?: string;
   public pricing_model: string;
   public charge_model: string;
   public free_quantity: number;
@@ -36,6 +37,8 @@ export class Plan extends Model {
   public accounting_code?: string;
   public accounting_category1?: string;
   public accounting_category2?: string;
+  public accounting_category3?: string;
+  public accounting_category4?: string;
   public is_shippable?: boolean;
   public shipping_frequency_period?: number;
   public shipping_frequency_period_unit?: string;
@@ -182,6 +185,7 @@ export namespace _plan {
     description?: string;
     trial_period?: number;
     trial_period_unit?: string;
+    trial_end_action?: string;
     period?: number;
     period_unit?: string;
     setup_cost?: number;
@@ -215,6 +219,8 @@ export namespace _plan {
     accounting_code?: string;
     accounting_category1?: string;
     accounting_category2?: string;
+    accounting_category3?: string;
+    accounting_category4?: string;
     is_shippable?: boolean;
     shipping_frequency_period?: number;
     shipping_frequency_period_unit?: string;
@@ -236,6 +242,7 @@ export namespace _plan {
     description?: string;
     trial_period?: number;
     trial_period_unit?: string;
+    trial_end_action?: string;
     period?: number;
     period_unit?: string;
     setup_cost?: number;
@@ -269,6 +276,8 @@ export namespace _plan {
     accounting_code?: string;
     accounting_category1?: string;
     accounting_category2?: string;
+    accounting_category3?: string;
+    accounting_category4?: string;
     is_shippable?: boolean;
     shipping_frequency_period?: number;
     shipping_frequency_period_unit?: string;

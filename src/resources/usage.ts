@@ -39,7 +39,7 @@ export class Usage extends Model {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
       'urlPrefix': '/subscriptions',
-      'urlSuffix': '/usage',
+      'urlSuffix': '/usages',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -112,6 +112,8 @@ export namespace _usage {
     item_price_id?: filter._string;
     invoice_id?: filter._string;
     source?: filter._enum;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
   }
   export interface pdf_params {
     disposition_type?: string;
