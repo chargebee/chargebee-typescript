@@ -43,6 +43,8 @@ export class Transaction extends Model {
   public linked_refunds?: Array<LinkedRefund>;
   public linked_payments?: Array<LinkedPayment>;
   public deleted: boolean;
+  public iin?: string;
+  public last4?: string;
   public merchant_reference_id?: string;
 
   

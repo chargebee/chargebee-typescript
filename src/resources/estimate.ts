@@ -242,6 +242,7 @@ export namespace _estimate {
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
     invoice_immediately?: boolean;
+    invoice_date?: number;
     client_profile_id?: string;
     subscription?: subscription_create_subscription_params;
     billing_address?: billing_address_create_subscription_params;
@@ -258,6 +259,7 @@ export namespace _estimate {
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
     invoice_immediately?: boolean;
+    invoice_date?: number;
     client_profile_id?: string;
     subscription?: subscription_create_sub_item_estimate_params;
     billing_address?: billing_address_create_sub_item_estimate_params;
@@ -274,6 +276,7 @@ export namespace _estimate {
     mandatory_addons_to_remove?: Array<string>;
     terms_to_charge?: number;
     billing_alignment_mode?: string;
+    invoice_date?: number;
     coupon_ids?: Array<string>;
     subscription?: subscription_create_sub_for_customer_estimate_params;
     shipping_address?: shipping_address_create_sub_for_customer_estimate_params;
@@ -288,6 +291,7 @@ export namespace _estimate {
     mandatory_items_to_remove?: Array<string>;
     terms_to_charge?: number;
     billing_alignment_mode?: string;
+    invoice_date?: number;
     coupon_ids?: Array<string>;
     subscription?: subscription_create_sub_item_for_customer_estimate_params;
     shipping_address?: shipping_address_create_sub_item_for_customer_estimate_params;
@@ -298,6 +302,7 @@ export namespace _estimate {
   export interface update_subscription_params {
     replace_addon_list?: boolean;
     mandatory_addons_to_remove?: Array<string>;
+    invoice_date?: number;
     billing_cycles?: number;
     terms_to_charge?: number;
     reactivate_from?: number;
@@ -321,6 +326,7 @@ export namespace _estimate {
   export interface update_subscription_for_items_params {
     mandatory_items_to_remove?: Array<string>;
     replace_items_list?: boolean;
+    invoice_date?: number;
     billing_cycles?: number;
     terms_to_charge?: number;
     reactivate_from?: number;
@@ -373,6 +379,7 @@ export namespace _estimate {
     account_receivables_handling?: string;
     refundable_credits_handling?: string;
     contract_term_cancel_option?: string;
+    invoice_date?: number;
     cancel_reason_code?: string;
     event_based_addons?: Array<event_based_addons_cancel_subscription_params>;
   }
@@ -384,6 +391,7 @@ export namespace _estimate {
     account_receivables_handling?: string;
     refundable_credits_handling?: string;
     contract_term_cancel_option?: string;
+    invoice_date?: number;
     cancel_reason_code?: string;
     subscription_items?: Array<subscription_items_cancel_subscription_for_items_params>;
   }
@@ -428,6 +436,7 @@ export namespace _estimate {
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;
+    invoice_date?: number;
     invoice?: invoice_create_invoice_params;
     shipping_address?: shipping_address_create_invoice_params;
     addons?: Array<addons_create_invoice_params>;
@@ -446,6 +455,7 @@ export namespace _estimate {
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;
+    invoice_date?: number;
     invoice?: invoice_create_invoice_for_items_params;
     shipping_address?: shipping_address_create_invoice_for_items_params;
     item_prices?: Array<item_prices_create_invoice_for_items_params>;

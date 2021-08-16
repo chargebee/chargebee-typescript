@@ -70,6 +70,7 @@ export class Subscription extends Model {
   public meta_data?: any;
   public metadata?: any;
   public deleted: boolean;
+  public changes_scheduled_at?: number;
   public contract_term?: ContractTerm;
   public cancel_reason_code?: string;
   public free_period?: number;
@@ -612,6 +613,7 @@ export namespace _subscription {
      */
     created_from_ip?: string;
     invoice_notes?: string;
+    invoice_date?: number;
     meta_data?: any;
     invoice_immediately?: boolean;
     free_period?: number;
@@ -655,6 +657,7 @@ export namespace _subscription {
     payment_source_id?: string;
     override_relationship?: boolean;
     invoice_notes?: string;
+    invoice_date?: number;
     meta_data?: any;
     invoice_immediately?: boolean;
     free_period?: number;
@@ -690,6 +693,7 @@ export namespace _subscription {
     payment_source_id?: string;
     override_relationship?: boolean;
     invoice_notes?: string;
+    invoice_date?: number;
     meta_data?: any;
     invoice_immediately?: boolean;
     free_period?: number;
@@ -746,6 +750,7 @@ export namespace _subscription {
     mandatory_addons_to_remove?: Array<string>;
     plan_quantity_in_decimal?: string;
     plan_unit_price_in_decimal?: string;
+    invoice_date?: number;
     start_date?: number;
     trial_end?: number;
     billing_cycles?: number;
@@ -770,6 +775,8 @@ export namespace _subscription {
     meta_data?: any;
     invoice_immediately?: boolean;
     override_relationship?: boolean;
+    changes_scheduled_at?: number;
+    change_option?: string;
     contract_term_billing_cycle_on_renewal?: number;
     free_period?: number;
     free_period_unit?: string;
@@ -792,6 +799,7 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     setup_fee?: number;
+    invoice_date?: number;
     start_date?: number;
     trial_end?: number;
     billing_cycles?: number;
@@ -816,6 +824,8 @@ export namespace _subscription {
     meta_data?: any;
     invoice_immediately?: boolean;
     override_relationship?: boolean;
+    changes_scheduled_at?: number;
+    change_option?: string;
     contract_term_billing_cycle_on_renewal?: number;
     free_period?: number;
     free_period_unit?: string;
@@ -849,6 +859,7 @@ export namespace _subscription {
     invoice_immediately?: boolean;
     billing_alignment_mode?: string;
     terms_to_charge?: number;
+    invoice_date?: number;
     contract_term_billing_cycle_on_renewal?: number;
     contract_term?: contract_term_reactivate_params;
     payment_intent?: payment_intent_reactivate_params;
@@ -1025,6 +1036,7 @@ export namespace _subscription {
     account_receivables_handling?: string;
     refundable_credits_handling?: string;
     contract_term_cancel_option?: string;
+    invoice_date?: number;
     cancel_reason_code?: string;
     event_based_addons?: Array<event_based_addons_cancel_params>;
   }
@@ -1036,6 +1048,7 @@ export namespace _subscription {
     account_receivables_handling?: string;
     refundable_credits_handling?: string;
     contract_term_cancel_option?: string;
+    invoice_date?: number;
     cancel_reason_code?: string;
     subscription_items?: Array<subscription_items_cancel_for_items_params>;
   }

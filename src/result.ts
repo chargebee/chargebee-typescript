@@ -198,9 +198,17 @@ export class Result {
         let _quoted_subscription = this.get(
             'quoted_subscription',
             'QuotedSubscription',
-            {'addons': 'QuotedSubscriptionAddon', 'event_based_addons': 'QuotedSubscriptionEventBasedAddon', 'coupons': 'QuotedSubscriptionCoupon', 'discounts': 'QuotedSubscriptionDiscount', 'subscription_items': 'QuotedSubscriptionSubscriptionItem', 'item_tiers': 'QuotedSubscriptionItemTier', 'quoted_contract_term': 'QuotedSubscriptionQuotedContractTerm'}
+            {'addons': 'QuotedSubscriptionAddon', 'event_based_addons': 'QuotedSubscriptionEventBasedAddon', 'coupons': 'QuotedSubscriptionCoupon', 'subscription_items': 'QuotedSubscriptionSubscriptionItem', 'item_tiers': 'QuotedSubscriptionItemTier', 'quoted_contract_term': 'QuotedSubscriptionQuotedContractTerm'}
         );
         return _quoted_subscription;
+    }
+    get quoted_charge() {
+        let _quoted_charge = this.get(
+            'quoted_charge',
+            'QuotedCharge',
+            {'charges': 'QuotedChargeCharge', 'addons': 'QuotedChargeAddon', 'invoice_items': 'QuotedChargeInvoiceItem', 'item_tiers': 'QuotedChargeItemTier', 'coupons': 'QuotedChargeCoupon'}
+        );
+        return _quoted_charge;
     }
     get quote_line_group() {
         let _quote_line_group = this.get(

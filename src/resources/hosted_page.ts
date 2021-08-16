@@ -316,6 +316,7 @@ export namespace _hosted_page {
   export interface checkout_existing_params {
     replace_addon_list?: boolean;
     mandatory_addons_to_remove?: Array<string>;
+    invoice_date?: number;
     billing_cycles?: number;
     terms_to_charge?: number;
     reactivate_from?: number;
@@ -339,6 +340,7 @@ export namespace _hosted_page {
   export interface checkout_existing_for_items_params {
     mandatory_items_to_remove?: Array<string>;
     replace_items_list?: boolean;
+    invoice_date?: number;
     billing_cycles?: number;
     terms_to_charge?: number;
     reactivate_from?: number;

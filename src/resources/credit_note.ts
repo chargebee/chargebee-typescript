@@ -22,6 +22,7 @@ export class CreditNote extends Model {
   public amount_available?: number;
   public refunded_at?: number;
   public voided_at?: number;
+  public generated_at?: number;
   public resource_version?: number;
   public updated_at?: number;
   public sub_total: number;

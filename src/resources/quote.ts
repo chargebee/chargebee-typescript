@@ -423,6 +423,8 @@ export namespace _quote {
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
     replace_coupon_list?: boolean;
+    change_option?: string;
+    changes_scheduled_at?: number;
     force_term_reset?: boolean;
     reactivate?: boolean;
     subscription?: subscription_update_subscription_quote_params;
@@ -444,6 +446,8 @@ export namespace _quote {
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
     replace_coupon_list?: boolean;
+    change_option?: string;
+    changes_scheduled_at?: number;
     force_term_reset?: boolean;
     reactivate?: boolean;
     subscription?: subscription_edit_update_subscription_quote_params;
@@ -462,6 +466,7 @@ export namespace _quote {
     expires_at?: number;
     currency_code?: string;
     coupon?: string;
+    coupon_ids?: Array<string>;
     shipping_address?: shipping_address_create_for_onetime_charges_params;
     addons?: Array<addons_create_for_onetime_charges_params>;
     charges?: Array<charges_create_for_onetime_charges_params>;
@@ -472,6 +477,7 @@ export namespace _quote {
     expires_at?: number;
     currency_code?: string;
     coupon?: string;
+    coupon_ids?: Array<string>;
     shipping_address?: shipping_address_edit_one_time_quote_params;
     addons?: Array<addons_edit_one_time_quote_params>;
     charges?: Array<charges_edit_one_time_quote_params>;
@@ -517,6 +523,8 @@ export namespace _quote {
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
     replace_coupon_list?: boolean;
+    change_option?: string;
+    changes_scheduled_at?: number;
     force_term_reset?: boolean;
     reactivate?: boolean;
     subscription?: subscription_update_subscription_quote_for_items_params;
@@ -538,6 +546,8 @@ export namespace _quote {
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
     replace_coupon_list?: boolean;
+    change_option?: string;
+    changes_scheduled_at?: number;
     force_term_reset?: boolean;
     reactivate?: boolean;
     subscription?: subscription_edit_update_subscription_quote_for_items_params;
@@ -556,6 +566,7 @@ export namespace _quote {
     expires_at?: number;
     currency_code?: string;
     coupon?: string;
+    coupon_ids?: Array<string>;
     shipping_address?: shipping_address_create_for_charge_items_and_charges_params;
     item_prices?: Array<item_prices_create_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
@@ -567,6 +578,7 @@ export namespace _quote {
     expires_at?: number;
     currency_code?: string;
     coupon?: string;
+    coupon_ids?: Array<string>;
     shipping_address?: shipping_address_edit_for_charge_items_and_charges_params;
     item_prices?: Array<item_prices_edit_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_edit_for_charge_items_and_charges_params>;
@@ -586,6 +598,9 @@ export namespace _quote {
     "sort_by[desc]"?: string;
   }
   export interface convert_params {
+    invoice_date?: number;
+    create_pending_invoices?: boolean;
+    first_invoice_pending?: boolean;
     subscription?: subscription_convert_params;
   }
   export interface update_status_params {
@@ -2252,5 +2267,8 @@ export namespace _quote {
   }
   export interface subscription_convert_params {
     po_number?: string;
+  }
+  export interface subscription_convert_params {
+    auto_close_invoices?: boolean;
   }
 }

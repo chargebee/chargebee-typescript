@@ -19,6 +19,8 @@ export class QuotedSubscription extends Model {
   public auto_collection?: string;
   public plan_quantity_in_decimal?: string;
   public plan_unit_price_in_decimal?: string;
+  public changes_scheduled_at?: number;
+  public change_option?: string;
   public contract_term_billing_cycle_on_renewal?: number;
   public addons?: Array<Addon>;
   public event_based_addons?: Array<EventBasedAddon>;
@@ -59,9 +61,6 @@ export class EventBasedAddon extends Model {
 
 export class Coupon extends Model {
   public coupon_id: string;
-  public apply_till?: number;
-  public applied_count: number;
-  public coupon_code?: string;
 } // ~Coupon
 
 export class SubscriptionItem extends Model {

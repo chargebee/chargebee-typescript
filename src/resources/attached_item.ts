@@ -79,17 +79,6 @@ export class AttachedItem extends Model {
     }, ChargeBee._env)
   }
 
-  public static list_internal(params?: _attached_item.attached_item_list_internal_params) {
-    return new RequestWrapper([params], {
-      'methodName': 'list_internal',
-      'httpMethod': 'GET',
-      'urlPrefix': '/attached_items',
-      'urlSuffix': '/list_internal',
-      'hasIdInUrl': false,
-      'isListReq': true,
-    }, ChargeBee._env)
-  }
-
 } // ~AttachedItem
 
 
@@ -130,15 +119,5 @@ export namespace _attached_item {
     type?: filter._enum;
     item_type?: filter._enum;
     charge_on_event?: filter._enum;
-  }
-  export interface attached_item_list_internal_params {
-    limit?: number;
-    offset?: string;
-    id?: filter._string;
-    item_id?: filter._string;
-    type?: filter._enum;
-    item_type?: filter._enum;
-    charge_on_event?: filter._enum;
-    parent_item_id?: filter._string;
   }
 }

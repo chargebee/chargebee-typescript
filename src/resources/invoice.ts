@@ -40,6 +40,7 @@ export class Invoice extends Model {
   public has_advance_charges?: boolean;
   public term_finalized: boolean;
   public is_gifted: boolean;
+  public generated_at?: number;
   public expected_payment_date?: number;
   public amount_to_collect?: number;
   public round_off_amount?: number;
@@ -558,6 +559,7 @@ export namespace _invoice {
     customer_id?: string;
     subscription_id?: string;
     currency_code?: string;
+    invoice_date?: number;
     invoice_note?: string;
     remove_general_note?: boolean;
     po_number?: string;
@@ -596,6 +598,7 @@ export namespace _invoice {
     authorization_transaction_id?: string;
     payment_source_id?: string;
     auto_collection?: string;
+    invoice_date?: number;
     token_id?: string;
     replace_primary_payment_source?: boolean;
     retain_payment_source?: boolean;
@@ -618,11 +621,16 @@ export namespace _invoice {
     description: string;
     date_from?: number;
     date_to?: number;
+    coupon_ids?: Array<string>;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     coupon?: string;
     avalara_sale_type?: string;
     avalara_transaction_type?: number;
     avalara_service_type?: number;
     po_number?: string;
+    invoice_date?: number;
     payment_source_id?: string;
   }
   export interface charge_addon_params {
@@ -635,8 +643,13 @@ export namespace _invoice {
     addon_unit_price_in_decimal?: string;
     date_from?: number;
     date_to?: number;
+    coupon_ids?: Array<string>;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     coupon?: string;
     po_number?: string;
+    invoice_date?: number;
     payment_source_id?: string;
   }
   export interface create_for_charge_item_params {
@@ -645,6 +658,7 @@ export namespace _invoice {
     po_number?: string;
     coupon?: string;
     payment_source_id?: string;
+    invoice_date?: number;
     item_price?: item_price_create_for_charge_item_params;
     item_tiers?: Array<item_tiers_create_for_charge_item_params>;
   }
