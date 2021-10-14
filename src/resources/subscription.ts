@@ -660,6 +660,7 @@ export namespace _subscription {
     invoice_date?: number;
     meta_data?: any;
     invoice_immediately?: boolean;
+    replace_primary_payment_source?: boolean;
     free_period?: number;
     free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;
@@ -696,6 +697,7 @@ export namespace _subscription {
     invoice_date?: number;
     meta_data?: any;
     invoice_immediately?: boolean;
+    replace_primary_payment_source?: boolean;
     free_period?: number;
     free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;

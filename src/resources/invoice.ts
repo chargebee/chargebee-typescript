@@ -1549,6 +1549,42 @@ export namespace _invoice {
   export interface line_items_import_invoice_params {
     tax4_amount?: number;
   }
+  export interface line_items_import_invoice_params {
+    tax5_name?: string;
+  }
+  export interface line_items_import_invoice_params {
+    tax5_amount?: number;
+  }
+  export interface line_items_import_invoice_params {
+    tax6_name?: string;
+  }
+  export interface line_items_import_invoice_params {
+    tax6_amount?: number;
+  }
+  export interface line_items_import_invoice_params {
+    tax7_name?: string;
+  }
+  export interface line_items_import_invoice_params {
+    tax7_amount?: number;
+  }
+  export interface line_items_import_invoice_params {
+    tax8_name?: string;
+  }
+  export interface line_items_import_invoice_params {
+    tax8_amount?: number;
+  }
+  export interface line_items_import_invoice_params {
+    tax9_name?: string;
+  }
+  export interface line_items_import_invoice_params {
+    tax9_amount?: number;
+  }
+  export interface line_items_import_invoice_params {
+    tax10_name?: string;
+  }
+  export interface line_items_import_invoice_params {
+    tax10_amount?: number;
+  }
   export interface line_item_tiers_import_invoice_params {
     line_item_id: string;
   }

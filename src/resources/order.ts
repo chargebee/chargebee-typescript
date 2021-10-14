@@ -276,6 +276,7 @@ export class LineItemDiscount extends Model {
   public line_item_id: string;
   public discount_type: string;
   public coupon_id?: string;
+  public entity_id?: string;
   public discount_amount: number;
 } // ~LineItemDiscount
 
@@ -358,11 +359,13 @@ export namespace _order {
   export interface cancel_params {
     cancellation_reason: string;
     customer_notes?: string;
+    comment?: string;
     cancelled_at?: number;
     credit_note?: credit_note_cancel_params;
   }
   export interface create_refundable_credit_note_params {
     customer_notes?: string;
+    comment?: string;
     credit_note?: credit_note_create_refundable_credit_note_params;
   }
   export interface reopen_params {
