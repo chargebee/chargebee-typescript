@@ -17,8 +17,8 @@ export class RequestWrapper {
         }
     }
 
-    private static validateIdParam(idParam: any) {
-        if (idParam.toString().trim() < 1 || typeof idParam === 'undefined' || typeof idParam !== 'string') {
+    private static validateIdParam(idParam: string) {
+        if (typeof idParam === 'undefined' || !idParam) {
             throw new Error('the required id parameter missing or wrong');
         }
         return idParam;
