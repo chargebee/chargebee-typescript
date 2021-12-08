@@ -33,7 +33,7 @@ export class Item extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _item.create_params) {
+  public static create(params?: _item.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -44,7 +44,7 @@ export class Item extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(item_id: string, params?: any) {
+  public static retrieve(item_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -55,7 +55,7 @@ export class Item extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(item_id: string, params?: _item.update_params) {
+  public static update(item_id: string, params?: _item.update_params):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -66,7 +66,7 @@ export class Item extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _item.item_list_params) {
+  public static list(params?: _item.item_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -77,7 +77,7 @@ export class Item extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(item_id: string, params?: any) {
+  public static delete(item_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',

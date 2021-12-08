@@ -29,6 +29,7 @@ export class Plan extends Model {
   public enabled_in_portal: boolean;
   public addon_applicability: string;
   public tax_code?: string;
+  public hsn_code?: string;
   public taxjar_product_code?: string;
   public avalara_sale_type?: string;
   public avalara_transaction_type?: number;
@@ -64,7 +65,7 @@ export class Plan extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _plan.create_params) {
+  public static create(params?: _plan.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -75,7 +76,7 @@ export class Plan extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(plan_id: string, params?: _plan.update_params) {
+  public static update(plan_id: string, params?: _plan.update_params):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -86,7 +87,7 @@ export class Plan extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _plan.plan_list_params) {
+  public static list(params?: _plan.plan_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -97,7 +98,7 @@ export class Plan extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(plan_id: string, params?: any) {
+  public static retrieve(plan_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -108,7 +109,7 @@ export class Plan extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(plan_id: string, params?: any) {
+  public static delete(plan_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -119,7 +120,7 @@ export class Plan extends Model {
     }, ChargeBee._env)
   }
 
-  public static copy(params?: _plan.copy_params) {
+  public static copy(params?: _plan.copy_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'copy',
       'httpMethod': 'POST',
@@ -130,7 +131,7 @@ export class Plan extends Model {
     }, ChargeBee._env)
   }
 
-  public static unarchive(plan_id: string, params?: any) {
+  public static unarchive(plan_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'unarchive',
       'httpMethod': 'POST',
@@ -211,6 +212,7 @@ export namespace _plan {
     taxable?: boolean;
     tax_profile_id?: string;
     tax_code?: string;
+    hsn_code?: string;
     taxjar_product_code?: string;
     avalara_sale_type?: string;
     avalara_transaction_type?: number;
@@ -268,6 +270,7 @@ export namespace _plan {
     taxable?: boolean;
     tax_profile_id?: string;
     tax_code?: string;
+    hsn_code?: string;
     taxjar_product_code?: string;
     avalara_sale_type?: string;
     avalara_transaction_type?: number;
@@ -310,6 +313,7 @@ export namespace _plan {
     status?: filter._enum;
     updated_at?: filter._timestamp;
     currency_code?: filter._string;
+    include_deleted?: boolean;
   }
   export interface copy_params {
     from_site: string;

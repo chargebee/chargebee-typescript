@@ -24,7 +24,7 @@ export class DifferentialPrice extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(item_price_id: string, params?: _differential_price.create_params) {
+  public static create(item_price_id: string, params?: _differential_price.create_params):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -35,7 +35,7 @@ export class DifferentialPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(differential_price_id: string, params?: _differential_price.retrieve_params) {
+  public static retrieve(differential_price_id: string, params?: _differential_price.retrieve_params):RequestWrapper {
     return new RequestWrapper([differential_price_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -46,7 +46,7 @@ export class DifferentialPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(differential_price_id: string, params?: _differential_price.update_params) {
+  public static update(differential_price_id: string, params?: _differential_price.update_params):RequestWrapper {
     return new RequestWrapper([differential_price_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -57,7 +57,7 @@ export class DifferentialPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(differential_price_id: string, params?: _differential_price.delete_params) {
+  public static delete(differential_price_id: string, params?: _differential_price.delete_params):RequestWrapper {
     return new RequestWrapper([differential_price_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -68,7 +68,7 @@ export class DifferentialPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _differential_price.differential_price_list_params) {
+  public static list(params?: _differential_price.differential_price_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

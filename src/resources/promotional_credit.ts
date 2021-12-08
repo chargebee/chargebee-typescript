@@ -23,7 +23,7 @@ export class PromotionalCredit extends Model {
   // OPERATIONS
   //-----------
 
-  public static add(params?: _promotional_credit.add_params) {
+  public static add(params?: _promotional_credit.add_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'add',
       'httpMethod': 'POST',
@@ -34,7 +34,7 @@ export class PromotionalCredit extends Model {
     }, ChargeBee._env)
   }
 
-  public static deduct(params?: _promotional_credit.deduct_params) {
+  public static deduct(params?: _promotional_credit.deduct_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'deduct',
       'httpMethod': 'POST',
@@ -45,7 +45,7 @@ export class PromotionalCredit extends Model {
     }, ChargeBee._env)
   }
 
-  public static set(params?: _promotional_credit.set_params) {
+  public static set(params?: _promotional_credit.set_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'set',
       'httpMethod': 'POST',
@@ -56,7 +56,7 @@ export class PromotionalCredit extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _promotional_credit.promotional_credit_list_params) {
+  public static list(params?: _promotional_credit.promotional_credit_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -67,7 +67,7 @@ export class PromotionalCredit extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(promotional_credit_id: string, params?: any) {
+  public static retrieve(promotional_credit_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([promotional_credit_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',

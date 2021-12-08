@@ -27,7 +27,7 @@ export class Address extends Model {
   // OPERATIONS
   //-----------
 
-  public static retrieve(params?: _address.retrieve_params) {
+  public static retrieve(params?: _address.retrieve_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -38,7 +38,7 @@ export class Address extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(params?: _address.update_params) {
+  public static update(params?: _address.update_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update',
       'httpMethod': 'POST',

@@ -28,7 +28,7 @@ export class PaymentIntent extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _payment_intent.create_params) {
+  public static create(params?: _payment_intent.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -39,7 +39,7 @@ export class PaymentIntent extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(payment_intent_id: string, params?: _payment_intent.update_params) {
+  public static update(payment_intent_id: string, params?: _payment_intent.update_params):RequestWrapper {
     return new RequestWrapper([payment_intent_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -50,7 +50,7 @@ export class PaymentIntent extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(payment_intent_id: string, params?: any) {
+  public static retrieve(payment_intent_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([payment_intent_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',

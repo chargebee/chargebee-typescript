@@ -51,6 +51,7 @@ export {LinkedOrder as InvoiceLinkedOrder} from "./invoice";
 export {Note as InvoiceNote} from "./invoice";
 export {ShippingAddress as InvoiceShippingAddress} from "./invoice";
 export {BillingAddress as InvoiceBillingAddress} from "./invoice";
+export {TaxWithheld} from "./tax_withheld";
 export {CreditNote} from "./credit_note";
 export {LineItem as CreditNoteLineItem} from "./credit_note";
 export {Discount as CreditNoteDiscount} from "./credit_note";

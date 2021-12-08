@@ -24,7 +24,7 @@ export class PortalSession extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _portal_session.create_params) {
+  public static create(params?: _portal_session.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -35,7 +35,7 @@ export class PortalSession extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(portal_session_id: string, params?: any) {
+  public static retrieve(portal_session_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([portal_session_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -46,7 +46,7 @@ export class PortalSession extends Model {
     }, ChargeBee._env)
   }
 
-  public static logout(portal_session_id: string, params?: any) {
+  public static logout(portal_session_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([portal_session_id, params], {
       'methodName': 'logout',
       'httpMethod': 'POST',
@@ -57,7 +57,7 @@ export class PortalSession extends Model {
     }, ChargeBee._env)
   }
 
-  public static activate(portal_session_id: string, params?: _portal_session.activate_params) {
+  public static activate(portal_session_id: string, params?: _portal_session.activate_params):RequestWrapper {
     return new RequestWrapper([portal_session_id, params], {
       'methodName': 'activate',
       'httpMethod': 'POST',

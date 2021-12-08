@@ -23,7 +23,7 @@ export class Usage extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(subscription_id: string, params?: _usage.create_params) {
+  public static create(subscription_id: string, params?: _usage.create_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -34,7 +34,7 @@ export class Usage extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(subscription_id: string, params?: _usage.retrieve_params) {
+  public static retrieve(subscription_id: string, params?: _usage.retrieve_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -45,7 +45,7 @@ export class Usage extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(subscription_id: string, params?: _usage.delete_params) {
+  public static delete(subscription_id: string, params?: _usage.delete_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -56,7 +56,7 @@ export class Usage extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _usage.usage_list_params) {
+  public static list(params?: _usage.usage_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -67,7 +67,7 @@ export class Usage extends Model {
     }, ChargeBee._env)
   }
 
-  public static pdf(params?: _usage.pdf_params) {
+  public static pdf(params?: _usage.pdf_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'pdf',
       'httpMethod': 'POST',

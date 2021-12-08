@@ -18,7 +18,7 @@ export class Estimate extends Model {
   // OPERATIONS
   //-----------
 
-  public static create_subscription(params?: _estimate.create_subscription_params) {
+  public static create_subscription(params?: _estimate.create_subscription_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_subscription',
       'httpMethod': 'POST',
@@ -29,7 +29,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_sub_item_estimate(params?: _estimate.create_sub_item_estimate_params) {
+  public static create_sub_item_estimate(params?: _estimate.create_sub_item_estimate_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_sub_item_estimate',
       'httpMethod': 'POST',
@@ -40,7 +40,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_sub_for_customer_estimate(customer_id: string, params?: _estimate.create_sub_for_customer_estimate_params) {
+  public static create_sub_for_customer_estimate(customer_id: string, params?: _estimate.create_sub_for_customer_estimate_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'create_sub_for_customer_estimate',
       'httpMethod': 'GET',
@@ -51,7 +51,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_sub_item_for_customer_estimate(customer_id: string, params?: _estimate.create_sub_item_for_customer_estimate_params) {
+  public static create_sub_item_for_customer_estimate(customer_id: string, params?: _estimate.create_sub_item_for_customer_estimate_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'create_sub_item_for_customer_estimate',
       'httpMethod': 'POST',
@@ -62,7 +62,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static update_subscription(params?: _estimate.update_subscription_params) {
+  public static update_subscription(params?: _estimate.update_subscription_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update_subscription',
       'httpMethod': 'POST',
@@ -73,7 +73,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static update_subscription_for_items(params?: _estimate.update_subscription_for_items_params) {
+  public static update_subscription_for_items(params?: _estimate.update_subscription_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update_subscription_for_items',
       'httpMethod': 'POST',
@@ -84,7 +84,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static renewal_estimate(subscription_id: string, params?: _estimate.renewal_estimate_params) {
+  public static renewal_estimate(subscription_id: string, params?: _estimate.renewal_estimate_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'renewal_estimate',
       'httpMethod': 'GET',
@@ -95,7 +95,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static advance_invoice_estimate(subscription_id: string, params?: _estimate.advance_invoice_estimate_params) {
+  public static advance_invoice_estimate(subscription_id: string, params?: _estimate.advance_invoice_estimate_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'advance_invoice_estimate',
       'httpMethod': 'POST',
@@ -106,7 +106,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static regenerate_invoice_estimate(subscription_id: string, params?: _estimate.regenerate_invoice_estimate_params) {
+  public static regenerate_invoice_estimate(subscription_id: string, params?: _estimate.regenerate_invoice_estimate_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'regenerate_invoice_estimate',
       'httpMethod': 'POST',
@@ -117,7 +117,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static upcoming_invoices_estimate(customer_id: string, params?: any) {
+  public static upcoming_invoices_estimate(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'upcoming_invoices_estimate',
       'httpMethod': 'GET',
@@ -128,7 +128,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static change_term_end(subscription_id: string, params?: _estimate.change_term_end_params) {
+  public static change_term_end(subscription_id: string, params?: _estimate.change_term_end_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'change_term_end',
       'httpMethod': 'POST',
@@ -139,7 +139,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static cancel_subscription(subscription_id: string, params?: _estimate.cancel_subscription_params) {
+  public static cancel_subscription(subscription_id: string, params?: _estimate.cancel_subscription_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'cancel_subscription',
       'httpMethod': 'POST',
@@ -150,7 +150,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static cancel_subscription_for_items(subscription_id: string, params?: _estimate.cancel_subscription_for_items_params) {
+  public static cancel_subscription_for_items(subscription_id: string, params?: _estimate.cancel_subscription_for_items_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'cancel_subscription_for_items',
       'httpMethod': 'POST',
@@ -161,7 +161,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static pause_subscription(subscription_id: string, params?: _estimate.pause_subscription_params) {
+  public static pause_subscription(subscription_id: string, params?: _estimate.pause_subscription_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'pause_subscription',
       'httpMethod': 'POST',
@@ -172,7 +172,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static resume_subscription(subscription_id: string, params?: _estimate.resume_subscription_params) {
+  public static resume_subscription(subscription_id: string, params?: _estimate.resume_subscription_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'resume_subscription',
       'httpMethod': 'POST',
@@ -183,7 +183,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static gift_subscription(params?: _estimate.gift_subscription_params) {
+  public static gift_subscription(params?: _estimate.gift_subscription_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'gift_subscription',
       'httpMethod': 'POST',
@@ -194,7 +194,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static gift_subscription_for_items(params?: _estimate.gift_subscription_for_items_params) {
+  public static gift_subscription_for_items(params?: _estimate.gift_subscription_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'gift_subscription_for_items',
       'httpMethod': 'POST',
@@ -205,7 +205,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_invoice(params?: _estimate.create_invoice_params) {
+  public static create_invoice(params?: _estimate.create_invoice_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_invoice',
       'httpMethod': 'POST',
@@ -216,7 +216,7 @@ export class Estimate extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_invoice_for_items(params?: _estimate.create_invoice_for_items_params) {
+  public static create_invoice_for_items(params?: _estimate.create_invoice_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_invoice_for_items',
       'httpMethod': 'POST',
@@ -1766,6 +1766,9 @@ export namespace _estimate {
     avalara_tax_code?: string;
   }
   export interface charges_create_invoice_params {
+    hsn_code?: string;
+  }
+  export interface charges_create_invoice_params {
     taxjar_product_code?: string;
   }
   export interface charges_create_invoice_params {
@@ -1899,6 +1902,9 @@ export namespace _estimate {
   }
   export interface charges_create_invoice_for_items_params {
     avalara_tax_code?: string;
+  }
+  export interface charges_create_invoice_for_items_params {
+    hsn_code?: string;
   }
   export interface charges_create_invoice_for_items_params {
     taxjar_product_code?: string;

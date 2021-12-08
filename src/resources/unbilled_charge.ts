@@ -32,7 +32,7 @@ export class UnbilledCharge extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _unbilled_charge.create_params) {
+  public static create(params?: _unbilled_charge.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -43,7 +43,7 @@ export class UnbilledCharge extends Model {
     }, ChargeBee._env)
   }
 
-  public static invoice_unbilled_charges(params?: _unbilled_charge.invoice_unbilled_charges_params) {
+  public static invoice_unbilled_charges(params?: _unbilled_charge.invoice_unbilled_charges_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'invoice_unbilled_charges',
       'httpMethod': 'POST',
@@ -54,7 +54,7 @@ export class UnbilledCharge extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(unbilled_charge_id: string, params?: any) {
+  public static delete(unbilled_charge_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([unbilled_charge_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -65,7 +65,7 @@ export class UnbilledCharge extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _unbilled_charge.unbilled_charge_list_params) {
+  public static list(params?: _unbilled_charge.unbilled_charge_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -76,7 +76,7 @@ export class UnbilledCharge extends Model {
     }, ChargeBee._env)
   }
 
-  public static invoice_now_estimate(params?: _unbilled_charge.invoice_now_estimate_params) {
+  public static invoice_now_estimate(params?: _unbilled_charge.invoice_now_estimate_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'invoice_now_estimate',
       'httpMethod': 'POST',
@@ -188,6 +188,9 @@ export namespace _unbilled_charge {
   }
   export interface charges_create_params {
     avalara_tax_code?: string;
+  }
+  export interface charges_create_params {
+    hsn_code?: string;
   }
   export interface charges_create_params {
     taxjar_product_code?: string;

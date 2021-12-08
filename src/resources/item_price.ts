@@ -47,7 +47,7 @@ export class ItemPrice extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _item_price.create_params) {
+  public static create(params?: _item_price.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -58,7 +58,7 @@ export class ItemPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(item_price_id: string, params?: any) {
+  public static retrieve(item_price_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -69,7 +69,7 @@ export class ItemPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(item_price_id: string, params?: _item_price.update_params) {
+  public static update(item_price_id: string, params?: _item_price.update_params):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -80,7 +80,7 @@ export class ItemPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _item_price.item_price_list_params) {
+  public static list(params?: _item_price.item_price_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -91,7 +91,7 @@ export class ItemPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(item_price_id: string, params?: any) {
+  public static delete(item_price_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -99,6 +99,28 @@ export class ItemPrice extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static find_applicable_items(item_price_id: string, params?: _item_price.item_price_find_applicable_items_params):RequestWrapper {
+    return new RequestWrapper([item_price_id, params], {
+      'methodName': 'find_applicable_items',
+      'httpMethod': 'GET',
+      'urlPrefix': '/item_prices',
+      'urlSuffix': '/applicable_items',
+      'hasIdInUrl': true,
+      'isListReq': true,
+    }, ChargeBee._env)
+  }
+
+  public static find_applicable_item_prices(item_price_id: string, params?: _item_price.item_price_find_applicable_item_prices_params):RequestWrapper {
+    return new RequestWrapper([item_price_id, params], {
+      'methodName': 'find_applicable_item_prices',
+      'httpMethod': 'GET',
+      'urlPrefix': '/item_prices',
+      'urlSuffix': '/applicable_item_prices',
+      'hasIdInUrl': true,
+      'isListReq': true,
     }, ChargeBee._env)
   }
 
@@ -119,6 +141,7 @@ export class TaxDetail extends Model {
   public avalara_transaction_type?: number;
   public avalara_service_type?: number;
   public avalara_tax_code?: string;
+  public hsn_code?: string;
   public taxjar_product_code?: string;
 } // ~TaxDetail
 
@@ -213,11 +236,27 @@ export namespace _item_price {
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }
+  export interface item_price_find_applicable_items_params {
+    limit?: number;
+    offset?: string;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
+  }
+  export interface item_price_find_applicable_item_prices_params {
+    limit?: number;
+    offset?: string;
+    item_id?: string;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
+  }
   export interface tax_detail_create_params {
     tax_profile_id?: string;
   }
   export interface tax_detail_create_params {
     avalara_tax_code?: string;
+  }
+  export interface tax_detail_create_params {
+    hsn_code?: string;
   }
   export interface tax_detail_create_params {
     avalara_sale_type?: string;
@@ -272,6 +311,9 @@ export namespace _item_price {
   }
   export interface tax_detail_update_params {
     avalara_tax_code?: string;
+  }
+  export interface tax_detail_update_params {
+    hsn_code?: string;
   }
   export interface tax_detail_update_params {
     avalara_sale_type?: string;

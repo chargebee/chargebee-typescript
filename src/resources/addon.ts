@@ -21,6 +21,7 @@ export class Addon extends Model {
   public archived_at?: number;
   public enabled_in_portal: boolean;
   public tax_code?: string;
+  public hsn_code?: string;
   public taxjar_product_code?: string;
   public avalara_sale_type?: string;
   public avalara_transaction_type?: number;
@@ -51,7 +52,7 @@ export class Addon extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _addon.create_params) {
+  public static create(params?: _addon.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -62,7 +63,7 @@ export class Addon extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(addon_id: string, params?: _addon.update_params) {
+  public static update(addon_id: string, params?: _addon.update_params):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -73,7 +74,7 @@ export class Addon extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _addon.addon_list_params) {
+  public static list(params?: _addon.addon_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -84,7 +85,7 @@ export class Addon extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(addon_id: string, params?: any) {
+  public static retrieve(addon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -95,7 +96,7 @@ export class Addon extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(addon_id: string, params?: any) {
+  public static delete(addon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -106,7 +107,7 @@ export class Addon extends Model {
     }, ChargeBee._env)
   }
 
-  public static copy(params?: _addon.copy_params) {
+  public static copy(params?: _addon.copy_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'copy',
       'httpMethod': 'POST',
@@ -117,7 +118,7 @@ export class Addon extends Model {
     }, ChargeBee._env)
   }
 
-  public static unarchive(addon_id: string, params?: any) {
+  public static unarchive(addon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'unarchive',
       'httpMethod': 'POST',
@@ -168,6 +169,7 @@ export namespace _addon {
     avalara_transaction_type?: number;
     avalara_service_type?: number;
     tax_code?: string;
+    hsn_code?: string;
     taxjar_product_code?: string;
     invoice_notes?: string;
     meta_data?: any;
@@ -209,6 +211,7 @@ export namespace _addon {
     avalara_transaction_type?: number;
     avalara_service_type?: number;
     tax_code?: string;
+    hsn_code?: string;
     taxjar_product_code?: string;
     invoice_notes?: string;
     meta_data?: any;
@@ -244,6 +247,7 @@ export namespace _addon {
     status?: filter._enum;
     updated_at?: filter._timestamp;
     currency_code?: filter._string;
+    include_deleted?: boolean;
   }
   export interface copy_params {
     from_site: string;

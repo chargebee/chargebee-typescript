@@ -48,7 +48,7 @@ export class CreditNote extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _credit_note.create_params) {
+  public static create(params?: _credit_note.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -59,7 +59,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(credit_note_id: string, params?: any) {
+  public static retrieve(credit_note_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -70,7 +70,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static pdf(credit_note_id: string, params?: _credit_note.pdf_params) {
+  public static pdf(credit_note_id: string, params?: _credit_note.pdf_params):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'pdf',
       'httpMethod': 'POST',
@@ -81,7 +81,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static refund(credit_note_id: string, params?: _credit_note.refund_params) {
+  public static refund(credit_note_id: string, params?: _credit_note.refund_params):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'refund',
       'httpMethod': 'POST',
@@ -92,7 +92,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static record_refund(credit_note_id: string, params?: _credit_note.record_refund_params) {
+  public static record_refund(credit_note_id: string, params?: _credit_note.record_refund_params):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'record_refund',
       'httpMethod': 'POST',
@@ -103,7 +103,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static void_credit_note(credit_note_id: string, params?: _credit_note.void_credit_note_params) {
+  public static void_credit_note(credit_note_id: string, params?: _credit_note.void_credit_note_params):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'void_credit_note',
       'httpMethod': 'POST',
@@ -114,7 +114,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _credit_note.credit_note_list_params) {
+  public static list(params?: _credit_note.credit_note_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -125,7 +125,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static credit_notes_for_customer(customer_id: string, params?: any) {
+  public static credit_notes_for_customer(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'credit_notes_for_customer',
       'httpMethod': 'GET',
@@ -136,7 +136,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(credit_note_id: string, params?: _credit_note.delete_params) {
+  public static delete(credit_note_id: string, params?: _credit_note.delete_params):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',

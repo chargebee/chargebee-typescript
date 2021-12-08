@@ -26,7 +26,7 @@ export class VirtualBankAccount extends Model {
   // OPERATIONS
   //-----------
 
-  public static create_using_permanent_token(params?: _virtual_bank_account.create_using_permanent_token_params) {
+  public static create_using_permanent_token(params?: _virtual_bank_account.create_using_permanent_token_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_using_permanent_token',
       'httpMethod': 'POST',
@@ -37,7 +37,7 @@ export class VirtualBankAccount extends Model {
     }, ChargeBee._env)
   }
 
-  public static create(params?: _virtual_bank_account.create_params) {
+  public static create(params?: _virtual_bank_account.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -48,7 +48,7 @@ export class VirtualBankAccount extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(virtual_bank_account_id: string, params?: any) {
+  public static retrieve(virtual_bank_account_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([virtual_bank_account_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -59,7 +59,7 @@ export class VirtualBankAccount extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _virtual_bank_account.virtual_bank_account_list_params) {
+  public static list(params?: _virtual_bank_account.virtual_bank_account_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -70,7 +70,7 @@ export class VirtualBankAccount extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(virtual_bank_account_id: string, params?: any) {
+  public static delete(virtual_bank_account_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([virtual_bank_account_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -81,7 +81,7 @@ export class VirtualBankAccount extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete_local(virtual_bank_account_id: string, params?: any) {
+  public static delete_local(virtual_bank_account_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([virtual_bank_account_id, params], {
       'methodName': 'delete_local',
       'httpMethod': 'POST',

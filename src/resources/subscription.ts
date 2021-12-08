@@ -83,7 +83,7 @@ export class Subscription extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _subscription.create_params) {
+  public static create(params?: _subscription.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -94,7 +94,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_for_customer(customer_id: string, params?: _subscription.create_for_customer_params) {
+  public static create_for_customer(customer_id: string, params?: _subscription.create_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'create_for_customer',
       'httpMethod': 'POST',
@@ -105,7 +105,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_with_items(customer_id: string, params?: _subscription.create_with_items_params) {
+  public static create_with_items(customer_id: string, params?: _subscription.create_with_items_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'create_with_items',
       'httpMethod': 'POST',
@@ -116,7 +116,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _subscription.subscription_list_params) {
+  public static list(params?: _subscription.subscription_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -127,7 +127,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static subscriptions_for_customer(customer_id: string, params?: any) {
+  public static subscriptions_for_customer(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'subscriptions_for_customer',
       'httpMethod': 'GET',
@@ -138,7 +138,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static contract_terms_for_subscription(subscription_id: string, params?: any) {
+  public static contract_terms_for_subscription(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'contract_terms_for_subscription',
       'httpMethod': 'GET',
@@ -149,7 +149,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(subscription_id: string, params?: any) {
+  public static retrieve(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -160,7 +160,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve_with_scheduled_changes(subscription_id: string, params?: any) {
+  public static retrieve_with_scheduled_changes(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'retrieve_with_scheduled_changes',
       'httpMethod': 'GET',
@@ -171,7 +171,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static remove_scheduled_changes(subscription_id: string, params?: any) {
+  public static remove_scheduled_changes(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'remove_scheduled_changes',
       'httpMethod': 'POST',
@@ -182,7 +182,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static remove_scheduled_cancellation(subscription_id: string, params?: _subscription.remove_scheduled_cancellation_params) {
+  public static remove_scheduled_cancellation(subscription_id: string, params?: _subscription.remove_scheduled_cancellation_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'remove_scheduled_cancellation',
       'httpMethod': 'POST',
@@ -193,7 +193,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static remove_coupons(subscription_id: string, params?: _subscription.remove_coupons_params) {
+  public static remove_coupons(subscription_id: string, params?: _subscription.remove_coupons_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'remove_coupons',
       'httpMethod': 'POST',
@@ -204,7 +204,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(subscription_id: string, params?: _subscription.update_params) {
+  public static update(subscription_id: string, params?: _subscription.update_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -215,7 +215,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static update_for_items(subscription_id: string, params?: _subscription.update_for_items_params) {
+  public static update_for_items(subscription_id: string, params?: _subscription.update_for_items_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'update_for_items',
       'httpMethod': 'POST',
@@ -226,7 +226,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static change_term_end(subscription_id: string, params?: _subscription.change_term_end_params) {
+  public static change_term_end(subscription_id: string, params?: _subscription.change_term_end_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'change_term_end',
       'httpMethod': 'POST',
@@ -237,7 +237,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static reactivate(subscription_id: string, params?: _subscription.reactivate_params) {
+  public static reactivate(subscription_id: string, params?: _subscription.reactivate_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'reactivate',
       'httpMethod': 'POST',
@@ -248,7 +248,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static add_charge_at_term_end(subscription_id: string, params?: _subscription.add_charge_at_term_end_params) {
+  public static add_charge_at_term_end(subscription_id: string, params?: _subscription.add_charge_at_term_end_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'add_charge_at_term_end',
       'httpMethod': 'POST',
@@ -259,7 +259,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static charge_addon_at_term_end(subscription_id: string, params?: _subscription.charge_addon_at_term_end_params) {
+  public static charge_addon_at_term_end(subscription_id: string, params?: _subscription.charge_addon_at_term_end_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'charge_addon_at_term_end',
       'httpMethod': 'POST',
@@ -270,7 +270,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static charge_future_renewals(subscription_id: string, params?: _subscription.charge_future_renewals_params) {
+  public static charge_future_renewals(subscription_id: string, params?: _subscription.charge_future_renewals_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'charge_future_renewals',
       'httpMethod': 'POST',
@@ -281,7 +281,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static edit_advance_invoice_schedule(subscription_id: string, params?: _subscription.edit_advance_invoice_schedule_params) {
+  public static edit_advance_invoice_schedule(subscription_id: string, params?: _subscription.edit_advance_invoice_schedule_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'edit_advance_invoice_schedule',
       'httpMethod': 'POST',
@@ -292,7 +292,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve_advance_invoice_schedule(subscription_id: string, params?: any) {
+  public static retrieve_advance_invoice_schedule(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'retrieve_advance_invoice_schedule',
       'httpMethod': 'GET',
@@ -303,7 +303,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static remove_advance_invoice_schedule(subscription_id: string, params?: _subscription.remove_advance_invoice_schedule_params) {
+  public static remove_advance_invoice_schedule(subscription_id: string, params?: _subscription.remove_advance_invoice_schedule_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'remove_advance_invoice_schedule',
       'httpMethod': 'POST',
@@ -314,7 +314,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static regenerate_invoice(subscription_id: string, params?: _subscription.regenerate_invoice_params) {
+  public static regenerate_invoice(subscription_id: string, params?: _subscription.regenerate_invoice_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'regenerate_invoice',
       'httpMethod': 'POST',
@@ -325,7 +325,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static import_subscription(params?: _subscription.import_subscription_params) {
+  public static import_subscription(params?: _subscription.import_subscription_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'import_subscription',
       'httpMethod': 'POST',
@@ -336,7 +336,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static import_for_customer(customer_id: string, params?: _subscription.import_for_customer_params) {
+  public static import_for_customer(customer_id: string, params?: _subscription.import_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'import_for_customer',
       'httpMethod': 'POST',
@@ -347,7 +347,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static import_contract_term(subscription_id: string, params?: _subscription.import_contract_term_params) {
+  public static import_contract_term(subscription_id: string, params?: _subscription.import_contract_term_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'import_contract_term',
       'httpMethod': 'POST',
@@ -358,7 +358,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static import_for_items(customer_id: string, params?: _subscription.import_for_items_params) {
+  public static import_for_items(customer_id: string, params?: _subscription.import_for_items_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'import_for_items',
       'httpMethod': 'POST',
@@ -369,7 +369,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static override_billing_profile(subscription_id: string, params?: _subscription.override_billing_profile_params) {
+  public static override_billing_profile(subscription_id: string, params?: _subscription.override_billing_profile_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'override_billing_profile',
       'httpMethod': 'POST',
@@ -380,7 +380,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(subscription_id: string, params?: any) {
+  public static delete(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -391,7 +391,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static pause(subscription_id: string, params?: _subscription.pause_params) {
+  public static pause(subscription_id: string, params?: _subscription.pause_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'pause',
       'httpMethod': 'POST',
@@ -402,7 +402,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static cancel(subscription_id: string, params?: _subscription.cancel_params) {
+  public static cancel(subscription_id: string, params?: _subscription.cancel_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'cancel',
       'httpMethod': 'POST',
@@ -413,7 +413,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static cancel_for_items(subscription_id: string, params?: _subscription.cancel_for_items_params) {
+  public static cancel_for_items(subscription_id: string, params?: _subscription.cancel_for_items_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'cancel_for_items',
       'httpMethod': 'POST',
@@ -424,7 +424,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static resume(subscription_id: string, params?: _subscription.resume_params) {
+  public static resume(subscription_id: string, params?: _subscription.resume_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'resume',
       'httpMethod': 'POST',
@@ -435,7 +435,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static remove_scheduled_pause(subscription_id: string, params?: any) {
+  public static remove_scheduled_pause(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'remove_scheduled_pause',
       'httpMethod': 'POST',
@@ -446,7 +446,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static remove_scheduled_resumption(subscription_id: string, params?: any) {
+  public static remove_scheduled_resumption(subscription_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'remove_scheduled_resumption',
       'httpMethod': 'POST',

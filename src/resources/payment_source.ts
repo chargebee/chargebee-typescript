@@ -28,7 +28,7 @@ export class PaymentSource extends Model {
   // OPERATIONS
   //-----------
 
-  public static create_using_temp_token(params?: _payment_source.create_using_temp_token_params) {
+  public static create_using_temp_token(params?: _payment_source.create_using_temp_token_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_using_temp_token',
       'httpMethod': 'POST',
@@ -39,7 +39,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_using_permanent_token(params?: _payment_source.create_using_permanent_token_params) {
+  public static create_using_permanent_token(params?: _payment_source.create_using_permanent_token_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_using_permanent_token',
       'httpMethod': 'POST',
@@ -50,7 +50,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_using_token(params?: _payment_source.create_using_token_params) {
+  public static create_using_token(params?: _payment_source.create_using_token_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_using_token',
       'httpMethod': 'POST',
@@ -61,7 +61,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_using_payment_intent(params?: _payment_source.create_using_payment_intent_params) {
+  public static create_using_payment_intent(params?: _payment_source.create_using_payment_intent_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_using_payment_intent',
       'httpMethod': 'POST',
@@ -72,7 +72,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_card(params?: _payment_source.create_card_params) {
+  public static create_card(params?: _payment_source.create_card_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_card',
       'httpMethod': 'POST',
@@ -83,7 +83,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_bank_account(params?: _payment_source.create_bank_account_params) {
+  public static create_bank_account(params?: _payment_source.create_bank_account_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_bank_account',
       'httpMethod': 'POST',
@@ -94,7 +94,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static update_card(payment_source_id: string, params?: _payment_source.update_card_params) {
+  public static update_card(payment_source_id: string, params?: _payment_source.update_card_params):RequestWrapper {
     return new RequestWrapper([payment_source_id, params], {
       'methodName': 'update_card',
       'httpMethod': 'POST',
@@ -105,7 +105,18 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static verify_bank_account(payment_source_id: string, params?: _payment_source.verify_bank_account_params) {
+  public static update_bank_account(payment_source_id: string, params?: _payment_source.update_bank_account_params):RequestWrapper {
+    return new RequestWrapper([payment_source_id, params], {
+      'methodName': 'update_bank_account',
+      'httpMethod': 'POST',
+      'urlPrefix': '/payment_sources',
+      'urlSuffix': '/update_bank_account',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static verify_bank_account(payment_source_id: string, params?: _payment_source.verify_bank_account_params):RequestWrapper {
     return new RequestWrapper([payment_source_id, params], {
       'methodName': 'verify_bank_account',
       'httpMethod': 'POST',
@@ -116,7 +127,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(payment_source_id: string, params?: any) {
+  public static retrieve(payment_source_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([payment_source_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -127,7 +138,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _payment_source.payment_source_list_params) {
+  public static list(params?: _payment_source.payment_source_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -138,7 +149,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static switch_gateway_account(payment_source_id: string, params?: _payment_source.switch_gateway_account_params) {
+  public static switch_gateway_account(payment_source_id: string, params?: _payment_source.switch_gateway_account_params):RequestWrapper {
     return new RequestWrapper([payment_source_id, params], {
       'methodName': 'switch_gateway_account',
       'httpMethod': 'POST',
@@ -149,7 +160,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static export_payment_source(payment_source_id: string, params?: _payment_source.export_payment_source_params) {
+  public static export_payment_source(payment_source_id: string, params?: _payment_source.export_payment_source_params):RequestWrapper {
     return new RequestWrapper([payment_source_id, params], {
       'methodName': 'export_payment_source',
       'httpMethod': 'POST',
@@ -160,7 +171,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(payment_source_id: string, params?: any) {
+  public static delete(payment_source_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([payment_source_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -171,7 +182,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete_local(payment_source_id: string, params?: any) {
+  public static delete_local(payment_source_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([payment_source_id, params], {
       'methodName': 'delete_local',
       'httpMethod': 'POST',
@@ -206,11 +217,14 @@ export class Card extends Model {
 export class BankAccount extends Model {
   public last4: string;
   public name_on_account?: string;
+  public first_name?: string;
+  public last_name?: string;
   public bank_name?: string;
   public mandate_id?: string;
   public account_type?: string;
   public echeck_type?: string;
   public account_holder_type?: string;
+  public email?: string;
 } // ~BankAccount
 
 export class AmazonPayment extends Model {
@@ -272,6 +286,9 @@ export namespace _payment_source {
     gateway_meta_data?: any;
     reference_transaction?: string;
     card?: card_update_card_params;
+  }
+  export interface update_bank_account_params {
+    bank_account?: bank_account_update_bank_account_params;
   }
   export interface verify_bank_account_params {
     amount1: number;
@@ -442,5 +459,14 @@ export namespace _payment_source {
   }
   export interface card_update_card_params {
     billing_country?: string;
+  }
+  export interface bank_account_update_bank_account_params {
+    first_name?: string;
+  }
+  export interface bank_account_update_bank_account_params {
+    last_name?: string;
+  }
+  export interface bank_account_update_bank_account_params {
+    email?: string;
   }
 }

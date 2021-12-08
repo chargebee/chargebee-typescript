@@ -66,7 +66,7 @@ export class Order extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _order.create_params) {
+  public static create(params?: _order.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -77,7 +77,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(order_id: string, params?: _order.update_params) {
+  public static update(order_id: string, params?: _order.update_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -88,7 +88,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static import_order(params?: _order.import_order_params) {
+  public static import_order(params?: _order.import_order_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'import_order',
       'httpMethod': 'POST',
@@ -99,7 +99,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static assign_order_number(order_id: string, params?: any) {
+  public static assign_order_number(order_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'assign_order_number',
       'httpMethod': 'POST',
@@ -110,7 +110,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static cancel(order_id: string, params?: _order.cancel_params) {
+  public static cancel(order_id: string, params?: _order.cancel_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'cancel',
       'httpMethod': 'POST',
@@ -121,7 +121,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_refundable_credit_note(order_id: string, params?: _order.create_refundable_credit_note_params) {
+  public static create_refundable_credit_note(order_id: string, params?: _order.create_refundable_credit_note_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'create_refundable_credit_note',
       'httpMethod': 'POST',
@@ -132,7 +132,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static reopen(order_id: string, params?: _order.reopen_params) {
+  public static reopen(order_id: string, params?: _order.reopen_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'reopen',
       'httpMethod': 'POST',
@@ -143,7 +143,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(order_id: string, params?: any) {
+  public static retrieve(order_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -154,7 +154,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(order_id: string, params?: any) {
+  public static delete(order_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -165,7 +165,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _order.order_list_params) {
+  public static list(params?: _order.order_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -176,7 +176,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static orders_for_invoice(invoice_id: string, params?: any) {
+  public static orders_for_invoice(invoice_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'orders_for_invoice',
       'httpMethod': 'GET',
@@ -187,7 +187,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static resend(order_id: string, params?: _order.resend_params) {
+  public static resend(order_id: string, params?: _order.resend_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'resend',
       'httpMethod': 'POST',

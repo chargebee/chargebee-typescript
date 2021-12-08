@@ -18,7 +18,7 @@ export class CouponSet extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _coupon_set.create_params) {
+  public static create(params?: _coupon_set.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -29,7 +29,7 @@ export class CouponSet extends Model {
     }, ChargeBee._env)
   }
 
-  public static add_coupon_codes(coupon_set_id: string, params?: _coupon_set.add_coupon_codes_params) {
+  public static add_coupon_codes(coupon_set_id: string, params?: _coupon_set.add_coupon_codes_params):RequestWrapper {
     return new RequestWrapper([coupon_set_id, params], {
       'methodName': 'add_coupon_codes',
       'httpMethod': 'POST',
@@ -40,7 +40,7 @@ export class CouponSet extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _coupon_set.coupon_set_list_params) {
+  public static list(params?: _coupon_set.coupon_set_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -51,7 +51,7 @@ export class CouponSet extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(coupon_set_id: string, params?: any) {
+  public static retrieve(coupon_set_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_set_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -62,7 +62,7 @@ export class CouponSet extends Model {
     }, ChargeBee._env)
   }
 
-  public static update(coupon_set_id: string, params?: _coupon_set.update_params) {
+  public static update(coupon_set_id: string, params?: _coupon_set.update_params):RequestWrapper {
     return new RequestWrapper([coupon_set_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -73,7 +73,7 @@ export class CouponSet extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(coupon_set_id: string, params?: any) {
+  public static delete(coupon_set_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_set_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -84,7 +84,7 @@ export class CouponSet extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete_unused_coupon_codes(coupon_set_id: string, params?: any) {
+  public static delete_unused_coupon_codes(coupon_set_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_set_id, params], {
       'methodName': 'delete_unused_coupon_codes',
       'httpMethod': 'POST',

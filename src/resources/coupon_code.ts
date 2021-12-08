@@ -16,7 +16,7 @@ export class CouponCode extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _coupon_code.create_params) {
+  public static create(params?: _coupon_code.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -27,7 +27,7 @@ export class CouponCode extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(coupon_code_id: string, params?: any) {
+  public static retrieve(coupon_code_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_code_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -38,7 +38,7 @@ export class CouponCode extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _coupon_code.coupon_code_list_params) {
+  public static list(params?: _coupon_code.coupon_code_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -49,7 +49,7 @@ export class CouponCode extends Model {
     }, ChargeBee._env)
   }
 
-  public static archive(coupon_code_id: string, params?: any) {
+  public static archive(coupon_code_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_code_id, params], {
       'methodName': 'archive',
       'httpMethod': 'POST',

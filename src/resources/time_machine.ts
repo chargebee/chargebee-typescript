@@ -45,7 +45,7 @@ export class TimeMachine extends Model {
   // OPERATIONS
   //-----------
 
-  public static retrieve(time_machine_id: string, params?: any) {
+  public static retrieve(time_machine_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([time_machine_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -56,7 +56,7 @@ export class TimeMachine extends Model {
     }, ChargeBee._env)
   }
 
-  public static start_afresh(time_machine_id: string, params?: _time_machine.start_afresh_params) {
+  public static start_afresh(time_machine_id: string, params?: _time_machine.start_afresh_params):RequestWrapper {
     return new RequestWrapper([time_machine_id, params], {
       'methodName': 'start_afresh',
       'httpMethod': 'POST',
@@ -67,7 +67,7 @@ export class TimeMachine extends Model {
     }, ChargeBee._env)
   }
 
-  public static travel_forward(time_machine_id: string, params?: _time_machine.travel_forward_params) {
+  public static travel_forward(time_machine_id: string, params?: _time_machine.travel_forward_params):RequestWrapper {
     return new RequestWrapper([time_machine_id, params], {
       'methodName': 'travel_forward',
       'httpMethod': 'POST',

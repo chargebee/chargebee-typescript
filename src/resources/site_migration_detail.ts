@@ -17,7 +17,7 @@ export class SiteMigrationDetail extends Model {
   // OPERATIONS
   //-----------
 
-  public static list(params?: _site_migration_detail.site_migration_detail_list_params) {
+  public static list(params?: _site_migration_detail.site_migration_detail_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

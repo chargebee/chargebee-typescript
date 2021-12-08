@@ -44,7 +44,7 @@ export class Event extends Model {
   // OPERATIONS
   //-----------
 
-  public static list(params?: _event.event_list_params) {
+  public static list(params?: _event.event_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -55,7 +55,7 @@ export class Event extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(event_id: string, params?: any) {
+  public static retrieve(event_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([event_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',

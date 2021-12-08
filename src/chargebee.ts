@@ -13,6 +13,7 @@ export {_virtual_bank_account} from "./resources/virtual_bank_account";
 export {_card} from "./resources/card";
 export {_promotional_credit} from "./resources/promotional_credit";
 export {_invoice} from "./resources/invoice";
+export {_tax_withheld} from "./resources/tax_withheld";
 export {_credit_note} from "./resources/credit_note";
 export {_unbilled_charge} from "./resources/unbilled_charge";
 export {_order} from "./resources/order";
@@ -53,6 +54,10 @@ export class ChargeBee {
         Util.extend(true, ChargeBee._env, conf)
     }
 
+    public updateRequestTimeoutInMillis(timeout){
+        ChargeBee._env.timeout = timeout;
+    }
+
     get subscription() {
         return resources.Subscription;
     }
@@ -91,6 +96,9 @@ export class ChargeBee {
     }
     get invoice() {
         return resources.Invoice;
+    }
+    get tax_withheld() {
+        return resources.TaxWithheld;
     }
     get credit_note() {
         return resources.CreditNote;

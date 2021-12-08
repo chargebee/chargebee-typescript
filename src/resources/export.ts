@@ -45,7 +45,7 @@ export class Export extends Model {
   // OPERATIONS
   //-----------
 
-  public static retrieve(export_id: string, params?: any) {
+  public static retrieve(export_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([export_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -56,7 +56,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static revenue_recognition(params?: _export.revenue_recognition_params) {
+  public static revenue_recognition(params?: _export.revenue_recognition_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'revenue_recognition',
       'httpMethod': 'POST',
@@ -67,7 +67,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static deferred_revenue(params?: _export.deferred_revenue_params) {
+  public static deferred_revenue(params?: _export.deferred_revenue_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'deferred_revenue',
       'httpMethod': 'POST',
@@ -78,7 +78,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static plans(params?: _export.plans_params) {
+  public static plans(params?: _export.plans_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'plans',
       'httpMethod': 'POST',
@@ -89,7 +89,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static addons(params?: _export.addons_params) {
+  public static addons(params?: _export.addons_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'addons',
       'httpMethod': 'POST',
@@ -100,7 +100,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static coupons(params?: _export.coupons_params) {
+  public static coupons(params?: _export.coupons_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'coupons',
       'httpMethod': 'POST',
@@ -111,7 +111,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static customers(params?: _export.customers_params) {
+  public static customers(params?: _export.customers_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'customers',
       'httpMethod': 'POST',
@@ -122,7 +122,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static subscriptions(params?: _export.subscriptions_params) {
+  public static subscriptions(params?: _export.subscriptions_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'subscriptions',
       'httpMethod': 'POST',
@@ -133,7 +133,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static invoices(params?: _export.invoices_params) {
+  public static invoices(params?: _export.invoices_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'invoices',
       'httpMethod': 'POST',
@@ -144,7 +144,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static credit_notes(params?: _export.credit_notes_params) {
+  public static credit_notes(params?: _export.credit_notes_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'credit_notes',
       'httpMethod': 'POST',
@@ -155,7 +155,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static transactions(params?: _export.transactions_params) {
+  public static transactions(params?: _export.transactions_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'transactions',
       'httpMethod': 'POST',
@@ -166,7 +166,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static orders(params?: _export.orders_params) {
+  public static orders(params?: _export.orders_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'orders',
       'httpMethod': 'POST',
@@ -177,7 +177,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static item_families(params?: _export.item_families_params) {
+  public static item_families(params?: _export.item_families_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'item_families',
       'httpMethod': 'POST',
@@ -188,7 +188,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static items(params?: _export.items_params) {
+  public static items(params?: _export.items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'items',
       'httpMethod': 'POST',
@@ -199,7 +199,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static item_prices(params?: _export.item_prices_params) {
+  public static item_prices(params?: _export.item_prices_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'item_prices',
       'httpMethod': 'POST',
@@ -210,7 +210,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static attached_items(params?: _export.attached_items_params) {
+  public static attached_items(params?: _export.attached_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'attached_items',
       'httpMethod': 'POST',
@@ -221,7 +221,7 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
-  public static differential_prices(params?: _export.differential_prices_params) {
+  public static differential_prices(params?: _export.differential_prices_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'differential_prices',
       'httpMethod': 'POST',

@@ -18,7 +18,7 @@ export class ResourceMigration extends Model {
   // OPERATIONS
   //-----------
 
-  public static retrieve_latest(params?: _resource_migration.retrieve_latest_params) {
+  public static retrieve_latest(params?: _resource_migration.retrieve_latest_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'retrieve_latest',
       'httpMethod': 'GET',

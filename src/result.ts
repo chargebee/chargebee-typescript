@@ -100,6 +100,13 @@ export class Result {
         );
         return _invoice;
     }
+    get tax_withheld() {
+        let _tax_withheld = this.get(
+            'tax_withheld',
+            'TaxWithheld'
+        );
+        return _tax_withheld;
+    }
     get credit_note() {
         let _credit_note = this.get(
             'credit_note',

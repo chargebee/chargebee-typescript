@@ -18,7 +18,7 @@ export class Comment extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _comment.create_params) {
+  public static create(params?: _comment.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -29,7 +29,7 @@ export class Comment extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(comment_id: string, params?: any) {
+  public static retrieve(comment_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([comment_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -40,7 +40,7 @@ export class Comment extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _comment.comment_list_params) {
+  public static list(params?: _comment.comment_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -51,7 +51,7 @@ export class Comment extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete(comment_id: string, params?: any) {
+  public static delete(comment_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([comment_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',

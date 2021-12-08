@@ -39,7 +39,7 @@ export class Card extends Model {
   // OPERATIONS
   //-----------
 
-  public static retrieve(card_id: string, params?: any) {
+  public static retrieve(card_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([card_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -50,7 +50,7 @@ export class Card extends Model {
     }, ChargeBee._env)
   }
 
-  public static update_card_for_customer(customer_id: string, params?: _card.update_card_for_customer_params) {
+  public static update_card_for_customer(customer_id: string, params?: _card.update_card_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update_card_for_customer',
       'httpMethod': 'POST',
@@ -61,7 +61,7 @@ export class Card extends Model {
     }, ChargeBee._env)
   }
 
-  public static switch_gateway_for_customer(customer_id: string, params?: _card.switch_gateway_for_customer_params) {
+  public static switch_gateway_for_customer(customer_id: string, params?: _card.switch_gateway_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'switch_gateway_for_customer',
       'httpMethod': 'POST',
@@ -72,7 +72,7 @@ export class Card extends Model {
     }, ChargeBee._env)
   }
 
-  public static copy_card_for_customer(customer_id: string, params?: _card.copy_card_for_customer_params) {
+  public static copy_card_for_customer(customer_id: string, params?: _card.copy_card_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'copy_card_for_customer',
       'httpMethod': 'POST',
@@ -83,7 +83,7 @@ export class Card extends Model {
     }, ChargeBee._env)
   }
 
-  public static delete_card_for_customer(customer_id: string, params?: any) {
+  public static delete_card_for_customer(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'delete_card_for_customer',
       'httpMethod': 'POST',

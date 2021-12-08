@@ -22,7 +22,7 @@ export class Gift extends Model {
   // OPERATIONS
   //-----------
 
-  public static create(params?: _gift.create_params) {
+  public static create(params?: _gift.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -33,7 +33,7 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
-  public static create_for_items(params?: _gift.create_for_items_params) {
+  public static create_for_items(params?: _gift.create_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_for_items',
       'httpMethod': 'POST',
@@ -44,7 +44,7 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(gift_id: string, params?: any) {
+  public static retrieve(gift_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -55,7 +55,7 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _gift.gift_list_params) {
+  public static list(params?: _gift.gift_list_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -66,7 +66,7 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
-  public static claim(gift_id: string, params?: any) {
+  public static claim(gift_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'claim',
       'httpMethod': 'POST',
@@ -77,7 +77,7 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
-  public static cancel(gift_id: string, params?: any) {
+  public static cancel(gift_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'cancel',
       'httpMethod': 'POST',
@@ -88,7 +88,7 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
-  public static update_gift(gift_id: string, params?: _gift.update_gift_params) {
+  public static update_gift(gift_id: string, params?: _gift.update_gift_params):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'update_gift',
       'httpMethod': 'POST',
