@@ -22,7 +22,7 @@ export class Address extends Model {
   public validation_status?: string;
   public subscription_id: string;
 
-  
+
 
   // OPERATIONS
   //-----------

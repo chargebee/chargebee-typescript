@@ -1,6 +1,6 @@
-export class Util {
-    static Q = require('q')
+import { defer, Deferred } from 'q'
 
+export class Util {
     public static extendsFn(...args) {
         let options, name, src, copy, copyIsArray, clone,
             target = args[0] || {},
@@ -93,8 +93,8 @@ export class Util {
         return typeof obj === 'function';
     }
 
-    static createDeferred(callback) {
-        let deferred = Util.Q.defer()
+    static createDeferred<T>(callback): Deferred<T> {
+        let deferred = defer<T>()
         if (callback) {
             deferred.promise.then(function(res) {
                 setTimeout(function() {

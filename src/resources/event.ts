@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -22,7 +23,7 @@ export class Event extends Model {
   }
 
   set content(content) {}
-  
+
   public static deserialize(json: string): resources.Event {
     let webhook_data;
     try {
@@ -44,7 +45,7 @@ export class Event extends Model {
   // OPERATIONS
   //-----------
 
-  public static list(params?: _event.event_list_params):RequestWrapper {
+  public static list(params?: _event.event_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

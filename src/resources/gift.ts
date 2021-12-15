@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -17,7 +18,7 @@ export class Gift extends Model {
   public gift_receiver: GiftReceiver;
   public gift_timelines?: Array<GiftTimeline>;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -55,7 +56,7 @@ export class Gift extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _gift.gift_list_params):RequestWrapper {
+  public static list(params?: _gift.gift_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

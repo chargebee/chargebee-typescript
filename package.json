@@ -16,6 +16,9 @@
    "files": [
       "lib/**/*"
    ],
+   "scripts": {
+      "tsc": "tsc --pretty"
+   },
    "dependencies": {
       "q": ">=1.0.1"
    },

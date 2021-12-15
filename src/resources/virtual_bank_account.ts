@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -21,7 +22,7 @@ export class VirtualBankAccount extends Model {
   public reference_id: string;
   public deleted: boolean;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -59,7 +60,7 @@ export class VirtualBankAccount extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _virtual_bank_account.virtual_bank_account_list_params):RequestWrapper {
+  public static list(params?: _virtual_bank_account.virtual_bank_account_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

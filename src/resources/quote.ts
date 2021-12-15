@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -42,7 +43,7 @@ export class Quote extends Model {
   public contract_term_end?: number;
   public contract_term_termination_fee?: number;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -190,7 +191,7 @@ export class Quote extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _quote.quote_list_params):RequestWrapper {
+  public static list(params?: _quote.quote_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
