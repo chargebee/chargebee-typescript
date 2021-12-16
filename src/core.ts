@@ -2,20 +2,30 @@ import {Util} from './util';
 import {Result} from "./result";
 import {ListResult} from './list_result';
 
+type Callback = (error: any, success: ListResult | Result) => any
+
 export class Core {
     private static http = require('http');
     private static https = require('https');
     private static os = require('os')
-    
-    static timeoutHandler = function (req, callBack) {
+
+    static timeoutHandler = function (req, callBack: Callback, env) {
         return function() {
             req._isAborted = true;
             req.abort();
-            Core.throwError(callBack,'io_error', 504, 'timeout', 'request aborted due to timeout.');
+            Core.throwError(
+              callBack,
+              'io_error',
+              504,
+              'timeout',
+              'request aborted due to timeout.',
+              undefined,
+              env.useErrorObject
+            );
         }
     }
 
-    static responseHandler(req, callBack) {
+    static responseHandler(req, callBack: Callback, env) {
         return function(res) {
             let response: any = '';
             res.setEncoding('utf8');
@@ -26,7 +36,15 @@ export class Core {
                 try {
                     response = JSON.parse(response);
                 } catch (e) {
-                    Core.throwError(callBack,'client_error', 500, 'invalid_json', 'invalid json in response. Probably not a ChargeBee response', e);
+                    Core.throwError(
+                      callBack,
+                      'client_error',
+                      500,
+                      'invalid_json',
+                      'invalid json in response. Probably not a ChargeBee response',
+                      e,
+                      env.useErrorObject
+                    );
                 }
                 if (res.statusCode < 200 || res.statusCode > 299) {
                     response.http_status_code = res.statusCode;
@@ -43,15 +61,23 @@ export class Core {
         };
     }
 
-    static errorHandler(req, callBack) {
+    static errorHandler(req, callBack: Callback, env) {
         return function(error) {
             if (req._isAborted)
                 return;
-            Core.throwError(callBack,'io_error', 503, 'connection_error', 'connection error while making request.', error);
+            Core.throwError(
+              callBack,
+              'io_error',
+              503,
+              'connection_error',
+              'connection error while making request.',
+              error,
+              env.useErrorObject
+            );
         }
     }
 
-    static makeApiRequest(env, callBack, httpMethod, urlPrefix, urlSuffix, urlIdParam, params, headers, isListReq) {
+    static makeApiRequest(env, callBack: Callback, httpMethod, urlPrefix, urlSuffix, urlIdParam, params, headers, isListReq) {
         let path = this.getApiURL(env, urlPrefix, urlSuffix, urlIdParam);
         if (typeof params === 'undefined' || params === null) {
             params = {};
@@ -82,9 +108,9 @@ export class Core {
             "port": env.port,
             "headers": headers
         });
-        req.setTimeout(env.timeout, this.timeoutHandler(req, callBack));
-        req.on('response', this.responseHandler(req, callBack));
-        req.on('error', this.errorHandler(req, callBack));
+        req.setTimeout(env.timeout, this.timeoutHandler(req, callBack, env));
+        req.on('response', this.responseHandler(req, callBack, env));
+        req.on('error', this.errorHandler(req, callBack, env));
         req.write(data);
         req.end();
     };
@@ -171,19 +197,33 @@ export class Core {
         return serialized.join('&').replace(/%20/g, '+')
     }
 
-    static throwError(callBack,type,httpStatusCode, errorCode, message, detail?) {
-        let error = {
-            'message': message,
-            'type':type,
-            'api_error_code':errorCode,
-            'http_status_code':httpStatusCode,
+    static throwError(callBack: Callback, type: string, httpStatusCode: number, errorCode: string, message: string, detail?: any, useErrorObject?: boolean) {
+        let error
 
-            'http_code': httpStatusCode,
-            'error_code': errorCode,
-        };
-        if (typeof detail !== "undefined") {
-            error['detail'] = detail;
+        if (useErrorObject) {
+            error = new CoreError(
+              message,
+              type,
+              httpStatusCode,
+              errorCode,
+              detail
+            )
+        } else {
+            error = {
+                'message': message,
+                'type': type,
+                'api_error_code': errorCode,
+                'http_status_code': httpStatusCode,
+
+                'http_code': httpStatusCode,
+                'error_code': errorCode,
+            };
+
+            if (typeof detail !== "undefined") {
+                error['detail'] = detail;
+            }
         }
+
         return callBack(error, null);
     }
 }
