@@ -26,7 +26,7 @@ export class Core {
                 try {
                     response = JSON.parse(response);
                 } catch (e) {
-                    Core.throwError(callBack,'client_error', 500, 'invalid_json', 'invalid json in response. Probably not a ChargeBee response', e);
+                    return Core.throwError(callBack,'client_error', 500, 'invalid_json', 'invalid json in response. Probably not a ChargeBee response', e);
                 }
                 if (res.statusCode < 200 || res.statusCode > 299) {
                     response.http_status_code = res.statusCode;
