@@ -15,18 +15,50 @@ Then import the library as:
 
     import {ChargeBee} from 'chargebee-typescript';
 	var chargebee = new ChargeBee();
-	
+
 ## Usage
+
+### Before getting started
+This library lazily requests data only upon trying to access it. This means that if you are trying to get back a list of subscriptions for a customer, you need to access the parent of every field you want.
+```typescript
+chargebee.subscription.list({/* params */})
+.request(function(error,result) {
+  if(error){
+    //handle error
+    console.log(error);
+  }else{
+    // An empty Result object
+    console.log(result)
+    // A list of empty Result objects
+    console.log(result.list)
+    // A list of Subscription objects
+    console.log(result.list.map((obj) => obj.subscription))
+    }
+  });
+```
+
+If you have a `result` (or children further down the line) and are unsure what properties are available, you can use `Object.keys` to get a list of available accessor properties. Using `Object.keys` in the previous example would yield
+```typescript
+    // ['list', 'next_offset']
+    console.log(Object.keys(result))
+    // ['1', '2', '3'], e.g. `result.list` is an array with 3 entries
+    console.log(Object.keys(result.list))
+    // ['activated_at', 'base_currency_code', ...]
+    // ['activated_at', 'base_currency_code', ...]
+    // ['activated_at', 'base_currency_code', ...]
+    // Which means we've reached the bottom and should have all the information available from this request
+    console.log(result.list.map((obj) => obj.subscription))
+```
 
 ### To create a customer & subscription
 ```typescript
 import {
-     ChargeBee, 
+     ChargeBee,
      _subscription
    } from 'chargebee-typescript';
-   
+
    var chargebee = new ChargeBee();
-   
+
    chargebee.configure({site : "mannar-test",
      api_key : "test___dev__2d2aopx6Dh6tzq5qI3FuV7TuWMbxaudy"});
    chargebee.subscription.create({
@@ -65,7 +97,7 @@ import {
 ### Use of Filters In List API
 ```typescript
 import {
-  ChargeBee, 
+  ChargeBee,
   _subscription
 } from 'chargebee-typescript';
 
@@ -100,7 +132,7 @@ chargebee.subscription.list({
 ### To create subscription with custom headers and custom fields:
 ```typescript
 import {
-  ChargeBee, 
+  ChargeBee,
   _subscription
 } from 'chargebee-typescript';
 
@@ -129,13 +161,13 @@ chargebee.subscription.create({
 ### Error handling:
 ```typescript
 import {
-  ChargeBee, 
+  ChargeBee,
   _subscription
 } from 'chargebee-typescript';
 
 var chargebee = new ChargeBee();
 
-//The callback function that you provide needs to take in two arguments. The first being error object and the 
+//The callback function that you provide needs to take in two arguments. The first being error object and the
 //second being the response. Incase of error, the error object is passed.
 chargebee.subscription.create({
   //create params...
@@ -148,25 +180,24 @@ chargebee.subscription.create({
 });
 
 function handleCreateSubscriptionError(ex) {
-  if (ex.type == "payment") {    
+  if (ex.type == "payment") {
     // First check for card parameters entered by the user.
     // We recommend you to validate the input at the client side itself to catch simple mistakes.
     if ("card[number]" == ex.param) {
-      // Ask your user to recheck the card number. A better way is to use 
-      // Stripe's https://github.com/stripe/jquery.payment for validating it in the client side itself.   
-      
-    //}else if(<other card params> == ex.param){ 
+      // Ask your user to recheck the card number. A better way is to use
+      // Stripe's https://github.com/stripe/jquery.payment for validating it in the client side itself.
+    //}else if(<other card params> == ex.param){
       //Similarly check for other card parameters entered by the user.
       //....
-      
+
     } else {
       // Verfication or processing failures.
       // Provide a standard message to your user to recheck his card details or provide a different card.
-      // Like  'Sorry,there was a problem when processing your card, please check the details and try again'. 
+      // Like  'Sorry,there was a problem when processing your card, please check the details and try again'.
     }
-    
+
   } else if (ex.type == "invalid_request") {
-    // For coupons you could decide to provide specific messages by using 
+    // For coupons you could decide to provide specific messages by using
     // the 'api_error_code' attribute in the ex.
     if ("coupon" == ex.param) {
       if ("resource_not_found" == ex.api_error_code) {
@@ -179,13 +210,13 @@ function handleCreateSubscriptionError(ex) {
         // Inform user to recheck his coupon code.
       }
     } else {
-      // Since you would have validated all other parameters on your side itself, 
+      // Since you would have validated all other parameters on your side itself,
       // this could probably be a bug in your code. Provide a generic message to your users.
     }
   } else if (ex.type == "operation_failed") {
     // Indicates that the request parameters were right but the request couldn't be completed.
     // The reasons might be "api_request_limit_exceeded" or could be due to an issue in ChargeBee side.
-    // These should occur very rarely and mostly be of temporary nature. 
+    // These should occur very rarely and mostly be of temporary nature.
     // You could ask your user to retry after some time.
   } else if (ex.type == "io_error") {
     // Handle IO exceptions such as connection timeout, request timeout etc.
@@ -198,6 +229,7 @@ function handleCreateSubscriptionError(ex) {
 }
 
 ```
+
 ## Documentation
 
 The full documentation can be found on the chargebee site here:
