@@ -6,11 +6,15 @@ import {filter} from "../filter";
 
 export class TaxWithheld extends Model {
   public id: string;
+  public user?: string;
   public reference_number?: string;
   public description?: string;
+  public type: string;
+  public payment_method: string;
   public date?: number;
   public currency_code: string;
   public amount?: number;
+  public exchange_rate?: number;
 
   
 

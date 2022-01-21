@@ -68,4 +68,3 @@ export class RequestWrapper<T = Result> {
         return deferred.promise;
     };
 }
-

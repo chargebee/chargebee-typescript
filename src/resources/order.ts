@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -62,7 +62,7 @@ export class Order extends Model {
   public resend_reason?: string;
   public resent_orders?: Array<ResentOrder>;
 
-
+  
 
   // OPERATIONS
   //-----------

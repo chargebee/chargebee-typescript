@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -43,7 +43,7 @@ export class ItemPrice extends Model {
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
 
-
+  
 
   // OPERATIONS
   //-----------

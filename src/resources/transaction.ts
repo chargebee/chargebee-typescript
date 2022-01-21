@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -48,7 +48,7 @@ export class Transaction extends Model {
   public last4?: string;
   public merchant_reference_id?: string;
 
-
+  
 
   // OPERATIONS
   //-----------

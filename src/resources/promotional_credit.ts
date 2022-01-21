@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -19,7 +19,7 @@ export class PromotionalCredit extends Model {
   public done_by?: string;
   public created_at: number;
 
-
+  
 
   // OPERATIONS
   //-----------

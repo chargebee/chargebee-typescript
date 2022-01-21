@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -26,6 +26,7 @@ export class CreditNote extends Model {
   public generated_at?: number;
   public resource_version?: number;
   public updated_at?: number;
+  public einvoice?: Einvoice;
   public sub_total: number;
   public sub_total_in_local_currency?: number;
   public total_in_local_currency?: number;
@@ -44,7 +45,7 @@ export class CreditNote extends Model {
   public create_reason_code?: string;
   public vat_number_prefix?: string;
 
-
+  
 
   // OPERATIONS
   //-----------
@@ -77,6 +78,17 @@ export class CreditNote extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/credit_notes',
       'urlSuffix': '/pdf',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static download_einvoice(credit_note_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([credit_note_id, params], {
+      'methodName': 'download_einvoice',
+      'httpMethod': 'GET',
+      'urlPrefix': '/credit_notes',
+      'urlSuffix': '/download_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -149,6 +161,12 @@ export class CreditNote extends Model {
   }
 
 } // ~CreditNote
+
+export class Einvoice extends Model {
+  public id: string;
+  public status: string;
+  public message?: string;
+} // ~Einvoice
 
 export class LineItem extends Model {
   public id?: string;

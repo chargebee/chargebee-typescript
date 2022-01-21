@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -60,12 +60,13 @@ export class Invoice extends Model {
   public notes?: Array<Note>;
   public shipping_address?: ShippingAddress;
   public billing_address?: BillingAddress;
+  public einvoice?: Einvoice;
   public payment_owner?: string;
   public void_reason_code?: string;
   public deleted: boolean;
   public vat_number_prefix?: string;
 
-
+  
 
   // OPERATIONS
   //-----------
@@ -219,6 +220,17 @@ export class Invoice extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/invoices',
       'urlSuffix': '/pdf',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static download_einvoice(invoice_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'download_einvoice',
+      'httpMethod': 'GET',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/download_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -549,6 +561,12 @@ export class BillingAddress extends Model {
   public zip?: string;
   public validation_status?: string;
 } // ~BillingAddress
+
+export class Einvoice extends Model {
+  public id: string;
+  public status: string;
+  public message?: string;
+} // ~Einvoice
 
 
 
@@ -1355,11 +1373,15 @@ export namespace _invoice {
   export interface charges_create_for_charge_items_and_charges_params {
     date_to?: number;
   }
+  export interface charges_create_for_charge_items_and_charges_params {
+  }
   export interface notes_to_remove_create_for_charge_items_and_charges_params {
     entity_type?: string;
   }
   export interface notes_to_remove_create_for_charge_items_and_charges_params {
     entity_id?: string;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
   }
   export interface item_price_create_for_charge_item_params {
     item_price_id: string;

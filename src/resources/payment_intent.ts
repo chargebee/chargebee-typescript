@@ -23,7 +23,7 @@ export class PaymentIntent extends Model {
   public gateway?: string;
   public active_payment_attempt?: PaymentAttempt;
 
-
+  
 
   // OPERATIONS
   //-----------

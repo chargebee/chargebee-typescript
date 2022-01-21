@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -79,7 +79,7 @@ export class Subscription extends Model {
   public create_pending_invoices?: boolean;
   public auto_close_invoices?: boolean;
 
-
+  
 
   // OPERATIONS
   //-----------
@@ -630,6 +630,7 @@ export namespace _subscription {
     billing_address?: billing_address_create_params;
     shipping_address?: shipping_address_create_params;
     contract_term?: contract_term_create_params;
+    entity_identifiers?: Array<entity_identifiers_create_params>;
     addons?: Array<addons_create_params>;
     event_based_addons?: Array<event_based_addons_create_params>;
   }
@@ -733,7 +734,6 @@ export namespace _subscription {
     updated_at?: filter._timestamp;
     offline_payment_method?: filter._enum;
     auto_close_invoices?: filter._boolean;
-    create_pending_invoices?: filter._boolean;
     override_relationship?: filter._boolean;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
@@ -1357,6 +1357,15 @@ export namespace _subscription {
     vat_number_prefix?: string;
   }
   export interface customer_create_params {
+    entity_identifier_scheme?: string;
+  }
+  export interface customer_create_params {
+    entity_identifier_standard?: string;
+  }
+  export interface customer_create_params {
+    is_einvoice_enabled?: boolean;
+  }
+  export interface customer_create_params {
     registered_for_gst?: boolean;
   }
   export interface customer_create_params {
@@ -1373,6 +1382,18 @@ export namespace _subscription {
   }
   export interface customer_create_params {
     customer_type?: string;
+  }
+  export interface entity_identifiers_create_params {
+    id?: string;
+  }
+  export interface entity_identifiers_create_params {
+    scheme?: string;
+  }
+  export interface entity_identifiers_create_params {
+    value?: string;
+  }
+  export interface entity_identifiers_create_params {
+    standard?: string;
   }
   export interface addons_create_params {
     id?: string;
@@ -1879,6 +1900,15 @@ export namespace _subscription {
     vat_number_prefix?: string;
   }
   export interface customer_update_params {
+    entity_identifier_scheme?: string;
+  }
+  export interface customer_update_params {
+    is_einvoice_enabled?: boolean;
+  }
+  export interface customer_update_params {
+    entity_identifier_standard?: string;
+  }
+  export interface customer_update_params {
     business_customer_without_vat_number?: boolean;
   }
   export interface customer_update_params {
@@ -2147,6 +2177,15 @@ export namespace _subscription {
   }
   export interface customer_update_for_items_params {
     vat_number_prefix?: string;
+  }
+  export interface customer_update_for_items_params {
+    entity_identifier_scheme?: string;
+  }
+  export interface customer_update_for_items_params {
+    is_einvoice_enabled?: boolean;
+  }
+  export interface customer_update_for_items_params {
+    entity_identifier_standard?: string;
   }
   export interface customer_update_for_items_params {
     business_customer_without_vat_number?: boolean;

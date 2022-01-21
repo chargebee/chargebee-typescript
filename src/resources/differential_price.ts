@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -20,7 +20,7 @@ export class DifferentialPrice extends Model {
   public currency_code: string;
   public parent_periods?: Array<ParentPeriod>;
 
-
+  
 
   // OPERATIONS
   //-----------

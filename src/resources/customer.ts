@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -50,6 +50,8 @@ export class Customer extends Model {
   public refundable_credits: number;
   public excess_payments: number;
   public balances?: Array<Balance>;
+  public entity_identifiers?: Array<EntityIdentifier>;
+  public is_einvoice_enabled?: boolean;
   public meta_data?: any;
   public deleted: boolean;
   public registered_for_gst?: boolean;
@@ -62,8 +64,10 @@ export class Customer extends Model {
   public parent_account_access?: ParentAccountAccess;
   public child_account_access?: ChildAccountAccess;
   public vat_number_prefix?: string;
+  public entity_identifier_scheme?: string;
+  public entity_identifier_standard?: string;
 
-
+  
 
   // OPERATIONS
   //-----------
@@ -402,6 +406,13 @@ export class Balance extends Model {
   public balance_currency_code: string;
 } // ~Balance
 
+export class EntityIdentifier extends Model {
+  public id: string;
+  public value?: string;
+  public scheme: string;
+  public standard?: string;
+} // ~EntityIdentifier
+
 export class Relationship extends Model {
   public parent_id?: string;
   public payment_owner_id: string;
@@ -443,7 +454,10 @@ export namespace _customer {
     allow_direct_debit?: boolean;
     vat_number?: string;
     vat_number_prefix?: string;
+    entity_identifier_scheme?: string;
+    entity_identifier_standard?: string;
     registered_for_gst?: boolean;
+    is_einvoice_enabled?: boolean;
     taxability?: string;
     exemption_details?: any;
     customer_type?: string;
@@ -468,6 +482,7 @@ export namespace _customer {
     payment_method?: payment_method_create_params;
     payment_intent?: payment_intent_create_params;
     billing_address?: billing_address_create_params;
+    entity_identifiers?: Array<entity_identifiers_create_params>;
   }
   export interface customer_list_params {
     limit?: number;
@@ -520,9 +535,13 @@ export namespace _customer {
   export interface update_billing_info_params {
     vat_number?: string;
     vat_number_prefix?: string;
+    entity_identifier_scheme?: string;
+    entity_identifier_standard?: string;
     registered_for_gst?: boolean;
     business_customer_without_vat_number?: boolean;
+    is_einvoice_enabled?: boolean;
     billing_address?: billing_address_update_billing_info_params;
+    entity_identifiers?: Array<entity_identifiers_update_billing_info_params>;
   }
   export interface assign_payment_role_params {
     payment_source_id: string;
@@ -600,7 +619,7 @@ export namespace _customer {
     child_account_access?: child_account_access_relationships_params;
   }
   export interface hierarchy_params {
-    hierarchy_operation_type?: string;
+    hierarchy_operation_type: string;
   }
   export interface update_hierarchy_settings_params {
     use_default_hierarchy_settings?: boolean;
@@ -809,6 +828,18 @@ export namespace _customer {
   export interface billing_address_create_params {
     validation_status?: string;
   }
+  export interface entity_identifiers_create_params {
+    id?: string;
+  }
+  export interface entity_identifiers_create_params {
+    scheme?: string;
+  }
+  export interface entity_identifiers_create_params {
+    value?: string;
+  }
+  export interface entity_identifiers_create_params {
+    standard?: string;
+  }
   export interface relationship_customer_list_params {
     parent_id?: filter._string;
   }
@@ -883,6 +914,21 @@ export namespace _customer {
   }
   export interface billing_address_update_billing_info_params {
     validation_status?: string;
+  }
+  export interface entity_identifiers_update_billing_info_params {
+    id?: string;
+  }
+  export interface entity_identifiers_update_billing_info_params {
+    scheme?: string;
+  }
+  export interface entity_identifiers_update_billing_info_params {
+    value?: string;
+  }
+  export interface entity_identifiers_update_billing_info_params {
+    operation?: string;
+  }
+  export interface entity_identifiers_update_billing_info_params {
+    standard?: string;
   }
   export interface contact_add_contact_params {
     id?: string;

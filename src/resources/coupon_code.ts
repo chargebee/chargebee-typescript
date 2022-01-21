@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -12,7 +12,7 @@ export class CouponCode extends Model {
   public coupon_set_id: string;
   public coupon_set_name: string;
 
-
+  
 
   // OPERATIONS
   //-----------

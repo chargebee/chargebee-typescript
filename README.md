@@ -180,12 +180,13 @@ chargebee.subscription.create({
 });
 
 function handleCreateSubscriptionError(ex) {
-  if (ex.type == "payment") {
+  if (ex.type == "payment") {    
     // First check for card parameters entered by the user.
     // We recommend you to validate the input at the client side itself to catch simple mistakes.
     if ("card[number]" == ex.param) {
       // Ask your user to recheck the card number. A better way is to use
       // Stripe's https://github.com/stripe/jquery.payment for validating it in the client side itself.
+
     //}else if(<other card params> == ex.param){
       //Similarly check for other card parameters entered by the user.
       //....

@@ -34,7 +34,7 @@ export class Card extends Model {
   public customer_id: string;
   public masked_number?: string;
 
-
+  
 
   // OPERATIONS
   //-----------

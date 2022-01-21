@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -29,7 +29,7 @@ export class Item extends Model {
   public applicable_items?: Array<ApplicableItem>;
   public metadata?: any;
 
-
+  
 
   // OPERATIONS
   //-----------

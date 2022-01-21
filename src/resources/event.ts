@@ -1,5 +1,5 @@
 import * as resources from ".";
-import { ListResult } from '../list_result'
+import {ListResult} from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -23,7 +23,7 @@ export class Event extends Model {
   }
 
   set content(content) {}
-
+  
   public static deserialize(json: string): resources.Event {
     let webhook_data;
     try {

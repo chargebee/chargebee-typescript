@@ -19,7 +19,7 @@ export class PortalSession extends Model {
   public logout_ipaddress?: string;
   public linked_customers?: Array<LinkedCustomer>;
 
-
+  
 
   // OPERATIONS
   //-----------
