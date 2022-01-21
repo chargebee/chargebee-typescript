@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -19,7 +20,7 @@ export class AttachedItem extends Model {
   public resource_version?: number;
   public updated_at?: number;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -68,7 +69,7 @@ export class AttachedItem extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(item_id: string, params?: _attached_item.attached_item_list_params):RequestWrapper {
+  public static list(item_id: string, params?: _attached_item.attached_item_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_id, params], {
       'methodName': 'list',
       'httpMethod': 'GET',

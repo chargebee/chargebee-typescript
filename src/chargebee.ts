@@ -47,10 +47,15 @@ export {_item_price} from "./resources/item_price";
 export {_attached_item} from "./resources/attached_item";
 export {_differential_price} from "./resources/differential_price";
 
+interface Conf {
+    api_key: string
+    site: string
+}
+
 export class ChargeBee {
     static _env = require('./environment');
     static _api_version = 'v2';
-    public configure(conf) {
+    public configure(conf: Partial<typeof ChargeBee._env & Conf>) {
         Util.extend(true, ChargeBee._env, conf)
     }
 

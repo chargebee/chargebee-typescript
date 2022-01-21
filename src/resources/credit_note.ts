@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -43,7 +44,7 @@ export class CreditNote extends Model {
   public create_reason_code?: string;
   public vat_number_prefix?: string;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -114,7 +115,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _credit_note.credit_note_list_params):RequestWrapper {
+  public static list(params?: _credit_note.credit_note_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

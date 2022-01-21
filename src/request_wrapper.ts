@@ -1,7 +1,10 @@
+import { Promise } from 'q'
+import { Model } from './resources/model'
+import { Result } from './result'
 import { Util } from "./util";
 import { Core } from "./core";
 
-export class RequestWrapper {
+export class RequestWrapper<T = Result> {
     private readonly args;
     private readonly httpHeaders;
     private apiCall;
@@ -38,7 +41,7 @@ export class RequestWrapper {
       return this;
     }
 
-    public request(callBack=undefined, envOptions?): Q.Promise<any> {
+    public request(callBack=undefined, envOptions?): Promise<T> {
         let env = {};
         let jsonConstructor =  {}.constructor;
         Util.extend(true, env, this.envArg);
@@ -48,7 +51,7 @@ export class RequestWrapper {
             Util.extend(true, env, callBack);
             callBack = undefined;
         }
-        let deferred = Util.createDeferred(callBack);
+        let deferred = Util.createDeferred<T>(callBack);
         let urlIdParam = this.apiCall.hasIdInUrl ? this.args[0] : null;
         let params = this.apiCall.hasIdInUrl ? this.args[1] : this.args[0];
         if (typeof callBack !== 'undefined' && !Util.isFunction(callBack)) {

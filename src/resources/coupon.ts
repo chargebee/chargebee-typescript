@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -37,7 +38,7 @@ export class Coupon extends Model {
   public invoice_notes?: string;
   public meta_data?: any;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -75,7 +76,7 @@ export class Coupon extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _coupon.coupon_list_params):RequestWrapper {
+  public static list(params?: _coupon.coupon_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

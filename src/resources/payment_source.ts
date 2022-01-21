@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -23,7 +24,7 @@ export class PaymentSource extends Model {
   public paypal?: Paypal;
   public deleted: boolean;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -138,7 +139,7 @@ export class PaymentSource extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _payment_source.payment_source_list_params):RequestWrapper {
+  public static list(params?: _payment_source.payment_source_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

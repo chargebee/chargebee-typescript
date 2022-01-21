@@ -1,4 +1,5 @@
 import * as resources from ".";
+import { ListResult } from '../list_result'
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -19,7 +20,7 @@ export class DifferentialPrice extends Model {
   public currency_code: string;
   public parent_periods?: Array<ParentPeriod>;
 
-  
+
 
   // OPERATIONS
   //-----------
@@ -68,7 +69,7 @@ export class DifferentialPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: _differential_price.differential_price_list_params):RequestWrapper {
+  public static list(params?: _differential_price.differential_price_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',

@@ -4,7 +4,7 @@ import {Util} from "./util";
 export class Result {
     readonly #_response: any;
 
-    get subscription() {
+    get subscription(): resources.Subscription {
         let _subscription = this.get(
             'subscription',
             'Subscription',
@@ -12,14 +12,14 @@ export class Result {
         );
         return _subscription;
     }
-    get contract_term() {
+    get contract_term(): resources.ContractTerm {
         let _contract_term = this.get(
             'contract_term',
             'ContractTerm'
         );
         return _contract_term;
     }
-    get advance_invoice_schedule() {
+    get advance_invoice_schedule(): resources.AdvanceInvoiceSchedule {
         let _advance_invoice_schedule = this.get(
             'advance_invoice_schedule',
             'AdvanceInvoiceSchedule',
@@ -27,7 +27,7 @@ export class Result {
         );
         return _advance_invoice_schedule;
     }
-    get customer() {
+    get customer(): resources.Customer {
         let _customer = this.get(
             'customer',
             'Customer',
@@ -35,28 +35,28 @@ export class Result {
         );
         return _customer;
     }
-    get hierarchy() {
+    get hierarchy(): resources.Hierarchy {
         let _hierarchy = this.get(
             'hierarchy',
             'Hierarchy'
         );
         return _hierarchy;
     }
-    get contact() {
+    get contact(): resources.Contact {
         let _contact = this.get(
             'contact',
             'Contact'
         );
         return _contact;
     }
-    get token() {
+    get token(): resources.Token {
         let _token = this.get(
             'token',
             'Token'
         );
         return _token;
     }
-    get payment_source() {
+    get payment_source(): resources.PaymentSource {
         let _payment_source = this.get(
             'payment_source',
             'PaymentSource',
@@ -64,35 +64,35 @@ export class Result {
         );
         return _payment_source;
     }
-    get third_party_payment_method() {
+    get third_party_payment_method(): resources.ThirdPartyPaymentMethod {
         let _third_party_payment_method = this.get(
             'third_party_payment_method',
             'ThirdPartyPaymentMethod'
         );
         return _third_party_payment_method;
     }
-    get virtual_bank_account() {
+    get virtual_bank_account(): resources.VirtualBankAccount {
         let _virtual_bank_account = this.get(
             'virtual_bank_account',
             'VirtualBankAccount'
         );
         return _virtual_bank_account;
     }
-    get card() {
+    get card(): resources.Card {
         let _card = this.get(
             'card',
             'Card'
         );
         return _card;
     }
-    get promotional_credit() {
+    get promotional_credit(): resources.PromotionalCredit {
         let _promotional_credit = this.get(
             'promotional_credit',
             'PromotionalCredit'
         );
         return _promotional_credit;
     }
-    get invoice() {
+    get invoice(): resources.Invoice {
         let _invoice = this.get(
             'invoice',
             'Invoice',
@@ -100,14 +100,14 @@ export class Result {
         );
         return _invoice;
     }
-    get tax_withheld() {
+    get tax_withheld(): resources.TaxWithheld {
         let _tax_withheld = this.get(
             'tax_withheld',
             'TaxWithheld'
         );
         return _tax_withheld;
     }
-    get credit_note() {
+    get credit_note(): resources.CreditNote {
         let _credit_note = this.get(
             'credit_note',
             'CreditNote',
@@ -115,7 +115,7 @@ export class Result {
         );
         return _credit_note;
     }
-    get unbilled_charge() {
+    get unbilled_charge(): resources.UnbilledCharge {
         let _unbilled_charge = this.get(
             'unbilled_charge',
             'UnbilledCharge',
@@ -123,7 +123,7 @@ export class Result {
         );
         return _unbilled_charge;
     }
-    get order() {
+    get order(): resources.Order {
         let _order = this.get(
             'order',
             'Order',
@@ -131,7 +131,7 @@ export class Result {
         );
         return _order;
     }
-    get gift() {
+    get gift(): resources.Gift {
         let _gift = this.get(
             'gift',
             'Gift',
@@ -139,7 +139,7 @@ export class Result {
         );
         return _gift;
     }
-    get transaction() {
+    get transaction(): resources.Transaction {
         let _transaction = this.get(
             'transaction',
             'Transaction',
@@ -147,14 +147,14 @@ export class Result {
         );
         return _transaction;
     }
-    get hosted_page() {
+    get hosted_page(): resources.HostedPage {
         let _hosted_page = this.get(
             'hosted_page',
             'HostedPage'
         );
         return _hosted_page;
     }
-    get estimate() {
+    get estimate(): resources.Estimate {
         let _estimate = this.get(
             'estimate',
             'Estimate',
@@ -193,7 +193,7 @@ export class Result {
         );
         return _estimate;
     }
-    get quote() {
+    get quote(): resources.Quote {
         let _quote = this.get(
             'quote',
             'Quote',
@@ -201,7 +201,7 @@ export class Result {
         );
         return _quote;
     }
-    get quoted_subscription() {
+    get quoted_subscription(): resources.QuotedSubscription {
         let _quoted_subscription = this.get(
             'quoted_subscription',
             'QuotedSubscription',
@@ -209,7 +209,7 @@ export class Result {
         );
         return _quoted_subscription;
     }
-    get quoted_charge() {
+    get quoted_charge(): resources.QuotedCharge {
         let _quoted_charge = this.get(
             'quoted_charge',
             'QuotedCharge',
@@ -217,7 +217,7 @@ export class Result {
         );
         return _quoted_charge;
     }
-    get quote_line_group() {
+    get quote_line_group(): resources.QuoteLineGroup {
         let _quote_line_group = this.get(
             'quote_line_group',
             'QuoteLineGroup',
@@ -225,7 +225,7 @@ export class Result {
         );
         return _quote_line_group;
     }
-    get plan() {
+    get plan(): resources.Plan {
         let _plan = this.get(
             'plan',
             'Plan',
@@ -233,7 +233,7 @@ export class Result {
         );
         return _plan;
     }
-    get addon() {
+    get addon(): resources.Addon {
         let _addon = this.get(
             'addon',
             'Addon',
@@ -241,7 +241,7 @@ export class Result {
         );
         return _addon;
     }
-    get coupon() {
+    get coupon(): resources.Coupon {
         let _coupon = this.get(
             'coupon',
             'Coupon',
@@ -249,35 +249,35 @@ export class Result {
         );
         return _coupon;
     }
-    get coupon_set() {
+    get coupon_set(): resources.CouponSet {
         let _coupon_set = this.get(
             'coupon_set',
             'CouponSet'
         );
         return _coupon_set;
     }
-    get coupon_code() {
+    get coupon_code(): resources.CouponCode {
         let _coupon_code = this.get(
             'coupon_code',
             'CouponCode'
         );
         return _coupon_code;
     }
-    get address() {
+    get address(): resources.Address {
         let _address = this.get(
             'address',
             'Address'
         );
         return _address;
     }
-    get usage() {
+    get usage(): resources.Usage {
         let _usage = this.get(
             'usage',
             'Usage'
         );
         return _usage;
     }
-    get event() {
+    get event(): resources.Event {
         let _event = this.get(
             'event',
             'Event',
@@ -285,21 +285,21 @@ export class Result {
         );
         return _event;
     }
-    get comment() {
+    get comment(): resources.Comment {
         let _comment = this.get(
             'comment',
             'Comment'
         );
         return _comment;
     }
-    get download() {
+    get download(): resources.Download {
         let _download = this.get(
             'download',
             'Download'
         );
         return _download;
     }
-    get portal_session() {
+    get portal_session(): resources.PortalSession {
         let _portal_session = this.get(
             'portal_session',
             'PortalSession',
@@ -307,28 +307,28 @@ export class Result {
         );
         return _portal_session;
     }
-    get site_migration_detail() {
+    get site_migration_detail(): resources.SiteMigrationDetail {
         let _site_migration_detail = this.get(
             'site_migration_detail',
             'SiteMigrationDetail'
         );
         return _site_migration_detail;
     }
-    get resource_migration() {
+    get resource_migration(): resources.ResourceMigration {
         let _resource_migration = this.get(
             'resource_migration',
             'ResourceMigration'
         );
         return _resource_migration;
     }
-    get time_machine() {
+    get time_machine(): resources.TimeMachine {
         let _time_machine = this.get(
             'time_machine',
             'TimeMachine'
         );
         return _time_machine;
     }
-    get export() {
+    get export(): resources.Export {
         let _export = this.get(
             'export',
             'Export',
@@ -336,7 +336,7 @@ export class Result {
         );
         return _export;
     }
-    get payment_intent() {
+    get payment_intent(): resources.PaymentIntent {
         let _payment_intent = this.get(
             'payment_intent',
             'PaymentIntent',
@@ -344,14 +344,14 @@ export class Result {
         );
         return _payment_intent;
     }
-    get item_family() {
+    get item_family(): resources.ItemFamily {
         let _item_family = this.get(
             'item_family',
             'ItemFamily'
         );
         return _item_family;
     }
-    get item() {
+    get item(): resources.Item {
         let _item = this.get(
             'item',
             'Item',
@@ -359,7 +359,7 @@ export class Result {
         );
         return _item;
     }
-    get item_price() {
+    get item_price(): resources.ItemPrice {
         let _item_price = this.get(
             'item_price',
             'ItemPrice',
@@ -367,14 +367,14 @@ export class Result {
         );
         return _item_price;
     }
-    get attached_item() {
+    get attached_item(): resources.AttachedItem {
         let _attached_item = this.get(
             'attached_item',
             'AttachedItem'
         );
         return _attached_item;
     }
-    get differential_price() {
+    get differential_price(): resources.DifferentialPrice {
         let _differential_price = this.get(
             'differential_price',
             'DifferentialPrice',
@@ -383,7 +383,7 @@ export class Result {
         return _differential_price;
     }
 
-    get unbilled_charges() {
+    get unbilled_charges(): resources.UnbilledCharge[] {
         let _unbilled_charges = this.get_list(
             'unbilled_charges',
             'UnbilledCharge',
@@ -391,7 +391,7 @@ export class Result {
         );
         return _unbilled_charges;
     }
-    get credit_notes() {
+    get credit_notes(): resources.CreditNote[] {
         let _credit_notes = this.get_list(
             'credit_notes',
             'CreditNote',
@@ -399,7 +399,7 @@ export class Result {
         );
         return _credit_notes;
     }
-    get advance_invoice_schedules() {
+    get advance_invoice_schedules(): resources.AdvanceInvoiceSchedule[] {
         let _advance_invoice_schedules = this.get_list(
             'advance_invoice_schedules',
             'AdvanceInvoiceSchedule',
@@ -407,7 +407,7 @@ export class Result {
         );
         return _advance_invoice_schedules;
     }
-    get hierarchies() {
+    get hierarchies(): resources.Hierarchy[] {
         let _hierarchies = this.get_list(
             'hierarchies',
             'Hierarchy',
@@ -415,7 +415,7 @@ export class Result {
         );
         return _hierarchies;
     }
-    get invoices() {
+    get invoices(): resources.Invoice[] {
         let _invoices = this.get_list(
             'invoices',
             'Invoice',
@@ -423,7 +423,7 @@ export class Result {
         );
         return _invoices;
     }
-    get differential_prices() {
+    get differential_prices(): resources.DifferentialPrice[] {
         let _differential_prices = this.get_list(
             'differential_prices',
             'DifferentialPrice',
@@ -440,11 +440,11 @@ export class Result {
         this.#_response = response;
     }
 
-    private get(type, klass, sub_types = {}, dependant_types = {}) {
+    private get<T = any>(type, klass, sub_types = {}, dependant_types = {}): T {
         return new (resources)[klass](this.response[type], sub_types, dependant_types)
     }
 
-    private get_list(type, klass, sub_types = {}, dependant_types = {}, dependant_sub_types = {}) {
+    private get_list<T = any>(type, klass, sub_types = {}, dependant_types = {}, dependant_sub_types = {}): T[] {
         if(Util.isEmptyObject(this.response) || Util.isEmptyObject(this.response[type])) {
             return null;
         }

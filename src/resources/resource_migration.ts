@@ -13,7 +13,7 @@ export class ResourceMigration extends Model {
   public created_at: number;
   public updated_at: number;
 
-  
+
 
   // OPERATIONS
   //-----------

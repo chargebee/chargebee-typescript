@@ -13,7 +13,7 @@ export class Estimate extends Model {
   public credit_note_estimates?: Array<resources.CreditNoteEstimate>;
   public unbilled_charge_estimates?: Array<resources.UnbilledCharge>;
 
-  
+
 
   // OPERATIONS
   //-----------
