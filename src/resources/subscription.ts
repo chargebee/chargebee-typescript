@@ -1,5 +1,5 @@
 import * as resources from ".";
-import {ListResult} from '../list_result'
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -930,6 +930,7 @@ export namespace _subscription {
     trial_start?: number;
     cancelled_at?: number;
     started_at?: number;
+    activated_at?: number;
     pause_date?: number;
     resume_date?: number;
     create_current_term_invoice?: boolean;
@@ -969,6 +970,7 @@ export namespace _subscription {
     trial_start?: number;
     cancelled_at?: number;
     started_at?: number;
+    activated_at?: number;
     pause_date?: number;
     resume_date?: number;
     contract_term_billing_cycle_on_renewal?: number;
@@ -1005,6 +1007,7 @@ export namespace _subscription {
     trial_start?: number;
     cancelled_at?: number;
     started_at?: number;
+    activated_at?: number;
     pause_date?: number;
     resume_date?: number;
     contract_term_billing_cycle_on_renewal?: number;
@@ -1144,6 +1147,9 @@ export namespace _subscription {
     email?: string;
   }
   export interface bank_account_create_params {
+    phone?: string;
+  }
+  export interface bank_account_create_params {
     bank_name?: string;
   }
   export interface bank_account_create_params {
@@ -1253,6 +1259,9 @@ export namespace _subscription {
   }
   export interface payment_intent_create_params {
     gw_token?: string;
+  }
+  export interface payment_intent_create_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_create_params {
     reference_id?: string;
@@ -1495,6 +1504,9 @@ export namespace _subscription {
     gw_token?: string;
   }
   export interface payment_intent_create_for_customer_params {
+    payment_method_type?: string;
+  }
+  export interface payment_intent_create_for_customer_params {
     reference_id?: string;
   }
   export interface payment_intent_create_for_customer_params {
@@ -1610,6 +1622,9 @@ export namespace _subscription {
   }
   export interface payment_intent_create_with_items_params {
     gw_token?: string;
+  }
+  export interface payment_intent_create_with_items_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_create_with_items_params {
     reference_id?: string;
@@ -1796,6 +1811,9 @@ export namespace _subscription {
   }
   export interface payment_intent_update_params {
     gw_token?: string;
+  }
+  export interface payment_intent_update_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_update_params {
     reference_id?: string;
@@ -2077,6 +2095,9 @@ export namespace _subscription {
     gw_token?: string;
   }
   export interface payment_intent_update_for_items_params {
+    payment_method_type?: string;
+  }
+  export interface payment_intent_update_for_items_params {
     reference_id?: string;
   }
   export interface payment_intent_update_for_items_params {
@@ -2273,6 +2294,9 @@ export namespace _subscription {
   }
   export interface payment_intent_reactivate_params {
     gw_token?: string;
+  }
+  export interface payment_intent_reactivate_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_reactivate_params {
     reference_id?: string;
@@ -2969,6 +2993,9 @@ export namespace _subscription {
   }
   export interface payment_intent_resume_params {
     gw_token?: string;
+  }
+  export interface payment_intent_resume_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_resume_params {
     reference_id?: string;

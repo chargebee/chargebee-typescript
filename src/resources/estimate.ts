@@ -1496,6 +1496,9 @@ export namespace _estimate {
     gw_token?: string;
   }
   export interface payment_intent_gift_subscription_params {
+    payment_method_type?: string;
+  }
+  export interface payment_intent_gift_subscription_params {
     reference_id?: string;
   }
   export interface payment_intent_gift_subscription_params {
@@ -1611,6 +1614,9 @@ export namespace _estimate {
   }
   export interface payment_intent_gift_subscription_for_items_params {
     gw_token?: string;
+  }
+  export interface payment_intent_gift_subscription_for_items_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_gift_subscription_for_items_params {
     reference_id?: string;

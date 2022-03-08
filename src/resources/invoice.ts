@@ -1,5 +1,5 @@
 import * as resources from ".";
-import {ListResult} from '../list_result'
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -906,6 +906,9 @@ export namespace _invoice {
     email?: string;
   }
   export interface bank_account_create_params {
+    phone?: string;
+  }
+  export interface bank_account_create_params {
     bank_name?: string;
   }
   export interface bank_account_create_params {
@@ -1015,6 +1018,9 @@ export namespace _invoice {
   }
   export interface payment_intent_create_params {
     gw_token?: string;
+  }
+  export interface payment_intent_create_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_create_params {
     reference_id?: string;
@@ -1170,6 +1176,9 @@ export namespace _invoice {
     email?: string;
   }
   export interface bank_account_create_for_charge_items_and_charges_params {
+    phone?: string;
+  }
+  export interface bank_account_create_for_charge_items_and_charges_params {
     bank_name?: string;
   }
   export interface bank_account_create_for_charge_items_and_charges_params {
@@ -1281,6 +1290,9 @@ export namespace _invoice {
     gw_token?: string;
   }
   export interface payment_intent_create_for_charge_items_and_charges_params {
+    payment_method_type?: string;
+  }
+  export interface payment_intent_create_for_charge_items_and_charges_params {
     reference_id?: string;
   }
   export interface payment_intent_create_for_charge_items_and_charges_params {
@@ -1375,13 +1387,13 @@ export namespace _invoice {
   }
   export interface charges_create_for_charge_items_and_charges_params {
   }
+  export interface charges_create_for_charge_items_and_charges_params {
+  }
   export interface notes_to_remove_create_for_charge_items_and_charges_params {
     entity_type?: string;
   }
   export interface notes_to_remove_create_for_charge_items_and_charges_params {
     entity_id?: string;
-  }
-  export interface discounts_create_for_charge_items_and_charges_params {
   }
   export interface item_price_create_for_charge_item_params {
     item_price_id: string;

@@ -1,5 +1,5 @@
 import * as resources from ".";
-import {ListResult} from '../list_result'
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -21,7 +21,9 @@ export class PaymentSource extends Model {
   public card?: Card;
   public bank_account?: BankAccount;
   public amazon_payment?: AmazonPayment;
+  public upi?: Upi;
   public paypal?: Paypal;
+  public mandates?: Array<Mandate>;
   public deleted: boolean;
 
   
@@ -233,10 +235,20 @@ export class AmazonPayment extends Model {
   public agreement_id?: string;
 } // ~AmazonPayment
 
+export class Upi extends Model {
+  public vpa?: string;
+} // ~Upi
+
 export class Paypal extends Model {
   public email?: string;
   public agreement_id?: string;
 } // ~Paypal
+
+export class Mandate extends Model {
+  public id: string;
+  public subscription_id: string;
+  public created_at: number;
+} // ~Mandate
 
 
 
@@ -298,6 +310,7 @@ export namespace _payment_source {
   export interface payment_source_list_params {
     limit?: number;
     offset?: string;
+    subscription_id?: string;
     customer_id?: filter._string;
     type?: filter._enum;
     status?: filter._enum;
@@ -322,6 +335,9 @@ export namespace _payment_source {
   }
   export interface payment_intent_create_using_payment_intent_params {
     gw_token?: string;
+  }
+  export interface payment_intent_create_using_payment_intent_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_create_using_payment_intent_params {
     reference_id?: string;
@@ -400,6 +416,9 @@ export namespace _payment_source {
   }
   export interface bank_account_create_bank_account_params {
     email?: string;
+  }
+  export interface bank_account_create_bank_account_params {
+    phone?: string;
   }
   export interface bank_account_create_bank_account_params {
     bank_name?: string;

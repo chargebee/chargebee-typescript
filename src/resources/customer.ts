@@ -1,5 +1,5 @@
 import * as resources from ".";
-import {ListResult} from '../list_result'
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -660,6 +660,9 @@ export namespace _customer {
     email?: string;
   }
   export interface bank_account_create_params {
+    phone?: string;
+  }
+  export interface bank_account_create_params {
     bank_name?: string;
   }
   export interface bank_account_create_params {
@@ -769,6 +772,9 @@ export namespace _customer {
   }
   export interface payment_intent_create_params {
     gw_token?: string;
+  }
+  export interface payment_intent_create_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_create_params {
     reference_id?: string;
@@ -1070,6 +1076,9 @@ export namespace _customer {
   }
   export interface payment_intent_collect_payment_params {
     gw_token?: string;
+  }
+  export interface payment_intent_collect_payment_params {
+    payment_method_type?: string;
   }
   export interface payment_intent_collect_payment_params {
     /**

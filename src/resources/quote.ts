@@ -1,5 +1,5 @@
 import * as resources from ".";
-import {ListResult} from '../list_result'
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -620,10 +620,6 @@ export namespace _quote {
   }
   export interface subscription_create_sub_for_customer_quote_params {
     id?: string;
-  }
-  export interface subscription_create_sub_for_customer_quote_params {
-  }
-  export interface subscription_create_sub_for_customer_quote_params {
   }
   export interface subscription_create_sub_for_customer_quote_params {
     plan_id: string;

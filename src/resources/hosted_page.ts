@@ -1,5 +1,5 @@
 import * as resources from ".";
-import {ListResult} from '../list_result'
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -265,6 +265,10 @@ export namespace _hosted_page {
   export interface checkout_one_time_params {
     currency_code?: string;
     invoice_note?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
     coupon_ids?: Array<string>;
     redirect_url?: string;
     cancel_url?: string;
@@ -281,6 +285,10 @@ export namespace _hosted_page {
   }
   export interface checkout_one_time_for_items_params {
     invoice_note?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon?: string;
     coupon_ids?: Array<string>;
     currency_code?: string;
     redirect_url?: string;
@@ -294,6 +302,7 @@ export namespace _hosted_page {
     item_prices?: Array<item_prices_checkout_one_time_for_items_params>;
     item_tiers?: Array<item_tiers_checkout_one_time_for_items_params>;
     charges?: Array<charges_checkout_one_time_for_items_params>;
+    entity_identifiers?: Array<entity_identifiers_checkout_one_time_for_items_params>;
   }
   export interface checkout_new_for_items_params {
     billing_cycles?: number;
@@ -313,6 +322,7 @@ export namespace _hosted_page {
     contract_term?: contract_term_checkout_new_for_items_params;
     subscription_items?: Array<subscription_items_checkout_new_for_items_params>;
     item_tiers?: Array<item_tiers_checkout_new_for_items_params>;
+    entity_identifiers?: Array<entity_identifiers_checkout_new_for_items_params>;
   }
   export interface checkout_existing_params {
     replace_addon_list?: boolean;
@@ -359,6 +369,7 @@ export namespace _hosted_page {
     contract_term?: contract_term_checkout_existing_for_items_params;
     subscription_items?: Array<subscription_items_checkout_existing_for_items_params>;
     item_tiers?: Array<item_tiers_checkout_existing_for_items_params>;
+    entity_identifiers?: Array<entity_identifiers_checkout_existing_for_items_params>;
   }
   export interface update_card_params {
     redirect_url?: string;
@@ -886,6 +897,15 @@ export namespace _hosted_page {
     vat_number_prefix?: string;
   }
   export interface customer_checkout_one_time_for_items_params {
+    is_einvoice_enabled?: boolean;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    entity_identifier_scheme?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
+    entity_identifier_standard?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
     consolidated_invoicing?: boolean;
   }
   export interface billing_address_checkout_one_time_for_items_params {
@@ -1053,6 +1073,21 @@ export namespace _hosted_page {
   export interface charges_checkout_one_time_for_items_params {
     date_to?: number;
   }
+  export interface entity_identifiers_checkout_one_time_for_items_params {
+    id?: string;
+  }
+  export interface entity_identifiers_checkout_one_time_for_items_params {
+    scheme?: string;
+  }
+  export interface entity_identifiers_checkout_one_time_for_items_params {
+    value?: string;
+  }
+  export interface entity_identifiers_checkout_one_time_for_items_params {
+    operation?: string;
+  }
+  export interface entity_identifiers_checkout_one_time_for_items_params {
+    standard?: string;
+  }
   export interface subscription_checkout_new_for_items_params {
     id?: string;
   }
@@ -1120,6 +1155,15 @@ export namespace _hosted_page {
     vat_number_prefix?: string;
   }
   export interface customer_checkout_new_for_items_params {
+  }
+  export interface customer_checkout_new_for_items_params {
+    is_einvoice_enabled?: boolean;
+  }
+  export interface customer_checkout_new_for_items_params {
+    entity_identifier_scheme?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    entity_identifier_standard?: string;
   }
   export interface billing_address_checkout_new_for_items_params {
     first_name?: string;
@@ -1277,6 +1321,21 @@ export namespace _hosted_page {
   export interface item_tiers_checkout_new_for_items_params {
     price_in_decimal?: string;
   }
+  export interface entity_identifiers_checkout_new_for_items_params {
+    id?: string;
+  }
+  export interface entity_identifiers_checkout_new_for_items_params {
+    scheme?: string;
+  }
+  export interface entity_identifiers_checkout_new_for_items_params {
+    value?: string;
+  }
+  export interface entity_identifiers_checkout_new_for_items_params {
+    operation?: string;
+  }
+  export interface entity_identifiers_checkout_new_for_items_params {
+    standard?: string;
+  }
   export interface subscription_checkout_existing_params {
     id: string;
   }
@@ -1430,6 +1489,15 @@ export namespace _hosted_page {
   }
   export interface customer_checkout_existing_for_items_params {
   }
+  export interface customer_checkout_existing_for_items_params {
+    is_einvoice_enabled?: boolean;
+  }
+  export interface customer_checkout_existing_for_items_params {
+    entity_identifier_scheme?: string;
+  }
+  export interface customer_checkout_existing_for_items_params {
+    entity_identifier_standard?: string;
+  }
   export interface card_checkout_existing_for_items_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -1509,6 +1577,21 @@ export namespace _hosted_page {
   }
   export interface item_tiers_checkout_existing_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface entity_identifiers_checkout_existing_for_items_params {
+    id?: string;
+  }
+  export interface entity_identifiers_checkout_existing_for_items_params {
+    scheme?: string;
+  }
+  export interface entity_identifiers_checkout_existing_for_items_params {
+    value?: string;
+  }
+  export interface entity_identifiers_checkout_existing_for_items_params {
+    operation?: string;
+  }
+  export interface entity_identifiers_checkout_existing_for_items_params {
+    standard?: string;
   }
   export interface customer_update_card_params {
     id: string;
