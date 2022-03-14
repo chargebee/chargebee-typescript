@@ -51,6 +51,7 @@ export class Subscription extends Model {
   public plan_amount_in_decimal?: string;
   public cancel_schedule_created_at?: number;
   public offline_payment_method?: string;
+  public net_term_days?: number;
   public subscription_items?: Array<SubscriptionItem>;
   public item_tiers?: Array<ItemTier>;
   public charged_items?: Array<ChargedItem>;
@@ -682,6 +683,7 @@ export namespace _subscription {
      */
     setup_fee?: number;
     mandatory_items_to_remove?: Array<string>;
+    net_term_days?: number;
     start_date?: number;
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -802,6 +804,7 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     setup_fee?: number;
+    net_term_days?: number;
     invoice_date?: number;
     start_date?: number;
     trial_end?: number;
@@ -996,6 +999,7 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     setup_fee?: number;
+    net_term_days?: number;
     start_date?: number;
     auto_collection?: string;
     po_number?: string;
