@@ -173,19 +173,16 @@ export class Core {
             }
 
             if (Util.isArray(value)) {
-                let isArrayHasValue
                 for (let arrIdx = 0; arrIdx < value.length; arrIdx++) {
                     if (typeof value[arrIdx] === 'object' || Util.isArray(value[arrIdx])) {
                         this.encodeParams(value[arrIdx], serialized, key, arrIdx)
                     } else {
-                        isArrayHasValue =true
+                        if (typeof value[arrIdx] !== 'undefined') {
+                            serialized.push(encodeURIComponent(key + "[" + arrIdx + "]") + "=" + encodeURIComponent(Util.trim(value[arrIdx]) !== '' ? value[arrIdx] : ''));
+                        }
                     }
                 }
-                if(isArrayHasValue){
-                    serialized.push(encodeURIComponent(key) + "=[" + encodeURIComponent(value)+ "]");
-                }
-            }
-            else if(key === "meta_data") {
+            } else if(key === "meta_data") {
                 let attrVal="";
                 if(value !== null) {
                     attrVal = encodeURIComponent(Object.prototype.toString.call(value) === "[object String]" ? Util.trim(value) : JSON.stringify(value));
