@@ -27,6 +27,7 @@ export class ItemPrice extends Model {
   public billing_cycles?: number;
   public free_quantity: number;
   public free_quantity_in_decimal?: string;
+  public channel?: string;
   public resource_version?: number;
   public updated_at?: number;
   public created_at: number;
@@ -103,7 +104,7 @@ export class ItemPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static find_applicable_items(item_price_id: string, params?: _item_price.item_price_find_applicable_items_params):RequestWrapper {
+  public static find_applicable_items(item_price_id: string, params?: _item_price.item_price_find_applicable_items_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'find_applicable_items',
       'httpMethod': 'GET',
@@ -114,7 +115,7 @@ export class ItemPrice extends Model {
     }, ChargeBee._env)
   }
 
-  public static find_applicable_item_prices(item_price_id: string, params?: _item_price.item_price_find_applicable_item_prices_params):RequestWrapper {
+  public static find_applicable_item_prices(item_price_id: string, params?: _item_price.item_price_find_applicable_item_prices_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'find_applicable_item_prices',
       'httpMethod': 'GET',
@@ -234,6 +235,7 @@ export namespace _item_price {
     updated_at?: filter._timestamp;
     period_unit?: filter._enum;
     period?: filter._number;
+    channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }

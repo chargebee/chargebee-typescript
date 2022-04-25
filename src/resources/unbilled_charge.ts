@@ -33,6 +33,17 @@ export class UnbilledCharge extends Model {
   // OPERATIONS
   //-----------
 
+  public static create_unbilled_charge(params?: _unbilled_charge.create_unbilled_charge_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'create_unbilled_charge',
+      'httpMethod': 'POST',
+      'urlPrefix': '/unbilled_charges',
+      'urlSuffix': '/create',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static create(params?: _unbilled_charge.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
@@ -107,6 +118,12 @@ export class Tier extends Model {
   //---------------
 
 export namespace _unbilled_charge {
+  export interface create_unbilled_charge_params {
+    subscription_id: string;
+    currency_code?: string;
+    addons?: Array<addons_create_unbilled_charge_params>;
+    charges?: Array<charges_create_unbilled_charge_params>;
+  }
   export interface create_params {
     subscription_id: string;
     currency_code?: string;
@@ -129,6 +146,66 @@ export namespace _unbilled_charge {
   export interface invoice_now_estimate_params {
     subscription_id?: string;
     customer_id?: string;
+  }
+  export interface addons_create_unbilled_charge_params {
+    id?: string;
+  }
+  export interface addons_create_unbilled_charge_params {
+    quantity?: number;
+  }
+  export interface addons_create_unbilled_charge_params {
+    unit_price?: number;
+  }
+  export interface addons_create_unbilled_charge_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_create_unbilled_charge_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_create_unbilled_charge_params {
+    date_from?: number;
+  }
+  export interface addons_create_unbilled_charge_params {
+    date_to?: number;
+  }
+  export interface charges_create_unbilled_charge_params {
+    amount?: number;
+  }
+  export interface charges_create_unbilled_charge_params {
+    amount_in_decimal?: string;
+  }
+  export interface charges_create_unbilled_charge_params {
+    description?: string;
+  }
+  export interface charges_create_unbilled_charge_params {
+    taxable?: boolean;
+  }
+  export interface charges_create_unbilled_charge_params {
+    tax_profile_id?: string;
+  }
+  export interface charges_create_unbilled_charge_params {
+    avalara_tax_code?: string;
+  }
+  export interface charges_create_unbilled_charge_params {
+    hsn_code?: string;
+  }
+  export interface charges_create_unbilled_charge_params {
+    taxjar_product_code?: string;
+  }
+  export interface charges_create_unbilled_charge_params {
+    avalara_sale_type?: string;
+  }
+  export interface charges_create_unbilled_charge_params {
+    avalara_transaction_type?: number;
+  }
+  export interface charges_create_unbilled_charge_params {
+    avalara_service_type?: number;
+  }
+  export interface charges_create_unbilled_charge_params {
+    date_from?: number;
+  }
+  export interface charges_create_unbilled_charge_params {
+    date_to?: number;
   }
   export interface item_prices_create_params {
     item_price_id?: string;

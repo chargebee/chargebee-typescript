@@ -377,6 +377,9 @@ export namespace _export {
   export interface invoice_revenue_recognition_params {
     updated_at?: filter._timestamp;
   }
+  export interface invoice_revenue_recognition_params {
+    channel?: filter._enum;
+  }
   export interface subscription_revenue_recognition_params {
     id?: filter._string;
   }
@@ -418,6 +421,9 @@ export namespace _export {
   }
   export interface subscription_revenue_recognition_params {
     auto_close_invoices?: filter._boolean;
+  }
+  export interface subscription_revenue_recognition_params {
+    channel?: filter._enum;
   }
   export interface customer_revenue_recognition_params {
     id?: filter._string;
@@ -463,6 +469,9 @@ export namespace _export {
   }
   export interface customer_revenue_recognition_params {
     auto_close_invoices?: filter._boolean;
+  }
+  export interface customer_revenue_recognition_params {
+    channel?: filter._enum;
   }
   export interface invoice_deferred_revenue_params {
     id?: filter._string;
@@ -503,6 +512,9 @@ export namespace _export {
   export interface invoice_deferred_revenue_params {
     updated_at?: filter._timestamp;
   }
+  export interface invoice_deferred_revenue_params {
+    channel?: filter._enum;
+  }
   export interface subscription_deferred_revenue_params {
     id?: filter._string;
   }
@@ -544,6 +556,9 @@ export namespace _export {
   }
   export interface subscription_deferred_revenue_params {
     auto_close_invoices?: filter._boolean;
+  }
+  export interface subscription_deferred_revenue_params {
+    channel?: filter._enum;
   }
   export interface customer_deferred_revenue_params {
     id?: filter._string;
@@ -590,6 +605,9 @@ export namespace _export {
   export interface customer_deferred_revenue_params {
     auto_close_invoices?: filter._boolean;
   }
+  export interface customer_deferred_revenue_params {
+    channel?: filter._enum;
+  }
   export interface plan_plans_params {
     id?: filter._string;
   }
@@ -623,6 +641,9 @@ export namespace _export {
   export interface plan_plans_params {
     updated_at?: filter._timestamp;
   }
+  export interface plan_plans_params {
+    channel?: filter._enum;
+  }
   export interface addon_addons_params {
     id?: filter._string;
   }
@@ -646,6 +667,9 @@ export namespace _export {
   }
   export interface addon_addons_params {
     updated_at?: filter._timestamp;
+  }
+  export interface addon_addons_params {
+    channel?: filter._enum;
   }
   export interface coupon_coupons_params {
     id?: filter._string;
@@ -724,6 +748,9 @@ export namespace _export {
   export interface customer_customers_params {
     auto_close_invoices?: filter._boolean;
   }
+  export interface customer_customers_params {
+    channel?: filter._enum;
+  }
   export interface subscription_subscriptions_params {
     id?: filter._string;
   }
@@ -765,6 +792,9 @@ export namespace _export {
   }
   export interface subscription_subscriptions_params {
     auto_close_invoices?: filter._boolean;
+  }
+  export interface subscription_subscriptions_params {
+    channel?: filter._enum;
   }
   export interface invoice_invoices_params {
     id?: filter._string;
@@ -810,6 +840,9 @@ export namespace _export {
   }
   export interface invoice_invoices_params {
     updated_at?: filter._timestamp;
+  }
+  export interface invoice_invoices_params {
+    channel?: filter._enum;
   }
   export interface credit_note_credit_notes_params {
     id?: filter._string;
@@ -858,6 +891,9 @@ export namespace _export {
   }
   export interface credit_note_credit_notes_params {
     updated_at?: filter._timestamp;
+  }
+  export interface credit_note_credit_notes_params {
+    channel?: filter._enum;
   }
   export interface transaction_transactions_params {
     id?: filter._string;
@@ -1000,6 +1036,9 @@ export namespace _export {
   export interface item_items_params {
     usage_calculation?: filter._enum;
   }
+  export interface item_items_params {
+    channel?: filter._enum;
+  }
   export interface item_price_item_prices_params {
     id?: filter._string;
   }
@@ -1029,6 +1068,9 @@ export namespace _export {
   }
   export interface item_price_item_prices_params {
     period?: filter._number;
+  }
+  export interface item_price_item_prices_params {
+    channel?: filter._enum;
   }
   export interface attached_item_attached_items_params {
     id?: filter._string;

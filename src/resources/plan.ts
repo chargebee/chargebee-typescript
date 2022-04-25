@@ -50,6 +50,7 @@ export class Plan extends Model {
   public claim_url?: string;
   public free_quantity_in_decimal?: string;
   public price_in_decimal?: string;
+  public channel?: string;
   public invoice_notes?: string;
   public taxable?: boolean;
   public tax_profile_id?: string;
@@ -314,6 +315,7 @@ export namespace _plan {
     status?: filter._enum;
     updated_at?: filter._timestamp;
     currency_code?: filter._string;
+    channel?: filter._enum;
     include_deleted?: boolean;
   }
   export interface copy_params {

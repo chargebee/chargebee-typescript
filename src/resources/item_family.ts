@@ -12,6 +12,7 @@ export class ItemFamily extends Model {
   public status?: string;
   public resource_version?: number;
   public updated_at?: number;
+  public channel?: string;
 
   
 

@@ -35,6 +35,7 @@ export class Customer extends Model {
   public billing_day_of_week_mode?: string;
   public pii_cleared?: string;
   public auto_close_invoices?: boolean;
+  public channel?: string;
   public card_status?: string;
   public fraud_flag?: string;
   public primary_payment_source_id?: string;
@@ -138,7 +139,7 @@ export class Customer extends Model {
     }, ChargeBee._env)
   }
 
-  public static contacts_for_customer(customer_id: string, params?: any):RequestWrapper {
+  public static contacts_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'contacts_for_customer',
       'httpMethod': 'GET',
@@ -500,6 +501,7 @@ export namespace _customer {
     updated_at?: filter._timestamp;
     offline_payment_method?: filter._enum;
     auto_close_invoices?: filter._boolean;
+    channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
     relationship?: relationship_customer_list_params;

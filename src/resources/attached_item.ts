@@ -19,6 +19,7 @@ export class AttachedItem extends Model {
   public created_at: number;
   public resource_version?: number;
   public updated_at?: number;
+  public channel?: string;
 
   
 

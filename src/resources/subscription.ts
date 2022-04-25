@@ -51,6 +51,7 @@ export class Subscription extends Model {
   public plan_amount_in_decimal?: string;
   public cancel_schedule_created_at?: number;
   public offline_payment_method?: string;
+  public channel?: string;
   public net_term_days?: number;
   public subscription_items?: Array<SubscriptionItem>;
   public item_tiers?: Array<ItemTier>;
@@ -140,7 +141,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static contract_terms_for_subscription(subscription_id: string, params?: any):RequestWrapper {
+  public static contract_terms_for_subscription(subscription_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'contract_terms_for_subscription',
       'httpMethod': 'GET',
@@ -737,6 +738,7 @@ export namespace _subscription {
     offline_payment_method?: filter._enum;
     auto_close_invoices?: filter._boolean;
     override_relationship?: filter._boolean;
+    channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }

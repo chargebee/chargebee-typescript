@@ -65,6 +65,7 @@ export class Invoice extends Model {
   public void_reason_code?: string;
   public deleted: boolean;
   public vat_number_prefix?: string;
+  public channel?: string;
 
   
 
@@ -742,6 +743,7 @@ export namespace _invoice {
     dunning_status?: filter._enum;
     payment_owner?: filter._string;
     updated_at?: filter._timestamp;
+    channel?: filter._enum;
     voided_at?: filter._timestamp;
     void_reason_code?: filter._string;
     "sort_by[asc]"?: string;

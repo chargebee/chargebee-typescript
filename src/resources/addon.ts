@@ -40,6 +40,7 @@ export class Addon extends Model {
   public updated_at?: number;
   public price_in_decimal?: string;
   public included_in_mrr?: boolean;
+  public channel?: string;
   public invoice_notes?: string;
   public taxable?: boolean;
   public tax_profile_id?: string;
@@ -248,6 +249,7 @@ export namespace _addon {
     status?: filter._enum;
     updated_at?: filter._timestamp;
     currency_code?: filter._string;
+    channel?: filter._enum;
     include_deleted?: boolean;
   }
   export interface copy_params {

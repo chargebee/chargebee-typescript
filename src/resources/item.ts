@@ -8,6 +8,7 @@ import {filter} from "../filter";
 export class Item extends Model {
   public id: string;
   public name: string;
+  public external_name?: string;
   public description?: string;
   public status?: string;
   public resource_version?: number;
@@ -26,6 +27,7 @@ export class Item extends Model {
   public metered: boolean;
   public usage_calculation?: string;
   public archived_at?: number;
+  public channel?: string;
   public applicable_items?: Array<ApplicableItem>;
   public metadata?: any;
 
@@ -106,9 +108,10 @@ export namespace _item {
     name: string;
     type: string;
     description?: string;
-    item_family_id?: string;
+    item_family_id: string;
     is_giftable?: boolean;
     is_shippable?: boolean;
+    external_name?: string;
     enabled_in_portal?: boolean;
     redirect_url?: string;
     enabled_for_checkout?: boolean;
@@ -125,6 +128,7 @@ export namespace _item {
     name?: string;
     description?: string;
     is_shippable?: boolean;
+    external_name?: string;
     item_family_id?: string;
     enabled_in_portal?: boolean;
     redirect_url?: string;
@@ -156,6 +160,7 @@ export namespace _item {
     enabled_in_portal?: filter._boolean;
     metered?: filter._boolean;
     usage_calculation?: filter._enum;
+    channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }

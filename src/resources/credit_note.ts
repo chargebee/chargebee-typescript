@@ -26,6 +26,7 @@ export class CreditNote extends Model {
   public generated_at?: number;
   public resource_version?: number;
   public updated_at?: number;
+  public channel?: string;
   public einvoice?: Einvoice;
   public sub_total: number;
   public sub_total_in_local_currency?: number;
@@ -312,6 +313,7 @@ export namespace _credit_note {
     amount_available?: filter._number;
     voided_at?: filter._timestamp;
     updated_at?: filter._timestamp;
+    channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }

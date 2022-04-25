@@ -179,10 +179,11 @@ export class Core {
                     } else {
                         if (typeof value[arrIdx] !== 'undefined') {
                             serialized.push(encodeURIComponent(key + "[" + arrIdx + "]") + "=" + encodeURIComponent(Util.trim(value[arrIdx]) !== '' ? value[arrIdx] : ''));
-                        }
+                        }                   
                     }
                 }
-            } else if(key === "meta_data") {
+            }
+            else if(key === "meta_data") {
                 let attrVal="";
                 if(value !== null) {
                     attrVal = encodeURIComponent(Object.prototype.toString.call(value) === "[object String]" ? Util.trim(value) : JSON.stringify(value));
