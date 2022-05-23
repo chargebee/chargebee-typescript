@@ -160,6 +160,17 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
+  public static sync_usages(invoice_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'sync_usages',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/sync_usages',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static apply_credits(invoice_id: string, params?: _invoice.apply_credits_params):RequestWrapper {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'apply_credits',
@@ -386,6 +397,17 @@ export class Invoice extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/invoices',
       'urlSuffix': '/update_details',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static resend_einvoice(invoice_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'resend_einvoice',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/resend_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -748,6 +770,7 @@ export namespace _invoice {
     void_reason_code?: filter._string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
+    einvoice?: einvoice_invoice_list_params;
   }
   export interface pdf_params {
     disposition_type?: string;
@@ -1717,6 +1740,9 @@ export namespace _invoice {
   }
   export interface credit_notes_apply_credits_params {
     id?: string;
+  }
+  export interface einvoice_invoice_list_params {
+    status?: filter._enum;
   }
   export interface line_item_add_charge_params {
     date_from?: number;

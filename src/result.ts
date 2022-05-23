@@ -382,6 +382,38 @@ export class Result {
         );
         return _differential_price;
     }
+    get feature(): resources.Feature {
+        let _feature = this.get(
+            'feature',
+            'Feature',
+            {'levels': 'FeatureLevel'}
+        );
+        return _feature;
+    }
+    get subscription_entitlement(): resources.SubscriptionEntitlement {
+        let _subscription_entitlement = this.get(
+            'subscription_entitlement',
+            'SubscriptionEntitlement',
+            {'component': 'SubscriptionEntitlementComponent', 'embedded_resource': 'SubscriptionEntitlementEmbeddedResource'}
+        );
+        return _subscription_entitlement;
+    }
+    get item_entitlement(): resources.ItemEntitlement {
+        let _item_entitlement = this.get(
+            'item_entitlement',
+            'ItemEntitlement',
+            {'embedded_resource': 'ItemEntitlementEmbeddedResource'}
+        );
+        return _item_entitlement;
+    }
+    get entitlement_override(): resources.EntitlementOverride {
+        let _entitlement_override = this.get(
+            'entitlement_override',
+            'EntitlementOverride',
+            {'embedded_resource': 'EntitlementOverrideEmbeddedResource'}
+        );
+        return _entitlement_override;
+    }
 
     get unbilled_charges(): resources.UnbilledCharge[] {
         let _unbilled_charges = this.get_list(

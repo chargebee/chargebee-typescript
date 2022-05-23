@@ -1,0 +1,82 @@
+import * as resources from ".";
+import {RequestWrapper} from "../request_wrapper";
+import {Model} from "./model";
+import {ChargeBee} from "../chargebee";
+import {filter} from "../filter";
+
+export class EntitlementOverride extends Model {
+  public id: string;
+  public entity_id?: string;
+  public entity_type?: string;
+  public feature_id?: string;
+  public feature_name?: string;
+  public value?: string;
+  public name?: string;
+  public expires_at?: number;
+  public embedded?: EmbeddedResource;
+
+  
+
+  // OPERATIONS
+  //-----------
+
+  public static add_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.add_entitlement_override_for_subscription_params):RequestWrapper {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'add_entitlement_override_for_subscription',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/entitlement_overrides',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static list_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.entitlement_override_list_entitlement_override_for_subscription_params):RequestWrapper {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'list_entitlement_override_for_subscription',
+      'httpMethod': 'GET',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/entitlement_overrides',
+      'hasIdInUrl': true,
+      'isListReq': true,
+    }, ChargeBee._env)
+  }
+
+} // ~EntitlementOverride
+
+export class EmbeddedResource extends Model {
+
+} // ~EmbeddedResource
+
+
+
+  // REQUEST PARAMS
+  //---------------
+
+export namespace _entitlement_override {
+  export interface add_entitlement_override_for_subscription_params {
+    action?: string;
+    entitlement_overrides?: Array<entitlement_overrides_add_entitlement_override_for_subscription_params>;
+  }
+  export interface entitlement_override_list_entitlement_override_for_subscription_params {
+    limit?: number;
+    offset?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    embed?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    include_drafts?: boolean;
+  }
+  export interface entitlement_overrides_add_entitlement_override_for_subscription_params {
+    feature_id: string;
+  }
+  export interface entitlement_overrides_add_entitlement_override_for_subscription_params {
+    value?: string;
+  }
+  export interface entitlement_overrides_add_entitlement_override_for_subscription_params {
+    expires_at?: number;
+  }
+}

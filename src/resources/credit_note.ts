@@ -161,6 +161,17 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
+  public static resend_einvoice(credit_note_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([credit_note_id, params], {
+      'methodName': 'resend_einvoice',
+      'httpMethod': 'POST',
+      'urlPrefix': '/credit_notes',
+      'urlSuffix': '/resend_einvoice',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~CreditNote
 
 export class Einvoice extends Model {
@@ -316,6 +327,7 @@ export namespace _credit_note {
     channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
+    einvoice?: einvoice_credit_note_list_params;
   }
   export interface delete_params {
     comment?: string;
@@ -358,5 +370,8 @@ export namespace _credit_note {
   }
   export interface transaction_record_refund_params {
     date: number;
+  }
+  export interface einvoice_credit_note_list_params {
+    status?: filter._enum;
   }
 }
