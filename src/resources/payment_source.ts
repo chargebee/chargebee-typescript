@@ -25,6 +25,7 @@ export class PaymentSource extends Model {
   public paypal?: Paypal;
   public mandates?: Array<Mandate>;
   public deleted: boolean;
+  public business_entity_id?: string;
 
   
 
@@ -327,8 +328,6 @@ export namespace _payment_source {
   }
   export interface payment_intent_create_using_payment_intent_params {
     id?: string;
-  }
-  export interface payment_intent_create_using_payment_intent_params {
   }
   export interface payment_intent_create_using_payment_intent_params {
     gateway_account_id?: string;

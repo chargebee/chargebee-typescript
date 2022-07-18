@@ -47,6 +47,7 @@ export class Transaction extends Model {
   public iin?: string;
   public last4?: string;
   public merchant_reference_id?: string;
+  public business_entity_id?: string;
 
   
 
@@ -108,7 +109,7 @@ export class Transaction extends Model {
     }, ChargeBee._env)
   }
 
-  public static transactions_for_customer(customer_id: string, params?: any):RequestWrapper {
+  public static transactions_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'transactions_for_customer',
       'httpMethod': 'GET',
@@ -119,7 +120,7 @@ export class Transaction extends Model {
     }, ChargeBee._env)
   }
 
-  public static transactions_for_subscription(subscription_id: string, params?: any):RequestWrapper {
+  public static transactions_for_subscription(subscription_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'transactions_for_subscription',
       'httpMethod': 'GET',
@@ -130,7 +131,7 @@ export class Transaction extends Model {
     }, ChargeBee._env)
   }
 
-  public static payments_for_invoice(invoice_id: string, params?: any):RequestWrapper {
+  public static payments_for_invoice(invoice_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'payments_for_invoice',
       'httpMethod': 'GET',

@@ -80,6 +80,7 @@ export class Subscription extends Model {
   public free_period_unit?: string;
   public create_pending_invoices?: boolean;
   public auto_close_invoices?: boolean;
+  public business_entity_id?: string;
 
   
 
@@ -130,7 +131,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static subscriptions_for_customer(customer_id: string, params?: any):RequestWrapper {
+  public static subscriptions_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'subscriptions_for_customer',
       'httpMethod': 'GET',
@@ -589,6 +590,7 @@ export class ContractTerm extends Model {
 export namespace _subscription {
   export interface create_params {
     id?: string;
+    business_entity_id?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_quantity_in_decimal?: string;
@@ -638,6 +640,7 @@ export namespace _subscription {
   }
   export interface create_for_customer_params {
     id?: string;
+    business_entity_id?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_quantity_in_decimal?: string;
@@ -677,6 +680,7 @@ export namespace _subscription {
   }
   export interface create_with_items_params {
     id?: string;
+    business_entity_id?: string;
     trial_end?: number;
     billing_cycles?: number;
     /**
@@ -789,7 +793,6 @@ export namespace _subscription {
     free_period_unit?: string;
     trial_end_action?: string;
     card?: card_update_params;
-    bank_account?: bank_account_update_params;
     payment_method?: payment_method_update_params;
     payment_intent?: payment_intent_update_params;
     billing_address?: billing_address_update_params;
@@ -841,7 +844,6 @@ export namespace _subscription {
     auto_close_invoices?: boolean;
     trial_end_action?: string;
     card?: card_update_for_items_params;
-    bank_account?: bank_account_update_for_items_params;
     payment_method?: payment_method_update_for_items_params;
     payment_intent?: payment_intent_update_for_items_params;
     billing_address?: billing_address_update_for_items_params;
@@ -945,7 +947,6 @@ export namespace _subscription {
     customer?: customer_import_subscription_params;
     contract_term?: contract_term_import_subscription_params;
     card?: card_import_subscription_params;
-    bank_account?: bank_account_import_subscription_params;
     payment_method?: payment_method_import_subscription_params;
     billing_address?: billing_address_import_subscription_params;
     shipping_address?: shipping_address_import_subscription_params;
@@ -1725,18 +1726,6 @@ export namespace _subscription {
      */
     tmp_token?: string;
   }
-  export interface bank_account_update_params {
-  }
-  export interface bank_account_update_params {
-  }
-  export interface bank_account_update_params {
-  }
-  export interface bank_account_update_params {
-  }
-  export interface bank_account_update_params {
-  }
-  export interface bank_account_update_params {
-  }
   export interface payment_method_update_params {
     type?: string;
   }
@@ -2006,18 +1995,6 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     tmp_token?: string;
-  }
-  export interface bank_account_update_for_items_params {
-  }
-  export interface bank_account_update_for_items_params {
-  }
-  export interface bank_account_update_for_items_params {
-  }
-  export interface bank_account_update_for_items_params {
-  }
-  export interface bank_account_update_for_items_params {
-  }
-  export interface bank_account_update_for_items_params {
   }
   export interface payment_method_update_for_items_params {
     type?: string;
@@ -2403,8 +2380,6 @@ export namespace _subscription {
   export interface customer_import_subscription_params {
     allow_direct_debit?: boolean;
   }
-  export interface customer_import_subscription_params {
-  }
   export interface contract_term_import_subscription_params {
     id?: string;
   }
@@ -2441,18 +2416,6 @@ export namespace _subscription {
      */
     tmp_token?: string;
   }
-  export interface bank_account_import_subscription_params {
-  }
-  export interface bank_account_import_subscription_params {
-  }
-  export interface bank_account_import_subscription_params {
-  }
-  export interface bank_account_import_subscription_params {
-  }
-  export interface bank_account_import_subscription_params {
-  }
-  export interface bank_account_import_subscription_params {
-  }
   export interface payment_method_import_subscription_params {
     type?: string;
   }
@@ -2467,8 +2430,6 @@ export namespace _subscription {
   }
   export interface payment_method_import_subscription_params {
     reference_id?: string;
-  }
-  export interface payment_method_import_subscription_params {
   }
   export interface payment_method_import_subscription_params {
     issuing_country?: string;
@@ -2514,8 +2475,6 @@ export namespace _subscription {
   }
   export interface card_import_subscription_params {
     billing_country?: string;
-  }
-  export interface card_import_subscription_params {
   }
   export interface card_import_subscription_params {
     additional_information?: any;

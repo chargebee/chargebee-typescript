@@ -42,6 +42,7 @@ export class Quote extends Model {
   public contract_term_start?: number;
   public contract_term_end?: number;
   public contract_term_termination_fee?: number;
+  public business_entity_id: string;
 
   
 
@@ -202,7 +203,7 @@ export class Quote extends Model {
     }, ChargeBee._env)
   }
 
-  public static quote_line_groups_for_quote(quote_id: string, params?: any):RequestWrapper {
+  public static quote_line_groups_for_quote(quote_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'quote_line_groups_for_quote',
       'httpMethod': 'GET',
@@ -300,6 +301,7 @@ export class Discount extends Model {
   public description?: string;
   public entity_type: string;
   public entity_id?: string;
+  public coupon_set_code?: string;
 } // ~Discount
 
 export class LineItemDiscount extends Model {
@@ -646,8 +648,6 @@ export namespace _quote {
     start_date?: number;
   }
   export interface subscription_create_sub_for_customer_quote_params {
-  }
-  export interface subscription_create_sub_for_customer_quote_params {
     offline_payment_method?: string;
   }
   export interface shipping_address_create_sub_for_customer_quote_params {
@@ -775,8 +775,6 @@ export namespace _quote {
   }
   export interface subscription_edit_create_sub_for_customer_quote_params {
     start_date?: number;
-  }
-  export interface subscription_edit_create_sub_for_customer_quote_params {
   }
   export interface subscription_edit_create_sub_for_customer_quote_params {
     offline_payment_method?: string;
@@ -1068,8 +1066,6 @@ export namespace _quote {
   }
   export interface addons_update_subscription_quote_params {
     trial_end?: number;
-  }
-  export interface subscription_edit_update_subscription_quote_params {
   }
   export interface subscription_edit_update_subscription_quote_params {
     plan_id?: string;

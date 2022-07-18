@@ -18,6 +18,7 @@ export class HostedPage extends Model {
   public updated_at?: number;
   public resource_version?: number;
   public checkout_info?: any;
+  public business_entity_id?: string;
 
   
 
@@ -233,6 +234,17 @@ export class HostedPage extends Model {
     }, ChargeBee._env)
   }
 
+  public static pre_cancel(params?: _hosted_page.pre_cancel_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'pre_cancel',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/pre_cancel',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~HostedPage
 
 
@@ -284,6 +296,7 @@ export namespace _hosted_page {
     charges?: Array<charges_checkout_one_time_params>;
   }
   export interface checkout_one_time_for_items_params {
+    business_entity_id?: string;
     invoice_note?: string;
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -305,6 +318,7 @@ export namespace _hosted_page {
     entity_identifiers?: Array<entity_identifiers_checkout_one_time_for_items_params>;
   }
   export interface checkout_new_for_items_params {
+    business_entity_id?: string;
     billing_cycles?: number;
     mandatory_items_to_remove?: Array<string>;
     terms_to_charge?: number;
@@ -408,7 +422,6 @@ export namespace _hosted_page {
     expiry?: number;
     billing_cycle?: number;
     subscription?: subscription_extend_subscription_params;
-    customer?: customer_extend_subscription_params;
   }
   export interface checkout_gift_params {
     redirect_url?: string;
@@ -417,6 +430,7 @@ export namespace _hosted_page {
     addons?: Array<addons_checkout_gift_params>;
   }
   export interface checkout_gift_for_items_params {
+    business_entity_id?: string;
     redirect_url?: string;
     coupon_ids?: Array<string>;
     gifter?: gifter_checkout_gift_for_items_params;
@@ -437,6 +451,12 @@ export namespace _hosted_page {
     type?: filter._enum;
     state?: filter._enum;
     updated_at?: filter._timestamp;
+  }
+  export interface pre_cancel_params {
+    pass_thru_content?: string;
+    cancel_url?: string;
+    redirect_url?: string;
+    subscription?: subscription_pre_cancel_params;
   }
   export interface subscription_checkout_new_params {
     id?: string;
@@ -518,8 +538,6 @@ export namespace _hosted_page {
   }
   export interface customer_checkout_new_params {
     vat_number_prefix?: string;
-  }
-  export interface customer_checkout_new_params {
   }
   export interface customer_checkout_new_params {
     consolidated_invoicing?: boolean;
@@ -1155,8 +1173,6 @@ export namespace _hosted_page {
     vat_number_prefix?: string;
   }
   export interface customer_checkout_new_for_items_params {
-  }
-  export interface customer_checkout_new_for_items_params {
     is_einvoice_enabled?: boolean;
   }
   export interface customer_checkout_new_for_items_params {
@@ -1384,8 +1400,6 @@ export namespace _hosted_page {
   export interface customer_checkout_existing_params {
     vat_number_prefix?: string;
   }
-  export interface customer_checkout_existing_params {
-  }
   export interface card_checkout_existing_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -1394,8 +1408,6 @@ export namespace _hosted_page {
   }
   export interface card_checkout_existing_params {
     gateway_account_id?: string;
-  }
-  export interface customer_checkout_existing_params {
   }
   export interface contract_term_checkout_existing_params {
     action_at_term_end?: string;
@@ -1488,8 +1500,6 @@ export namespace _hosted_page {
     vat_number_prefix?: string;
   }
   export interface customer_checkout_existing_for_items_params {
-  }
-  export interface customer_checkout_existing_for_items_params {
     is_einvoice_enabled?: boolean;
   }
   export interface customer_checkout_existing_for_items_params {
@@ -1506,8 +1516,6 @@ export namespace _hosted_page {
   }
   export interface card_checkout_existing_for_items_params {
     gateway_account_id?: string;
-  }
-  export interface customer_checkout_existing_for_items_params {
   }
   export interface contract_term_checkout_existing_for_items_params {
     action_at_term_end?: string;
@@ -1617,8 +1625,6 @@ export namespace _hosted_page {
   export interface card_update_card_params {
     gateway_account_id?: string;
   }
-  export interface customer_update_card_params {
-  }
   export interface customer_update_payment_method_params {
     id: string;
   }
@@ -1643,8 +1649,6 @@ export namespace _hosted_page {
   export interface card_update_payment_method_params {
     gateway_account_id?: string;
   }
-  export interface customer_update_payment_method_params {
-  }
   export interface customer_manage_payment_sources_params {
     id: string;
   }
@@ -1657,8 +1661,6 @@ export namespace _hosted_page {
   export interface card_manage_payment_sources_params {
     gateway_account_id?: string;
   }
-  export interface customer_manage_payment_sources_params {
-  }
   export interface customer_collect_now_params {
     id: string;
   }
@@ -1670,16 +1672,12 @@ export namespace _hosted_page {
   }
   export interface card_collect_now_params {
     gateway_account_id?: string;
-  }
-  export interface customer_collect_now_params {
   }
   export interface quote_accept_quote_params {
     id: string;
   }
   export interface subscription_extend_subscription_params {
     id: string;
-  }
-  export interface customer_extend_subscription_params {
   }
   export interface gifter_checkout_gift_params {
     customer_id?: string;
@@ -1728,5 +1726,8 @@ export namespace _hosted_page {
   }
   export interface customer_claim_gift_params {
     locale?: string;
+  }
+  export interface subscription_pre_cancel_params {
+    id: string;
   }
 }

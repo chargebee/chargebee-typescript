@@ -159,7 +159,7 @@ export class Result {
             'estimate',
             'Estimate',
             {},
-            {'subscription_estimate': 'SubscriptionEstimate', 'invoice_estimate': 'InvoiceEstimate', 'invoice_estimates': 'InvoiceEstimate', 'next_invoice_estimate': 'InvoiceEstimate', 'credit_note_estimates': 'CreditNoteEstimate', 'unbilled_charge_estimates': 'UnbilledCharge'}
+            {'subscription_estimate': 'SubscriptionEstimate', 'subscription_estimates': 'SubscriptionEstimate', 'invoice_estimate': 'InvoiceEstimate', 'invoice_estimates': 'InvoiceEstimate', 'next_invoice_estimate': 'InvoiceEstimate', 'credit_note_estimates': 'CreditNoteEstimate', 'unbilled_charge_estimates': 'UnbilledCharge'}
         );
         _estimate.init_dependant(
             this.response['estimate'],
@@ -175,6 +175,11 @@ export class Result {
             this.response['estimate'],
             'next_invoice_estimate',
             {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
+        );
+        _estimate.init_dependant_list(
+            this.response['estimate'],
+            'subscription_estimates',
+            {'shipping_address': 'SubscriptionEstimateShippingAddress', 'contract_term': 'SubscriptionEstimateContractTerm'}
         );
         _estimate.init_dependant_list(
             this.response['estimate'],
@@ -390,29 +395,50 @@ export class Result {
         );
         return _feature;
     }
+    get impacted_subscription(): resources.ImpactedSubscription {
+        let _impacted_subscription = this.get(
+            'impacted_subscription',
+            'ImpactedSubscription',
+            {'download': 'ImpactedSubscriptionDownload'}
+        );
+        return _impacted_subscription;
+    }
+    get impacted_item(): resources.ImpactedItem {
+        let _impacted_item = this.get(
+            'impacted_item',
+            'ImpactedItem',
+            {'download': 'ImpactedItemDownload'}
+        );
+        return _impacted_item;
+    }
     get subscription_entitlement(): resources.SubscriptionEntitlement {
         let _subscription_entitlement = this.get(
             'subscription_entitlement',
             'SubscriptionEntitlement',
-            {'component': 'SubscriptionEntitlementComponent', 'embedded_resource': 'SubscriptionEntitlementEmbeddedResource'}
+            {'component': 'SubscriptionEntitlementComponent'}
         );
         return _subscription_entitlement;
     }
     get item_entitlement(): resources.ItemEntitlement {
         let _item_entitlement = this.get(
             'item_entitlement',
-            'ItemEntitlement',
-            {'embedded_resource': 'ItemEntitlementEmbeddedResource'}
+            'ItemEntitlement'
         );
         return _item_entitlement;
     }
     get entitlement_override(): resources.EntitlementOverride {
         let _entitlement_override = this.get(
             'entitlement_override',
-            'EntitlementOverride',
-            {'embedded_resource': 'EntitlementOverrideEmbeddedResource'}
+            'EntitlementOverride'
         );
         return _entitlement_override;
+    }
+    get purchase(): resources.Purchase {
+        let _purchase = this.get(
+            'purchase',
+            'Purchase'
+        );
+        return _purchase;
     }
 
     get unbilled_charges(): resources.UnbilledCharge[] {

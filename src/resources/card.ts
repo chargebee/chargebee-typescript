@@ -126,8 +126,6 @@ export namespace _card {
      * @deprecated Please refer API docs to use other attributes
      */
     ip_address?: string;
-    bank_account?: bank_account_update_card_for_customer_params;
-    payment_method?: payment_method_update_card_for_customer_params;
     customer?: customer_update_card_for_customer_params;
   }
   export interface switch_gateway_for_customer_params {
@@ -139,28 +137,6 @@ export namespace _card {
   }
   export interface copy_card_for_customer_params {
     gateway_account_id: string;
-  }
-  export interface bank_account_update_card_for_customer_params {
-  }
-  export interface bank_account_update_card_for_customer_params {
-  }
-  export interface bank_account_update_card_for_customer_params {
-  }
-  export interface bank_account_update_card_for_customer_params {
-  }
-  export interface bank_account_update_card_for_customer_params {
-  }
-  export interface bank_account_update_card_for_customer_params {
-  }
-  export interface payment_method_update_card_for_customer_params {
-  }
-  export interface payment_method_update_card_for_customer_params {
-  }
-  export interface payment_method_update_card_for_customer_params {
-  }
-  export interface payment_method_update_card_for_customer_params {
-  }
-  export interface payment_method_update_card_for_customer_params {
   }
   export interface customer_update_card_for_customer_params {
     /**

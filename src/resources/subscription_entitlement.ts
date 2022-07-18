@@ -1,4 +1,5 @@
 import * as resources from ".";
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -16,14 +17,13 @@ export class SubscriptionEntitlement extends Model {
   public is_enabled: boolean;
   public expires_at?: number;
   public components?: Component;
-  public embedded?: EmbeddedResource;
 
   
 
   // OPERATIONS
   //-----------
 
-  public static subscription_entitlements_for_subscription(subscription_id: string, params?: _subscription_entitlement.subscription_entitlement_subscription_entitlements_for_subscription_params):RequestWrapper {
+  public static subscription_entitlements_for_subscription(subscription_id: string, params?: _subscription_entitlement.subscription_entitlement_subscription_entitlements_for_subscription_params):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'subscription_entitlements_for_subscription',
       'httpMethod': 'GET',
@@ -48,12 +48,8 @@ export class SubscriptionEntitlement extends Model {
 } // ~SubscriptionEntitlement
 
 export class Component extends Model {
-
+  public entitlement_overrides?: resources.EntitlementOverride;
 } // ~Component
-
-export class EmbeddedResource extends Model {
-
-} // ~EmbeddedResource
 
 
 

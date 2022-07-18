@@ -1,4 +1,5 @@
 import * as resources from ".";
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -13,7 +14,6 @@ export class EntitlementOverride extends Model {
   public value?: string;
   public name?: string;
   public expires_at?: number;
-  public embedded?: EmbeddedResource;
 
   
 
@@ -31,7 +31,7 @@ export class EntitlementOverride extends Model {
     }, ChargeBee._env)
   }
 
-  public static list_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.entitlement_override_list_entitlement_override_for_subscription_params):RequestWrapper {
+  public static list_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.entitlement_override_list_entitlement_override_for_subscription_params):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'list_entitlement_override_for_subscription',
       'httpMethod': 'GET',
@@ -43,10 +43,6 @@ export class EntitlementOverride extends Model {
   }
 
 } // ~EntitlementOverride
-
-export class EmbeddedResource extends Model {
-
-} // ~EmbeddedResource
 
 
 

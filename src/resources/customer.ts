@@ -45,6 +45,7 @@ export class Customer extends Model {
   public contacts?: Array<Contact>;
   public payment_method?: PaymentMethod;
   public invoice_notes?: string;
+  public business_entity_id?: string;
   public preferred_currency_code?: string;
   public promotional_credits: number;
   public unbilled_charges: number;
@@ -473,6 +474,7 @@ export namespace _customer {
     auto_close_invoices?: boolean;
     consolidated_invoicing?: boolean;
     token_id?: string;
+    business_entity_id?: string;
     /**
      * @deprecated Please refer API docs to use other attributes
      */
@@ -592,7 +594,6 @@ export namespace _customer {
     payment_method?: payment_method_collect_payment_params;
     card?: card_collect_payment_params;
     payment_intent?: payment_intent_collect_payment_params;
-    bank_account?: bank_account_collect_payment_params;
     invoice_allocations?: Array<invoice_allocations_collect_payment_params>;
   }
   export interface delete_params {
@@ -788,11 +789,7 @@ export namespace _customer {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_params {
-  }
-  export interface payment_intent_create_params {
     additional_information?: any;
-  }
-  export interface payment_intent_create_params {
   }
   export interface billing_address_create_params {
     first_name?: string;
@@ -1092,41 +1089,7 @@ export namespace _customer {
     reference_id?: string;
   }
   export interface payment_intent_collect_payment_params {
-  }
-  export interface payment_intent_collect_payment_params {
     additional_information?: any;
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
-  }
-  export interface bank_account_collect_payment_params {
   }
   export interface invoice_allocations_collect_payment_params {
     invoice_id: string;

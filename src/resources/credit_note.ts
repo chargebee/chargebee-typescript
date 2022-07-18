@@ -45,6 +45,7 @@ export class CreditNote extends Model {
   public deleted: boolean;
   public create_reason_code?: string;
   public vat_number_prefix?: string;
+  public business_entity_id: string;
 
   
 
@@ -139,7 +140,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static credit_notes_for_customer(customer_id: string, params?: any):RequestWrapper {
+  public static credit_notes_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'credit_notes_for_customer',
       'httpMethod': 'GET',
@@ -210,6 +211,7 @@ export class Discount extends Model {
   public description?: string;
   public entity_type: string;
   public entity_id?: string;
+  public coupon_set_code?: string;
 } // ~Discount
 
 export class LineItemDiscount extends Model {

@@ -210,8 +210,6 @@ export namespace _gift {
     gw_payment_method_id?: string;
   }
   export interface payment_intent_create_params {
-  }
-  export interface payment_intent_create_params {
     additional_information?: any;
   }
   export interface shipping_address_create_params {
@@ -318,8 +316,6 @@ export namespace _gift {
      * @deprecated Please refer API docs to use other attributes
      */
     gw_payment_method_id?: string;
-  }
-  export interface payment_intent_create_for_items_params {
   }
   export interface payment_intent_create_for_items_params {
     additional_information?: any;

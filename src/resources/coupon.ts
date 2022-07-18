@@ -251,8 +251,6 @@ export namespace _coupon {
     currency_code?: filter._string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
-    plan?: plan_coupon_list_params;
-    addon?: addon_coupon_list_params;
   }
   export interface update_params {
     name?: string;
@@ -323,9 +321,5 @@ export namespace _coupon {
   }
   export interface item_constraint_criteria_update_for_items_params {
     item_price_periods?: any;
-  }
-  export interface plan_coupon_list_params {
-  }
-  export interface addon_coupon_list_params {
   }
 }

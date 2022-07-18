@@ -1,4 +1,5 @@
 import * as resources from ".";
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
@@ -12,14 +13,13 @@ export class ItemEntitlement extends Model {
   public feature_name?: string;
   public value?: string;
   public name?: string;
-  public embedded?: EmbeddedResource;
 
   
 
   // OPERATIONS
   //-----------
 
-  public static item_entitlements_for_item(item_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_item_params):RequestWrapper {
+  public static item_entitlements_for_item(item_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_item_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_id, params], {
       'methodName': 'item_entitlements_for_item',
       'httpMethod': 'GET',
@@ -30,7 +30,7 @@ export class ItemEntitlement extends Model {
     }, ChargeBee._env)
   }
 
-  public static item_entitlements_for_feature(feature_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_feature_params):RequestWrapper {
+  public static item_entitlements_for_feature(feature_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_feature_params):RequestWrapper<ListResult> {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'item_entitlements_for_feature',
       'httpMethod': 'GET',
@@ -64,10 +64,6 @@ export class ItemEntitlement extends Model {
   }
 
 } // ~ItemEntitlement
-
-export class EmbeddedResource extends Model {
-
-} // ~EmbeddedResource
 
 
 

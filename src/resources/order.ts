@@ -177,7 +177,7 @@ export class Order extends Model {
     }, ChargeBee._env)
   }
 
-  public static orders_for_invoice(invoice_id: string, params?: any):RequestWrapper {
+  public static orders_for_invoice(invoice_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'orders_for_invoice',
       'httpMethod': 'GET',

@@ -66,6 +66,7 @@ export class Invoice extends Model {
   public deleted: boolean;
   public vat_number_prefix?: string;
   public channel?: string;
+  public business_entity_id: string;
 
   
 
@@ -193,7 +194,7 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
-  public static invoices_for_customer(customer_id: string, params?: any):RequestWrapper {
+  public static invoices_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'invoices_for_customer',
       'httpMethod': 'GET',
@@ -204,7 +205,7 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
-  public static invoices_for_subscription(subscription_id: string, params?: any):RequestWrapper {
+  public static invoices_for_subscription(subscription_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'invoices_for_subscription',
       'httpMethod': 'GET',
@@ -445,6 +446,7 @@ export class Discount extends Model {
   public description?: string;
   public entity_type: string;
   public entity_id?: string;
+  public coupon_set_code?: string;
 } // ~Discount
 
 export class LineItemDiscount extends Model {
@@ -1409,10 +1411,6 @@ export namespace _invoice {
   }
   export interface charges_create_for_charge_items_and_charges_params {
     date_to?: number;
-  }
-  export interface charges_create_for_charge_items_and_charges_params {
-  }
-  export interface charges_create_for_charge_items_and_charges_params {
   }
   export interface notes_to_remove_create_for_charge_items_and_charges_params {
     entity_type?: string;

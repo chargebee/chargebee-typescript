@@ -47,9 +47,12 @@ export {_item_price} from "./resources/item_price";
 export {_attached_item} from "./resources/attached_item";
 export {_differential_price} from "./resources/differential_price";
 export {_feature} from "./resources/feature";
+export {_impacted_subscription} from "./resources/impacted_subscription";
+export {_impacted_item} from "./resources/impacted_item";
 export {_subscription_entitlement} from "./resources/subscription_entitlement";
 export {_item_entitlement} from "./resources/item_entitlement";
 export {_entitlement_override} from "./resources/entitlement_override";
+export {_purchase} from "./resources/purchase";
 
 interface Conf {
     api_key: string
@@ -208,6 +211,12 @@ export class ChargeBee {
     get feature() {
         return resources.Feature;
     }
+    get impacted_subscription() {
+        return resources.ImpactedSubscription;
+    }
+    get impacted_item() {
+        return resources.ImpactedItem;
+    }
     get subscription_entitlement() {
         return resources.SubscriptionEntitlement;
     }
@@ -216,6 +225,9 @@ export class ChargeBee {
     }
     get entitlement_override() {
         return resources.EntitlementOverride;
+    }
+    get purchase() {
+        return resources.Purchase;
     }
 }
 

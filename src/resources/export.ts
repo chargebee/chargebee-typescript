@@ -291,8 +291,6 @@ export namespace _export {
   export interface coupons_params {
     currency_code?: filter._string;
     coupon?: coupon_coupons_params;
-    plan?: plan_coupons_params;
-    addon?: addon_coupons_params;
   }
   export interface customers_params {
     customer?: customer_customers_params;
@@ -694,14 +692,6 @@ export namespace _export {
   }
   export interface coupon_coupons_params {
     updated_at?: filter._timestamp;
-  }
-  export interface coupon_coupons_params {
-  }
-  export interface coupon_coupons_params {
-  }
-  export interface plan_coupons_params {
-  }
-  export interface addon_coupons_params {
   }
   export interface customer_customers_params {
     id?: filter._string;

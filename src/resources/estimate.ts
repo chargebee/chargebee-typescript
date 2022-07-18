@@ -7,6 +7,7 @@ import {filter} from "../filter";
 export class Estimate extends Model {
   public created_at: number;
   public subscription_estimate?: resources.SubscriptionEstimate;
+  public subscription_estimates?: Array<resources.SubscriptionEstimate>;
   public invoice_estimate?: resources.InvoiceEstimate;
   public invoice_estimates?: Array<resources.InvoiceEstimate>;
   public next_invoice_estimate?: resources.InvoiceEstimate;
@@ -565,15 +566,11 @@ export namespace _estimate {
   export interface customer_create_subscription_params {
     exempt_number?: string;
   }
-  export interface customer_create_subscription_params {
-  }
   export interface subscription_create_subscription_params {
     free_period?: number;
   }
   export interface subscription_create_subscription_params {
     free_period_unit?: string;
-  }
-  export interface subscription_create_subscription_params {
   }
   export interface contract_term_create_subscription_params {
     action_at_term_end?: string;
@@ -731,15 +728,11 @@ export namespace _estimate {
   export interface customer_create_sub_item_estimate_params {
     exempt_number?: string;
   }
-  export interface customer_create_sub_item_estimate_params {
-  }
   export interface subscription_create_sub_item_estimate_params {
     free_period?: number;
   }
   export interface subscription_create_sub_item_estimate_params {
     free_period_unit?: string;
-  }
-  export interface subscription_create_sub_item_estimate_params {
   }
   export interface customer_create_sub_item_estimate_params {
     exemption_details?: any;
@@ -847,8 +840,6 @@ export namespace _estimate {
     start_date?: number;
   }
   export interface subscription_create_sub_for_customer_estimate_params {
-  }
-  export interface subscription_create_sub_for_customer_estimate_params {
     offline_payment_method?: string;
   }
   export interface shipping_address_create_sub_for_customer_estimate_params {
@@ -880,8 +871,6 @@ export namespace _estimate {
   }
   export interface subscription_create_sub_for_customer_estimate_params {
     free_period_unit?: string;
-  }
-  export interface subscription_create_sub_for_customer_estimate_params {
   }
   export interface contract_term_create_sub_for_customer_estimate_params {
     action_at_term_end?: string;
@@ -959,8 +948,6 @@ export namespace _estimate {
     start_date?: number;
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
-  }
-  export interface subscription_create_sub_item_for_customer_estimate_params {
     offline_payment_method?: string;
   }
   export interface shipping_address_create_sub_item_for_customer_estimate_params {
@@ -992,8 +979,6 @@ export namespace _estimate {
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
     free_period_unit?: string;
-  }
-  export interface subscription_create_sub_item_for_customer_estimate_params {
   }
   export interface contract_term_create_sub_item_for_customer_estimate_params {
     action_at_term_end?: string;
@@ -1169,15 +1154,11 @@ export namespace _estimate {
   export interface subscription_update_subscription_params {
     free_period_unit?: string;
   }
-  export interface subscription_update_subscription_params {
-  }
   export interface customer_update_subscription_params {
     /**
      * @deprecated Please refer API docs to use other attributes
      */
     taxability?: string;
-  }
-  export interface customer_update_subscription_params {
   }
   export interface subscription_update_subscription_params {
     trial_end_action?: string;
@@ -1320,15 +1301,11 @@ export namespace _estimate {
   export interface subscription_update_subscription_for_items_params {
     free_period_unit?: string;
   }
-  export interface subscription_update_subscription_for_items_params {
-  }
   export interface customer_update_subscription_for_items_params {
     /**
      * @deprecated Please refer API docs to use other attributes
      */
     taxability?: string;
-  }
-  export interface customer_update_subscription_for_items_params {
   }
   export interface subscription_update_subscription_for_items_params {
     trial_end_action?: string;
@@ -1799,7 +1776,7 @@ export namespace _estimate {
     entity_id?: string;
   }
   export interface invoice_create_invoice_for_items_params {
-    customer_id: string;
+    customer_id?: string;
   }
   export interface invoice_create_invoice_for_items_params {
     subscription_id?: string;

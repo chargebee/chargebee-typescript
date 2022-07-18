@@ -57,6 +57,7 @@ export class Discount extends Model {
   public description?: string;
   public entity_type: string;
   public entity_id?: string;
+  public coupon_set_code?: string;
 } // ~Discount
 
 export class LineItemDiscount extends Model {

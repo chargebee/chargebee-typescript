@@ -22,6 +22,7 @@ export class PaymentIntent extends Model {
   public customer_id: string;
   public gateway?: string;
   public active_payment_attempt?: PaymentAttempt;
+  public business_entity_id?: string;
 
   
 
@@ -81,6 +82,7 @@ export class PaymentAttempt extends Model {
 
 export namespace _payment_intent {
   export interface create_params {
+    business_entity_id?: string;
     customer_id?: string;
     amount: number;
     currency_code: string;
