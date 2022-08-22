@@ -92,6 +92,7 @@ export class ItemTier extends Model {
   public starting_unit_in_decimal?: string;
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
+  public index: number;
 } // ~ItemTier
 
 export class QuotedContractTerm extends Model {

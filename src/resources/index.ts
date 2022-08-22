@@ -179,5 +179,6 @@ export {Download as ImpactedItemDownload} from "./impacted_item";
 export {SubscriptionEntitlement} from "./subscription_entitlement";
 export {Component as SubscriptionEntitlementComponent} from "./subscription_entitlement";
 export {ItemEntitlement} from "./item_entitlement";
+export {InAppSubscription} from "./in_app_subscription";
 export {EntitlementOverride} from "./entitlement_override";
 export {Purchase} from "./purchase";

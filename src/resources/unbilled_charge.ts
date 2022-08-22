@@ -25,6 +25,7 @@ export class UnbilledCharge extends Model {
   public unit_amount_in_decimal?: string;
   public quantity_in_decimal?: string;
   public amount_in_decimal?: string;
+  public updated_at: number;
   public tiers?: Array<Tier>;
   public deleted: boolean;
 

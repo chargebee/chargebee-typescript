@@ -288,6 +288,7 @@ export class LineItem extends Model {
   public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
+  public reference_line_item_id?: string;
   public description: string;
   public entity_description: string;
   public entity_type: string;
@@ -360,6 +361,7 @@ export class ShippingAddress extends Model {
   public country?: string;
   public zip?: string;
   public validation_status?: string;
+  public index: number;
 } // ~ShippingAddress
 
 export class BillingAddress extends Model {

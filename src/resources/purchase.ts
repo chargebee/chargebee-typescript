@@ -28,6 +28,17 @@ export class Purchase extends Model {
     }, ChargeBee._env)
   }
 
+  public static retrieve(purchase_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([purchase_id, params], {
+      'methodName': 'retrieve',
+      'httpMethod': 'GET',
+      'urlPrefix': '/purchases',
+      'urlSuffix': null,
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static estimate(params?: _purchase.estimate_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'estimate',
@@ -48,7 +59,6 @@ export class Purchase extends Model {
 
 export namespace _purchase {
   export interface create_params {
-    business_entity_id?: string;
     customer_id: string;
     invoice_info?: invoice_info_create_params;
     purchase_items?: Array<purchase_items_create_params>;
@@ -58,7 +68,6 @@ export namespace _purchase {
     subscription_info?: Array<subscription_info_create_params>;
   }
   export interface estimate_params {
-    business_entity_id?: string;
     client_profile_id?: string;
     customer_id?: string;
     invoice_info?: invoice_info_estimate_params;

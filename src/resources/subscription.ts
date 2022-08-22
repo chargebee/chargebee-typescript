@@ -492,6 +492,7 @@ export class ItemTier extends Model {
   public starting_unit_in_decimal?: string;
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
+  public index: number;
 } // ~ItemTier
 
 export class ChargedItem extends Model {
@@ -549,6 +550,7 @@ export class ShippingAddress extends Model {
   public country?: string;
   public zip?: string;
   public validation_status?: string;
+  public index: number;
 } // ~ShippingAddress
 
 export class ReferralInfo extends Model {

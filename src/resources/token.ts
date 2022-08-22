@@ -13,6 +13,8 @@ export class Token extends Model {
   public id_at_vault: string;
   public vault: string;
   public ip_address?: string;
+  public resource_version?: number;
+  public updated_at?: number;
   public created_at: number;
   public expired_at?: number;
 

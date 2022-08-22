@@ -48,6 +48,7 @@ export class Transaction extends Model {
   public last4?: string;
   public merchant_reference_id?: string;
   public business_entity_id?: string;
+  public payment_method_details?: string;
 
   
 

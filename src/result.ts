@@ -426,6 +426,13 @@ export class Result {
         );
         return _item_entitlement;
     }
+    get in_app_subscription(): resources.InAppSubscription {
+        let _in_app_subscription = this.get(
+            'in_app_subscription',
+            'InAppSubscription'
+        );
+        return _in_app_subscription;
+    }
     get entitlement_override(): resources.EntitlementOverride {
         let _entitlement_override = this.get(
             'entitlement_override',
@@ -496,6 +503,14 @@ export class Result {
             {'tiers': 'DifferentialPriceTier', 'parent_periods': 'DifferentialPriceParentPeriod'}
         );
         return _differential_prices;
+    }
+    get in_app_subscriptions(): resources.InAppSubscription[] {
+        let _in_app_subscriptions = this.get_list(
+            'in_app_subscriptions',
+            'InAppSubscription',
+            {}
+        );
+        return _in_app_subscriptions;
     }
 
     get response() {

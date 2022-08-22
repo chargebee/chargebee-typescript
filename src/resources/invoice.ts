@@ -433,6 +433,7 @@ export class LineItem extends Model {
   public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
+  public reference_line_item_id?: string;
   public description: string;
   public entity_description: string;
   public entity_type: string;
@@ -568,6 +569,7 @@ export class ShippingAddress extends Model {
   public country?: string;
   public zip?: string;
   public validation_status?: string;
+  public index: number;
 } // ~ShippingAddress
 
 export class BillingAddress extends Model {
@@ -841,6 +843,10 @@ export namespace _invoice {
   export interface void_invoice_params {
     comment?: string;
     void_reason_code?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    void_with_credit_note?: boolean;
   }
   export interface write_off_params {
     comment?: string;
