@@ -28,17 +28,6 @@ export class Purchase extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(purchase_id: string, params?: any):RequestWrapper {
-    return new RequestWrapper([purchase_id, params], {
-      'methodName': 'retrieve',
-      'httpMethod': 'GET',
-      'urlPrefix': '/purchases',
-      'urlSuffix': null,
-      'hasIdInUrl': true,
-      'isListReq': false,
-    }, ChargeBee._env)
-  }
-
   public static estimate(params?: _purchase.estimate_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'estimate',

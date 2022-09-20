@@ -268,6 +268,7 @@ export namespace _estimate {
     customer?: customer_create_sub_item_estimate_params;
     contract_term?: contract_term_create_sub_item_estimate_params;
     subscription_items?: Array<subscription_items_create_sub_item_estimate_params>;
+    discounts?: Array<discounts_create_sub_item_estimate_params>;
     item_tiers?: Array<item_tiers_create_sub_item_estimate_params>;
   }
   export interface create_sub_for_customer_estimate_params {
@@ -298,6 +299,7 @@ export namespace _estimate {
     shipping_address?: shipping_address_create_sub_item_for_customer_estimate_params;
     contract_term?: contract_term_create_sub_item_for_customer_estimate_params;
     subscription_items?: Array<subscription_items_create_sub_item_for_customer_estimate_params>;
+    discounts?: Array<discounts_create_sub_item_for_customer_estimate_params>;
     item_tiers?: Array<item_tiers_create_sub_item_for_customer_estimate_params>;
   }
   export interface update_subscription_params {
@@ -346,6 +348,7 @@ export namespace _estimate {
     shipping_address?: shipping_address_update_subscription_for_items_params;
     customer?: customer_update_subscription_for_items_params;
     subscription_items?: Array<subscription_items_update_subscription_for_items_params>;
+    discounts?: Array<discounts_update_subscription_for_items_params>;
     item_tiers?: Array<item_tiers_update_subscription_for_items_params>;
   }
   export interface renewal_estimate_params {
@@ -463,6 +466,7 @@ export namespace _estimate {
     item_tiers?: Array<item_tiers_create_invoice_for_items_params>;
     charges?: Array<charges_create_invoice_for_items_params>;
     notes_to_remove?: Array<notes_to_remove_create_invoice_for_items_params>;
+    discounts?: Array<discounts_create_invoice_for_items_params>;
   }
   export interface subscription_create_subscription_params {
     id?: string;
@@ -787,6 +791,30 @@ export namespace _estimate {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    apply_on: string;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    duration_type: string;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    percentage?: number;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    amount?: number;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    period?: number;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    period_unit?: string;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_create_sub_item_estimate_params {
+    item_price_id?: string;
   }
   export interface subscription_items_create_sub_item_estimate_params {
     charge_on_option?: string;
@@ -1027,6 +1055,30 @@ export namespace _estimate {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    apply_on: string;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    duration_type: string;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    percentage?: number;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    amount?: number;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    period?: number;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    period_unit?: string;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    item_price_id?: string;
   }
   export interface subscription_items_create_sub_item_for_customer_estimate_params {
     charge_on_option?: string;
@@ -1348,6 +1400,36 @@ export namespace _estimate {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    period?: number;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    item_price_id?: string;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    operation_type: string;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    id?: string;
   }
   export interface item_tiers_update_subscription_for_items_params {
     item_price_id?: string;
@@ -1912,5 +1994,17 @@ export namespace _estimate {
   }
   export interface notes_to_remove_create_invoice_for_items_params {
     entity_id?: string;
+  }
+  export interface discounts_create_invoice_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_create_invoice_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_create_invoice_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_create_invoice_for_items_params {
+    item_price_id?: string;
   }
 }

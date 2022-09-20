@@ -8,7 +8,7 @@ export class Result {
         let _subscription = this.get(
             'subscription',
             'Subscription',
-            {'subscription_items': 'SubscriptionSubscriptionItem', 'item_tiers': 'SubscriptionItemTier', 'charged_items': 'SubscriptionChargedItem', 'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'contract_term': 'SubscriptionContractTerm'}
+            {'subscription_items': 'SubscriptionSubscriptionItem', 'item_tiers': 'SubscriptionItemTier', 'charged_items': 'SubscriptionChargedItem', 'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'contract_term': 'SubscriptionContractTerm', 'discounts': 'SubscriptionDiscount'}
         );
         return _subscription;
     }

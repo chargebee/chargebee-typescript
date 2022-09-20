@@ -297,6 +297,7 @@ export namespace _hosted_page {
   }
   export interface checkout_one_time_for_items_params {
     business_entity_id?: string;
+    layout?: string;
     invoice_note?: string;
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -315,9 +316,11 @@ export namespace _hosted_page {
     item_prices?: Array<item_prices_checkout_one_time_for_items_params>;
     item_tiers?: Array<item_tiers_checkout_one_time_for_items_params>;
     charges?: Array<charges_checkout_one_time_for_items_params>;
+    discounts?: Array<discounts_checkout_one_time_for_items_params>;
     entity_identifiers?: Array<entity_identifiers_checkout_one_time_for_items_params>;
   }
   export interface checkout_new_for_items_params {
+    layout?: string;
     business_entity_id?: string;
     billing_cycles?: number;
     mandatory_items_to_remove?: Array<string>;
@@ -335,6 +338,7 @@ export namespace _hosted_page {
     shipping_address?: shipping_address_checkout_new_for_items_params;
     contract_term?: contract_term_checkout_new_for_items_params;
     subscription_items?: Array<subscription_items_checkout_new_for_items_params>;
+    discounts?: Array<discounts_checkout_new_for_items_params>;
     item_tiers?: Array<item_tiers_checkout_new_for_items_params>;
     entity_identifiers?: Array<entity_identifiers_checkout_new_for_items_params>;
   }
@@ -363,6 +367,7 @@ export namespace _hosted_page {
     event_based_addons?: Array<event_based_addons_checkout_existing_params>;
   }
   export interface checkout_existing_for_items_params {
+    layout?: string;
     mandatory_items_to_remove?: Array<string>;
     replace_items_list?: boolean;
     invoice_date?: number;
@@ -382,6 +387,7 @@ export namespace _hosted_page {
     card?: card_checkout_existing_for_items_params;
     contract_term?: contract_term_checkout_existing_for_items_params;
     subscription_items?: Array<subscription_items_checkout_existing_for_items_params>;
+    discounts?: Array<discounts_checkout_existing_for_items_params>;
     item_tiers?: Array<item_tiers_checkout_existing_for_items_params>;
     entity_identifiers?: Array<entity_identifiers_checkout_existing_for_items_params>;
   }
@@ -1091,6 +1097,18 @@ export namespace _hosted_page {
   export interface charges_checkout_one_time_for_items_params {
     date_to?: number;
   }
+  export interface discounts_checkout_one_time_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_checkout_one_time_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_checkout_one_time_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_checkout_one_time_for_items_params {
+    item_price_id?: string;
+  }
   export interface entity_identifiers_checkout_one_time_for_items_params {
     id?: string;
   }
@@ -1312,6 +1330,30 @@ export namespace _hosted_page {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    period?: number;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    item_price_id?: string;
   }
   export interface subscription_items_checkout_new_for_items_params {
     charge_on_option?: string;
@@ -1564,6 +1606,36 @@ export namespace _hosted_page {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    period?: number;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    item_price_id?: string;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    operation_type: string;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    id?: string;
   }
   export interface item_tiers_checkout_existing_for_items_params {
     item_price_id?: string;

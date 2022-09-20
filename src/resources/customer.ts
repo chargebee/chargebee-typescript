@@ -30,6 +30,7 @@ export class Customer extends Model {
   public updated_at?: number;
   public locale?: string;
   public billing_date?: number;
+  public billing_month?: number;
   public billing_date_mode?: string;
   public billing_day_of_week?: string;
   public billing_day_of_week_mode?: string;
@@ -605,6 +606,7 @@ export namespace _customer {
   }
   export interface change_billing_date_params {
     billing_date?: number;
+    billing_month?: number;
     billing_date_mode?: string;
     billing_day_of_week?: string;
     billing_day_of_week_mode?: string;

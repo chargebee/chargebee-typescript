@@ -500,6 +500,7 @@ export namespace _quote {
     shipping_address?: shipping_address_create_sub_items_for_customer_quote_params;
     contract_term?: contract_term_create_sub_items_for_customer_quote_params;
     subscription_items?: Array<subscription_items_create_sub_items_for_customer_quote_params>;
+    discounts?: Array<discounts_create_sub_items_for_customer_quote_params>;
     item_tiers?: Array<item_tiers_create_sub_items_for_customer_quote_params>;
   }
   export interface edit_create_sub_customer_quote_for_items_params {
@@ -514,6 +515,7 @@ export namespace _quote {
     shipping_address?: shipping_address_edit_create_sub_customer_quote_for_items_params;
     contract_term?: contract_term_edit_create_sub_customer_quote_for_items_params;
     subscription_items?: Array<subscription_items_edit_create_sub_customer_quote_for_items_params>;
+    discounts?: Array<discounts_edit_create_sub_customer_quote_for_items_params>;
     item_tiers?: Array<item_tiers_edit_create_sub_customer_quote_for_items_params>;
   }
   export interface update_subscription_quote_for_items_params {
@@ -538,6 +540,7 @@ export namespace _quote {
     customer?: customer_update_subscription_quote_for_items_params;
     contract_term?: contract_term_update_subscription_quote_for_items_params;
     subscription_items?: Array<subscription_items_update_subscription_quote_for_items_params>;
+    discounts?: Array<discounts_update_subscription_quote_for_items_params>;
     item_tiers?: Array<item_tiers_update_subscription_quote_for_items_params>;
   }
   export interface edit_update_subscription_quote_for_items_params {
@@ -561,6 +564,7 @@ export namespace _quote {
     customer?: customer_edit_update_subscription_quote_for_items_params;
     contract_term?: contract_term_edit_update_subscription_quote_for_items_params;
     subscription_items?: Array<subscription_items_edit_update_subscription_quote_for_items_params>;
+    discounts?: Array<discounts_edit_update_subscription_quote_for_items_params>;
     item_tiers?: Array<item_tiers_edit_update_subscription_quote_for_items_params>;
   }
   export interface create_for_charge_items_and_charges_params {
@@ -576,6 +580,7 @@ export namespace _quote {
     item_prices?: Array<item_prices_create_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
     charges?: Array<charges_create_for_charge_items_and_charges_params>;
+    discounts?: Array<discounts_create_for_charge_items_and_charges_params>;
   }
   export interface edit_for_charge_items_and_charges_params {
     po_number?: string;
@@ -588,6 +593,7 @@ export namespace _quote {
     item_prices?: Array<item_prices_edit_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_edit_for_charge_items_and_charges_params>;
     charges?: Array<charges_edit_for_charge_items_and_charges_params>;
+    discounts?: Array<discounts_edit_for_charge_items_and_charges_params>;
   }
   export interface quote_list_params {
     limit?: number;
@@ -1522,6 +1528,30 @@ export namespace _quote {
      */
     item_type?: string;
   }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    apply_on: string;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    duration_type: string;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    percentage?: number;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    amount?: number;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    period?: number;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    period_unit?: string;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    item_price_id?: string;
+  }
   export interface subscription_items_create_sub_items_for_customer_quote_params {
     charge_on_option?: string;
   }
@@ -1650,6 +1680,30 @@ export namespace _quote {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    period?: number;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    item_price_id?: string;
   }
   export interface subscription_items_edit_create_sub_customer_quote_for_items_params {
     charge_on_option?: string;
@@ -1843,6 +1897,36 @@ export namespace _quote {
      */
     item_type?: string;
   }
+  export interface discounts_update_subscription_quote_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    period?: number;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    item_price_id?: string;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    operation_type: string;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    id?: string;
+  }
   export interface item_tiers_update_subscription_quote_for_items_params {
     item_price_id?: string;
   }
@@ -2029,6 +2113,36 @@ export namespace _quote {
      */
     item_type?: string;
   }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    period?: number;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    item_price_id?: string;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    operation_type: string;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    id?: string;
+  }
   export interface item_tiers_edit_update_subscription_quote_for_items_params {
     item_price_id?: string;
   }
@@ -2152,6 +2266,18 @@ export namespace _quote {
   export interface charges_create_for_charge_items_and_charges_params {
     service_period?: number;
   }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    percentage?: number;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    amount?: number;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    apply_on: string;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    item_price_id?: string;
+  }
   export interface shipping_address_edit_for_charge_items_and_charges_params {
     first_name?: string;
   }
@@ -2253,6 +2379,18 @@ export namespace _quote {
   }
   export interface charges_edit_for_charge_items_and_charges_params {
     service_period?: number;
+  }
+  export interface discounts_edit_for_charge_items_and_charges_params {
+    percentage?: number;
+  }
+  export interface discounts_edit_for_charge_items_and_charges_params {
+    amount?: number;
+  }
+  export interface discounts_edit_for_charge_items_and_charges_params {
+    apply_on: string;
+  }
+  export interface discounts_edit_for_charge_items_and_charges_params {
+    item_price_id?: string;
   }
   export interface subscription_convert_params {
     id?: string;

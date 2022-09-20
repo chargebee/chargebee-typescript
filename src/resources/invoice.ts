@@ -657,6 +657,7 @@ export namespace _invoice {
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
     charges?: Array<charges_create_for_charge_items_and_charges_params>;
     notes_to_remove?: Array<notes_to_remove_create_for_charge_items_and_charges_params>;
+    discounts?: Array<discounts_create_for_charge_items_and_charges_params>;
   }
   export interface charge_params {
     customer_id?: string;
@@ -1424,6 +1425,18 @@ export namespace _invoice {
   export interface notes_to_remove_create_for_charge_items_and_charges_params {
     entity_id?: string;
   }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    percentage?: number;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    amount?: number;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    apply_on: string;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
+    item_price_id?: string;
+  }
   export interface item_price_create_for_charge_item_params {
     item_price_id: string;
   }
@@ -1555,6 +1568,9 @@ export namespace _invoice {
   }
   export interface line_items_import_invoice_params {
     date_to?: number;
+  }
+  export interface line_items_import_invoice_params {
+    subscription_id?: string;
   }
   export interface line_items_import_invoice_params {
     description: string;

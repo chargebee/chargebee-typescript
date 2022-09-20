@@ -80,6 +80,7 @@ export class Subscription extends Model {
   public free_period_unit?: string;
   public create_pending_invoices?: boolean;
   public auto_close_invoices?: boolean;
+  public discounts?: Array<Discount>;
   public business_entity_id?: string;
 
   
@@ -148,6 +149,17 @@ export class Subscription extends Model {
       'httpMethod': 'GET',
       'urlPrefix': '/subscriptions',
       'urlSuffix': '/contract_terms',
+      'hasIdInUrl': true,
+      'isListReq': true,
+    }, ChargeBee._env)
+  }
+
+  public static list_discounts(subscription_id: string, params?: any):RequestWrapper<ListResult> {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'list_discounts',
+      'httpMethod': 'GET',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/discounts',
       'hasIdInUrl': true,
       'isListReq': true,
     }, ChargeBee._env)
@@ -584,6 +596,23 @@ export class ContractTerm extends Model {
   public remaining_billing_cycles?: number;
 } // ~ContractTerm
 
+export class Discount extends Model {
+  public id: string;
+  public invoice_name?: string;
+  public percentage?: number;
+  public amount?: number;
+  public currency_code?: string;
+  public period?: number;
+  public period_unit?: string;
+  public included_in_mrr: boolean;
+  public item_price_id?: string;
+  public created_at: number;
+  public apply_till?: number;
+  public applied_count?: number;
+  public coupon_id: string;
+  public index: number;
+} // ~Discount
+
 
 
   // REQUEST PARAMS
@@ -720,6 +749,7 @@ export namespace _subscription {
     payment_intent?: payment_intent_create_with_items_params;
     contract_term?: contract_term_create_with_items_params;
     subscription_items?: Array<subscription_items_create_with_items_params>;
+    discounts?: Array<discounts_create_with_items_params>;
     item_tiers?: Array<item_tiers_create_with_items_params>;
   }
   export interface subscription_list_params {
@@ -853,6 +883,7 @@ export namespace _subscription {
     customer?: customer_update_for_items_params;
     contract_term?: contract_term_update_for_items_params;
     subscription_items?: Array<subscription_items_update_for_items_params>;
+    discounts?: Array<discounts_update_for_items_params>;
     item_tiers?: Array<item_tiers_update_for_items_params>;
   }
   export interface change_term_end_params {
@@ -1029,6 +1060,7 @@ export namespace _subscription {
     transaction?: transaction_import_for_items_params;
     shipping_address?: shipping_address_import_for_items_params;
     subscription_items?: Array<subscription_items_import_for_items_params>;
+    discounts?: Array<discounts_import_for_items_params>;
     charged_items?: Array<charged_items_import_for_items_params>;
     item_tiers?: Array<item_tiers_import_for_items_params>;
   }
@@ -1689,6 +1721,30 @@ export namespace _subscription {
      */
     item_type?: string;
   }
+  export interface discounts_create_with_items_params {
+    apply_on: string;
+  }
+  export interface discounts_create_with_items_params {
+    duration_type: string;
+  }
+  export interface discounts_create_with_items_params {
+    percentage?: number;
+  }
+  export interface discounts_create_with_items_params {
+    amount?: number;
+  }
+  export interface discounts_create_with_items_params {
+    period?: number;
+  }
+  export interface discounts_create_with_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_create_with_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_create_with_items_params {
+    item_price_id?: string;
+  }
   export interface subscription_items_create_with_items_params {
     charge_on_option?: string;
   }
@@ -2243,6 +2299,36 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_update_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_update_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_update_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_update_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_update_for_items_params {
+    period?: number;
+  }
+  export interface discounts_update_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_update_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_update_for_items_params {
+    item_price_id?: string;
+  }
+  export interface discounts_update_for_items_params {
+    operation_type: string;
+  }
+  export interface discounts_update_for_items_params {
+    id?: string;
   }
   export interface item_tiers_update_for_items_params {
     item_price_id?: string;
@@ -2894,6 +2980,30 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     item_type?: string;
+  }
+  export interface discounts_import_for_items_params {
+    apply_on: string;
+  }
+  export interface discounts_import_for_items_params {
+    duration_type: string;
+  }
+  export interface discounts_import_for_items_params {
+    percentage?: number;
+  }
+  export interface discounts_import_for_items_params {
+    amount?: number;
+  }
+  export interface discounts_import_for_items_params {
+    period?: number;
+  }
+  export interface discounts_import_for_items_params {
+    period_unit?: string;
+  }
+  export interface discounts_import_for_items_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_import_for_items_params {
+    item_price_id?: string;
   }
   export interface charged_items_import_for_items_params {
     item_price_id?: string;
