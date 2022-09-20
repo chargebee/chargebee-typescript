@@ -1,3 +1,11 @@
+### v2.13.0 (2022-09-20)
+
+#### New Resource:
+* discount has been added.
+
+#### New Enum values:
+* apply_on, duration_type and operation_type enums have been added.
+
 ### v2.12.0 (2022-09-20)
 * * *
 
