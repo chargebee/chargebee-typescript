@@ -61,6 +61,7 @@ export class Order extends Model {
   public gift_id?: string;
   public resend_reason?: string;
   public resent_orders?: Array<ResentOrder>;
+  public business_entity_id?: string;
 
   
 
@@ -383,6 +384,7 @@ export namespace _order {
     subscription_id?: filter._string;
     status?: filter._enum;
     shipping_date?: filter._timestamp;
+    shipped_at?: filter._timestamp;
     order_type?: filter._enum;
     order_date?: filter._timestamp;
     paid_on?: filter._timestamp;

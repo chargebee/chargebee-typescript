@@ -726,6 +726,8 @@ export namespace _invoice {
     total: number;
     round_off?: number;
     status?: string;
+    voided_at?: number;
+    void_reason_code?: string;
     due_date?: number;
     net_term_days?: number;
     use_for_proration?: boolean;
@@ -847,7 +849,7 @@ export namespace _invoice {
     /**
      * @deprecated Please refer API docs to use other attributes
      */
-    void_with_credit_note?: boolean;
+    create_credit_note?: boolean;
   }
   export interface write_off_params {
     comment?: string;

@@ -374,6 +374,17 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
+  public static import_unbilled_charges(subscription_id: string, params?: _subscription.import_unbilled_charges_params):RequestWrapper {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'import_unbilled_charges',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/import_unbilled_charges',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static import_for_items(customer_id: string, params?: _subscription.import_for_items_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'import_for_items',
@@ -599,6 +610,7 @@ export class ContractTerm extends Model {
 export class Discount extends Model {
   public id: string;
   public invoice_name?: string;
+  public type: string;
   public percentage?: number;
   public amount?: number;
   public currency_code?: string;
@@ -1028,6 +1040,11 @@ export namespace _subscription {
   export interface import_contract_term_params {
     contract_term_billing_cycle_on_renewal?: number;
     contract_term?: contract_term_import_contract_term_params;
+  }
+  export interface import_unbilled_charges_params {
+    unbilled_charges?: Array<unbilled_charges_import_unbilled_charges_params>;
+    discounts?: Array<discounts_import_unbilled_charges_params>;
+    tiers?: Array<tiers_import_unbilled_charges_params>;
   }
   export interface import_for_items_params {
     id?: string;
@@ -2871,6 +2888,90 @@ export namespace _subscription {
   }
   export interface contract_term_import_contract_term_params {
     cancellation_cutoff_period?: number;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    id?: string;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    date_from: number;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    date_to: number;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    entity_type: string;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    entity_id?: string;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    description?: string;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    unit_amount?: number;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    quantity?: number;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    amount?: number;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    unit_amount_in_decimal?: string;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    quantity_in_decimal?: string;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    amount_in_decimal?: string;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    discount_amount?: number;
+  }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    use_for_proration?: boolean;
+  }
+  export interface discounts_import_unbilled_charges_params {
+    unbilled_charge_id?: string;
+  }
+  export interface discounts_import_unbilled_charges_params {
+    entity_type?: string;
+  }
+  export interface discounts_import_unbilled_charges_params {
+    entity_id?: string;
+  }
+  export interface discounts_import_unbilled_charges_params {
+    description?: string;
+  }
+  export interface discounts_import_unbilled_charges_params {
+    amount: number;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    unbilled_charge_id: string;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    starting_unit?: number;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    ending_unit?: number;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    quantity_used?: number;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    unit_amount?: number;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    quantity_used_in_decimal?: string;
+  }
+  export interface tiers_import_unbilled_charges_params {
+    unit_amount_in_decimal?: string;
   }
   export interface contract_term_import_for_items_params {
     id?: string;

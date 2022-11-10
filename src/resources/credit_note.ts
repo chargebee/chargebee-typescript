@@ -173,6 +173,17 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
+  public static import_credit_note(params?: _credit_note.import_credit_note_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'import_credit_note',
+      'httpMethod': 'POST',
+      'urlPrefix': '/credit_notes',
+      'urlSuffix': '/import_credit_note',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~CreditNote
 
 export class Einvoice extends Model {
@@ -335,6 +346,30 @@ export namespace _credit_note {
   export interface delete_params {
     comment?: string;
   }
+  export interface import_credit_note_params {
+    id: string;
+    customer_id?: string;
+    subscription_id?: string;
+    reference_invoice_id: string;
+    type: string;
+    currency_code?: string;
+    create_reason_code: string;
+    date?: number;
+    status?: string;
+    total?: number;
+    refunded_at?: number;
+    voided_at?: number;
+    sub_total?: number;
+    round_off_amount?: number;
+    fractional_correction?: number;
+    vat_number_prefix?: string;
+    line_items?: Array<line_items_import_credit_note_params>;
+    line_item_tiers?: Array<line_item_tiers_import_credit_note_params>;
+    discounts?: Array<discounts_import_credit_note_params>;
+    taxes?: Array<taxes_import_credit_note_params>;
+    allocations?: Array<allocations_import_credit_note_params>;
+    linked_refunds?: Array<linked_refunds_import_credit_note_params>;
+  }
   export interface line_items_create_params {
     reference_line_item_id: string;
   }
@@ -376,5 +411,203 @@ export namespace _credit_note {
   }
   export interface einvoice_credit_note_list_params {
     status?: filter._enum;
+  }
+  export interface line_items_import_credit_note_params {
+    reference_line_item_id?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    id?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    date_from?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    date_to?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    subscription_id?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    description: string;
+  }
+  export interface line_items_import_credit_note_params {
+    unit_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    quantity?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    unit_amount_in_decimal?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    quantity_in_decimal?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    amount_in_decimal?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    entity_type?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    entity_id?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    item_level_discount1_entity_id?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    item_level_discount1_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    item_level_discount2_entity_id?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    item_level_discount2_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax1_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax1_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax2_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax2_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax3_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax3_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax4_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax4_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax5_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax5_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax6_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax6_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax7_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax7_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax8_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax8_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax9_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax9_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    tax10_name?: string;
+  }
+  export interface line_items_import_credit_note_params {
+    tax10_amount?: number;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    line_item_id: string;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    starting_unit?: number;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    ending_unit?: number;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    quantity_used?: number;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    unit_amount?: number;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    quantity_used_in_decimal?: string;
+  }
+  export interface line_item_tiers_import_credit_note_params {
+    unit_amount_in_decimal?: string;
+  }
+  export interface discounts_import_credit_note_params {
+    line_item_id?: string;
+  }
+  export interface discounts_import_credit_note_params {
+    entity_type: string;
+  }
+  export interface discounts_import_credit_note_params {
+    entity_id?: string;
+  }
+  export interface discounts_import_credit_note_params {
+    description?: string;
+  }
+  export interface discounts_import_credit_note_params {
+    amount: number;
+  }
+  export interface taxes_import_credit_note_params {
+    name: string;
+  }
+  export interface taxes_import_credit_note_params {
+    rate: number;
+  }
+  export interface taxes_import_credit_note_params {
+    amount?: number;
+  }
+  export interface taxes_import_credit_note_params {
+    description?: string;
+  }
+  export interface taxes_import_credit_note_params {
+    juris_type?: string;
+  }
+  export interface taxes_import_credit_note_params {
+    juris_name?: string;
+  }
+  export interface taxes_import_credit_note_params {
+    juris_code?: string;
+  }
+  export interface allocations_import_credit_note_params {
+    invoice_id: string;
+  }
+  export interface allocations_import_credit_note_params {
+    allocated_amount: number;
+  }
+  export interface allocations_import_credit_note_params {
+    allocated_at: number;
+  }
+  export interface linked_refunds_import_credit_note_params {
+    amount: number;
+  }
+  export interface linked_refunds_import_credit_note_params {
+    payment_method: string;
+  }
+  export interface linked_refunds_import_credit_note_params {
+    date: number;
+  }
+  export interface linked_refunds_import_credit_note_params {
+    reference_number?: string;
   }
 }
