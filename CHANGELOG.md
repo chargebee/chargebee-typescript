@@ -1,3 +1,20 @@
+### v2.15.0 (2022-11-21)
+* * *
+
+#### New Attributes:
+* business_entity_id filter parameter has been added to the Customer.
+* is_written_off, write_off_amount, write_off_date and credit_note parameter have been added to the Invoice.
+
+#### Added input parameters:
+* business_entity_id filter parameter has been added to the  Export#revenue_recognition_params, Export#deferred_revenue_params, Export#customers_params and Subscription#subscription_list_params API.
+* skip_billing_cycles parameter has been added to the Estimate#subscription_pause_subscription_params API.
+* skip_billing_cycles parameter has been added to the  Subscription#pause_params.
+* id have been added to the Invoices#credit_note_import_invoice_params API.
+
+#### New Enum values:
+* billing_cycles has been added to pause_option.
+
+
 ### v2.14.0 (2022-11-10)
 * * *
 

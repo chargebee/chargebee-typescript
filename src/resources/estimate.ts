@@ -1506,6 +1506,9 @@ export namespace _estimate {
   export interface subscription_pause_subscription_params {
     resume_date?: number;
   }
+  export interface subscription_pause_subscription_params {
+    skip_billing_cycles?: number;
+  }
   export interface subscription_resume_subscription_params {
     resume_date?: number;
   }

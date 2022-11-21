@@ -728,9 +728,13 @@ export namespace _invoice {
     status?: string;
     voided_at?: number;
     void_reason_code?: string;
+    is_written_off?: boolean;
+    write_off_amount?: number;
+    write_off_date?: number;
     due_date?: number;
     net_term_days?: number;
     use_for_proration?: boolean;
+    credit_note?: credit_note_import_invoice_params;
     billing_address?: billing_address_import_invoice_params;
     shipping_address?: shipping_address_import_invoice_params;
     line_items?: Array<line_items_import_invoice_params>;
@@ -744,6 +748,7 @@ export namespace _invoice {
     comment?: string;
     transactions?: Array<transactions_apply_payments_params>;
   }
+
   export interface apply_credits_params {
     comment?: string;
     credit_notes?: Array<credit_notes_apply_credits_params>;
@@ -1478,6 +1483,9 @@ export namespace _invoice {
   export interface item_tiers_create_for_charge_item_params {
     price_in_decimal?: string;
   }
+  export interface credit_note_import_invoice_params {
+    id?: string;
+  }
   export interface billing_address_import_invoice_params {
     first_name?: string;
   }
@@ -1760,6 +1768,7 @@ export namespace _invoice {
   export interface transactions_apply_payments_params {
     id?: string;
   }
+
   export interface credit_notes_apply_credits_params {
     id?: string;
   }

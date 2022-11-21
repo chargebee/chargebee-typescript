@@ -258,6 +258,7 @@ export namespace _export {
     item_id?: filter._string;
     item_price_id?: filter._string;
     cancel_reason_code?: filter._string;
+    business_entity_id?: filter._string;
     invoice?: invoice_revenue_recognition_params;
     subscription?: subscription_revenue_recognition_params;
     customer?: customer_revenue_recognition_params;
@@ -275,6 +276,7 @@ export namespace _export {
     item_id?: filter._string;
     item_price_id?: filter._string;
     cancel_reason_code?: filter._string;
+    business_entity_id?: filter._string;
     invoice?: invoice_deferred_revenue_params;
     subscription?: subscription_deferred_revenue_params;
     customer?: customer_deferred_revenue_params;
@@ -293,6 +295,7 @@ export namespace _export {
     coupon?: coupon_coupons_params;
   }
   export interface customers_params {
+    business_entity_id?: filter._string;
     customer?: customer_customers_params;
     relationship?: relationship_customers_params;
   }

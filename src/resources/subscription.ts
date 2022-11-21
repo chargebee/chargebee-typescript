@@ -788,6 +788,7 @@ export namespace _subscription {
     offline_payment_method?: filter._enum;
     auto_close_invoices?: filter._boolean;
     override_relationship?: filter._boolean;
+    business_entity_id?: filter._string;
     channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
@@ -1092,6 +1093,7 @@ export namespace _subscription {
     pause_date?: number;
     unbilled_charges_handling?: string;
     invoice_dunning_handling?: string;
+    skip_billing_cycles?: number;
     resume_date?: number;
   }
   export interface cancel_params {
