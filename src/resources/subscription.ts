@@ -2933,6 +2933,9 @@ export namespace _subscription {
   export interface unbilled_charges_import_unbilled_charges_params {
     use_for_proration?: boolean;
   }
+  export interface unbilled_charges_import_unbilled_charges_params {
+    is_advance_charge?: boolean;
+  }
   export interface discounts_import_unbilled_charges_params {
     unbilled_charge_id?: string;
   }

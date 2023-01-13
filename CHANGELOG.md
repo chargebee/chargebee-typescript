@@ -1,3 +1,24 @@
+### v2.16.0 (2023-01-13)
+* * *
+
+#### New Attributes:
+* ShippingAddress and BillingAddress parameter has been added to the CreditNote.
+* is_advance_charge has been added to the UnbilledCharge.
+
+#### Added input parameters:
+* subscription_create_sub_for_customer_quote_params#po_number and subscription_create_sub_items_for_customer_quote_params#po_number parameter has been added to Quote resource.
+* unbilled_charges_import_unbilled_charges_params#is_advance_charge parameter has been added to Subscription resource.
+* import_invoice_params#has_advance_charges parameter has been added to Invoice resource.
+
+#### New endpoints:
+* Invoice#delete_line_items has been added to the Invoice resource.
+
+#### New Enum values:
+* SUBSCRIPTION_TRIAL_EXTENDED has been added to EventTypeEnum.
+* ZERO_VALUE_ITEM has been added to TaxExemptReasonEnum.
+* BANK_OF_AMERICA has been added to GatewayEnum.
+
+
 ### v2.15.0 (2022-11-21)
 * * *
 

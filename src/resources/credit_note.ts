@@ -46,6 +46,8 @@ export class CreditNote extends Model {
   public create_reason_code?: string;
   public vat_number_prefix?: string;
   public business_entity_id: string;
+  public shipping_address?: ShippingAddress;
+  public billing_address?: BillingAddress;
 
   
 
@@ -284,6 +286,41 @@ export class Allocation extends Model {
   public invoice_date?: number;
   public invoice_status: string;
 } // ~Allocation
+
+export class ShippingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+  public index: number;
+} // ~ShippingAddress
+
+export class BillingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~BillingAddress
 
 
 

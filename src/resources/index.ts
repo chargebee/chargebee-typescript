@@ -66,6 +66,8 @@ export {Tax as CreditNoteTax} from "./credit_note";
 export {LineItemTax as CreditNoteLineItemTax} from "./credit_note";
 export {LinkedRefund as CreditNoteLinkedRefund} from "./credit_note";
 export {Allocation as CreditNoteAllocation} from "./credit_note";
+export {ShippingAddress as CreditNoteShippingAddress} from "./credit_note";
+export {BillingAddress as CreditNoteBillingAddress} from "./credit_note";
 export {UnbilledCharge} from "./unbilled_charge";
 export {Tier as UnbilledChargeTier} from "./unbilled_charge";
 export {Order} from "./order";

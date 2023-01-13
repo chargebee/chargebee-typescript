@@ -172,6 +172,17 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
+  public static delete_line_items(invoice_id: string, params?: _invoice.delete_line_items_params):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'delete_line_items',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/delete_line_items',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static apply_credits(invoice_id: string, params?: _invoice.apply_credits_params):RequestWrapper {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'apply_credits',
@@ -733,6 +744,7 @@ export namespace _invoice {
     write_off_date?: number;
     due_date?: number;
     net_term_days?: number;
+    has_advance_charges?: boolean;
     use_for_proration?: boolean;
     credit_note?: credit_note_import_invoice_params;
     billing_address?: billing_address_import_invoice_params;
@@ -748,7 +760,9 @@ export namespace _invoice {
     comment?: string;
     transactions?: Array<transactions_apply_payments_params>;
   }
-
+  export interface delete_line_items_params {
+    line_items?: Array<line_items_delete_line_items_params>;
+  }
   export interface apply_credits_params {
     comment?: string;
     credit_notes?: Array<credit_notes_apply_credits_params>;
@@ -1768,7 +1782,9 @@ export namespace _invoice {
   export interface transactions_apply_payments_params {
     id?: string;
   }
-
+  export interface line_items_delete_line_items_params {
+    id?: string;
+  }
   export interface credit_notes_apply_credits_params {
     id?: string;
   }

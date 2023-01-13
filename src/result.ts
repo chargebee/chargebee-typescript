@@ -111,7 +111,7 @@ export class Result {
         let _credit_note = this.get(
             'credit_note',
             'CreditNote',
-            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation'}
+            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress'}
         );
         return _credit_note;
     }
@@ -460,7 +460,7 @@ export class Result {
         let _credit_notes = this.get_list(
             'credit_notes',
             'CreditNote',
-            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation'}
+            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress'}
         );
         return _credit_notes;
     }

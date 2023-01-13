@@ -27,6 +27,7 @@ export class UnbilledCharge extends Model {
   public amount_in_decimal?: string;
   public updated_at: number;
   public tiers?: Array<Tier>;
+  public is_advance_charge?: boolean;
   public deleted: boolean;
 
   
