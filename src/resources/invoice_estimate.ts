@@ -48,7 +48,7 @@ export class LineItem extends Model {
   public item_level_discount_amount?: number;
   public reference_line_item_id?: string;
   public description: string;
-  public entity_description: string;
+  public entity_description?: string;
   public entity_type: string;
   public tax_exempt_reason?: string;
   public entity_id?: string;

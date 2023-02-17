@@ -79,6 +79,15 @@ export namespace _in_app_subscription {
   export interface customer_process_receipt_params {
     id?: string;
   }
+  export interface customer_process_receipt_params {
+    email?: string;
+  }
+  export interface customer_process_receipt_params {
+    first_name?: string;
+  }
+  export interface customer_process_receipt_params {
+    last_name?: string;
+  }
   export interface product_import_receipt_params {
     currency_code: string;
   }

@@ -431,6 +431,7 @@ export namespace _hosted_page {
   }
   export interface checkout_gift_params {
     redirect_url?: string;
+    coupon_ids?: Array<string>;
     gifter?: gifter_checkout_gift_params;
     subscription?: subscription_checkout_gift_params;
     addons?: Array<addons_checkout_gift_params>;
@@ -1767,6 +1768,9 @@ export namespace _hosted_page {
     plan_quantity_in_decimal?: string;
   }
   export interface subscription_checkout_gift_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     coupon?: string;
   }
   export interface addons_checkout_gift_params {

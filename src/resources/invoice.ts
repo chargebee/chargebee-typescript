@@ -66,7 +66,7 @@ export class Invoice extends Model {
   public deleted: boolean;
   public vat_number_prefix?: string;
   public channel?: string;
-  public business_entity_id: string;
+  public business_entity_id?: string;
 
   
 
@@ -326,6 +326,28 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
+  public static record_tax_withheld(invoice_id: string, params?: _invoice.record_tax_withheld_params):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'record_tax_withheld',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/record_tax_withheld',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static remove_tax_withheld(invoice_id: string, params?: _invoice.remove_tax_withheld_params):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'remove_tax_withheld',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/remove_tax_withheld',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static refund(invoice_id: string, params?: _invoice.refund_params):RequestWrapper {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'refund',
@@ -446,7 +468,7 @@ export class LineItem extends Model {
   public item_level_discount_amount?: number;
   public reference_line_item_id?: string;
   public description: string;
-  public entity_description: string;
+  public entity_description?: string;
   public entity_type: string;
   public tax_exempt_reason?: string;
   public entity_id?: string;
@@ -843,6 +865,12 @@ export namespace _invoice {
   export interface record_payment_params {
     comment?: string;
     transaction?: transaction_record_payment_params;
+  }
+  export interface record_tax_withheld_params {
+    tax_withheld?: tax_withheld_record_tax_withheld_params;
+  }
+  export interface remove_tax_withheld_params {
+    tax_withheld?: tax_withheld_remove_tax_withheld_params;
   }
   export interface refund_params {
     refund_amount?: number;
@@ -1871,6 +1899,21 @@ export namespace _invoice {
   }
   export interface transaction_record_payment_params {
     error_text?: string;
+  }
+  export interface tax_withheld_record_tax_withheld_params {
+    amount: number;
+  }
+  export interface tax_withheld_record_tax_withheld_params {
+    reference_number?: string;
+  }
+  export interface tax_withheld_record_tax_withheld_params {
+    date?: number;
+  }
+  export interface tax_withheld_record_tax_withheld_params {
+    description?: string;
+  }
+  export interface tax_withheld_remove_tax_withheld_params {
+    id: string;
   }
   export interface credit_note_refund_params {
     reason_code?: string;

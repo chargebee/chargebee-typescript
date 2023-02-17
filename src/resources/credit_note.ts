@@ -164,6 +164,17 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
+  public static remove_tax_withheld_refund(credit_note_id: string, params?: _credit_note.remove_tax_withheld_refund_params):RequestWrapper {
+    return new RequestWrapper([credit_note_id, params], {
+      'methodName': 'remove_tax_withheld_refund',
+      'httpMethod': 'POST',
+      'urlPrefix': '/credit_notes',
+      'urlSuffix': '/remove_tax_withheld_refund',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static resend_einvoice(credit_note_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'resend_einvoice',
@@ -213,7 +224,7 @@ export class LineItem extends Model {
   public item_level_discount_amount?: number;
   public reference_line_item_id?: string;
   public description: string;
-  public entity_description: string;
+  public entity_description?: string;
   public entity_type: string;
   public tax_exempt_reason?: string;
   public entity_id?: string;
@@ -383,6 +394,9 @@ export namespace _credit_note {
   export interface delete_params {
     comment?: string;
   }
+  export interface remove_tax_withheld_refund_params {
+    tax_withheld?: tax_withheld_remove_tax_withheld_refund_params;
+  }
   export interface import_credit_note_params {
     id: string;
     customer_id?: string;
@@ -448,6 +462,9 @@ export namespace _credit_note {
   }
   export interface einvoice_credit_note_list_params {
     status?: filter._enum;
+  }
+  export interface tax_withheld_remove_tax_withheld_refund_params {
+    id: string;
   }
   export interface line_items_import_credit_note_params {
     reference_line_item_id?: string;

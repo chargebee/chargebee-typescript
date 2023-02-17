@@ -1078,6 +1078,9 @@ export namespace _export {
     charge_on_event?: filter._enum;
   }
   export interface attached_item_attached_items_params {
+    updated_at?: filter._timestamp;
+  }
+  export interface attached_item_attached_items_params {
     parent_item_id?: filter._string;
   }
   export interface differential_price_differential_prices_params {

@@ -1,3 +1,31 @@
+### v2.17.0 (2023-02-17)
+
+#### Fixes:
+* Fixed Serialization issue for invoice#business_entity_id, CreditNoteLineItem#entity_description  CreditNoteEstimateLineItem#entity_description, InvoiceLineItem#entity_description, InvoiceEstimateLineItem#entity_description, QuoteLineItem#entity_description and QuoteLineGroupLineItem#entity_description attributes.
+
+#### New Attributes:
+* resource_version and updated_at parameter has been added to the tax_withheld resource.
+
+#### Added input parameters:
+* ListRequestParams#updated_at parameter has been added to attached_item resource.
+* attached_item_attached_items_params#updated_at parameter has been added to export resource.
+* CheckoutGiftRequestParams#coupon_ids parameter has been added to hosted_page resource.
+* customer_process_receipt_params#email, customer_process_receipt_params#first_name and  customer_process_receipt_params#last_name parameters has been added to in_app_subscription resource.
+
+#### New endpoints:
+* invoice#record_tax_withheld and invoice#remove_tax_withheld has been added to the invoice resource.
+* credit_note#remove_tax_withheld_refund has been added to the credit_note resource.
+
+#### New Enum values:
+* custom has been added to payment_method Enum.
+* ecentric has been added to gateway Enum.
+
+#### Removed input parameters:
+* estimate_params#invoice_info_estimate_params parameter has been removed from purchase resource.
+
+#### Deprecated input parameters:
+* CheckoutGiftRequest#coupon parameter have been deprecated in hosted_page resource.
+
 ### v2.16.0 (2023-01-13)
 * * *
 

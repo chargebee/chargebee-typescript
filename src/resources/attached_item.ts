@@ -121,5 +121,6 @@ export namespace _attached_item {
     type?: filter._enum;
     item_type?: filter._enum;
     charge_on_event?: filter._enum;
+    updated_at?: filter._timestamp;
   }
 }

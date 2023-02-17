@@ -59,7 +59,6 @@ export namespace _purchase {
   export interface estimate_params {
     client_profile_id?: string;
     customer_id?: string;
-    invoice_info?: invoice_info_estimate_params;
     customer?: customer_estimate_params;
     billing_address?: billing_address_estimate_params;
     purchase_items?: Array<purchase_items_estimate_params>;
@@ -181,12 +180,6 @@ export namespace _purchase {
   }
   export interface subscription_info_create_params {
     billing_cycles?: number;
-  }
-  export interface invoice_info_estimate_params {
-    po_number?: string;
-  }
-  export interface invoice_info_estimate_params {
-    notes?: string;
   }
   export interface customer_estimate_params {
     vat_number?: string;

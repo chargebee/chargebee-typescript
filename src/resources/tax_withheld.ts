@@ -14,6 +14,8 @@ export class TaxWithheld extends Model {
   public date?: number;
   public currency_code: string;
   public amount?: number;
+  public resource_version?: number;
+  public updated_at?: number;
   public exchange_rate?: number;
 
   
