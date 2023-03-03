@@ -1,3 +1,8 @@
+### v2.17.1 (2023-03-02)
+
+#### Fixes:
+* Fixed Subscription_Discount param parsing issue. 
+
 ### v2.17.0 (2023-02-17)
 
 #### Fixes:

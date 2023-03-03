@@ -10,6 +10,7 @@ export {Coupon as SubscriptionCoupon} from "./subscription";
 export {ShippingAddress as SubscriptionShippingAddress} from "./subscription";
 export {ReferralInfo as SubscriptionReferralInfo} from "./subscription";
 export {ContractTerm as SubscriptionContractTerm} from "./subscription";
+export {Discount as SubscriptionDiscount} from "./subscription";
 export {ContractTerm} from "./contract_term";
 export {AdvanceInvoiceSchedule} from "./advance_invoice_schedule";
 export {FixedIntervalSchedule as AdvanceInvoiceScheduleFixedIntervalSchedule} from "./advance_invoice_schedule";
