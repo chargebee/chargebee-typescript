@@ -181,6 +181,9 @@ export namespace _purchase {
   export interface subscription_info_create_params {
     billing_cycles?: number;
   }
+  export interface subscription_info_create_params {
+    meta_data?: any;
+  }
   export interface customer_estimate_params {
     vat_number?: string;
   }

@@ -12,6 +12,7 @@ export {ReferralInfo as SubscriptionReferralInfo} from "./subscription";
 export {ContractTerm as SubscriptionContractTerm} from "./subscription";
 export {Discount as SubscriptionDiscount} from "./subscription";
 export {ContractTerm} from "./contract_term";
+export {Discount} from "./discount";
 export {AdvanceInvoiceSchedule} from "./advance_invoice_schedule";
 export {FixedIntervalSchedule as AdvanceInvoiceScheduleFixedIntervalSchedule} from "./advance_invoice_schedule";
 export {SpecificDatesSchedule as AdvanceInvoiceScheduleSpecificDatesSchedule} from "./advance_invoice_schedule";

@@ -186,6 +186,17 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
+  public static send_einvoice(credit_note_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([credit_note_id, params], {
+      'methodName': 'send_einvoice',
+      'httpMethod': 'POST',
+      'urlPrefix': '/credit_notes',
+      'urlSuffix': '/send_einvoice',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static import_credit_note(params?: _credit_note.import_credit_note_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'import_credit_note',
@@ -201,6 +212,7 @@ export class CreditNote extends Model {
 
 export class Einvoice extends Model {
   public id: string;
+  public reference_number?: string;
   public status: string;
   public message?: string;
 } // ~Einvoice

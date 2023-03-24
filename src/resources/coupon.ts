@@ -224,6 +224,10 @@ export namespace _coupon {
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    discount_quantity?: number;
     apply_on?: string;
     duration_type?: string;
     duration_month?: number;
@@ -259,6 +263,10 @@ export namespace _coupon {
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    discount_quantity?: number;
     apply_on?: string;
     duration_type?: string;
     duration_month?: number;

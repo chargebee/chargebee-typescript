@@ -1437,6 +1437,9 @@ export namespace _subscription {
     is_einvoice_enabled?: boolean;
   }
   export interface customer_create_params {
+    einvoicing_method?: string;
+  }
+  export interface customer_create_params {
     registered_for_gst?: boolean;
   }
   export interface customer_create_params {
@@ -1998,6 +2001,9 @@ export namespace _subscription {
     is_einvoice_enabled?: boolean;
   }
   export interface customer_update_params {
+    einvoicing_method?: string;
+  }
+  export interface customer_update_params {
     entity_identifier_standard?: string;
   }
   export interface customer_update_params {
@@ -2266,6 +2272,9 @@ export namespace _subscription {
   }
   export interface customer_update_for_items_params {
     is_einvoice_enabled?: boolean;
+  }
+  export interface customer_update_for_items_params {
+    einvoicing_method?: string;
   }
   export interface customer_update_for_items_params {
     entity_identifier_standard?: string;

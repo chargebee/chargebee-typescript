@@ -55,6 +55,7 @@ export class Customer extends Model {
   public balances?: Array<Balance>;
   public entity_identifiers?: Array<EntityIdentifier>;
   public is_einvoice_enabled?: boolean;
+  public einvoicing_method?: string;
   public meta_data?: any;
   public deleted: boolean;
   public registered_for_gst?: boolean;
@@ -461,6 +462,7 @@ export namespace _customer {
     entity_identifier_standard?: string;
     registered_for_gst?: boolean;
     is_einvoice_enabled?: boolean;
+    einvoicing_method?: string;
     taxability?: string;
     exemption_details?: any;
     customer_type?: string;
@@ -546,6 +548,7 @@ export namespace _customer {
     registered_for_gst?: boolean;
     business_customer_without_vat_number?: boolean;
     is_einvoice_enabled?: boolean;
+    einvoicing_method?: string;
     billing_address?: billing_address_update_billing_info_params;
     entity_identifiers?: Array<entity_identifiers_update_billing_info_params>;
   }

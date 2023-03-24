@@ -447,6 +447,17 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
+  public static send_einvoice(invoice_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'send_einvoice',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/send_einvoice',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~Invoice
 
 export class LineItem extends Model {
@@ -624,6 +635,7 @@ export class BillingAddress extends Model {
 
 export class Einvoice extends Model {
   public id: string;
+  public reference_number?: string;
   public status: string;
   public message?: string;
 } // ~Einvoice

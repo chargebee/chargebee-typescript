@@ -19,6 +19,13 @@ export class Result {
         );
         return _contract_term;
     }
+    get discount(): resources.Discount {
+        let _discount = this.get(
+            'discount',
+            'Discount'
+        );
+        return _discount;
+    }
     get advance_invoice_schedule(): resources.AdvanceInvoiceSchedule {
         let _advance_invoice_schedule = this.get(
             'advance_invoice_schedule',

@@ -9,6 +9,8 @@ export class InAppSubscription extends Model {
   public subscription_id?: string;
   public customer_id?: string;
   public plan_id?: string;
+  public store_status?: string;
+  public invoice_id?: string;
 
   
 
@@ -37,6 +39,28 @@ export class InAppSubscription extends Model {
     }, ChargeBee._env)
   }
 
+  public static import_subscription(in_app_subscription_id: string, params?: _in_app_subscription.import_subscription_params):RequestWrapper {
+    return new RequestWrapper([in_app_subscription_id, params], {
+      'methodName': 'import_subscription',
+      'httpMethod': 'POST',
+      'urlPrefix': '/in_app_subscriptions',
+      'urlSuffix': '/import_subscription',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static retrieve_store_subs(in_app_subscription_id: string, params?: _in_app_subscription.retrieve_store_subs_params):RequestWrapper {
+    return new RequestWrapper([in_app_subscription_id, params], {
+      'methodName': 'retrieve_store_subs',
+      'httpMethod': 'POST',
+      'urlPrefix': '/in_app_subscriptions',
+      'urlSuffix': '/retrieve',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~InAppSubscription
 
 
@@ -54,6 +78,13 @@ export namespace _in_app_subscription {
     receipt: string;
     product?: product_import_receipt_params;
     customer?: customer_import_receipt_params;
+  }
+  export interface import_subscription_params {
+    subscription?: subscription_import_subscription_params;
+    customer?: customer_import_subscription_params;
+  }
+  export interface retrieve_store_subs_params {
+    receipt: string;
   }
   export interface product_process_receipt_params {
     id: string;
@@ -95,6 +126,36 @@ export namespace _in_app_subscription {
     id?: string;
   }
   export interface customer_import_receipt_params {
+    email?: string;
+  }
+  export interface subscription_import_subscription_params {
+    id: string;
+  }
+  export interface subscription_import_subscription_params {
+    started_at: number;
+  }
+  export interface subscription_import_subscription_params {
+    term_start: number;
+  }
+  export interface subscription_import_subscription_params {
+    term_end: number;
+  }
+  export interface subscription_import_subscription_params {
+    product_id: string;
+  }
+  export interface subscription_import_subscription_params {
+    currency_code: string;
+  }
+  export interface subscription_import_subscription_params {
+    transaction_id: string;
+  }
+  export interface subscription_import_subscription_params {
+    is_trial?: boolean;
+  }
+  export interface customer_import_subscription_params {
+    id?: string;
+  }
+  export interface customer_import_subscription_params {
     email?: string;
   }
 }
