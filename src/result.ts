@@ -257,7 +257,7 @@ export class Result {
         let _coupon = this.get(
             'coupon',
             'Coupon',
-            {'item_constraints': 'CouponItemConstraint', 'item_constraint_criteria': 'CouponItemConstraintCriteria'}
+            {'item_constraints': 'CouponItemConstraint', 'item_constraint_criteria': 'CouponItemConstraintCriteria', 'coupon_constraints': 'CouponCouponConstraint'}
         );
         return _coupon;
     }
@@ -439,6 +439,13 @@ export class Result {
             'InAppSubscription'
         );
         return _in_app_subscription;
+    }
+    get non_subscription(): resources.NonSubscription {
+        let _non_subscription = this.get(
+            'non_subscription',
+            'NonSubscription'
+        );
+        return _non_subscription;
     }
     get entitlement_override(): resources.EntitlementOverride {
         let _entitlement_override = this.get(

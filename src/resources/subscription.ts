@@ -601,6 +601,7 @@ export class ContractTerm extends Model {
   public billing_cycle: number;
   public action_at_term_end: string;
   public total_contract_value: number;
+  public total_contract_value_before_tax: number;
   public cancellation_cutoff_period?: number;
   public created_at: number;
   public subscription_id: string;
@@ -2514,6 +2515,9 @@ export namespace _subscription {
     total_amount_raised?: number;
   }
   export interface contract_term_import_subscription_params {
+    total_amount_raised_before_tax?: number;
+  }
+  export interface contract_term_import_subscription_params {
     action_at_term_end?: string;
   }
   export interface contract_term_import_subscription_params {
@@ -2763,6 +2767,9 @@ export namespace _subscription {
     total_amount_raised?: number;
   }
   export interface contract_term_import_for_customer_params {
+    total_amount_raised_before_tax?: number;
+  }
+  export interface contract_term_import_for_customer_params {
     action_at_term_end?: string;
   }
   export interface contract_term_import_for_customer_params {
@@ -2889,7 +2896,13 @@ export namespace _subscription {
     total_amount_raised?: number;
   }
   export interface contract_term_import_contract_term_params {
+    total_amount_raised_before_tax?: number;
+  }
+  export interface contract_term_import_contract_term_params {
     total_contract_value?: number;
+  }
+  export interface contract_term_import_contract_term_params {
+    total_contract_value_before_tax?: number;
   }
   export interface contract_term_import_contract_term_params {
     billing_cycle?: number;
@@ -3001,6 +3014,9 @@ export namespace _subscription {
   }
   export interface contract_term_import_for_items_params {
     total_amount_raised?: number;
+  }
+  export interface contract_term_import_for_items_params {
+    total_amount_raised_before_tax?: number;
   }
   export interface contract_term_import_for_items_params {
     action_at_term_end?: string;

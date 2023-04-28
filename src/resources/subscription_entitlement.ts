@@ -6,7 +6,6 @@ import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
 
 export class SubscriptionEntitlement extends Model {
-  public id: string;
   public subscription_id: string;
   public feature_id?: string;
   public feature_name?: string;

@@ -53,6 +53,7 @@ export {_impacted_item} from "./resources/impacted_item";
 export {_subscription_entitlement} from "./resources/subscription_entitlement";
 export {_item_entitlement} from "./resources/item_entitlement";
 export {_in_app_subscription} from "./resources/in_app_subscription";
+export {_non_subscription} from "./resources/non_subscription";
 export {_entitlement_override} from "./resources/entitlement_override";
 export {_purchase} from "./resources/purchase";
 
@@ -230,6 +231,9 @@ export class ChargeBee {
     }
     get in_app_subscription() {
         return resources.InAppSubscription;
+    }
+    get non_subscription() {
+        return resources.NonSubscription;
     }
     get entitlement_override() {
         return resources.EntitlementOverride;

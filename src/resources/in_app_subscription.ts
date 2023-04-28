@@ -6,7 +6,7 @@ import {filter} from "../filter";
 
 export class InAppSubscription extends Model {
   public app_id: string;
-  public subscription_id?: string;
+  public subscription_id: string;
   public customer_id?: string;
   public plan_id?: string;
   public store_status?: string;
@@ -90,13 +90,13 @@ export namespace _in_app_subscription {
     id: string;
   }
   export interface product_process_receipt_params {
-    name?: string;
-  }
-  export interface product_process_receipt_params {
     currency_code: string;
   }
   export interface product_process_receipt_params {
     price: number;
+  }
+  export interface product_process_receipt_params {
+    name?: string;
   }
   export interface product_process_receipt_params {
     price_in_decimal?: string;

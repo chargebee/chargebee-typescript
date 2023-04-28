@@ -37,6 +37,7 @@ export class Coupon extends Model {
   public redemptions?: number;
   public invoice_notes?: string;
   public meta_data?: any;
+  public coupon_constraints?: Array<CouponConstraint>;
 
   
 
@@ -157,6 +158,12 @@ export class ItemConstraintCriteria extends Model {
   public item_price_periods?: any;
 } // ~ItemConstraintCriteria
 
+export class CouponConstraint extends Model {
+  public entity_type: string;
+  public type: string;
+  public value?: string;
+} // ~CouponConstraint
+
 
 
   // REQUEST PARAMS
@@ -216,6 +223,7 @@ export namespace _coupon {
     status?: string;
     item_constraints?: Array<item_constraints_create_for_items_params>;
     item_constraint_criteria?: Array<item_constraint_criteria_create_for_items_params>;
+    coupon_constraints?: Array<coupon_constraints_create_for_items_params>;
   }
   export interface update_for_items_params {
     name?: string;
@@ -240,6 +248,7 @@ export namespace _coupon {
     period_unit?: string;
     item_constraints?: Array<item_constraints_update_for_items_params>;
     item_constraint_criteria?: Array<item_constraint_criteria_update_for_items_params>;
+    coupon_constraints?: Array<coupon_constraints_update_for_items_params>;
   }
   export interface coupon_list_params {
     limit?: number;
@@ -309,6 +318,15 @@ export namespace _coupon {
   export interface item_constraint_criteria_create_for_items_params {
     item_price_periods?: any;
   }
+  export interface coupon_constraints_create_for_items_params {
+    entity_type: string;
+  }
+  export interface coupon_constraints_create_for_items_params {
+    type: string;
+  }
+  export interface coupon_constraints_create_for_items_params {
+    value?: string;
+  }
   export interface item_constraints_update_for_items_params {
     constraint: string;
   }
@@ -329,5 +347,14 @@ export namespace _coupon {
   }
   export interface item_constraint_criteria_update_for_items_params {
     item_price_periods?: any;
+  }
+  export interface coupon_constraints_update_for_items_params {
+    entity_type: string;
+  }
+  export interface coupon_constraints_update_for_items_params {
+    type: string;
+  }
+  export interface coupon_constraints_update_for_items_params {
+    value?: string;
   }
 }

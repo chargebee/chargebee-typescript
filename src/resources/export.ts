@@ -295,11 +295,13 @@ export namespace _export {
     coupon?: coupon_coupons_params;
   }
   export interface customers_params {
+    export_type?: string;
     business_entity_id?: filter._string;
     customer?: customer_customers_params;
     relationship?: relationship_customers_params;
   }
   export interface subscriptions_params {
+    export_type?: string;
     item_id?: filter._string;
     item_price_id?: filter._string;
     cancel_reason_code?: filter._string;

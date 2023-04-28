@@ -48,6 +48,7 @@ export class ContractTerm extends Model {
   public billing_cycle: number;
   public action_at_term_end: string;
   public total_contract_value: number;
+  public total_contract_value_before_tax: number;
   public cancellation_cutoff_period?: number;
   public created_at: number;
   public subscription_id: string;
