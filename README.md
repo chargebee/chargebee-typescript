@@ -59,8 +59,7 @@ import {
 
    var chargebee = new ChargeBee();
 
-   chargebee.configure({site : "mannar-test",
-     api_key : "test___dev__2d2aopx6Dh6tzq5qI3FuV7TuWMbxaudy"});
+   chargebee.configure({site : "{site}", api_key : "{site_api_key}"});
    chargebee.subscription.create({
      plan_id : "basic",
      auto_collection : "off",
@@ -103,8 +102,7 @@ import {
 
 var chargebee = new ChargeBee();
 
-chargebee.configure({site : "mannar-test",
-  api_key : "test___dev__2d2aopx6Dh6tzq5qI3FuV7TuWMbxaudy"});
+chargebee.configure({site : "{site}", api_key : "{site_api_key}"});
 chargebee.subscription.list({
   limit : 2,
   plan_id : { in : ["basic","no-trial"] }
@@ -157,6 +155,50 @@ chargebee.subscription.create({
     }
 });
 ```
+
+### Create an idempotent request
+
+[Idempotency keys](https://apidocs.chargebee.com/docs/api) are passed along with request headers to allow a safe retry of POST requests. 
+
+```typescript
+import {
+    ChargeBee, 
+    _customer
+  } from 'chargebee-typescript';
+  var chargebee = new ChargeBee();
+  chargebee.configure({site : "{site}", api_key : "{site_api_key}"});
+  chargebee.customer.create({
+    first_name : "John",
+    last_name : "Doe",
+    email : "john@test.com",
+    locale : "fr-CA",
+    billing_address : {
+      first_name : "Jsohn",
+      last_name : "Doe",
+      line1 : "PO Box 9999",
+      city : "Walnut",
+      state : "Califorsnia",
+      zip : "91789",
+      country : "US"
+      }
+  })
+  .setIdempotencyKey("<<UUID>>") // Replace <<UUID>> with a unique string
+  .request(function(error,result) {
+    if(error){
+      //handle error
+      console.log(error);
+    }else{
+      var customer: typeof chargebee.customer = result.customer;
+      var card: typeof chargebee.card = result.card;
+      const responseHeaders = result.getResponseHeaders(); // Retrieves response headers
+      console.log(responseHeaders);
+      const idempotencyReplayedValue = result.isIdempotencyReplayed(); // Retrieves idempotency replayed header value
+      console.log(idempotencyReplayedValue);
+    }
+  });
+```
+`isIdempotencyReplayed()` method can be accessed to differentiate between original and replayed requests.
+
 
 ### Error handling:
 ```typescript

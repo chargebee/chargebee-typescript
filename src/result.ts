@@ -1,8 +1,10 @@
 import * as resources from "./resources";
 import {Util} from "./util";
+import { IdempotencyConstants } from "./idempotency_constants";
 
 export class Result {
     readonly #_response: any;
+    readonly responseHeaders: any;
 
     get subscription(): resources.Subscription {
         let _subscription = this.get(
@@ -531,8 +533,24 @@ export class Result {
         return this.#_response;
     }
 
-    constructor(response) {
+    constructor(response, responseHeaders?) {
         this.#_response = response;
+        if (responseHeaders) {
+          this.responseHeaders = responseHeaders;
+      }
+    }
+
+    getResponseHeaders(){
+        return this.responseHeaders;
+    }
+
+    isIdempotencyReplayed(): boolean {
+        const headers = this.responseHeaders;
+        const replayedHeader = headers[IdempotencyConstants.IDEMPOTENCY_REPLAY_HEADER];
+        if (replayedHeader === undefined) {
+            return false;
+        }
+        return Boolean(replayedHeader);
     }
 
     private get<T = any>(type, klass, sub_types = {}, dependant_types = {}): T {

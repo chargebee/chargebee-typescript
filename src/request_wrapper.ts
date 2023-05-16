@@ -3,6 +3,7 @@ import { Model } from './resources/model'
 import { Result } from './result'
 import { Util } from "./util";
 import { Core } from "./core";
+import { IdempotencyConstants } from "./idempotency_constants";
 
 export class RequestWrapper<T = Result> {
     private readonly args;
@@ -29,6 +30,11 @@ export class RequestWrapper<T = Result> {
 
     public headers(headers): this {
         Object.assign(this.httpHeaders, headers);
+        return this;
+    }
+
+    public setIdempotencyKey(idempotencyKey: string): this {
+        this.headers({ [IdempotencyConstants.IDEMPOTENCY_HEADER]: idempotencyKey });
         return this;
     }
 

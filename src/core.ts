@@ -5,7 +5,7 @@ import {ListResult} from './list_result';
 export class Core {
     private static http = require('http');
     private static https = require('https');
-    private static os = require('os')
+    private static os = require('os');
     
     static timeoutHandler = function (req, callBack) {
         return function() {
@@ -19,6 +19,7 @@ export class Core {
         return function(res) {
             let response: any = '';
             res.setEncoding('utf8');
+            let responseHeaders = res.headers;
             res.on('data', function(chunk) {
                 response += chunk;
             });
@@ -62,9 +63,9 @@ export class Core {
                     callBack(response, null);
                 } else {
                     if ('list' in response) {
-                        response = new ListResult(response);
+                        response = new ListResult(response, responseHeaders);
                     } else {
-                        response = new Result(response);
+                        response = new Result(response, responseHeaders);
                     }
                     callBack(null, response);
                 }
