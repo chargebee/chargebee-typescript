@@ -9,6 +9,7 @@ export class ItemPrice extends Model {
   public id: string;
   public name: string;
   public item_family_id?: string;
+  public product_id?: string;
   public item_id?: string;
   public description?: string;
   public status?: string;

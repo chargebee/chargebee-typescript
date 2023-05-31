@@ -245,6 +245,17 @@ export class HostedPage extends Model {
     }, ChargeBee._env)
   }
 
+  public static events(params?: _hosted_page.events_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'events',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/events',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~HostedPage
 
 
@@ -464,6 +475,11 @@ export namespace _hosted_page {
     cancel_url?: string;
     redirect_url?: string;
     subscription?: subscription_pre_cancel_params;
+  }
+  export interface events_params {
+    event_name: string;
+    occurred_at?: number;
+    event_data: any;
   }
   export interface subscription_checkout_new_params {
     id?: string;

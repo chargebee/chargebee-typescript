@@ -56,6 +56,7 @@ export {_in_app_subscription} from "./resources/in_app_subscription";
 export {_non_subscription} from "./resources/non_subscription";
 export {_entitlement_override} from "./resources/entitlement_override";
 export {_purchase} from "./resources/purchase";
+export {_payment_voucher} from "./resources/payment_voucher";
 
 interface Conf {
     api_key: string
@@ -240,6 +241,9 @@ export class ChargeBee {
     }
     get purchase() {
         return resources.Purchase;
+    }
+    get payment_voucher() {
+        return resources.PaymentVoucher;
     }
 }
 

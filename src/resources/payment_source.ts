@@ -20,6 +20,8 @@ export class PaymentSource extends Model {
   public issuing_country?: string;
   public card?: Card;
   public bank_account?: BankAccount;
+  public boleto?: CustVoucherSource;
+  public billing_address?: BillingAddress;
   public amazon_payment?: AmazonPayment;
   public upi?: Upi;
   public paypal?: Paypal;
@@ -71,6 +73,17 @@ export class PaymentSource extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/payment_sources',
       'urlSuffix': '/create_using_payment_intent',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static create_voucher_payment_source(params?: _payment_source.create_voucher_payment_source_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'create_voucher_payment_source',
+      'httpMethod': 'POST',
+      'urlPrefix': '/payment_sources',
+      'urlSuffix': '/create_voucher_payment_source',
       'hasIdInUrl': false,
       'isListReq': false,
     }, ChargeBee._env)
@@ -231,6 +244,30 @@ export class BankAccount extends Model {
   public email?: string;
 } // ~BankAccount
 
+export class CustVoucherSource extends Model {
+  public last4: string;
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+} // ~CustVoucherSource
+
+export class BillingAddress extends Model {
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~BillingAddress
+
 export class AmazonPayment extends Model {
   public email?: string;
   public agreement_id?: string;
@@ -284,6 +321,10 @@ export namespace _payment_source {
     customer_id: string;
     replace_primary_payment_source?: boolean;
     payment_intent?: payment_intent_create_using_payment_intent_params;
+  }
+  export interface create_voucher_payment_source_params {
+    customer_id: string;
+    voucher_payment_source?: voucher_payment_source_create_voucher_payment_source_params;
   }
   export interface create_card_params {
     customer_id: string;
@@ -352,6 +393,18 @@ export namespace _payment_source {
   }
   export interface payment_intent_create_using_payment_intent_params {
     additional_information?: any;
+  }
+  export interface voucher_payment_source_create_voucher_payment_source_params {
+    voucher_type: string;
+  }
+  export interface voucher_payment_source_create_voucher_payment_source_params {
+    gateway_account_id?: string;
+  }
+  export interface voucher_payment_source_create_voucher_payment_source_params {
+    tax_id?: string;
+  }
+  export interface voucher_payment_source_create_voucher_payment_source_params {
+    billing_address?: any;
   }
   export interface card_create_card_params {
     gateway_account_id?: string;
