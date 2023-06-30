@@ -59,6 +59,7 @@ export {Note as InvoiceNote} from "./invoice";
 export {ShippingAddress as InvoiceShippingAddress} from "./invoice";
 export {BillingAddress as InvoiceBillingAddress} from "./invoice";
 export {Einvoice as InvoiceEinvoice} from "./invoice";
+export {PaymentReferenceNumber} from "./payment_reference_number";
 export {TaxWithheld} from "./tax_withheld";
 export {CreditNote} from "./credit_note";
 export {Einvoice as CreditNoteEinvoice} from "./credit_note";

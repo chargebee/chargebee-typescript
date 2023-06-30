@@ -596,6 +596,7 @@ export namespace _customer {
     token_id?: string;
     replace_primary_payment_source?: boolean;
     retain_payment_source?: boolean;
+    payment_initiator?: string;
     payment_method?: payment_method_collect_payment_params;
     card?: card_collect_payment_params;
     payment_intent?: payment_intent_collect_payment_params;

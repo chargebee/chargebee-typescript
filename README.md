@@ -1,7 +1,7 @@
 # Chargebee Typescript Client Library - API V2
 
-[![npm](https://img.shields.io/npm/v/chargebee-typescript.svg?maxAge=25920000)](https://www.npmjs.com/package/chargebee-typescript)
-[![npm](https://img.shields.io/npm/dt/chargebee-typescript.svg?maxAge=25920000)](https://www.npmjs.com/package/chargebee-typescript)
+[![npm](https://img.shields.io/npm/v/chargebee-typescript.svg?maxAge=2)](https://www.npmjs.com/package/chargebee-typescript)
+[![npm](https://img.shields.io/npm/dt/chargebee-typescript.svg?maxAge=2)](https://www.npmjs.com/package/chargebee-typescript)
 
 This is a server-side [typescript](https://www.typescriptlang.org/) library for integrating with Chargebee. Sign up for a Chargebee account [here](https://www.chargebee.com).
 

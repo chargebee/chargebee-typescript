@@ -109,6 +109,13 @@ export class Result {
         );
         return _invoice;
     }
+    get payment_reference_number(): resources.PaymentReferenceNumber {
+        let _payment_reference_number = this.get(
+            'payment_reference_number',
+            'PaymentReferenceNumber'
+        );
+        return _payment_reference_number;
+    }
     get tax_withheld(): resources.TaxWithheld {
         let _tax_withheld = this.get(
             'tax_withheld',

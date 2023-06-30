@@ -43,6 +43,7 @@ export class CreditNote extends Model {
   public linked_refunds?: Array<LinkedRefund>;
   public allocations?: Array<Allocation>;
   public deleted: boolean;
+  public local_currency_exchange_rate?: number;
   public create_reason_code?: string;
   public vat_number_prefix?: string;
   public business_entity_id: string;
@@ -417,7 +418,7 @@ export namespace _credit_note {
     type: string;
     currency_code?: string;
     create_reason_code: string;
-    date?: number;
+    date: number;
     status?: string;
     total?: number;
     refunded_at?: number;

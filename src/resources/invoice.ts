@@ -36,6 +36,7 @@ export class Invoice extends Model {
   public total_in_local_currency?: number;
   public local_currency_code?: string;
   public tax: number;
+  public local_currency_exchange_rate?: number;
   public first_invoice?: boolean;
   public new_sales_amount?: number;
   public has_advance_charges?: boolean;
@@ -257,6 +258,17 @@ export class Invoice extends Model {
       'urlSuffix': '/download_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static list_payment_reference_numbers(params?: _invoice.invoice_list_payment_reference_numbers_params):RequestWrapper<ListResult> {
+    return new RequestWrapper([params], {
+      'methodName': 'list_payment_reference_numbers',
+      'httpMethod': 'GET',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/payment_reference_numbers',
+      'hasIdInUrl': false,
+      'isListReq': true,
     }, ChargeBee._env)
   }
 
@@ -665,6 +677,7 @@ export namespace _invoice {
     token_id?: string;
     replace_primary_payment_source?: boolean;
     retain_payment_source?: boolean;
+    payment_initiator?: string;
     shipping_address?: shipping_address_create_params;
     card?: card_create_params;
     bank_account?: bank_account_create_params;
@@ -724,6 +737,7 @@ export namespace _invoice {
     po_number?: string;
     invoice_date?: number;
     payment_source_id?: string;
+    payment_initiator?: string;
   }
   export interface charge_addon_params {
     customer_id?: string;
@@ -743,6 +757,7 @@ export namespace _invoice {
     po_number?: string;
     invoice_date?: number;
     payment_source_id?: string;
+    payment_initiator?: string;
   }
   export interface create_for_charge_item_params {
     customer_id?: string;
@@ -750,6 +765,7 @@ export namespace _invoice {
     po_number?: string;
     coupon?: string;
     payment_source_id?: string;
+    payment_initiator?: string;
     invoice_date?: number;
     item_price?: item_price_create_for_charge_item_params;
     item_tiers?: Array<item_tiers_create_for_charge_item_params>;
@@ -784,6 +800,7 @@ export namespace _invoice {
     billing_address?: billing_address_import_invoice_params;
     shipping_address?: shipping_address_import_invoice_params;
     line_items?: Array<line_items_import_invoice_params>;
+    payment_reference_numbers?: Array<payment_reference_numbers_import_invoice_params>;
     line_item_tiers?: Array<line_item_tiers_import_invoice_params>;
     discounts?: Array<discounts_import_invoice_params>;
     taxes?: Array<taxes_import_invoice_params>;
@@ -835,6 +852,12 @@ export namespace _invoice {
   export interface pdf_params {
     disposition_type?: string;
   }
+  export interface invoice_list_payment_reference_numbers_params {
+    limit?: number;
+    offset?: string;
+    id?: filter._string;
+    payment_reference_number?: payment_reference_number_invoice_list_payment_reference_numbers_params;
+  }
   export interface add_charge_params {
     amount: number;
     description: string;
@@ -873,6 +896,7 @@ export namespace _invoice {
     authorization_transaction_id?: string;
     payment_source_id?: string;
     comment?: string;
+    payment_initiator?: string;
   }
   export interface record_payment_params {
     comment?: string;
@@ -1735,6 +1759,15 @@ export namespace _invoice {
   export interface line_items_import_invoice_params {
     tax10_amount?: number;
   }
+  export interface payment_reference_numbers_import_invoice_params {
+    id?: string;
+  }
+  export interface payment_reference_numbers_import_invoice_params {
+    type: string;
+  }
+  export interface payment_reference_numbers_import_invoice_params {
+    number: string;
+  }
   export interface line_item_tiers_import_invoice_params {
     line_item_id: string;
   }
@@ -1830,6 +1863,9 @@ export namespace _invoice {
   }
   export interface einvoice_invoice_list_params {
     status?: filter._enum;
+  }
+  export interface payment_reference_number_invoice_list_payment_reference_numbers_params {
+    number?: filter._string;
   }
   export interface line_item_add_charge_params {
     date_from?: number;

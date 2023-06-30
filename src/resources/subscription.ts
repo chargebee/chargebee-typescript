@@ -672,6 +672,7 @@ export namespace _subscription {
     contract_term_billing_cycle_on_renewal?: number;
     trial_end_action?: string;
     client_profile_id?: string;
+    payment_initiator?: string;
     customer?: customer_create_params;
     card?: card_create_params;
     bank_account?: bank_account_create_params;
@@ -718,6 +719,7 @@ export namespace _subscription {
     free_period_unit?: string;
     contract_term_billing_cycle_on_renewal?: number;
     trial_end_action?: string;
+    payment_initiator?: string;
     shipping_address?: shipping_address_create_for_customer_params;
     payment_intent?: payment_intent_create_for_customer_params;
     contract_term?: contract_term_create_for_customer_params;
@@ -760,6 +762,7 @@ export namespace _subscription {
     auto_close_invoices?: boolean;
     first_invoice_pending?: boolean;
     trial_end_action?: string;
+    payment_initiator?: string;
     shipping_address?: shipping_address_create_with_items_params;
     payment_intent?: payment_intent_create_with_items_params;
     contract_term?: contract_term_create_with_items_params;
@@ -891,6 +894,7 @@ export namespace _subscription {
     create_pending_invoices?: boolean;
     auto_close_invoices?: boolean;
     trial_end_action?: string;
+    payment_initiator?: string;
     card?: card_update_for_items_params;
     payment_method?: payment_method_update_for_items_params;
     payment_intent?: payment_intent_update_for_items_params;
@@ -920,6 +924,7 @@ export namespace _subscription {
     terms_to_charge?: number;
     invoice_date?: number;
     contract_term_billing_cycle_on_renewal?: number;
+    payment_initiator?: string;
     contract_term?: contract_term_reactivate_params;
     payment_intent?: payment_intent_reactivate_params;
   }
@@ -1126,6 +1131,7 @@ export namespace _subscription {
     resume_date?: number;
     charges_handling?: string;
     unpaid_invoices_handling?: string;
+    payment_initiator?: string;
     payment_intent?: payment_intent_resume_params;
   }
   export interface customer_create_params {

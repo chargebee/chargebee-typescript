@@ -256,6 +256,17 @@ export class HostedPage extends Model {
     }, ChargeBee._env)
   }
 
+  public static view_voucher(params?: _hosted_page.view_voucher_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'view_voucher',
+      'httpMethod': 'POST',
+      'urlPrefix': '/hosted_pages',
+      'urlSuffix': '/view_voucher',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~HostedPage
 
 
@@ -480,6 +491,10 @@ export namespace _hosted_page {
     event_name: string;
     occurred_at?: number;
     event_data: any;
+  }
+  export interface view_voucher_params {
+    payment_voucher?: payment_voucher_view_voucher_params;
+    customer?: customer_view_voucher_params;
   }
   export interface subscription_checkout_new_params {
     id?: string;
@@ -1821,5 +1836,11 @@ export namespace _hosted_page {
   }
   export interface subscription_pre_cancel_params {
     id: string;
+  }
+  export interface payment_voucher_view_voucher_params {
+    id: string;
+  }
+  export interface customer_view_voucher_params {
+    locale?: string;
   }
 }

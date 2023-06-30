@@ -14,6 +14,7 @@ export {_virtual_bank_account} from "./resources/virtual_bank_account";
 export {_card} from "./resources/card";
 export {_promotional_credit} from "./resources/promotional_credit";
 export {_invoice} from "./resources/invoice";
+export {_payment_reference_number} from "./resources/payment_reference_number";
 export {_tax_withheld} from "./resources/tax_withheld";
 export {_credit_note} from "./resources/credit_note";
 export {_unbilled_charge} from "./resources/unbilled_charge";
@@ -115,6 +116,9 @@ export class ChargeBee {
     }
     get invoice() {
         return resources.Invoice;
+    }
+    get payment_reference_number() {
+        return resources.PaymentReferenceNumber;
     }
     get tax_withheld() {
         return resources.TaxWithheld;
