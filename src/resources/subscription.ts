@@ -684,6 +684,7 @@ export namespace _subscription {
     entity_identifiers?: Array<entity_identifiers_create_params>;
     addons?: Array<addons_create_params>;
     event_based_addons?: Array<event_based_addons_create_params>;
+    coupons?: Array<coupons_create_params>;
   }
   export interface create_for_customer_params {
     id?: string;
@@ -725,6 +726,7 @@ export namespace _subscription {
     contract_term?: contract_term_create_for_customer_params;
     addons?: Array<addons_create_for_customer_params>;
     event_based_addons?: Array<event_based_addons_create_for_customer_params>;
+    coupons?: Array<coupons_create_for_customer_params>;
   }
   export interface create_with_items_params {
     id?: string;
@@ -769,6 +771,7 @@ export namespace _subscription {
     subscription_items?: Array<subscription_items_create_with_items_params>;
     discounts?: Array<discounts_create_with_items_params>;
     item_tiers?: Array<item_tiers_create_with_items_params>;
+    coupons?: Array<coupons_create_with_items_params>;
   }
   export interface subscription_list_params {
     limit?: number;
@@ -852,6 +855,7 @@ export namespace _subscription {
     contract_term?: contract_term_update_params;
     addons?: Array<addons_update_params>;
     event_based_addons?: Array<event_based_addons_update_params>;
+    coupons?: Array<coupons_update_params>;
   }
   export interface update_for_items_params {
     mandatory_items_to_remove?: Array<string>;
@@ -905,6 +909,7 @@ export namespace _subscription {
     subscription_items?: Array<subscription_items_update_for_items_params>;
     discounts?: Array<discounts_update_for_items_params>;
     item_tiers?: Array<item_tiers_update_for_items_params>;
+    coupons?: Array<coupons_update_for_items_params>;
   }
   export interface change_term_end_params {
     term_ends_at: number;
@@ -1008,6 +1013,7 @@ export namespace _subscription {
     addons?: Array<addons_import_subscription_params>;
     event_based_addons?: Array<event_based_addons_import_subscription_params>;
     charged_event_based_addons?: Array<charged_event_based_addons_import_subscription_params>;
+    coupons?: Array<coupons_import_subscription_params>;
   }
   export interface import_for_customer_params {
     id?: string;
@@ -1043,6 +1049,7 @@ export namespace _subscription {
     addons?: Array<addons_import_for_customer_params>;
     event_based_addons?: Array<event_based_addons_import_for_customer_params>;
     charged_event_based_addons?: Array<charged_event_based_addons_import_for_customer_params>;
+    coupons?: Array<coupons_import_for_customer_params>;
   }
   export interface import_contract_term_params {
     contract_term_billing_cycle_on_renewal?: number;
@@ -1080,6 +1087,7 @@ export namespace _subscription {
     create_current_term_invoice?: boolean;
     invoice_notes?: string;
     meta_data?: any;
+    cancel_reason_code?: string;
     create_pending_invoices?: boolean;
     auto_close_invoices?: boolean;
     contract_term?: contract_term_import_for_items_params;
@@ -1089,6 +1097,7 @@ export namespace _subscription {
     discounts?: Array<discounts_import_for_items_params>;
     charged_items?: Array<charged_items_import_for_items_params>;
     item_tiers?: Array<item_tiers_import_for_items_params>;
+    coupons?: Array<coupons_import_for_items_params>;
   }
   export interface override_billing_profile_params {
     payment_source_id?: string;
@@ -1524,6 +1533,18 @@ export namespace _subscription {
   export interface addons_create_params {
     trial_end?: number;
   }
+  export interface coupons_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
+  }
   export interface shipping_address_create_for_customer_params {
     first_name?: string;
   }
@@ -1643,6 +1664,18 @@ export namespace _subscription {
   }
   export interface addons_create_for_customer_params {
     trial_end?: number;
+  }
+  export interface coupons_create_for_customer_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_create_for_customer_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
   }
   export interface shipping_address_create_with_items_params {
     first_name?: string;
@@ -1799,6 +1832,18 @@ export namespace _subscription {
   }
   export interface item_tiers_create_with_items_params {
     price_in_decimal?: string;
+  }
+  export interface coupons_create_with_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_create_with_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
   }
   export interface card_update_params {
     /**
@@ -2072,6 +2117,24 @@ export namespace _subscription {
   }
   export interface addons_update_params {
     trial_end?: number;
+  }
+  export interface addons_update_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    proration_type?: string;
+  }
+  export interface coupons_update_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_update_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
   }
   export interface card_update_for_items_params {
     /**
@@ -2387,6 +2450,18 @@ export namespace _subscription {
   }
   export interface item_tiers_update_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface coupons_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
   }
   export interface contract_term_reactivate_params {
     action_at_term_end?: string;
@@ -2757,6 +2832,18 @@ export namespace _subscription {
   export interface charged_event_based_addons_import_subscription_params {
     last_charged_at?: number;
   }
+  export interface coupons_import_subscription_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_import_subscription_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
+  }
   export interface contract_term_import_for_customer_params {
     id?: string;
   }
@@ -2882,6 +2969,18 @@ export namespace _subscription {
   }
   export interface charged_event_based_addons_import_for_customer_params {
     last_charged_at?: number;
+  }
+  export interface coupons_import_for_customer_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_import_for_customer_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
   }
   export interface contract_term_import_contract_term_params {
     id?: string;
@@ -3170,6 +3269,18 @@ export namespace _subscription {
   }
   export interface item_tiers_import_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface coupons_import_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_import_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
   }
   export interface event_based_addons_cancel_params {
     id?: string;

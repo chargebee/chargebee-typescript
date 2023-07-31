@@ -65,6 +65,7 @@ export class Invoice extends Model {
   public payment_owner?: string;
   public void_reason_code?: string;
   public deleted: boolean;
+  public tax_category?: string;
   public vat_number_prefix?: string;
   public channel?: string;
   public business_entity_id?: string;

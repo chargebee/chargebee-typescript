@@ -43,6 +43,7 @@ export class CreditNote extends Model {
   public linked_refunds?: Array<LinkedRefund>;
   public allocations?: Array<Allocation>;
   public deleted: boolean;
+  public tax_category?: string;
   public local_currency_exchange_rate?: number;
   public create_reason_code?: string;
   public vat_number_prefix?: string;

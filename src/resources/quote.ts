@@ -35,6 +35,7 @@ export class Quote extends Model {
   public taxes?: Array<Tax>;
   public line_item_taxes?: Array<LineItemTax>;
   public line_item_tiers?: Array<LineItemTier>;
+  public tax_category?: string;
   public currency_code: string;
   public notes?: any;
   public shipping_address?: ShippingAddress;

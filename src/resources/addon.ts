@@ -41,6 +41,7 @@ export class Addon extends Model {
   public price_in_decimal?: string;
   public included_in_mrr?: boolean;
   public channel?: string;
+  public proration_type?: string;
   public invoice_notes?: string;
   public taxable?: boolean;
   public tax_profile_id?: string;
@@ -188,6 +189,10 @@ export namespace _addon {
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     price_in_decimal?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    proration_type?: string;
     status?: string;
     tiers?: Array<tiers_create_params>;
   }
@@ -230,6 +235,10 @@ export namespace _addon {
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     price_in_decimal?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    proration_type?: string;
     tiers?: Array<tiers_update_params>;
   }
   export interface addon_list_params {
