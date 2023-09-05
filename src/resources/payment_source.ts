@@ -236,6 +236,7 @@ export class BankAccount extends Model {
   public name_on_account?: string;
   public first_name?: string;
   public last_name?: string;
+  public direct_debit_scheme?: string;
   public bank_name?: string;
   public mandate_id?: string;
   public account_type?: string;

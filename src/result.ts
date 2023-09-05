@@ -478,6 +478,13 @@ export class Result {
         );
         return _payment_voucher;
     }
+    get csv_tax_rule(): resources.CsvTaxRule {
+        let _csv_tax_rule = this.get(
+            'csv_tax_rule',
+            'CsvTaxRule'
+        );
+        return _csv_tax_rule;
+    }
 
     get unbilled_charges(): resources.UnbilledCharge[] {
         let _unbilled_charges = this.get_list(

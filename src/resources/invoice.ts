@@ -865,6 +865,9 @@ export namespace _invoice {
     avalara_sale_type?: string;
     avalara_transaction_type?: number;
     avalara_service_type?: number;
+    avalara_tax_code?: string;
+    hsn_code?: string;
+    taxjar_product_code?: string;
     comment?: string;
     subscription_id?: string;
     line_item?: line_item_add_charge_params;
