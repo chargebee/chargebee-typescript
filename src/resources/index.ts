@@ -37,6 +37,7 @@ export {BillingAddress as PaymentSourceBillingAddress} from "./payment_source";
 export {AmazonPayment as PaymentSourceAmazonPayment} from "./payment_source";
 export {Upi as PaymentSourceUpi} from "./payment_source";
 export {Paypal as PaymentSourcePaypal} from "./payment_source";
+export {Venmo as PaymentSourceVenmo} from "./payment_source";
 export {Mandate as PaymentSourceMandate} from "./payment_source";
 export {ThirdPartyPaymentMethod} from "./third_party_payment_method";
 export {VirtualBankAccount} from "./virtual_bank_account";

@@ -69,7 +69,7 @@ export class Result {
         let _payment_source = this.get(
             'payment_source',
             'PaymentSource',
-            {'card': 'PaymentSourceCard', 'bank_account': 'PaymentSourceBankAccount', 'cust_voucher_source': 'PaymentSourceCustVoucherSource', 'billing_address': 'PaymentSourceBillingAddress', 'amazon_payment': 'PaymentSourceAmazonPayment', 'upi': 'PaymentSourceUpi', 'paypal': 'PaymentSourcePaypal', 'mandates': 'PaymentSourceMandate'}
+            {'card': 'PaymentSourceCard', 'bank_account': 'PaymentSourceBankAccount', 'cust_voucher_source': 'PaymentSourceCustVoucherSource', 'billing_address': 'PaymentSourceBillingAddress', 'amazon_payment': 'PaymentSourceAmazonPayment', 'upi': 'PaymentSourceUpi', 'paypal': 'PaymentSourcePaypal', 'venmo': 'PaymentSourceVenmo', 'mandates': 'PaymentSourceMandate'}
         );
         return _payment_source;
     }

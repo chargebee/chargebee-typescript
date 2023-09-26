@@ -34,6 +34,7 @@ export class Addon extends Model {
   public unit_price?: number;
   public quantity_in_decimal?: string;
   public unit_price_in_decimal?: string;
+  public proration_type?: string;
   public service_period?: number;
 } // ~Addon
 

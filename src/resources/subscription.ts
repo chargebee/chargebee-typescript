@@ -533,6 +533,7 @@ export class Addon extends Model {
   public quantity_in_decimal?: string;
   public unit_price_in_decimal?: string;
   public amount_in_decimal?: string;
+  public proration_type?: string;
 } // ~Addon
 
 export class EventBasedAddon extends Model {

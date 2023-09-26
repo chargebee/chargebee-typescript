@@ -25,6 +25,7 @@ export class PaymentSource extends Model {
   public amazon_payment?: AmazonPayment;
   public upi?: Upi;
   public paypal?: Paypal;
+  public venmo?: Venmo;
   public mandates?: Array<Mandate>;
   public deleted: boolean;
   public business_entity_id?: string;
@@ -283,6 +284,10 @@ export class Paypal extends Model {
   public agreement_id?: string;
 } // ~Paypal
 
+export class Venmo extends Model {
+  public user_name?: string;
+} // ~Venmo
+
 export class Mandate extends Model {
   public id: string;
   public subscription_id: string;
@@ -532,6 +537,9 @@ export namespace _payment_source {
   }
   export interface card_update_card_params {
     billing_country?: string;
+  }
+  export interface card_update_card_params {
+    additional_information?: any;
   }
   export interface bank_account_update_bank_account_params {
     first_name?: string;
