@@ -953,6 +953,9 @@ export namespace _hosted_page {
     vat_number_prefix?: string;
   }
   export interface customer_checkout_one_time_for_items_params {
+    einvoicing_method?: string;
+  }
+  export interface customer_checkout_one_time_for_items_params {
     is_einvoice_enabled?: boolean;
   }
   export interface customer_checkout_one_time_for_items_params {
@@ -1230,6 +1233,9 @@ export namespace _hosted_page {
   }
   export interface customer_checkout_new_for_items_params {
     entity_identifier_standard?: string;
+  }
+  export interface customer_checkout_new_for_items_params {
+    einvoicing_method?: string;
   }
   export interface billing_address_checkout_new_for_items_params {
     first_name?: string;

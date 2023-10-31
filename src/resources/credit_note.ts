@@ -481,9 +481,6 @@ export namespace _credit_note {
     id: string;
   }
   export interface line_items_import_credit_note_params {
-    reference_line_item_id?: string;
-  }
-  export interface line_items_import_credit_note_params {
     id?: string;
   }
   export interface line_items_import_credit_note_params {
@@ -593,6 +590,9 @@ export namespace _credit_note {
   }
   export interface line_items_import_credit_note_params {
     tax10_amount?: number;
+  }
+  export interface line_items_import_credit_note_params {
+    reference_line_item_id?: string;
   }
   export interface line_item_tiers_import_credit_note_params {
     line_item_id: string;

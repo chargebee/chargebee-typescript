@@ -69,7 +69,7 @@ export class Result {
         let _payment_source = this.get(
             'payment_source',
             'PaymentSource',
-            {'card': 'PaymentSourceCard', 'bank_account': 'PaymentSourceBankAccount', 'cust_voucher_source': 'PaymentSourceCustVoucherSource', 'billing_address': 'PaymentSourceBillingAddress', 'amazon_payment': 'PaymentSourceAmazonPayment', 'upi': 'PaymentSourceUpi', 'paypal': 'PaymentSourcePaypal', 'mandates': 'PaymentSourceMandate'}
+            {'card': 'PaymentSourceCard', 'bank_account': 'PaymentSourceBankAccount', 'cust_voucher_source': 'PaymentSourceCustVoucherSource', 'billing_address': 'PaymentSourceBillingAddress', 'amazon_payment': 'PaymentSourceAmazonPayment', 'upi': 'PaymentSourceUpi', 'paypal': 'PaymentSourcePaypal', 'venmo': 'PaymentSourceVenmo', 'mandates': 'PaymentSourceMandate'}
         );
         return _payment_source;
     }
@@ -477,6 +477,13 @@ export class Result {
             {'linked_invoices': 'PaymentVoucherLinkedInvoice'}
         );
         return _payment_voucher;
+    }
+    get csv_tax_rule(): resources.CsvTaxRule {
+        let _csv_tax_rule = this.get(
+            'csv_tax_rule',
+            'CsvTaxRule'
+        );
+        return _csv_tax_rule;
     }
 
     get unbilled_charges(): resources.UnbilledCharge[] {
