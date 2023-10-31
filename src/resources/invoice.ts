@@ -60,6 +60,7 @@ export class Invoice extends Model {
   public linked_orders?: Array<LinkedOrder>;
   public notes?: Array<Note>;
   public shipping_address?: ShippingAddress;
+  public statement_descriptor?: StatementDescriptor;
   public billing_address?: BillingAddress;
   public einvoice?: Einvoice;
   public payment_owner?: string;
@@ -629,6 +630,12 @@ export class ShippingAddress extends Model {
   public index: number;
 } // ~ShippingAddress
 
+export class StatementDescriptor extends Model {
+  public id: string;
+  public descriptor?: string;
+  public additional_info?: string;
+} // ~StatementDescriptor
+
 export class BillingAddress extends Model {
   public first_name?: string;
   public last_name?: string;
@@ -680,6 +687,7 @@ export namespace _invoice {
     retain_payment_source?: boolean;
     payment_initiator?: string;
     shipping_address?: shipping_address_create_params;
+    statement_descriptor?: statement_descriptor_create_params;
     card?: card_create_params;
     bank_account?: bank_account_create_params;
     payment_method?: payment_method_create_params;
@@ -708,6 +716,7 @@ export namespace _invoice {
     replace_primary_payment_source?: boolean;
     retain_payment_source?: boolean;
     shipping_address?: shipping_address_create_for_charge_items_and_charges_params;
+    statement_descriptor?: statement_descriptor_create_for_charge_items_and_charges_params;
     card?: card_create_for_charge_items_and_charges_params;
     bank_account?: bank_account_create_for_charge_items_and_charges_params;
     payment_method?: payment_method_create_for_charge_items_and_charges_params;
@@ -952,6 +961,7 @@ export namespace _invoice {
     comment?: string;
     billing_address?: billing_address_update_details_params;
     shipping_address?: shipping_address_update_details_params;
+    statement_descriptor?: statement_descriptor_update_details_params;
   }
   export interface shipping_address_create_params {
     first_name?: string;
@@ -994,6 +1004,12 @@ export namespace _invoice {
   }
   export interface shipping_address_create_params {
     validation_status?: string;
+  }
+  export interface statement_descriptor_create_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_create_params {
+    additional_info?: string;
   }
   export interface card_create_params {
     /**
@@ -1264,6 +1280,12 @@ export namespace _invoice {
   }
   export interface shipping_address_create_for_charge_items_and_charges_params {
     validation_status?: string;
+  }
+  export interface statement_descriptor_create_for_charge_items_and_charges_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_create_for_charge_items_and_charges_params {
+    additional_info?: string;
   }
   export interface card_create_for_charge_items_and_charges_params {
     /**
@@ -2080,5 +2102,11 @@ export namespace _invoice {
   }
   export interface shipping_address_update_details_params {
     validation_status?: string;
+  }
+  export interface statement_descriptor_update_details_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_update_details_params {
+    additional_info?: string;
   }
 }

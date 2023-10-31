@@ -681,6 +681,7 @@ export namespace _subscription {
     payment_intent?: payment_intent_create_params;
     billing_address?: billing_address_create_params;
     shipping_address?: shipping_address_create_params;
+    statement_descriptor?: statement_descriptor_create_params;
     contract_term?: contract_term_create_params;
     entity_identifiers?: Array<entity_identifiers_create_params>;
     addons?: Array<addons_create_params>;
@@ -723,6 +724,7 @@ export namespace _subscription {
     trial_end_action?: string;
     payment_initiator?: string;
     shipping_address?: shipping_address_create_for_customer_params;
+    statement_descriptor?: statement_descriptor_create_for_customer_params;
     payment_intent?: payment_intent_create_for_customer_params;
     contract_term?: contract_term_create_for_customer_params;
     addons?: Array<addons_create_for_customer_params>;
@@ -767,6 +769,7 @@ export namespace _subscription {
     trial_end_action?: string;
     payment_initiator?: string;
     shipping_address?: shipping_address_create_with_items_params;
+    statement_descriptor?: statement_descriptor_create_with_items_params;
     payment_intent?: payment_intent_create_with_items_params;
     contract_term?: contract_term_create_with_items_params;
     subscription_items?: Array<subscription_items_create_with_items_params>;
@@ -852,6 +855,7 @@ export namespace _subscription {
     payment_intent?: payment_intent_update_params;
     billing_address?: billing_address_update_params;
     shipping_address?: shipping_address_update_params;
+    statement_descriptor?: statement_descriptor_update_params;
     customer?: customer_update_params;
     contract_term?: contract_term_update_params;
     addons?: Array<addons_update_params>;
@@ -905,6 +909,7 @@ export namespace _subscription {
     payment_intent?: payment_intent_update_for_items_params;
     billing_address?: billing_address_update_for_items_params;
     shipping_address?: shipping_address_update_for_items_params;
+    statement_descriptor?: statement_descriptor_update_for_items_params;
     customer?: customer_update_for_items_params;
     contract_term?: contract_term_update_for_items_params;
     subscription_items?: Array<subscription_items_update_for_items_params>;
@@ -932,6 +937,7 @@ export namespace _subscription {
     contract_term_billing_cycle_on_renewal?: number;
     payment_initiator?: string;
     contract_term?: contract_term_reactivate_params;
+    statement_descriptor?: statement_descriptor_reactivate_params;
     payment_intent?: payment_intent_reactivate_params;
   }
   export interface add_charge_at_term_end_params {
@@ -1438,6 +1444,12 @@ export namespace _subscription {
   export interface shipping_address_create_params {
     validation_status?: string;
   }
+  export interface statement_descriptor_create_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_create_params {
+    additional_info?: string;
+  }
   export interface customer_create_params {
     vat_number?: string;
   }
@@ -1588,6 +1600,12 @@ export namespace _subscription {
   export interface shipping_address_create_for_customer_params {
     validation_status?: string;
   }
+  export interface statement_descriptor_create_for_customer_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_create_for_customer_params {
+    additional_info?: string;
+  }
   export interface payment_intent_create_for_customer_params {
     id?: string;
   }
@@ -1719,6 +1737,12 @@ export namespace _subscription {
   }
   export interface shipping_address_create_with_items_params {
     validation_status?: string;
+  }
+  export interface statement_descriptor_create_with_items_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_create_with_items_params {
+    additional_info?: string;
   }
   export interface payment_intent_create_with_items_params {
     id?: string;
@@ -2041,6 +2065,12 @@ export namespace _subscription {
   export interface shipping_address_update_params {
     validation_status?: string;
   }
+  export interface statement_descriptor_update_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_update_params {
+    additional_info?: string;
+  }
   export interface customer_update_params {
     vat_number?: string;
   }
@@ -2120,9 +2150,6 @@ export namespace _subscription {
     trial_end?: number;
   }
   export interface addons_update_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
     proration_type?: string;
   }
   export interface coupons_update_params {
@@ -2332,6 +2359,12 @@ export namespace _subscription {
   export interface shipping_address_update_for_items_params {
     validation_status?: string;
   }
+  export interface statement_descriptor_update_for_items_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_update_for_items_params {
+    additional_info?: string;
+  }
   export interface customer_update_for_items_params {
     vat_number?: string;
   }
@@ -2469,6 +2502,12 @@ export namespace _subscription {
   }
   export interface contract_term_reactivate_params {
     cancellation_cutoff_period?: number;
+  }
+  export interface statement_descriptor_reactivate_params {
+    descriptor?: string;
+  }
+  export interface statement_descriptor_reactivate_params {
+    additional_info?: string;
   }
   export interface payment_intent_reactivate_params {
     id?: string;

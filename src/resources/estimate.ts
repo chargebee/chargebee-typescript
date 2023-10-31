@@ -1264,9 +1264,6 @@ export namespace _estimate {
     trial_end?: number;
   }
   export interface addons_update_subscription_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
     proration_type?: string;
   }
   export interface subscription_update_subscription_for_items_params {

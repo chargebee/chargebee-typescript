@@ -58,7 +58,6 @@ export {_non_subscription} from "./resources/non_subscription";
 export {_entitlement_override} from "./resources/entitlement_override";
 export {_purchase} from "./resources/purchase";
 export {_payment_voucher} from "./resources/payment_voucher";
-export {_csv_tax_rule} from "./resources/csv_tax_rule";
 
 interface Conf {
     api_key: string
@@ -249,9 +248,6 @@ export class ChargeBee {
     }
     get payment_voucher() {
         return resources.PaymentVoucher;
-    }
-    get csv_tax_rule() {
-        return resources.CsvTaxRule;
     }
 }
 

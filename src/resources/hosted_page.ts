@@ -330,6 +330,10 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    source?: string;
     customer?: customer_checkout_one_time_for_items_params;
     invoice?: invoice_checkout_one_time_for_items_params;
     card?: card_checkout_one_time_for_items_params;
@@ -352,6 +356,10 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    source?: string;
     allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_new_for_items_params;
     customer?: customer_checkout_new_for_items_params;
@@ -403,6 +411,10 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    source?: string;
     allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_existing_for_items_params;
     customer?: customer_checkout_existing_for_items_params;

@@ -105,7 +105,7 @@ export class Result {
         let _invoice = this.get(
             'invoice',
             'Invoice',
-            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice'}
+            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice'}
         );
         return _invoice;
     }
@@ -478,13 +478,6 @@ export class Result {
         );
         return _payment_voucher;
     }
-    get csv_tax_rule(): resources.CsvTaxRule {
-        let _csv_tax_rule = this.get(
-            'csv_tax_rule',
-            'CsvTaxRule'
-        );
-        return _csv_tax_rule;
-    }
 
     get unbilled_charges(): resources.UnbilledCharge[] {
         let _unbilled_charges = this.get_list(
@@ -530,7 +523,7 @@ export class Result {
         let _invoices = this.get_list(
             'invoices',
             'Invoice',
-            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice'}
+            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice'}
         );
         return _invoices;
     }

@@ -174,7 +174,7 @@ export namespace _coupon {
     id: string;
     name: string;
     invoice_name?: string;
-    discount_type: string;
+    discount_type?: string;
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
@@ -183,7 +183,7 @@ export namespace _coupon {
      */
     discount_quantity?: number;
     apply_on: string;
-    duration_type: string;
+    duration_type?: string;
     duration_month?: number;
     valid_till?: number;
     max_redemptions?: number;
@@ -202,7 +202,7 @@ export namespace _coupon {
     id: string;
     name: string;
     invoice_name?: string;
-    discount_type: string;
+    discount_type?: string;
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
@@ -211,7 +211,7 @@ export namespace _coupon {
      */
     discount_quantity?: number;
     apply_on: string;
-    duration_type: string;
+    duration_type?: string;
     duration_month?: number;
     valid_till?: number;
     max_redemptions?: number;
