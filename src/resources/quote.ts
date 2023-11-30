@@ -765,6 +765,9 @@ export namespace _quote {
     id?: string;
   }
   export interface subscription_edit_create_sub_for_customer_quote_params {
+    po_number?: string;
+  }
+  export interface subscription_edit_create_sub_for_customer_quote_params {
     plan_id: string;
   }
   export interface subscription_edit_create_sub_for_customer_quote_params {
@@ -1585,6 +1588,9 @@ export namespace _quote {
   }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
     id?: string;
+  }
+  export interface subscription_edit_create_sub_customer_quote_for_items_params {
+    po_number?: string;
   }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
     trial_end?: number;
