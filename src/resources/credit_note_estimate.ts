@@ -73,6 +73,9 @@ export class LineItemTax extends Model {
   public line_item_id?: string;
   public tax_name: string;
   public tax_rate: number;
+  public date_to?: number;
+  public date_from?: number;
+  public prorated_taxable_amount?: number;
   public is_partial_tax_applied?: boolean;
   public is_non_compliance_tax?: boolean;
   public taxable_amount: number;

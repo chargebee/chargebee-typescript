@@ -313,10 +313,17 @@ export namespace _payment_source {
     customer_id: string;
     type: string;
     gateway_account_id?: string;
-    reference_id: string;
+    reference_id?: string;
     issuing_country?: string;
     replace_primary_payment_source?: boolean;
+    payment_method_token?: string;
+    customer_profile_token?: string;
+    network_transaction_id?: string;
+    mandate_id?: string;
+    skip_retrieval?: boolean;
     additional_information?: any;
+    card?: card_create_using_permanent_token_params;
+    billing_address?: billing_address_create_using_permanent_token_params;
   }
   export interface create_using_token_params {
     customer_id: string;
@@ -372,6 +379,57 @@ export namespace _payment_source {
   }
   export interface export_payment_source_params {
     gateway_account_id: string;
+  }
+  export interface card_create_using_permanent_token_params {
+    last4?: string;
+  }
+  export interface card_create_using_permanent_token_params {
+    iin?: string;
+  }
+  export interface card_create_using_permanent_token_params {
+    expiry_month?: number;
+  }
+  export interface card_create_using_permanent_token_params {
+    expiry_year?: number;
+  }
+  export interface card_create_using_permanent_token_params {
+    brand?: string;
+  }
+  export interface card_create_using_permanent_token_params {
+    funding_type?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    first_name?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    last_name?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    email?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    line1?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    line2?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    line3?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    city?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    state_code?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    state?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    zip?: string;
+  }
+  export interface billing_address_create_using_permanent_token_params {
+    country?: string;
   }
   export interface payment_intent_create_using_payment_intent_params {
     id?: string;

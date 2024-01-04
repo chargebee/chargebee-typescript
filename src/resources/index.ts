@@ -195,3 +195,4 @@ export {EntitlementOverride} from "./entitlement_override";
 export {Purchase} from "./purchase";
 export {PaymentVoucher} from "./payment_voucher";
 export {LinkedInvoice as PaymentVoucherLinkedInvoice} from "./payment_voucher";
+export {Entitlement} from "./entitlement";

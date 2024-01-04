@@ -283,6 +283,9 @@ export class LineItemTax extends Model {
   public line_item_id?: string;
   public tax_name: string;
   public tax_rate: number;
+  public date_to?: number;
+  public date_from?: number;
+  public prorated_taxable_amount?: number;
   public is_partial_tax_applied?: boolean;
   public is_non_compliance_tax?: boolean;
   public taxable_amount: number;
@@ -472,6 +475,9 @@ export namespace _credit_note {
     reference_number?: string;
   }
   export interface transaction_record_refund_params {
+    custom_payment_method_id?: string;
+  }
+  export interface transaction_record_refund_params {
     date: number;
   }
   export interface einvoice_credit_note_list_params {
@@ -479,6 +485,9 @@ export namespace _credit_note {
   }
   export interface tax_withheld_remove_tax_withheld_refund_params {
     id: string;
+  }
+  export interface line_items_import_credit_note_params {
+    reference_line_item_id?: string;
   }
   export interface line_items_import_credit_note_params {
     id?: string;

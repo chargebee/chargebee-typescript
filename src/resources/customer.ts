@@ -37,6 +37,7 @@ export class Customer extends Model {
   public pii_cleared?: string;
   public auto_close_invoices?: boolean;
   public channel?: string;
+  public active_id?: string;
   public card_status?: string;
   public fraud_flag?: string;
   public primary_payment_source_id?: string;
@@ -1013,6 +1014,9 @@ export namespace _customer {
   }
   export interface transaction_record_excess_payment_params {
     reference_number?: string;
+  }
+  export interface transaction_record_excess_payment_params {
+    custom_payment_method_id?: string;
   }
   export interface payment_method_collect_payment_params {
     type?: string;

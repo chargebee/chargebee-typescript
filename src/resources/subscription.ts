@@ -53,6 +53,7 @@ export class Subscription extends Model {
   public offline_payment_method?: string;
   public channel?: string;
   public net_term_days?: number;
+  public active_id?: string;
   public subscription_items?: Array<SubscriptionItem>;
   public item_tiers?: Array<ItemTier>;
   public charged_items?: Array<ChargedItem>;
@@ -2484,6 +2485,9 @@ export namespace _subscription {
   }
   export interface item_tiers_update_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface subscription_items_update_for_items_params {
+    proration_type?: string;
   }
   export interface coupons_update_for_items_params {
     /**

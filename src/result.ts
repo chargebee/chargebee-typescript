@@ -159,7 +159,7 @@ export class Result {
         let _transaction = this.get(
             'transaction',
             'Transaction',
-            {'linked_invoices': 'TransactionLinkedInvoice', 'linked_credit_notes': 'TransactionLinkedCreditNote', 'linked_refunds': 'TransactionLinkedRefund', 'linked_payments': 'TransactionLinkedPayment'}
+            {'linked_invoices': 'TransactionLinkedInvoice', 'linked_credit_notes': 'TransactionLinkedCreditNote', 'linked_refunds': 'TransactionLinkedRefund', 'linked_payments': 'TransactionLinkedPayment', 'gateway_error_detail': 'TransactionGatewayErrorDetail'}
         );
         return _transaction;
     }
@@ -441,6 +441,13 @@ export class Result {
             'ItemEntitlement'
         );
         return _item_entitlement;
+    }
+    get entitlement(): resources.Entitlement {
+        let _entitlement = this.get(
+            'entitlement',
+            'Entitlement'
+        );
+        return _entitlement;
     }
     get in_app_subscription(): resources.InAppSubscription {
         let _in_app_subscription = this.get(

@@ -14,6 +14,7 @@ export class ItemPrice extends Model {
   public description?: string;
   public status?: string;
   public external_name?: string;
+  public proration_type?: string;
   public pricing_model: string;
   public price?: number;
   public price_in_decimal?: string;
@@ -169,6 +170,7 @@ export namespace _item_price {
     description?: string;
     item_id: string;
     invoice_notes?: string;
+    proration_type?: string;
     external_name?: string;
     currency_code?: string;
     is_taxable?: boolean;
@@ -195,6 +197,7 @@ export namespace _item_price {
   export interface update_params {
     name?: string;
     description?: string;
+    proration_type?: string;
     status?: string;
     external_name?: string;
     currency_code?: string;

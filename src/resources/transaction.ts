@@ -32,6 +32,7 @@ export class Transaction extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public fraud_reason?: string;
+  public custom_payment_method_id?: string;
   public amount_unused?: number;
   public masked_card_number?: string;
   public reference_transaction_id?: string;
@@ -49,6 +50,8 @@ export class Transaction extends Model {
   public merchant_reference_id?: string;
   public business_entity_id?: string;
   public payment_method_details?: string;
+  public error_detail?: GatewayErrorDetail;
+  public custom_payment_method_name?: string;
 
   
 
@@ -202,6 +205,18 @@ export class LinkedPayment extends Model {
   public date?: number;
 } // ~LinkedPayment
 
+export class GatewayErrorDetail extends Model {
+  public request_id?: string;
+  public error_category?: string;
+  public error_code?: string;
+  public error_message?: string;
+  public decline_code?: string;
+  public decline_message?: string;
+  public network_error_code?: string;
+  public error_field?: string;
+  public recommendation_code?: string;
+} // ~GatewayErrorDetail
+
 
 
   // REQUEST PARAMS
@@ -219,6 +234,7 @@ export namespace _transaction {
     payment_method: string;
     date: number;
     reference_number?: string;
+    custom_payment_method_id?: string;
     comment?: string;
   }
   export interface refund_params {
