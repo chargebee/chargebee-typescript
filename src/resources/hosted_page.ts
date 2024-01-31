@@ -456,6 +456,7 @@ export namespace _hosted_page {
   }
   export interface accept_quote_params {
     redirect_url?: string;
+    layout?: string;
     quote?: quote_accept_quote_params;
   }
   export interface extend_subscription_params {

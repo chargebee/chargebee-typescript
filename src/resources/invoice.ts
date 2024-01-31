@@ -526,6 +526,9 @@ export class LineItemTax extends Model {
   public line_item_id?: string;
   public tax_name: string;
   public tax_rate: number;
+  public date_to?: number;
+  public date_from?: number;
+  public prorated_taxable_amount?: number;
   public is_partial_tax_applied?: boolean;
   public is_non_compliance_tax?: boolean;
   public taxable_amount: number;
@@ -715,6 +718,7 @@ export namespace _invoice {
     token_id?: string;
     replace_primary_payment_source?: boolean;
     retain_payment_source?: boolean;
+    payment_initiator?: string;
     shipping_address?: shipping_address_create_for_charge_items_and_charges_params;
     statement_descriptor?: statement_descriptor_create_for_charge_items_and_charges_params;
     card?: card_create_for_charge_items_and_charges_params;
@@ -1960,6 +1964,9 @@ export namespace _invoice {
     reference_number?: string;
   }
   export interface transaction_record_payment_params {
+    custom_payment_method_id?: string;
+  }
+  export interface transaction_record_payment_params {
     id_at_gateway?: string;
   }
   export interface transaction_record_payment_params {
@@ -2003,6 +2010,9 @@ export namespace _invoice {
   }
   export interface transaction_record_refund_params {
     reference_number?: string;
+  }
+  export interface transaction_record_refund_params {
+    custom_payment_method_id?: string;
   }
   export interface transaction_record_refund_params {
     date: number;

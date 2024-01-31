@@ -1455,6 +1455,9 @@ export namespace _estimate {
   export interface item_tiers_update_subscription_for_items_params {
     price_in_decimal?: string;
   }
+  export interface subscription_items_update_subscription_for_items_params {
+    proration_type?: string;
+  }
   export interface fixed_interval_schedule_advance_invoice_estimate_params {
     number_of_occurrences?: number;
   }
