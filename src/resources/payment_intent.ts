@@ -73,6 +73,7 @@ export class PaymentAttempt extends Model {
   public error_text?: string;
   public created_at: number;
   public modified_at: number;
+  public error_detail?: resources.GatewayErrorDetail;
 } // ~PaymentAttempt
 
 

@@ -43,6 +43,7 @@ export {_resource_migration} from "./resources/resource_migration";
 export {_time_machine} from "./resources/time_machine";
 export {_export} from "./resources/export";
 export {_payment_intent} from "./resources/payment_intent";
+export {_gateway_error_detail} from "./resources/gateway_error_detail";
 export {_item_family} from "./resources/item_family";
 export {_item} from "./resources/item";
 export {_item_price} from "./resources/item_price";
@@ -204,6 +205,9 @@ export class ChargeBee {
     }
     get payment_intent() {
         return resources.PaymentIntent;
+    }
+    get gateway_error_detail() {
+        return resources.GatewayErrorDetail;
     }
     get item_family() {
         return resources.ItemFamily;

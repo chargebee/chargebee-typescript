@@ -213,8 +213,12 @@ export class GatewayErrorDetail extends Model {
   public decline_code?: string;
   public decline_message?: string;
   public network_error_code?: string;
+  public network_error_message?: string;
   public error_field?: string;
   public recommendation_code?: string;
+  public recommendation_message?: string;
+  public processor_error_code?: string;
+  public processor_error_message?: string;
 } // ~GatewayErrorDetail
 
 

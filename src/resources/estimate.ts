@@ -297,6 +297,7 @@ export namespace _estimate {
     coupon_ids?: Array<string>;
     subscription?: subscription_create_sub_item_for_customer_estimate_params;
     shipping_address?: shipping_address_create_sub_item_for_customer_estimate_params;
+    billing_address?: billing_address_create_sub_item_for_customer_estimate_params;
     contract_term?: contract_term_create_sub_item_for_customer_estimate_params;
     subscription_items?: Array<subscription_items_create_sub_item_for_customer_estimate_params>;
     discounts?: Array<discounts_create_sub_item_for_customer_estimate_params>;
@@ -1000,6 +1001,30 @@ export namespace _estimate {
     country?: string;
   }
   export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    validation_status?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    line1?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    line2?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    line3?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    city?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    state_code?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    zip?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    country?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
     validation_status?: string;
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {

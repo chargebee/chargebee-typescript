@@ -365,6 +365,13 @@ export class Result {
         );
         return _payment_intent;
     }
+    get gateway_error_detail(): resources.GatewayErrorDetail {
+        let _gateway_error_detail = this.get(
+            'gateway_error_detail',
+            'GatewayErrorDetail'
+        );
+        return _gateway_error_detail;
+    }
     get item_family(): resources.ItemFamily {
         let _item_family = this.get(
             'item_family',

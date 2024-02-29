@@ -491,6 +491,7 @@ export class LineItem extends Model {
   public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
+  public usage_percentage?: string;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;
@@ -1884,6 +1885,9 @@ export namespace _invoice {
   }
   export interface transactions_apply_payments_params {
     id?: string;
+  }
+  export interface transactions_apply_payments_params {
+    amount?: number;
   }
   export interface line_items_delete_line_items_params {
     id?: string;

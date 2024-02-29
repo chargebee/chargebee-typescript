@@ -506,6 +506,7 @@ export class SubscriptionItem extends Model {
   public charge_on_event?: string;
   public charge_once?: boolean;
   public charge_on_option?: string;
+  public proration_type?: string;
 } // ~SubscriptionItem
 
 export class ItemTier extends Model {

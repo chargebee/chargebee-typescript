@@ -17,6 +17,7 @@ export class Event extends Model {
   public webhooks?: Array<Webhook>;
   public event_type?: string;
   public api_version?: string;
+  public origin_user?: string;
 
   get content() {
     return new Result(this.values['content']);
