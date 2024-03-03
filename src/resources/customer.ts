@@ -506,6 +506,8 @@ export namespace _customer {
     created_at?: filter._timestamp;
     updated_at?: filter._timestamp;
     business_entity_id?: filter._string;
+    vat_number?: filter._string;
+    vat_number_prefix?: filter._string;
     offline_payment_method?: filter._enum;
     auto_close_invoices?: filter._boolean;
     channel?: filter._enum;
