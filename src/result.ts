@@ -387,6 +387,13 @@ export class Result {
         );
         return _item;
     }
+    get attribute(): resources.Attribute {
+        let _attribute = this.get(
+            'attribute',
+            'Attribute'
+        );
+        return _attribute;
+    }
     get item_price(): resources.ItemPrice {
         let _item_price = this.get(
             'item_price',
@@ -433,6 +440,14 @@ export class Result {
             {'download': 'ImpactedItemDownload'}
         );
         return _impacted_item;
+    }
+    get impacted_item_price(): resources.ImpactedItemPrice {
+        let _impacted_item_price = this.get(
+            'impacted_item_price',
+            'ImpactedItemPrice',
+            {'download': 'ImpactedItemPriceDownload'}
+        );
+        return _impacted_item_price;
     }
     get subscription_entitlement(): resources.SubscriptionEntitlement {
         let _subscription_entitlement = this.get(
@@ -491,6 +506,21 @@ export class Result {
             {'linked_invoices': 'PaymentVoucherLinkedInvoice'}
         );
         return _payment_voucher;
+    }
+    get installment_config(): resources.InstallmentConfig {
+        let _installment_config = this.get(
+            'installment_config',
+            'InstallmentConfig',
+            {'installments': 'InstallmentConfigInstallment'}
+        );
+        return _installment_config;
+    }
+    get installment(): resources.Installment {
+        let _installment = this.get(
+            'installment',
+            'Installment'
+        );
+        return _installment;
     }
 
     get unbilled_charges(): resources.UnbilledCharge[] {

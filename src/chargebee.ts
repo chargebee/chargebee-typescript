@@ -46,12 +46,14 @@ export {_payment_intent} from "./resources/payment_intent";
 export {_gateway_error_detail} from "./resources/gateway_error_detail";
 export {_item_family} from "./resources/item_family";
 export {_item} from "./resources/item";
+export {_attribute} from "./resources/attribute";
 export {_item_price} from "./resources/item_price";
 export {_attached_item} from "./resources/attached_item";
 export {_differential_price} from "./resources/differential_price";
 export {_feature} from "./resources/feature";
 export {_impacted_subscription} from "./resources/impacted_subscription";
 export {_impacted_item} from "./resources/impacted_item";
+export {_impacted_item_price} from "./resources/impacted_item_price";
 export {_subscription_entitlement} from "./resources/subscription_entitlement";
 export {_item_entitlement} from "./resources/item_entitlement";
 export {_entitlement} from "./resources/entitlement";
@@ -60,6 +62,8 @@ export {_non_subscription} from "./resources/non_subscription";
 export {_entitlement_override} from "./resources/entitlement_override";
 export {_purchase} from "./resources/purchase";
 export {_payment_voucher} from "./resources/payment_voucher";
+export {_installment_config} from "./resources/installment_config";
+export {_installment} from "./resources/installment";
 
 interface Conf {
     api_key: string
@@ -215,6 +219,9 @@ export class ChargeBee {
     get item() {
         return resources.Item;
     }
+    get attribute() {
+        return resources.Attribute;
+    }
     get item_price() {
         return resources.ItemPrice;
     }
@@ -232,6 +239,9 @@ export class ChargeBee {
     }
     get impacted_item() {
         return resources.ImpactedItem;
+    }
+    get impacted_item_price() {
+        return resources.ImpactedItemPrice;
     }
     get subscription_entitlement() {
         return resources.SubscriptionEntitlement;
@@ -256,6 +266,12 @@ export class ChargeBee {
     }
     get payment_voucher() {
         return resources.PaymentVoucher;
+    }
+    get installment_config() {
+        return resources.InstallmentConfig;
+    }
+    get installment() {
+        return resources.Installment;
     }
 }
 

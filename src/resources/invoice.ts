@@ -450,6 +450,17 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
+  public static installments(invoice_id: string, params?: _invoice.installments_params):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'installments',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/installments',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static resend_einvoice(invoice_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'resend_einvoice',
@@ -967,6 +978,10 @@ export namespace _invoice {
     billing_address?: billing_address_update_details_params;
     shipping_address?: shipping_address_update_details_params;
     statement_descriptor?: statement_descriptor_update_details_params;
+  }
+  export interface installments_params {
+    config_id: string;
+    amount?: number;
   }
   export interface shipping_address_create_params {
     first_name?: string;

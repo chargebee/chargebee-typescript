@@ -49,12 +49,15 @@ export class Purchase extends Model {
 export namespace _purchase {
   export interface create_params {
     customer_id: string;
+    payment_source_id?: string;
     invoice_info?: invoice_info_create_params;
+    installment_info?: installment_info_create_params;
     purchase_items?: Array<purchase_items_create_params>;
     item_tiers?: Array<item_tiers_create_params>;
     shipping_addresses?: Array<shipping_addresses_create_params>;
     discounts?: Array<discounts_create_params>;
     subscription_info?: Array<subscription_info_create_params>;
+    contract_terms?: Array<contract_terms_create_params>;
   }
   export interface estimate_params {
     client_profile_id?: string;
@@ -66,12 +69,19 @@ export namespace _purchase {
     shipping_addresses?: Array<shipping_addresses_estimate_params>;
     discounts?: Array<discounts_estimate_params>;
     subscription_info?: Array<subscription_info_estimate_params>;
+    contract_terms?: Array<contract_terms_estimate_params>;
   }
   export interface invoice_info_create_params {
     po_number?: string;
   }
   export interface invoice_info_create_params {
     notes?: string;
+  }
+  export interface installment_info_create_params {
+    config_id?: string;
+  }
+  export interface installment_info_create_params {
+    amount?: number;
   }
   export interface purchase_items_create_params {
     index: number;
@@ -180,6 +190,18 @@ export namespace _purchase {
   }
   export interface subscription_info_create_params {
     billing_cycles?: number;
+  }
+  export interface subscription_info_create_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface contract_terms_create_params {
+    index: number;
+  }
+  export interface contract_terms_create_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_terms_create_params {
+    cancellation_cutoff_period?: number;
   }
   export interface subscription_info_create_params {
     meta_data?: any;
@@ -339,5 +361,17 @@ export namespace _purchase {
   }
   export interface subscription_info_estimate_params {
     billing_cycles?: number;
+  }
+  export interface subscription_info_estimate_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface contract_terms_estimate_params {
+    index: number;
+  }
+  export interface contract_terms_estimate_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_terms_estimate_params {
+    cancellation_cutoff_period?: number;
   }
 }
