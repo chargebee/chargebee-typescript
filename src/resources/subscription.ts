@@ -485,6 +485,17 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
+  public static move(subscription_id: string, params?: _subscription.move_params):RequestWrapper {
+    return new RequestWrapper([subscription_id, params], {
+      'methodName': 'move',
+      'httpMethod': 'POST',
+      'urlPrefix': '/subscriptions',
+      'urlSuffix': '/move',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~Subscription
 
 export class SubscriptionItem extends Model {
@@ -1151,6 +1162,10 @@ export namespace _subscription {
     unpaid_invoices_handling?: string;
     payment_initiator?: string;
     payment_intent?: payment_intent_resume_params;
+  }
+  export interface move_params {
+    to_customer_id: string;
+    copy_payment_source?: boolean;
   }
   export interface customer_create_params {
     id?: string;
