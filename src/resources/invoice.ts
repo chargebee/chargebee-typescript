@@ -648,7 +648,6 @@ export class ShippingAddress extends Model {
 export class StatementDescriptor extends Model {
   public id: string;
   public descriptor?: string;
-  public additional_info?: string;
 } // ~StatementDescriptor
 
 export class BillingAddress extends Model {
@@ -847,6 +846,7 @@ export namespace _invoice {
   export interface invoice_list_params {
     limit?: number;
     offset?: string;
+    einvoice?: einvoice_invoice_list_params;
     /**
      * @deprecated Please refer API docs to use other attributes
      */
@@ -873,7 +873,6 @@ export namespace _invoice {
     void_reason_code?: filter._string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
-    einvoice?: einvoice_invoice_list_params;
   }
   export interface pdf_params {
     disposition_type?: string;
@@ -881,8 +880,8 @@ export namespace _invoice {
   export interface invoice_list_payment_reference_numbers_params {
     limit?: number;
     offset?: string;
-    id?: filter._string;
     payment_reference_number?: payment_reference_number_invoice_list_payment_reference_numbers_params;
+    id?: filter._string;
   }
   export interface add_charge_params {
     amount: number;
@@ -1028,9 +1027,6 @@ export namespace _invoice {
   export interface statement_descriptor_create_params {
     descriptor?: string;
   }
-  export interface statement_descriptor_create_params {
-    additional_info?: string;
-  }
   export interface card_create_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -1045,6 +1041,54 @@ export namespace _invoice {
      * @deprecated Please refer API docs to use other attributes
      */
     tmp_token?: string;
+  }
+  export interface card_create_params {
+    first_name?: string;
+  }
+  export interface card_create_params {
+    last_name?: string;
+  }
+  export interface card_create_params {
+    number?: string;
+  }
+  export interface card_create_params {
+    expiry_month?: number;
+  }
+  export interface card_create_params {
+    expiry_year?: number;
+  }
+  export interface card_create_params {
+    cvv?: string;
+  }
+  export interface card_create_params {
+    billing_addr1?: string;
+  }
+  export interface card_create_params {
+    billing_addr2?: string;
+  }
+  export interface card_create_params {
+    billing_city?: string;
+  }
+  export interface card_create_params {
+    billing_state_code?: string;
+  }
+  export interface card_create_params {
+    billing_state?: string;
+  }
+  export interface card_create_params {
+    billing_zip?: string;
+  }
+  export interface card_create_params {
+    billing_country?: string;
+  }
+  export interface card_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    ip_address?: string;
+  }
+  export interface card_create_params {
+    additional_information?: any;
   }
   export interface bank_account_create_params {
     gateway_account_id?: string;
@@ -1119,54 +1163,6 @@ export namespace _invoice {
     issuing_country?: string;
   }
   export interface payment_method_create_params {
-    additional_information?: any;
-  }
-  export interface card_create_params {
-    first_name?: string;
-  }
-  export interface card_create_params {
-    last_name?: string;
-  }
-  export interface card_create_params {
-    number?: string;
-  }
-  export interface card_create_params {
-    expiry_month?: number;
-  }
-  export interface card_create_params {
-    expiry_year?: number;
-  }
-  export interface card_create_params {
-    cvv?: string;
-  }
-  export interface card_create_params {
-    billing_addr1?: string;
-  }
-  export interface card_create_params {
-    billing_addr2?: string;
-  }
-  export interface card_create_params {
-    billing_city?: string;
-  }
-  export interface card_create_params {
-    billing_state_code?: string;
-  }
-  export interface card_create_params {
-    billing_state?: string;
-  }
-  export interface card_create_params {
-    billing_zip?: string;
-  }
-  export interface card_create_params {
-    billing_country?: string;
-  }
-  export interface card_create_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    ip_address?: string;
-  }
-  export interface card_create_params {
     additional_information?: any;
   }
   export interface payment_intent_create_params {
@@ -1304,9 +1300,6 @@ export namespace _invoice {
   export interface statement_descriptor_create_for_charge_items_and_charges_params {
     descriptor?: string;
   }
-  export interface statement_descriptor_create_for_charge_items_and_charges_params {
-    additional_info?: string;
-  }
   export interface card_create_for_charge_items_and_charges_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -1321,6 +1314,54 @@ export namespace _invoice {
      * @deprecated Please refer API docs to use other attributes
      */
     tmp_token?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    first_name?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    last_name?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    number?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    expiry_month?: number;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    expiry_year?: number;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    cvv?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_addr1?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_addr2?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_city?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_state_code?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_state?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_zip?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    billing_country?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    ip_address?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    additional_information?: any;
   }
   export interface bank_account_create_for_charge_items_and_charges_params {
     gateway_account_id?: string;
@@ -1395,54 +1436,6 @@ export namespace _invoice {
     issuing_country?: string;
   }
   export interface payment_method_create_for_charge_items_and_charges_params {
-    additional_information?: any;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    first_name?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    last_name?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    number?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    expiry_month?: number;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    expiry_year?: number;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    cvv?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    billing_addr1?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    billing_addr2?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    billing_city?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    billing_state_code?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    billing_state?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    billing_zip?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    billing_country?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    ip_address?: string;
-  }
-  export interface card_create_for_charge_items_and_charges_params {
     additional_information?: any;
   }
   export interface payment_intent_create_for_charge_items_and_charges_params {
@@ -2134,8 +2127,5 @@ export namespace _invoice {
   }
   export interface statement_descriptor_update_details_params {
     descriptor?: string;
-  }
-  export interface statement_descriptor_update_details_params {
-    additional_info?: string;
   }
 }

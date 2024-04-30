@@ -872,8 +872,8 @@ export namespace _subscription {
     customer?: customer_update_params;
     contract_term?: contract_term_update_params;
     addons?: Array<addons_update_params>;
-    event_based_addons?: Array<event_based_addons_update_params>;
     coupons?: Array<coupons_update_params>;
+    event_based_addons?: Array<event_based_addons_update_params>;
   }
   export interface update_for_items_params {
     mandatory_items_to_remove?: Array<string>;
@@ -1215,6 +1215,36 @@ export namespace _subscription {
   export interface customer_create_params {
     consolidated_invoicing?: boolean;
   }
+  export interface customer_create_params {
+    vat_number?: string;
+  }
+  export interface customer_create_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_create_params {
+    entity_identifier_scheme?: string;
+  }
+  export interface customer_create_params {
+    entity_identifier_standard?: string;
+  }
+  export interface customer_create_params {
+    is_einvoice_enabled?: boolean;
+  }
+  export interface customer_create_params {
+    einvoicing_method?: string;
+  }
+  export interface customer_create_params {
+    registered_for_gst?: boolean;
+  }
+  export interface customer_create_params {
+    business_customer_without_vat_number?: boolean;
+  }
+  export interface customer_create_params {
+    exemption_details?: any;
+  }
+  export interface customer_create_params {
+    customer_type?: string;
+  }
   export interface card_create_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -1229,6 +1259,54 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     tmp_token?: string;
+  }
+  export interface card_create_params {
+    first_name?: string;
+  }
+  export interface card_create_params {
+    last_name?: string;
+  }
+  export interface card_create_params {
+    number?: string;
+  }
+  export interface card_create_params {
+    expiry_month?: number;
+  }
+  export interface card_create_params {
+    expiry_year?: number;
+  }
+  export interface card_create_params {
+    cvv?: string;
+  }
+  export interface card_create_params {
+    billing_addr1?: string;
+  }
+  export interface card_create_params {
+    billing_addr2?: string;
+  }
+  export interface card_create_params {
+    billing_city?: string;
+  }
+  export interface card_create_params {
+    billing_state_code?: string;
+  }
+  export interface card_create_params {
+    billing_state?: string;
+  }
+  export interface card_create_params {
+    billing_zip?: string;
+  }
+  export interface card_create_params {
+    billing_country?: string;
+  }
+  export interface card_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    ip_address?: string;
+  }
+  export interface card_create_params {
+    additional_information?: any;
   }
   export interface bank_account_create_params {
     gateway_account_id?: string;
@@ -1303,54 +1381,6 @@ export namespace _subscription {
     issuing_country?: string;
   }
   export interface payment_method_create_params {
-    additional_information?: any;
-  }
-  export interface card_create_params {
-    first_name?: string;
-  }
-  export interface card_create_params {
-    last_name?: string;
-  }
-  export interface card_create_params {
-    number?: string;
-  }
-  export interface card_create_params {
-    expiry_month?: number;
-  }
-  export interface card_create_params {
-    expiry_year?: number;
-  }
-  export interface card_create_params {
-    cvv?: string;
-  }
-  export interface card_create_params {
-    billing_addr1?: string;
-  }
-  export interface card_create_params {
-    billing_addr2?: string;
-  }
-  export interface card_create_params {
-    billing_city?: string;
-  }
-  export interface card_create_params {
-    billing_state_code?: string;
-  }
-  export interface card_create_params {
-    billing_state?: string;
-  }
-  export interface card_create_params {
-    billing_zip?: string;
-  }
-  export interface card_create_params {
-    billing_country?: string;
-  }
-  export interface card_create_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    ip_address?: string;
-  }
-  export interface card_create_params {
     additional_information?: any;
   }
   export interface payment_intent_create_params {
@@ -1464,44 +1494,11 @@ export namespace _subscription {
   export interface statement_descriptor_create_params {
     descriptor?: string;
   }
-  export interface statement_descriptor_create_params {
-    additional_info?: string;
-  }
-  export interface customer_create_params {
-    vat_number?: string;
-  }
-  export interface customer_create_params {
-    vat_number_prefix?: string;
-  }
-  export interface customer_create_params {
-    entity_identifier_scheme?: string;
-  }
-  export interface customer_create_params {
-    entity_identifier_standard?: string;
-  }
-  export interface customer_create_params {
-    is_einvoice_enabled?: boolean;
-  }
-  export interface customer_create_params {
-    einvoicing_method?: string;
-  }
-  export interface customer_create_params {
-    registered_for_gst?: boolean;
-  }
-  export interface customer_create_params {
-    business_customer_without_vat_number?: boolean;
-  }
   export interface contract_term_create_params {
     action_at_term_end?: string;
   }
   export interface contract_term_create_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface customer_create_params {
-    exemption_details?: any;
-  }
-  export interface customer_create_params {
-    customer_type?: string;
   }
   export interface entity_identifiers_create_params {
     id?: string;
@@ -1620,9 +1617,6 @@ export namespace _subscription {
   export interface statement_descriptor_create_for_customer_params {
     descriptor?: string;
   }
-  export interface statement_descriptor_create_for_customer_params {
-    additional_info?: string;
-  }
   export interface payment_intent_create_for_customer_params {
     id?: string;
   }
@@ -1758,9 +1752,6 @@ export namespace _subscription {
   export interface statement_descriptor_create_with_items_params {
     descriptor?: string;
   }
-  export interface statement_descriptor_create_with_items_params {
-    additional_info?: string;
-  }
   export interface payment_intent_create_with_items_params {
     id?: string;
   }
@@ -1787,6 +1778,12 @@ export namespace _subscription {
   }
   export interface contract_term_create_with_items_params {
     action_at_term_end?: string;
+  }
+  export interface contract_term_create_with_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    contract_start?: number;
   }
   export interface contract_term_create_with_items_params {
     cancellation_cutoff_period?: number;
@@ -1902,30 +1899,6 @@ export namespace _subscription {
      */
     tmp_token?: string;
   }
-  export interface payment_method_update_params {
-    type?: string;
-  }
-  export interface payment_method_update_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    gateway?: string;
-  }
-  export interface payment_method_update_params {
-    gateway_account_id?: string;
-  }
-  export interface payment_method_update_params {
-    reference_id?: string;
-  }
-  export interface payment_method_update_params {
-    tmp_token?: string;
-  }
-  export interface payment_method_update_params {
-    issuing_country?: string;
-  }
-  export interface payment_method_update_params {
-    additional_information?: any;
-  }
   export interface card_update_params {
     first_name?: string;
   }
@@ -1972,6 +1945,30 @@ export namespace _subscription {
     ip_address?: string;
   }
   export interface card_update_params {
+    additional_information?: any;
+  }
+  export interface payment_method_update_params {
+    type?: string;
+  }
+  export interface payment_method_update_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface payment_method_update_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_method_update_params {
+    reference_id?: string;
+  }
+  export interface payment_method_update_params {
+    tmp_token?: string;
+  }
+  export interface payment_method_update_params {
+    issuing_country?: string;
+  }
+  export interface payment_method_update_params {
     additional_information?: any;
   }
   export interface payment_intent_update_params {
@@ -2084,9 +2081,6 @@ export namespace _subscription {
   }
   export interface statement_descriptor_update_params {
     descriptor?: string;
-  }
-  export interface statement_descriptor_update_params {
-    additional_info?: string;
   }
   export interface customer_update_params {
     vat_number?: string;
@@ -2130,6 +2124,30 @@ export namespace _subscription {
   export interface addons_update_params {
     billing_cycles?: number;
   }
+  export interface addons_update_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_update_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_update_params {
+    trial_end?: number;
+  }
+  export interface addons_update_params {
+    proration_type?: string;
+  }
+  export interface coupons_update_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    coupon_id?: string;
+  }
+  export interface coupons_update_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    apply_till?: number;
+  }
   export interface event_based_addons_update_params {
     id?: string;
   }
@@ -2151,35 +2169,11 @@ export namespace _subscription {
   export interface event_based_addons_update_params {
     charge_once?: boolean;
   }
-  export interface addons_update_params {
-    quantity_in_decimal?: string;
-  }
-  export interface addons_update_params {
-    unit_price_in_decimal?: string;
-  }
   export interface event_based_addons_update_params {
     quantity_in_decimal?: string;
   }
   export interface event_based_addons_update_params {
     unit_price_in_decimal?: string;
-  }
-  export interface addons_update_params {
-    trial_end?: number;
-  }
-  export interface addons_update_params {
-    proration_type?: string;
-  }
-  export interface coupons_update_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    coupon_id?: string;
-  }
-  export interface coupons_update_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    apply_till?: number;
   }
   export interface card_update_for_items_params {
     /**
@@ -2195,30 +2189,6 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     tmp_token?: string;
-  }
-  export interface payment_method_update_for_items_params {
-    type?: string;
-  }
-  export interface payment_method_update_for_items_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    gateway?: string;
-  }
-  export interface payment_method_update_for_items_params {
-    gateway_account_id?: string;
-  }
-  export interface payment_method_update_for_items_params {
-    reference_id?: string;
-  }
-  export interface payment_method_update_for_items_params {
-    tmp_token?: string;
-  }
-  export interface payment_method_update_for_items_params {
-    issuing_country?: string;
-  }
-  export interface payment_method_update_for_items_params {
-    additional_information?: any;
   }
   export interface card_update_for_items_params {
     first_name?: string;
@@ -2266,6 +2236,30 @@ export namespace _subscription {
     ip_address?: string;
   }
   export interface card_update_for_items_params {
+    additional_information?: any;
+  }
+  export interface payment_method_update_for_items_params {
+    type?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    reference_id?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    tmp_token?: string;
+  }
+  export interface payment_method_update_for_items_params {
+    issuing_country?: string;
+  }
+  export interface payment_method_update_for_items_params {
     additional_information?: any;
   }
   export interface payment_intent_update_for_items_params {
@@ -2379,9 +2373,6 @@ export namespace _subscription {
   export interface statement_descriptor_update_for_items_params {
     descriptor?: string;
   }
-  export interface statement_descriptor_update_for_items_params {
-    additional_info?: string;
-  }
   export interface customer_update_for_items_params {
     vat_number?: string;
   }
@@ -2411,6 +2402,12 @@ export namespace _subscription {
   }
   export interface contract_term_update_for_items_params {
     cancellation_cutoff_period?: number;
+  }
+  export interface contract_term_update_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    contract_start?: number;
   }
   export interface subscription_items_update_for_items_params {
     item_price_id: string;
@@ -2526,9 +2523,6 @@ export namespace _subscription {
   export interface statement_descriptor_reactivate_params {
     descriptor?: string;
   }
-  export interface statement_descriptor_reactivate_params {
-    additional_info?: string;
-  }
   export interface payment_intent_reactivate_params {
     id?: string;
   }
@@ -2640,6 +2634,12 @@ export namespace _subscription {
   export interface customer_import_subscription_params {
     allow_direct_debit?: boolean;
   }
+  export interface customer_import_subscription_params {
+    vat_number?: string;
+  }
+  export interface customer_import_subscription_params {
+    vat_number_prefix?: string;
+  }
   export interface contract_term_import_subscription_params {
     id?: string;
   }
@@ -2678,27 +2678,6 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     tmp_token?: string;
-  }
-  export interface payment_method_import_subscription_params {
-    type?: string;
-  }
-  export interface payment_method_import_subscription_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    gateway?: string;
-  }
-  export interface payment_method_import_subscription_params {
-    gateway_account_id?: string;
-  }
-  export interface payment_method_import_subscription_params {
-    reference_id?: string;
-  }
-  export interface payment_method_import_subscription_params {
-    issuing_country?: string;
-  }
-  export interface payment_method_import_subscription_params {
-    additional_information?: any;
   }
   export interface card_import_subscription_params {
     first_name?: string;
@@ -2742,6 +2721,27 @@ export namespace _subscription {
   export interface card_import_subscription_params {
     additional_information?: any;
   }
+  export interface payment_method_import_subscription_params {
+    type?: string;
+  }
+  export interface payment_method_import_subscription_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface payment_method_import_subscription_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_method_import_subscription_params {
+    reference_id?: string;
+  }
+  export interface payment_method_import_subscription_params {
+    issuing_country?: string;
+  }
+  export interface payment_method_import_subscription_params {
+    additional_information?: any;
+  }
   export interface billing_address_import_subscription_params {
     first_name?: string;
   }
@@ -2825,12 +2825,6 @@ export namespace _subscription {
   }
   export interface shipping_address_import_subscription_params {
     validation_status?: string;
-  }
-  export interface customer_import_subscription_params {
-    vat_number?: string;
-  }
-  export interface customer_import_subscription_params {
-    vat_number_prefix?: string;
   }
   export interface transaction_import_subscription_params {
     amount?: number;

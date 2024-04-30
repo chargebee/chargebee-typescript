@@ -12,6 +12,7 @@ export class InstallmentConfig extends Model {
   public period?: number;
   public preferred_day?: number;
   public created_at: number;
+  public resource_version?: number;
   public updated_at?: number;
   public installments?: Array<Installment>;
 

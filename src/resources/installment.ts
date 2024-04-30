@@ -12,6 +12,7 @@ export class Installment extends Model {
   public amount: number;
   public status: string;
   public created_at: number;
+  public resource_version?: number;
   public updated_at?: number;
 
   

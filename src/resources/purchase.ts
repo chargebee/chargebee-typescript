@@ -215,6 +215,21 @@ export namespace _purchase {
   export interface customer_estimate_params {
     registered_for_gst?: boolean;
   }
+  export interface customer_estimate_params {
+    taxability?: string;
+  }
+  export interface customer_estimate_params {
+    entity_code?: string;
+  }
+  export interface customer_estimate_params {
+    exempt_number?: string;
+  }
+  export interface customer_estimate_params {
+    exemption_details?: any;
+  }
+  export interface customer_estimate_params {
+    customer_type?: string;
+  }
   export interface billing_address_estimate_params {
     line1?: string;
   }
@@ -238,21 +253,6 @@ export namespace _purchase {
   }
   export interface billing_address_estimate_params {
     validation_status?: string;
-  }
-  export interface customer_estimate_params {
-    taxability?: string;
-  }
-  export interface customer_estimate_params {
-    entity_code?: string;
-  }
-  export interface customer_estimate_params {
-    exempt_number?: string;
-  }
-  export interface customer_estimate_params {
-    exemption_details?: any;
-  }
-  export interface customer_estimate_params {
-    customer_type?: string;
   }
   export interface purchase_items_estimate_params {
     index: number;

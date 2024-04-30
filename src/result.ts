@@ -40,7 +40,7 @@ export class Result {
         let _customer = this.get(
             'customer',
             'Customer',
-            {'billing_address': 'CustomerBillingAddress', 'referral_urls': 'CustomerReferralUrl', 'contacts': 'CustomerContact', 'payment_method': 'CustomerPaymentMethod', 'balances': 'CustomerBalance', 'entity_identifiers': 'CustomerEntityIdentifier', 'relationship': 'CustomerRelationship', 'parent_account_access': 'CustomerParentAccountAccess', 'child_account_access': 'CustomerChildAccountAccess'}
+            {'billing_address': 'CustomerBillingAddress', 'referral_urls': 'CustomerReferralUrl', 'contacts': 'CustomerContact', 'payment_method': 'CustomerPaymentMethod', 'balances': 'CustomerBalance', 'entity_identifiers': 'CustomerEntityIdentifier', 'tax_providers_fields': 'CustomerTaxProvidersField', 'relationship': 'CustomerRelationship', 'parent_account_access': 'CustomerParentAccountAccess', 'child_account_access': 'CustomerChildAccountAccess'}
         );
         return _customer;
     }
@@ -69,7 +69,7 @@ export class Result {
         let _payment_source = this.get(
             'payment_source',
             'PaymentSource',
-            {'card': 'PaymentSourceCard', 'bank_account': 'PaymentSourceBankAccount', 'cust_voucher_source': 'PaymentSourceCustVoucherSource', 'billing_address': 'PaymentSourceBillingAddress', 'amazon_payment': 'PaymentSourceAmazonPayment', 'upi': 'PaymentSourceUpi', 'paypal': 'PaymentSourcePaypal', 'venmo': 'PaymentSourceVenmo', 'mandates': 'PaymentSourceMandate'}
+            {'card': 'PaymentSourceCard', 'bank_account': 'PaymentSourceBankAccount', 'cust_voucher_source': 'PaymentSourceCustVoucherSource', 'billing_address': 'PaymentSourceBillingAddress', 'amazon_payment': 'PaymentSourceAmazonPayment', 'upi': 'PaymentSourceUpi', 'paypal': 'PaymentSourcePaypal', 'venmo': 'PaymentSourceVenmo', 'klarna_pay_now': 'PaymentSourceKlarnaPayNow', 'mandates': 'PaymentSourceMandate'}
         );
         return _payment_source;
     }
@@ -250,7 +250,7 @@ export class Result {
         let _plan = this.get(
             'plan',
             'Plan',
-            {'tiers': 'PlanTier', 'applicable_addons': 'PlanApplicableAddon', 'attached_addons': 'PlanAttachedAddon', 'event_based_addons': 'PlanEventBasedAddon'}
+            {'tiers': 'PlanTier', 'tax_providers_fields': 'PlanTaxProvidersField', 'applicable_addons': 'PlanApplicableAddon', 'attached_addons': 'PlanAttachedAddon', 'event_based_addons': 'PlanEventBasedAddon'}
         );
         return _plan;
     }
@@ -258,7 +258,7 @@ export class Result {
         let _addon = this.get(
             'addon',
             'Addon',
-            {'tiers': 'AddonTier'}
+            {'tiers': 'AddonTier', 'tax_providers_fields': 'AddonTaxProvidersField'}
         );
         return _addon;
     }
@@ -387,6 +387,14 @@ export class Result {
         );
         return _item;
     }
+    get price_variant(): resources.PriceVariant {
+        let _price_variant = this.get(
+            'price_variant',
+            'PriceVariant',
+            {'attributes': 'PriceVariantAttribute'}
+        );
+        return _price_variant;
+    }
     get attribute(): resources.Attribute {
         let _attribute = this.get(
             'attribute',
@@ -398,7 +406,7 @@ export class Result {
         let _item_price = this.get(
             'item_price',
             'ItemPrice',
-            {'tiers': 'ItemPriceTier', 'tax_detail': 'ItemPriceTaxDetail', 'accounting_detail': 'ItemPriceAccountingDetail'}
+            {'tiers': 'ItemPriceTier', 'tax_detail': 'ItemPriceTaxDetail', 'tax_providers_fields': 'ItemPriceTaxProvidersField', 'accounting_detail': 'ItemPriceAccountingDetail'}
         );
         return _item_price;
     }
@@ -507,6 +515,14 @@ export class Result {
         );
         return _payment_voucher;
     }
+    get ramp(): resources.Ramp {
+        let _ramp = this.get(
+            'ramp',
+            'Ramp',
+            {'items_to_add': 'RampItemsToAdd', 'items_to_update': 'RampItemsToUpdate', 'coupons_to_add': 'RampCouponsToAdd', 'discounts_to_add': 'RampDiscountsToAdd', 'item_tiers': 'RampItemTier'}
+        );
+        return _ramp;
+    }
     get installment_config(): resources.InstallmentConfig {
         let _installment_config = this.get(
             'installment_config',
@@ -522,23 +538,22 @@ export class Result {
         );
         return _installment;
     }
+    get installment_detail(): resources.InstallmentDetail {
+        let _installment_detail = this.get(
+            'installment_detail',
+            'InstallmentDetail',
+            {'installments': 'InstallmentDetailInstallment'}
+        );
+        return _installment_detail;
+    }
+    get session(): resources.Session {
+        let _session = this.get(
+            'session',
+            'Session'
+        );
+        return _session;
+    }
 
-    get unbilled_charges(): resources.UnbilledCharge[] {
-        let _unbilled_charges = this.get_list(
-            'unbilled_charges',
-            'UnbilledCharge',
-            {'tiers': 'UnbilledChargeTier'}
-        );
-        return _unbilled_charges;
-    }
-    get credit_notes(): resources.CreditNote[] {
-        let _credit_notes = this.get_list(
-            'credit_notes',
-            'CreditNote',
-            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress'}
-        );
-        return _credit_notes;
-    }
     get advance_invoice_schedules(): resources.AdvanceInvoiceSchedule[] {
         let _advance_invoice_schedules = this.get_list(
             'advance_invoice_schedules',
@@ -555,14 +570,6 @@ export class Result {
         );
         return _hierarchies;
     }
-    get downloads(): resources.Download[] {
-        let _downloads = this.get_list(
-            'downloads',
-            'Download',
-            {}
-        );
-        return _downloads;
-    }
     get invoices(): resources.Invoice[] {
         let _invoices = this.get_list(
             'invoices',
@@ -571,13 +578,29 @@ export class Result {
         );
         return _invoices;
     }
-    get differential_prices(): resources.DifferentialPrice[] {
-        let _differential_prices = this.get_list(
-            'differential_prices',
-            'DifferentialPrice',
-            {'tiers': 'DifferentialPriceTier', 'parent_periods': 'DifferentialPriceParentPeriod'}
+    get credit_notes(): resources.CreditNote[] {
+        let _credit_notes = this.get_list(
+            'credit_notes',
+            'CreditNote',
+            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress'}
         );
-        return _differential_prices;
+        return _credit_notes;
+    }
+    get unbilled_charges(): resources.UnbilledCharge[] {
+        let _unbilled_charges = this.get_list(
+            'unbilled_charges',
+            'UnbilledCharge',
+            {'tiers': 'UnbilledChargeTier'}
+        );
+        return _unbilled_charges;
+    }
+    get downloads(): resources.Download[] {
+        let _downloads = this.get_list(
+            'downloads',
+            'Download',
+            {}
+        );
+        return _downloads;
     }
     get in_app_subscriptions(): resources.InAppSubscription[] {
         let _in_app_subscriptions = this.get_list(
@@ -588,7 +611,15 @@ export class Result {
         return _in_app_subscriptions;
     }
 
-    get response() {
+    get differential_prices(): resources.DifferentialPrice[] {
+        let _differential_prices = this.get_list(
+            'differential_prices',
+            'DifferentialPrice',
+            {'tiers': 'DifferentialPriceTier', 'parent_periods': 'DifferentialPriceParentPeriod'});
+        return _differential_prices;
+    }
+
+        get response() {
         return this.#_response;
     }
 

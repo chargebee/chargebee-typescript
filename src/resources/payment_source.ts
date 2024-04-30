@@ -26,6 +26,7 @@ export class PaymentSource extends Model {
   public upi?: Upi;
   public paypal?: Paypal;
   public venmo?: Venmo;
+  public klarna_pay_now?: KlarnaPayNow;
   public mandates?: Array<Mandate>;
   public deleted: boolean;
   public business_entity_id?: string;
@@ -287,6 +288,10 @@ export class Paypal extends Model {
 export class Venmo extends Model {
   public user_name?: string;
 } // ~Venmo
+
+export class KlarnaPayNow extends Model {
+  public email?: string;
+} // ~KlarnaPayNow
 
 export class Mandate extends Model {
   public id: string;

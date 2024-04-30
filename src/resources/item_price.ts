@@ -13,6 +13,7 @@ export class ItemPrice extends Model {
   public description?: string;
   public status?: string;
   public external_name?: string;
+  public price_variant_id?: string;
   public proration_type?: string;
   public pricing_model: string;
   public price?: number;
@@ -37,6 +38,7 @@ export class ItemPrice extends Model {
   public tiers?: Array<Tier>;
   public is_taxable?: boolean;
   public tax_detail?: TaxDetail;
+  public tax_providers_fields?: Array<TaxProvidersField>;
   public accounting_detail?: AccountingDetail;
   public metadata?: any;
   public item_type?: string;
@@ -148,6 +150,12 @@ export class TaxDetail extends Model {
   public taxjar_product_code?: string;
 } // ~TaxDetail
 
+export class TaxProvidersField extends Model {
+  public provider_name: string;
+  public field_id: string;
+  public field_value: string;
+} // ~TaxProvidersField
+
 export class AccountingDetail extends Model {
   public sku?: string;
   public accounting_code?: string;
@@ -172,6 +180,7 @@ export namespace _item_price {
     proration_type?: string;
     external_name?: string;
     currency_code?: string;
+    price_variant_id?: string;
     is_taxable?: boolean;
     free_quantity?: number;
     free_quantity_in_decimal?: string;
@@ -197,6 +206,7 @@ export namespace _item_price {
     name?: string;
     description?: string;
     proration_type?: string;
+    price_variant_id?: string;
     status?: string;
     external_name?: string;
     currency_code?: string;
@@ -232,6 +242,7 @@ export namespace _item_price {
     item_family_id?: filter._string;
     item_type?: filter._enum;
     currency_code?: filter._string;
+    price_variant_id?: filter._string;
     trial_period?: filter._number;
     trial_period_unit?: filter._enum;
     status?: filter._enum;

@@ -156,9 +156,9 @@ export namespace _gift {
   export interface gift_list_params {
     limit?: number;
     offset?: string;
-    status?: filter._enum;
     gift_receiver?: gift_receiver_gift_list_params;
     gifter?: gifter_gift_list_params;
+    status?: filter._enum;
   }
   export interface update_gift_params {
     scheduled_at: number;
@@ -374,10 +374,10 @@ export namespace _gift {
   export interface gift_receiver_gift_list_params {
     email?: filter._string;
   }
-  export interface gifter_gift_list_params {
+  export interface gift_receiver_gift_list_params {
     customer_id?: filter._string;
   }
-  export interface gift_receiver_gift_list_params {
+  export interface gifter_gift_list_params {
     customer_id?: filter._string;
   }
 }

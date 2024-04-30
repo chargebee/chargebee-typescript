@@ -47,6 +47,7 @@ export class Addon extends Model {
   public tax_profile_id?: string;
   public meta_data?: any;
   public tiers?: Array<Tier>;
+  public tax_providers_fields?: Array<TaxProvidersField>;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
 
@@ -142,6 +143,12 @@ export class Tier extends Model {
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
 } // ~Tier
+
+export class TaxProvidersField extends Model {
+  public provider_name: string;
+  public field_id: string;
+  public field_value: string;
+} // ~TaxProvidersField
 
 
 

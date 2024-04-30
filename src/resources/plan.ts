@@ -56,6 +56,7 @@ export class Plan extends Model {
   public tax_profile_id?: string;
   public meta_data?: any;
   public tiers?: Array<Tier>;
+  public tax_providers_fields?: Array<TaxProvidersField>;
   public applicable_addons?: Array<ApplicableAddon>;
   public attached_addons?: Array<AttachedAddon>;
   public event_based_addons?: Array<EventBasedAddon>;
@@ -154,6 +155,12 @@ export class Tier extends Model {
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
 } // ~Tier
+
+export class TaxProvidersField extends Model {
+  public provider_name: string;
+  public field_id: string;
+  public field_value: string;
+} // ~TaxProvidersField
 
 export class ApplicableAddon extends Model {
   public id: string;
@@ -292,8 +299,8 @@ export namespace _plan {
     show_description_in_quotes?: boolean;
     tiers?: Array<tiers_update_params>;
     applicable_addons?: Array<applicable_addons_update_params>;
-    event_based_addons?: Array<event_based_addons_update_params>;
     attached_addons?: Array<attached_addons_update_params>;
+    event_based_addons?: Array<event_based_addons_update_params>;
   }
   export interface plan_list_params {
     limit?: number;
@@ -396,21 +403,6 @@ export namespace _plan {
   export interface applicable_addons_update_params {
     id?: string;
   }
-  export interface event_based_addons_update_params {
-    id?: string;
-  }
-  export interface event_based_addons_update_params {
-    quantity?: number;
-  }
-  export interface event_based_addons_update_params {
-    quantity_in_decimal?: string;
-  }
-  export interface event_based_addons_update_params {
-    on_event?: string;
-  }
-  export interface event_based_addons_update_params {
-    charge_once?: boolean;
-  }
   export interface attached_addons_update_params {
     id?: string;
   }
@@ -425,5 +417,20 @@ export namespace _plan {
   }
   export interface attached_addons_update_params {
     type?: string;
+  }
+  export interface event_based_addons_update_params {
+    id?: string;
+  }
+  export interface event_based_addons_update_params {
+    quantity?: number;
+  }
+  export interface event_based_addons_update_params {
+    quantity_in_decimal?: string;
+  }
+  export interface event_based_addons_update_params {
+    on_event?: string;
+  }
+  export interface event_based_addons_update_params {
+    charge_once?: boolean;
   }
 }

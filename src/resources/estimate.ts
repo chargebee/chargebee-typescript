@@ -304,6 +304,8 @@ export namespace _estimate {
     item_tiers?: Array<item_tiers_create_sub_item_for_customer_estimate_params>;
   }
   export interface update_subscription_params {
+    changes_scheduled_at?: number;
+    change_option?: string;
     replace_addon_list?: boolean;
     mandatory_addons_to_remove?: Array<string>;
     invoice_date?: number;
@@ -328,6 +330,8 @@ export namespace _estimate {
     event_based_addons?: Array<event_based_addons_update_subscription_params>;
   }
   export interface update_subscription_for_items_params {
+    changes_scheduled_at?: number;
+    change_option?: string;
     mandatory_items_to_remove?: Array<string>;
     replace_items_list?: boolean;
     invoice_date?: number;
@@ -505,6 +509,18 @@ export namespace _estimate {
   export interface subscription_create_subscription_params {
     offline_payment_method?: string;
   }
+  export interface subscription_create_subscription_params {
+    free_period?: number;
+  }
+  export interface subscription_create_subscription_params {
+    free_period_unit?: string;
+  }
+  export interface subscription_create_subscription_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface subscription_create_subscription_params {
+    trial_end_action?: string;
+  }
   export interface billing_address_create_subscription_params {
     line1?: string;
   }
@@ -571,29 +587,17 @@ export namespace _estimate {
   export interface customer_create_subscription_params {
     exempt_number?: string;
   }
-  export interface subscription_create_subscription_params {
-    free_period?: number;
+  export interface customer_create_subscription_params {
+    exemption_details?: any;
   }
-  export interface subscription_create_subscription_params {
-    free_period_unit?: string;
+  export interface customer_create_subscription_params {
+    customer_type?: string;
   }
   export interface contract_term_create_subscription_params {
     action_at_term_end?: string;
   }
   export interface contract_term_create_subscription_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_create_subscription_params {
-    contract_term_billing_cycle_on_renewal?: number;
-  }
-  export interface subscription_create_subscription_params {
-    trial_end_action?: string;
-  }
-  export interface customer_create_subscription_params {
-    exemption_details?: any;
-  }
-  export interface customer_create_subscription_params {
-    customer_type?: string;
   }
   export interface addons_create_subscription_params {
     id?: string;
@@ -664,8 +668,20 @@ export namespace _estimate {
      */
     coupon?: string;
   }
+    export interface subscription_create_sub_item_estimate_params {
+        offline_payment_method?: string;
+    }
   export interface subscription_create_sub_item_estimate_params {
-    offline_payment_method?: string;
+    free_period?: number;
+  }
+  export interface subscription_create_sub_item_estimate_params {
+    free_period_unit?: string;
+  }
+  export interface subscription_create_sub_item_estimate_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface subscription_create_sub_item_estimate_params {
+    trial_end_action?: string;
   }
   export interface billing_address_create_sub_item_estimate_params {
     line1?: string;
@@ -733,12 +749,6 @@ export namespace _estimate {
   export interface customer_create_sub_item_estimate_params {
     exempt_number?: string;
   }
-  export interface subscription_create_sub_item_estimate_params {
-    free_period?: number;
-  }
-  export interface subscription_create_sub_item_estimate_params {
-    free_period_unit?: string;
-  }
   export interface customer_create_sub_item_estimate_params {
     exemption_details?: any;
   }
@@ -749,13 +759,13 @@ export namespace _estimate {
     action_at_term_end?: string;
   }
   export interface contract_term_create_sub_item_estimate_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    contract_start?: number;
+  }
+  export interface contract_term_create_sub_item_estimate_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_create_sub_item_estimate_params {
-    contract_term_billing_cycle_on_renewal?: number;
-  }
-  export interface subscription_create_sub_item_estimate_params {
-    trial_end_action?: string;
   }
   export interface subscription_items_create_sub_item_estimate_params {
     item_price_id: string;
@@ -977,73 +987,76 @@ export namespace _estimate {
     start_date?: number;
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
-    offline_payment_method?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    line1?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    line2?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    line3?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    city?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    state_code?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    zip?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    country?: string;
-  }
-  export interface shipping_address_create_sub_item_for_customer_estimate_params {
-    validation_status?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    line1?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    line2?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    line3?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    city?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    state_code?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    zip?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    country?: string;
-  }
-  export interface billing_address_create_sub_item_for_customer_estimate_params {
-    validation_status?: string;
-  }
-  export interface subscription_create_sub_item_for_customer_estimate_params {
     free_period?: number;
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
     free_period_unit?: string;
-  }
-  export interface contract_term_create_sub_item_for_customer_estimate_params {
-    action_at_term_end?: string;
-  }
-  export interface contract_term_create_sub_item_for_customer_estimate_params {
-    cancellation_cutoff_period?: number;
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
     contract_term_billing_cycle_on_renewal?: number;
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
     trial_end_action?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    line1?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    line2?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    line3?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    city?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    state_code?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    zip?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    country?: string;
+  }
+  export interface shipping_address_create_sub_item_for_customer_estimate_params {
+    validation_status?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    line1?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    line2?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    line3?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    city?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    state_code?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    zip?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    country?: string;
+  }
+  export interface billing_address_create_sub_item_for_customer_estimate_params {
+    validation_status?: string;
+  }
+  export interface contract_term_create_sub_item_for_customer_estimate_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_create_sub_item_for_customer_estimate_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    contract_start?: number;
+  }
+  export interface contract_term_create_sub_item_for_customer_estimate_params {
+    cancellation_cutoff_period?: number;
   }
   export interface subscription_items_create_sub_item_for_customer_estimate_params {
     item_price_id: string;
@@ -1168,6 +1181,15 @@ export namespace _estimate {
   export interface subscription_update_subscription_params {
     offline_payment_method?: string;
   }
+  export interface subscription_update_subscription_params {
+    free_period?: number;
+  }
+  export interface subscription_update_subscription_params {
+    free_period_unit?: string;
+  }
+  export interface subscription_update_subscription_params {
+    trial_end_action?: string;
+  }
   export interface billing_address_update_subscription_params {
     line1?: string;
   }
@@ -1225,20 +1247,11 @@ export namespace _estimate {
   export interface customer_update_subscription_params {
     registered_for_gst?: boolean;
   }
-  export interface subscription_update_subscription_params {
-    free_period?: number;
-  }
-  export interface subscription_update_subscription_params {
-    free_period_unit?: string;
-  }
   export interface customer_update_subscription_params {
     /**
      * @deprecated Please refer API docs to use other attributes
      */
     taxability?: string;
-  }
-  export interface subscription_update_subscription_params {
-    trial_end_action?: string;
   }
   export interface addons_update_subscription_params {
     id?: string;
@@ -1251,6 +1264,18 @@ export namespace _estimate {
   }
   export interface addons_update_subscription_params {
     billing_cycles?: number;
+  }
+  export interface addons_update_subscription_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_update_subscription_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_update_subscription_params {
+    trial_end?: number;
+  }
+  export interface addons_update_subscription_params {
+    proration_type?: string;
   }
   export interface event_based_addons_update_subscription_params {
     id?: string;
@@ -1273,23 +1298,11 @@ export namespace _estimate {
   export interface event_based_addons_update_subscription_params {
     charge_once?: boolean;
   }
-  export interface addons_update_subscription_params {
-    quantity_in_decimal?: string;
-  }
-  export interface addons_update_subscription_params {
-    unit_price_in_decimal?: string;
-  }
   export interface event_based_addons_update_subscription_params {
     quantity_in_decimal?: string;
   }
   export interface event_based_addons_update_subscription_params {
     unit_price_in_decimal?: string;
-  }
-  export interface addons_update_subscription_params {
-    trial_end?: number;
-  }
-  export interface addons_update_subscription_params {
-    proration_type?: string;
   }
   export interface subscription_update_subscription_for_items_params {
     id: string;
@@ -1318,6 +1331,15 @@ export namespace _estimate {
   export interface subscription_update_subscription_for_items_params {
     offline_payment_method?: string;
   }
+  export interface subscription_update_subscription_for_items_params {
+    free_period?: number;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    free_period_unit?: string;
+  }
+  export interface subscription_update_subscription_for_items_params {
+    trial_end_action?: string;
+  }
   export interface billing_address_update_subscription_for_items_params {
     line1?: string;
   }
@@ -1375,20 +1397,11 @@ export namespace _estimate {
   export interface customer_update_subscription_for_items_params {
     registered_for_gst?: boolean;
   }
-  export interface subscription_update_subscription_for_items_params {
-    free_period?: number;
-  }
-  export interface subscription_update_subscription_for_items_params {
-    free_period_unit?: string;
-  }
   export interface customer_update_subscription_for_items_params {
     /**
      * @deprecated Please refer API docs to use other attributes
      */
     taxability?: string;
-  }
-  export interface subscription_update_subscription_for_items_params {
-    trial_end_action?: string;
   }
   export interface subscription_items_update_subscription_for_items_params {
     item_price_id: string;

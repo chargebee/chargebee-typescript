@@ -666,6 +666,9 @@ export namespace _quote {
   export interface subscription_create_sub_for_customer_quote_params {
     offline_payment_method?: string;
   }
+  export interface subscription_create_sub_for_customer_quote_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface shipping_address_create_sub_for_customer_quote_params {
     first_name?: string;
   }
@@ -713,9 +716,6 @@ export namespace _quote {
   }
   export interface contract_term_create_sub_for_customer_quote_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_create_sub_for_customer_quote_params {
-    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface addons_create_sub_for_customer_quote_params {
     id?: string;
@@ -798,57 +798,57 @@ export namespace _quote {
   export interface subscription_edit_create_sub_for_customer_quote_params {
     offline_payment_method?: string;
   }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    first_name?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    last_name?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    email?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    company?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    phone?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    line1?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    line2?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    line3?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    city?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    state_code?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    state?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    zip?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    country?: string;
-  }
-  export interface shipping_address_edit_create_sub_for_customer_quote_params {
-    validation_status?: string;
-  }
-  export interface contract_term_edit_create_sub_for_customer_quote_params {
-    action_at_term_end?: string;
-  }
-  export interface contract_term_edit_create_sub_for_customer_quote_params {
-    cancellation_cutoff_period?: number;
-  }
   export interface subscription_edit_create_sub_for_customer_quote_params {
     contract_term_billing_cycle_on_renewal?: number;
   }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    first_name?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    last_name?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    email?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    company?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    phone?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    line1?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    line2?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    line3?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    city?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    state_code?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    state?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    zip?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    country?: string;
+  }
+  export interface shipping_address_edit_create_sub_for_customer_quote_params {
+    validation_status?: string;
+  }
+  export interface contract_term_edit_create_sub_for_customer_quote_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_edit_create_sub_for_customer_quote_params {
+    cancellation_cutoff_period?: number;
+  }
   export interface addons_edit_create_sub_for_customer_quote_params {
     id?: string;
   }
@@ -936,6 +936,9 @@ export namespace _quote {
   export interface subscription_update_subscription_quote_params {
     offline_payment_method?: string;
   }
+  export interface subscription_update_subscription_quote_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface billing_address_update_subscription_quote_params {
     first_name?: string;
   }
@@ -1035,9 +1038,6 @@ export namespace _quote {
   export interface contract_term_update_subscription_quote_params {
     cancellation_cutoff_period?: number;
   }
-  export interface subscription_update_subscription_quote_params {
-    contract_term_billing_cycle_on_renewal?: number;
-  }
   export interface addons_update_subscription_quote_params {
     id?: string;
   }
@@ -1049,6 +1049,15 @@ export namespace _quote {
   }
   export interface addons_update_subscription_quote_params {
     billing_cycles?: number;
+  }
+  export interface addons_update_subscription_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_update_subscription_quote_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_update_subscription_quote_params {
+    trial_end?: number;
   }
   export interface event_based_addons_update_subscription_quote_params {
     id?: string;
@@ -1071,20 +1080,11 @@ export namespace _quote {
   export interface event_based_addons_update_subscription_quote_params {
     charge_once?: boolean;
   }
-  export interface addons_update_subscription_quote_params {
-    quantity_in_decimal?: string;
-  }
-  export interface addons_update_subscription_quote_params {
-    unit_price_in_decimal?: string;
-  }
   export interface event_based_addons_update_subscription_quote_params {
     quantity_in_decimal?: string;
   }
   export interface event_based_addons_update_subscription_quote_params {
     unit_price_in_decimal?: string;
-  }
-  export interface addons_update_subscription_quote_params {
-    trial_end?: number;
   }
   export interface subscription_edit_update_subscription_quote_params {
     plan_id?: string;
@@ -1122,6 +1122,9 @@ export namespace _quote {
   export interface subscription_edit_update_subscription_quote_params {
     offline_payment_method?: string;
   }
+  export interface subscription_edit_update_subscription_quote_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface billing_address_edit_update_subscription_quote_params {
     first_name?: string;
   }
@@ -1221,9 +1224,6 @@ export namespace _quote {
   export interface contract_term_edit_update_subscription_quote_params {
     cancellation_cutoff_period?: number;
   }
-  export interface subscription_edit_update_subscription_quote_params {
-    contract_term_billing_cycle_on_renewal?: number;
-  }
   export interface addons_edit_update_subscription_quote_params {
     id?: string;
   }
@@ -1235,6 +1235,15 @@ export namespace _quote {
   }
   export interface addons_edit_update_subscription_quote_params {
     billing_cycles?: number;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface addons_edit_update_subscription_quote_params {
+    trial_end?: number;
   }
   export interface event_based_addons_edit_update_subscription_quote_params {
     id?: string;
@@ -1257,20 +1266,11 @@ export namespace _quote {
   export interface event_based_addons_edit_update_subscription_quote_params {
     charge_once?: boolean;
   }
-  export interface addons_edit_update_subscription_quote_params {
-    quantity_in_decimal?: string;
-  }
-  export interface addons_edit_update_subscription_quote_params {
-    unit_price_in_decimal?: string;
-  }
   export interface event_based_addons_edit_update_subscription_quote_params {
     quantity_in_decimal?: string;
   }
   export interface event_based_addons_edit_update_subscription_quote_params {
     unit_price_in_decimal?: string;
-  }
-  export interface addons_edit_update_subscription_quote_params {
-    trial_end?: number;
   }
   export interface shipping_address_create_for_onetime_charges_params {
     first_name?: string;
@@ -1454,6 +1454,7 @@ export namespace _quote {
   }
   export interface subscription_create_sub_items_for_customer_quote_params {
     offline_payment_method?: string;
+    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface shipping_address_create_sub_items_for_customer_quote_params {
     first_name?: string;
@@ -1502,9 +1503,6 @@ export namespace _quote {
   }
   export interface contract_term_create_sub_items_for_customer_quote_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_create_sub_items_for_customer_quote_params {
-    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface subscription_items_create_sub_items_for_customer_quote_params {
     item_price_id: string;
@@ -1610,6 +1608,7 @@ export namespace _quote {
   }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
     offline_payment_method?: string;
+    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface shipping_address_edit_create_sub_customer_quote_for_items_params {
     first_name?: string;
@@ -1658,9 +1657,6 @@ export namespace _quote {
   }
   export interface contract_term_edit_create_sub_customer_quote_for_items_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_edit_create_sub_customer_quote_for_items_params {
-    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface subscription_items_edit_create_sub_customer_quote_for_items_params {
     item_price_id: string;
@@ -1773,6 +1769,9 @@ export namespace _quote {
   export interface subscription_update_subscription_quote_for_items_params {
     offline_payment_method?: string;
   }
+  export interface subscription_update_subscription_quote_for_items_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface billing_address_update_subscription_quote_for_items_params {
     first_name?: string;
   }
@@ -1871,9 +1870,6 @@ export namespace _quote {
   }
   export interface contract_term_update_subscription_quote_for_items_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_update_subscription_quote_for_items_params {
-    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface subscription_items_update_subscription_quote_for_items_params {
     item_price_id: string;
@@ -1989,6 +1985,9 @@ export namespace _quote {
   export interface subscription_edit_update_subscription_quote_for_items_params {
     offline_payment_method?: string;
   }
+  export interface subscription_edit_update_subscription_quote_for_items_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface billing_address_edit_update_subscription_quote_for_items_params {
     first_name?: string;
   }
@@ -2087,9 +2086,6 @@ export namespace _quote {
   }
   export interface contract_term_edit_update_subscription_quote_for_items_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_edit_update_subscription_quote_for_items_params {
-    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface subscription_items_edit_update_subscription_quote_for_items_params {
     item_price_id: string;

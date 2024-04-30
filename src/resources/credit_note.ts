@@ -387,6 +387,7 @@ export namespace _credit_note {
   export interface credit_note_list_params {
     limit?: number;
     offset?: string;
+    einvoice?: einvoice_credit_note_list_params;
     include_deleted?: boolean;
     id?: filter._string;
     customer_id?: filter._string;
@@ -407,7 +408,6 @@ export namespace _credit_note {
     channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
-    einvoice?: einvoice_credit_note_list_params;
   }
   export interface delete_params {
     comment?: string;

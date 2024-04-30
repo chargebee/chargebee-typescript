@@ -55,6 +55,7 @@ export class Customer extends Model {
   public excess_payments: number;
   public balances?: Array<Balance>;
   public entity_identifiers?: Array<EntityIdentifier>;
+  public tax_providers_fields?: Array<TaxProvidersField>;
   public is_einvoice_enabled?: boolean;
   public einvoicing_method?: string;
   public meta_data?: any;
@@ -418,6 +419,12 @@ export class EntityIdentifier extends Model {
   public standard?: string;
 } // ~EntityIdentifier
 
+export class TaxProvidersField extends Model {
+  public provider_name: string;
+  public field_id: string;
+  public field_value: string;
+} // ~TaxProvidersField
+
 export class Relationship extends Model {
   public parent_id?: string;
   public payment_owner_id: string;
@@ -494,6 +501,7 @@ export namespace _customer {
   export interface customer_list_params {
     limit?: number;
     offset?: string;
+    relationship?: relationship_customer_list_params;
     include_deleted?: boolean;
     id?: filter._string;
     first_name?: filter._string;
@@ -511,7 +519,6 @@ export namespace _customer {
     channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
-    relationship?: relationship_customer_list_params;
   }
   export interface update_params {
     first_name?: string;
@@ -652,6 +659,54 @@ export namespace _customer {
      */
     tmp_token?: string;
   }
+  export interface card_create_params {
+    first_name?: string;
+  }
+  export interface card_create_params {
+    last_name?: string;
+  }
+  export interface card_create_params {
+    number?: string;
+  }
+  export interface card_create_params {
+    expiry_month?: number;
+  }
+  export interface card_create_params {
+    expiry_year?: number;
+  }
+  export interface card_create_params {
+    cvv?: string;
+  }
+  export interface card_create_params {
+    billing_addr1?: string;
+  }
+  export interface card_create_params {
+    billing_addr2?: string;
+  }
+  export interface card_create_params {
+    billing_city?: string;
+  }
+  export interface card_create_params {
+    billing_state_code?: string;
+  }
+  export interface card_create_params {
+    billing_state?: string;
+  }
+  export interface card_create_params {
+    billing_zip?: string;
+  }
+  export interface card_create_params {
+    billing_country?: string;
+  }
+  export interface card_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    ip_address?: string;
+  }
+  export interface card_create_params {
+    additional_information?: any;
+  }
   export interface bank_account_create_params {
     gateway_account_id?: string;
   }
@@ -725,54 +780,6 @@ export namespace _customer {
     issuing_country?: string;
   }
   export interface payment_method_create_params {
-    additional_information?: any;
-  }
-  export interface card_create_params {
-    first_name?: string;
-  }
-  export interface card_create_params {
-    last_name?: string;
-  }
-  export interface card_create_params {
-    number?: string;
-  }
-  export interface card_create_params {
-    expiry_month?: number;
-  }
-  export interface card_create_params {
-    expiry_year?: number;
-  }
-  export interface card_create_params {
-    cvv?: string;
-  }
-  export interface card_create_params {
-    billing_addr1?: string;
-  }
-  export interface card_create_params {
-    billing_addr2?: string;
-  }
-  export interface card_create_params {
-    billing_city?: string;
-  }
-  export interface card_create_params {
-    billing_state_code?: string;
-  }
-  export interface card_create_params {
-    billing_state?: string;
-  }
-  export interface card_create_params {
-    billing_zip?: string;
-  }
-  export interface card_create_params {
-    billing_country?: string;
-  }
-  export interface card_create_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    ip_address?: string;
-  }
-  export interface card_create_params {
     additional_information?: any;
   }
   export interface payment_intent_create_params {

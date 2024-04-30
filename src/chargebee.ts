@@ -46,6 +46,7 @@ export {_payment_intent} from "./resources/payment_intent";
 export {_gateway_error_detail} from "./resources/gateway_error_detail";
 export {_item_family} from "./resources/item_family";
 export {_item} from "./resources/item";
+export {_price_variant} from "./resources/price_variant";
 export {_attribute} from "./resources/attribute";
 export {_item_price} from "./resources/item_price";
 export {_attached_item} from "./resources/attached_item";
@@ -62,8 +63,11 @@ export {_non_subscription} from "./resources/non_subscription";
 export {_entitlement_override} from "./resources/entitlement_override";
 export {_purchase} from "./resources/purchase";
 export {_payment_voucher} from "./resources/payment_voucher";
+export {_ramp} from "./resources/ramp";
 export {_installment_config} from "./resources/installment_config";
 export {_installment} from "./resources/installment";
+export {_installment_detail} from "./resources/installment_detail";
+export {_session} from "./resources/session";
 
 interface Conf {
     api_key: string
@@ -219,6 +223,9 @@ export class ChargeBee {
     get item() {
         return resources.Item;
     }
+    get price_variant() {
+        return resources.PriceVariant;
+    }
     get attribute() {
         return resources.Attribute;
     }
@@ -267,11 +274,20 @@ export class ChargeBee {
     get payment_voucher() {
         return resources.PaymentVoucher;
     }
+    get ramp() {
+        return resources.Ramp;
+    }
     get installment_config() {
         return resources.InstallmentConfig;
     }
     get installment() {
         return resources.Installment;
+    }
+    get installment_detail() {
+        return resources.InstallmentDetail;
+    }
+    get session() {
+        return resources.Session;
     }
 }
 

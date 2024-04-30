@@ -512,30 +512,6 @@ export namespace _hosted_page {
   export interface subscription_checkout_new_params {
     id?: string;
   }
-  export interface customer_checkout_new_params {
-    id?: string;
-  }
-  export interface customer_checkout_new_params {
-    email?: string;
-  }
-  export interface customer_checkout_new_params {
-    first_name?: string;
-  }
-  export interface customer_checkout_new_params {
-    last_name?: string;
-  }
-  export interface customer_checkout_new_params {
-    company?: string;
-  }
-  export interface customer_checkout_new_params {
-    taxability?: string;
-  }
-  export interface customer_checkout_new_params {
-    locale?: string;
-  }
-  export interface customer_checkout_new_params {
-    phone?: string;
-  }
   export interface subscription_checkout_new_params {
     plan_id: string;
   }
@@ -575,14 +551,35 @@ export namespace _hosted_page {
   export interface subscription_checkout_new_params {
     invoice_notes?: string;
   }
-  export interface card_checkout_new_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    gateway?: string;
+  export interface subscription_checkout_new_params {
+    affiliate_token?: string;
   }
-  export interface card_checkout_new_params {
-    gateway_account_id?: string;
+  export interface subscription_checkout_new_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface customer_checkout_new_params {
+    id?: string;
+  }
+  export interface customer_checkout_new_params {
+    email?: string;
+  }
+  export interface customer_checkout_new_params {
+    first_name?: string;
+  }
+  export interface customer_checkout_new_params {
+    last_name?: string;
+  }
+  export interface customer_checkout_new_params {
+    company?: string;
+  }
+  export interface customer_checkout_new_params {
+    taxability?: string;
+  }
+  export interface customer_checkout_new_params {
+    locale?: string;
+  }
+  export interface customer_checkout_new_params {
+    phone?: string;
   }
   export interface customer_checkout_new_params {
     vat_number?: string;
@@ -593,6 +590,15 @@ export namespace _hosted_page {
   export interface customer_checkout_new_params {
     consolidated_invoicing?: boolean;
   }
+  export interface card_checkout_new_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_checkout_new_params {
+    gateway_account_id?: string;
+  }
   export interface billing_address_checkout_new_params {
     first_name?: string;
   }
@@ -676,18 +682,12 @@ export namespace _hosted_page {
   }
   export interface shipping_address_checkout_new_params {
     validation_status?: string;
-  }
-  export interface subscription_checkout_new_params {
-    affiliate_token?: string;
   }
   export interface contract_term_checkout_new_params {
     action_at_term_end?: string;
   }
   export interface contract_term_checkout_new_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_checkout_new_params {
-    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface addons_checkout_new_params {
     id?: string;
@@ -758,6 +758,15 @@ export namespace _hosted_page {
   export interface customer_checkout_one_time_params {
     phone?: string;
   }
+  export interface customer_checkout_one_time_params {
+    vat_number?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    vat_number_prefix?: string;
+  }
+  export interface customer_checkout_one_time_params {
+    consolidated_invoicing?: boolean;
+  }
   export interface invoice_checkout_one_time_params {
     po_number?: string;
   }
@@ -769,15 +778,6 @@ export namespace _hosted_page {
   }
   export interface card_checkout_one_time_params {
     gateway_account_id?: string;
-  }
-  export interface customer_checkout_one_time_params {
-    vat_number?: string;
-  }
-  export interface customer_checkout_one_time_params {
-    vat_number_prefix?: string;
-  }
-  export interface customer_checkout_one_time_params {
-    consolidated_invoicing?: boolean;
   }
   export interface billing_address_checkout_one_time_params {
     first_name?: string;
@@ -947,18 +947,6 @@ export namespace _hosted_page {
   export interface customer_checkout_one_time_for_items_params {
     phone?: string;
   }
-  export interface invoice_checkout_one_time_for_items_params {
-    po_number?: string;
-  }
-  export interface card_checkout_one_time_for_items_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    gateway?: string;
-  }
-  export interface card_checkout_one_time_for_items_params {
-    gateway_account_id?: string;
-  }
   export interface customer_checkout_one_time_for_items_params {
     vat_number?: string;
   }
@@ -979,6 +967,18 @@ export namespace _hosted_page {
   }
   export interface customer_checkout_one_time_for_items_params {
     consolidated_invoicing?: boolean;
+  }
+  export interface invoice_checkout_one_time_for_items_params {
+    po_number?: string;
+  }
+  export interface card_checkout_one_time_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_checkout_one_time_for_items_params {
+    gateway_account_id?: string;
   }
   export interface billing_address_checkout_one_time_for_items_params {
     first_name?: string;
@@ -1175,6 +1175,32 @@ export namespace _hosted_page {
   export interface subscription_checkout_new_for_items_params {
     id?: string;
   }
+  export interface subscription_checkout_new_for_items_params {
+    trial_end?: number;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    setup_fee?: number;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    coupon?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    auto_collection?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    offline_payment_method?: string;
+    invoice_notes?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    invoice_notes?: string;
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface customer_checkout_new_for_items_params {
     id?: string;
   }
@@ -1199,39 +1225,6 @@ export namespace _hosted_page {
   export interface customer_checkout_new_for_items_params {
     phone?: string;
   }
-  export interface subscription_checkout_new_for_items_params {
-    trial_end?: number;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    setup_fee?: number;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    start_date?: number;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    coupon?: string;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    auto_collection?: string;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    offline_payment_method?: string;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    invoice_notes?: string;
-  }
-  export interface card_checkout_new_for_items_params {
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    gateway?: string;
-  }
-  export interface card_checkout_new_for_items_params {
-    gateway_account_id?: string;
-  }
   export interface customer_checkout_new_for_items_params {
     vat_number?: string;
   }
@@ -1249,6 +1242,15 @@ export namespace _hosted_page {
   }
   export interface customer_checkout_new_for_items_params {
     einvoicing_method?: string;
+  }
+  export interface card_checkout_new_for_items_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gateway?: string;
+  }
+  export interface card_checkout_new_for_items_params {
+    gateway_account_id?: string;
   }
   export interface billing_address_checkout_new_for_items_params {
     first_name?: string;
@@ -1339,12 +1341,6 @@ export namespace _hosted_page {
   }
   export interface contract_term_checkout_new_for_items_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    contract_term_billing_cycle_on_renewal?: number;
-  }
-  export interface subscription_checkout_new_for_items_params {
-    affiliate_token?: string;
   }
   export interface subscription_items_checkout_new_for_items_params {
     item_price_id: string;
@@ -1487,6 +1483,9 @@ export namespace _hosted_page {
   export interface subscription_checkout_existing_params {
     invoice_notes?: string;
   }
+  export interface subscription_checkout_existing_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface customer_checkout_existing_params {
     vat_number?: string;
   }
@@ -1508,9 +1507,6 @@ export namespace _hosted_page {
   export interface contract_term_checkout_existing_params {
     cancellation_cutoff_period?: number;
   }
-  export interface subscription_checkout_existing_params {
-    contract_term_billing_cycle_on_renewal?: number;
-  }
   export interface addons_checkout_existing_params {
     id?: string;
   }
@@ -1522,6 +1518,12 @@ export namespace _hosted_page {
   }
   export interface addons_checkout_existing_params {
     billing_cycles?: number;
+  }
+  export interface addons_checkout_existing_params {
+    quantity_in_decimal?: string;
+  }
+  export interface addons_checkout_existing_params {
+    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_checkout_existing_params {
     id?: string;
@@ -1543,12 +1545,6 @@ export namespace _hosted_page {
   }
   export interface event_based_addons_checkout_existing_params {
     charge_once?: boolean;
-  }
-  export interface addons_checkout_existing_params {
-    quantity_in_decimal?: string;
-  }
-  export interface addons_checkout_existing_params {
-    unit_price_in_decimal?: string;
   }
   export interface event_based_addons_checkout_existing_params {
     quantity_in_decimal?: string;
@@ -1586,6 +1582,9 @@ export namespace _hosted_page {
   export interface subscription_checkout_existing_for_items_params {
     invoice_notes?: string;
   }
+  export interface subscription_checkout_existing_for_items_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
   export interface customer_checkout_existing_for_items_params {
     vat_number?: string;
   }
@@ -1615,9 +1614,6 @@ export namespace _hosted_page {
   }
   export interface contract_term_checkout_existing_for_items_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_checkout_existing_for_items_params {
-    contract_term_billing_cycle_on_renewal?: number;
   }
   export interface subscription_items_checkout_existing_for_items_params {
     item_price_id: string;

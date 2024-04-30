@@ -232,6 +232,17 @@ export class Export extends Model {
     }, ChargeBee._env)
   }
 
+  public static price_variants(params?: _export.price_variants_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'price_variants',
+      'httpMethod': 'POST',
+      'urlPrefix': '/exports',
+      'urlSuffix': '/price_variants',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
 } // ~Export
 
 export class Download extends Model {
@@ -341,6 +352,9 @@ export namespace _export {
     item_id?: filter._string;
     differential_price?: differential_price_differential_prices_params;
   }
+  export interface price_variants_params {
+    price_variant?: price_variant_price_variants_params;
+  }
   export interface invoice_revenue_recognition_params {
     id?: filter._string;
   }
@@ -458,15 +472,6 @@ export namespace _export {
   export interface customer_revenue_recognition_params {
     updated_at?: filter._timestamp;
   }
-  export interface relationship_revenue_recognition_params {
-    parent_id?: filter._string;
-  }
-  export interface relationship_revenue_recognition_params {
-    payment_owner_id?: filter._string;
-  }
-  export interface relationship_revenue_recognition_params {
-    invoice_owner_id?: filter._string;
-  }
   export interface customer_revenue_recognition_params {
     offline_payment_method?: filter._enum;
   }
@@ -475,6 +480,15 @@ export namespace _export {
   }
   export interface customer_revenue_recognition_params {
     channel?: filter._enum;
+  }
+  export interface relationship_revenue_recognition_params {
+    parent_id?: filter._string;
+  }
+  export interface relationship_revenue_recognition_params {
+    payment_owner_id?: filter._string;
+  }
+  export interface relationship_revenue_recognition_params {
+    invoice_owner_id?: filter._string;
   }
   export interface invoice_deferred_revenue_params {
     id?: filter._string;
@@ -593,15 +607,6 @@ export namespace _export {
   export interface customer_deferred_revenue_params {
     updated_at?: filter._timestamp;
   }
-  export interface relationship_deferred_revenue_params {
-    parent_id?: filter._string;
-  }
-  export interface relationship_deferred_revenue_params {
-    payment_owner_id?: filter._string;
-  }
-  export interface relationship_deferred_revenue_params {
-    invoice_owner_id?: filter._string;
-  }
   export interface customer_deferred_revenue_params {
     offline_payment_method?: filter._enum;
   }
@@ -610,6 +615,15 @@ export namespace _export {
   }
   export interface customer_deferred_revenue_params {
     channel?: filter._enum;
+  }
+  export interface relationship_deferred_revenue_params {
+    parent_id?: filter._string;
+  }
+  export interface relationship_deferred_revenue_params {
+    payment_owner_id?: filter._string;
+  }
+  export interface relationship_deferred_revenue_params {
+    invoice_owner_id?: filter._string;
   }
   export interface plan_plans_params {
     id?: filter._string;
@@ -728,15 +742,6 @@ export namespace _export {
   export interface customer_customers_params {
     updated_at?: filter._timestamp;
   }
-  export interface relationship_customers_params {
-    parent_id?: filter._string;
-  }
-  export interface relationship_customers_params {
-    payment_owner_id?: filter._string;
-  }
-  export interface relationship_customers_params {
-    invoice_owner_id?: filter._string;
-  }
   export interface customer_customers_params {
     offline_payment_method?: filter._enum;
   }
@@ -745,6 +750,15 @@ export namespace _export {
   }
   export interface customer_customers_params {
     channel?: filter._enum;
+  }
+  export interface relationship_customers_params {
+    parent_id?: filter._string;
+  }
+  export interface relationship_customers_params {
+    payment_owner_id?: filter._string;
+  }
+  export interface relationship_customers_params {
+    invoice_owner_id?: filter._string;
   }
   export interface subscription_subscriptions_params {
     id?: filter._string;
@@ -1047,6 +1061,9 @@ export namespace _export {
     item_id?: filter._string;
   }
   export interface item_price_item_prices_params {
+    price_variant_id?: filter._string;
+  }
+  export interface item_price_item_prices_params {
     trial_period?: filter._number;
   }
   export interface item_price_item_prices_params {
@@ -1093,5 +1110,20 @@ export namespace _export {
   }
   export interface differential_price_differential_prices_params {
     parent_item_id?: filter._string;
+  }
+  export interface price_variant_price_variants_params {
+    id?: filter._string;
+  }
+  export interface price_variant_price_variants_params {
+    name?: filter._string;
+  }
+  export interface price_variant_price_variants_params {
+    status?: filter._enum;
+  }
+  export interface price_variant_price_variants_params {
+    updated_at?: filter._timestamp;
+  }
+  export interface price_variant_price_variants_params {
+    created_at?: filter._timestamp;
   }
 }
