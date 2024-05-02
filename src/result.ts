@@ -546,13 +546,6 @@ export class Result {
         );
         return _installment_detail;
     }
-    get session(): resources.Session {
-        let _session = this.get(
-            'session',
-            'Session'
-        );
-        return _session;
-    }
 
     get advance_invoice_schedules(): resources.AdvanceInvoiceSchedule[] {
         let _advance_invoice_schedules = this.get_list(
@@ -619,7 +612,7 @@ export class Result {
         return _differential_prices;
     }
 
-        get response() {
+    get response() {
         return this.#_response;
     }
 

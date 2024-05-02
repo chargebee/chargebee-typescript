@@ -67,7 +67,6 @@ export {_ramp} from "./resources/ramp";
 export {_installment_config} from "./resources/installment_config";
 export {_installment} from "./resources/installment";
 export {_installment_detail} from "./resources/installment_detail";
-export {_session} from "./resources/session";
 
 interface Conf {
     api_key: string
@@ -285,9 +284,6 @@ export class ChargeBee {
     }
     get installment_detail() {
         return resources.InstallmentDetail;
-    }
-    get session() {
-        return resources.Session;
     }
 }
 

@@ -219,4 +219,3 @@ export {Installment as InstallmentConfigInstallment} from "./installment_config"
 export {Installment} from "./installment";
 export {InstallmentDetail} from "./installment_detail";
 export {Installment as InstallmentDetailInstallment} from "./installment_detail";
-export {Session} from "./session";
