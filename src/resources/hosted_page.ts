@@ -330,10 +330,6 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    source?: string;
     customer?: customer_checkout_one_time_for_items_params;
     invoice?: invoice_checkout_one_time_for_items_params;
     card?: card_checkout_one_time_for_items_params;
@@ -356,10 +352,6 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    source?: string;
     allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_new_for_items_params;
     customer?: customer_checkout_new_for_items_params;
@@ -411,10 +403,6 @@ export namespace _hosted_page {
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    source?: string;
     allow_offline_payment_methods?: boolean;
     subscription?: subscription_checkout_existing_for_items_params;
     customer?: customer_checkout_existing_for_items_params;
@@ -1194,11 +1182,9 @@ export namespace _hosted_page {
     auto_collection?: string;
   }
   export interface subscription_checkout_new_for_items_params {
-    offline_payment_method?: string;
     invoice_notes?: string;
   }
   export interface subscription_checkout_new_for_items_params {
-    invoice_notes?: string;
     contract_term_billing_cycle_on_renewal?: number;
   }
   export interface customer_checkout_new_for_items_params {
@@ -1801,9 +1787,6 @@ export namespace _hosted_page {
   export interface gifter_checkout_gift_params {
     customer_id?: string;
   }
-  export interface gifter_checkout_gift_params {
-    locale?: string;
-  }
   export interface subscription_checkout_gift_params {
     plan_id: string;
   }
@@ -1830,9 +1813,6 @@ export namespace _hosted_page {
   }
   export interface gifter_checkout_gift_for_items_params {
     customer_id?: string;
-  }
-  export interface gifter_checkout_gift_for_items_params {
-    locale?: string;
   }
   export interface subscription_items_checkout_gift_for_items_params {
     item_price_id?: string;

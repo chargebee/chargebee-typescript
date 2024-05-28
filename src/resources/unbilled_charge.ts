@@ -126,6 +126,7 @@ export namespace _unbilled_charge {
     currency_code?: string;
     addons?: Array<addons_create_unbilled_charge_params>;
     charges?: Array<charges_create_unbilled_charge_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_unbilled_charge_params>;
   }
   export interface create_params {
     subscription_id: string;
@@ -133,6 +134,7 @@ export namespace _unbilled_charge {
     item_prices?: Array<item_prices_create_params>;
     item_tiers?: Array<item_tiers_create_params>;
     charges?: Array<charges_create_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_params>;
   }
   export interface invoice_unbilled_charges_params {
     subscription_id?: string;
@@ -209,6 +211,15 @@ export namespace _unbilled_charge {
   }
   export interface charges_create_unbilled_charge_params {
     date_to?: number;
+  }
+  export interface tax_providers_fields_create_unbilled_charge_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_unbilled_charge_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_unbilled_charge_params {
+    field_value?: string;
   }
   export interface item_prices_create_params {
     item_price_id?: string;
@@ -290,5 +301,14 @@ export namespace _unbilled_charge {
   }
   export interface charges_create_params {
     date_to?: number;
+  }
+  export interface tax_providers_fields_create_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_value?: string;
   }
 }

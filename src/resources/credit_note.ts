@@ -9,7 +9,7 @@ export class CreditNote extends Model {
   public id: string;
   public customer_id: string;
   public subscription_id?: string;
-  public reference_invoice_id: string;
+  public reference_invoice_id?: string;
   public type: string;
   public reason_code?: string;
   public status: string;
@@ -50,6 +50,7 @@ export class CreditNote extends Model {
   public business_entity_id: string;
   public shipping_address?: ShippingAddress;
   public billing_address?: BillingAddress;
+  public site_details_at_creation?: SiteDetailsAtCreation;
 
   
 
@@ -351,6 +352,11 @@ export class BillingAddress extends Model {
   public validation_status?: string;
 } // ~BillingAddress
 
+export class SiteDetailsAtCreation extends Model {
+  public timezone?: string;
+  public organization_address?: any;
+} // ~SiteDetailsAtCreation
+
 
 
   // REQUEST PARAMS
@@ -358,13 +364,15 @@ export class BillingAddress extends Model {
 
 export namespace _credit_note {
   export interface create_params {
-    reference_invoice_id: string;
+    reference_invoice_id?: string;
+    customer_id?: string;
     total?: number;
     type: string;
     reason_code?: string;
     create_reason_code?: string;
     date?: number;
     customer_notes?: string;
+    currency_code?: string;
     comment?: string;
     line_items?: Array<line_items_create_params>;
   }
@@ -440,7 +448,7 @@ export namespace _credit_note {
     linked_refunds?: Array<linked_refunds_import_credit_note_params>;
   }
   export interface line_items_create_params {
-    reference_line_item_id: string;
+    reference_line_item_id?: string;
   }
   export interface line_items_create_params {
     unit_amount?: number;
@@ -465,6 +473,12 @@ export namespace _credit_note {
   }
   export interface line_items_create_params {
     description?: string;
+  }
+  export interface line_items_create_params {
+    entity_type?: string;
+  }
+  export interface line_items_create_params {
+    entity_id?: string;
   }
   export interface transaction_record_refund_params {
     amount?: number;
@@ -601,9 +615,6 @@ export namespace _credit_note {
   export interface line_items_import_credit_note_params {
     tax10_amount?: number;
   }
-  export interface line_items_import_credit_note_params {
-    reference_line_item_id?: string;
-  }
   export interface line_item_tiers_import_credit_note_params {
     line_item_id: string;
   }
@@ -630,9 +641,6 @@ export namespace _credit_note {
   }
   export interface line_item_tiers_import_credit_note_params {
     unit_amount_in_decimal?: string;
-  }
-  export interface discounts_import_credit_note_params {
-    line_item_id?: string;
   }
   export interface discounts_import_credit_note_params {
     entity_type: string;

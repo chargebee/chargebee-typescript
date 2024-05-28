@@ -349,8 +349,8 @@ export namespace _export {
     attached_item?: attached_item_attached_items_params;
   }
   export interface differential_prices_params {
-    item_id?: filter._string;
     differential_price?: differential_price_differential_prices_params;
+    item_id?: filter._string;
   }
   export interface price_variants_params {
     price_variant?: price_variant_price_variants_params;
@@ -404,9 +404,6 @@ export namespace _export {
     customer_id?: filter._string;
   }
   export interface subscription_revenue_recognition_params {
-    plan_id?: filter._string;
-  }
-  export interface subscription_revenue_recognition_params {
     status?: filter._enum;
   }
   export interface subscription_revenue_recognition_params {
@@ -441,6 +438,9 @@ export namespace _export {
   }
   export interface subscription_revenue_recognition_params {
     channel?: filter._enum;
+  }
+  export interface subscription_revenue_recognition_params {
+    plan_id?: filter._string;
   }
   export interface customer_revenue_recognition_params {
     id?: filter._string;
@@ -539,9 +539,6 @@ export namespace _export {
     customer_id?: filter._string;
   }
   export interface subscription_deferred_revenue_params {
-    plan_id?: filter._string;
-  }
-  export interface subscription_deferred_revenue_params {
     status?: filter._enum;
   }
   export interface subscription_deferred_revenue_params {
@@ -576,6 +573,9 @@ export namespace _export {
   }
   export interface subscription_deferred_revenue_params {
     channel?: filter._enum;
+  }
+  export interface subscription_deferred_revenue_params {
+    plan_id?: filter._string;
   }
   export interface customer_deferred_revenue_params {
     id?: filter._string;
@@ -767,9 +767,6 @@ export namespace _export {
     customer_id?: filter._string;
   }
   export interface subscription_subscriptions_params {
-    plan_id?: filter._string;
-  }
-  export interface subscription_subscriptions_params {
     status?: filter._enum;
   }
   export interface subscription_subscriptions_params {
@@ -804,6 +801,9 @@ export namespace _export {
   }
   export interface subscription_subscriptions_params {
     channel?: filter._enum;
+  }
+  export interface subscription_subscriptions_params {
+    plan_id?: filter._string;
   }
   export interface invoice_invoices_params {
     id?: filter._string;

@@ -252,6 +252,7 @@ export namespace _estimate {
     contract_term?: contract_term_create_subscription_params;
     addons?: Array<addons_create_subscription_params>;
     event_based_addons?: Array<event_based_addons_create_subscription_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_subscription_params>;
   }
   export interface create_sub_item_estimate_params {
     billing_cycles?: number;
@@ -270,6 +271,7 @@ export namespace _estimate {
     subscription_items?: Array<subscription_items_create_sub_item_estimate_params>;
     discounts?: Array<discounts_create_sub_item_estimate_params>;
     item_tiers?: Array<item_tiers_create_sub_item_estimate_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_sub_item_estimate_params>;
   }
   export interface create_sub_for_customer_estimate_params {
     use_existing_balances?: boolean;
@@ -451,6 +453,7 @@ export namespace _estimate {
     addons?: Array<addons_create_invoice_params>;
     charges?: Array<charges_create_invoice_params>;
     notes_to_remove?: Array<notes_to_remove_create_invoice_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_invoice_params>;
   }
   export interface create_invoice_for_items_params {
     currency_code?: string;
@@ -472,6 +475,7 @@ export namespace _estimate {
     charges?: Array<charges_create_invoice_for_items_params>;
     notes_to_remove?: Array<notes_to_remove_create_invoice_for_items_params>;
     discounts?: Array<discounts_create_invoice_for_items_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_invoice_for_items_params>;
   }
   export interface subscription_create_subscription_params {
     id?: string;
@@ -647,6 +651,15 @@ export namespace _estimate {
   export interface addons_create_subscription_params {
     trial_end?: number;
   }
+  export interface tax_providers_fields_create_subscription_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_subscription_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_subscription_params {
+    field_value?: string;
+  }
   export interface subscription_create_sub_item_estimate_params {
     id?: string;
   }
@@ -668,9 +681,6 @@ export namespace _estimate {
      */
     coupon?: string;
   }
-    export interface subscription_create_sub_item_estimate_params {
-        offline_payment_method?: string;
-    }
   export interface subscription_create_sub_item_estimate_params {
     free_period?: number;
   }
@@ -851,6 +861,15 @@ export namespace _estimate {
   export interface item_tiers_create_sub_item_estimate_params {
     price_in_decimal?: string;
   }
+  export interface tax_providers_fields_create_sub_item_estimate_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_sub_item_estimate_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_sub_item_estimate_params {
+    field_value?: string;
+  }
   export interface subscription_create_sub_for_customer_estimate_params {
     id?: string;
   }
@@ -881,6 +900,18 @@ export namespace _estimate {
   export interface subscription_create_sub_for_customer_estimate_params {
     offline_payment_method?: string;
   }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    free_period?: number;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    free_period_unit?: string;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    contract_term_billing_cycle_on_renewal?: number;
+  }
+  export interface subscription_create_sub_for_customer_estimate_params {
+    trial_end_action?: string;
+  }
   export interface shipping_address_create_sub_for_customer_estimate_params {
     line1?: string;
   }
@@ -905,23 +936,11 @@ export namespace _estimate {
   export interface shipping_address_create_sub_for_customer_estimate_params {
     validation_status?: string;
   }
-  export interface subscription_create_sub_for_customer_estimate_params {
-    free_period?: number;
-  }
-  export interface subscription_create_sub_for_customer_estimate_params {
-    free_period_unit?: string;
-  }
   export interface contract_term_create_sub_for_customer_estimate_params {
     action_at_term_end?: string;
   }
   export interface contract_term_create_sub_for_customer_estimate_params {
     cancellation_cutoff_period?: number;
-  }
-  export interface subscription_create_sub_for_customer_estimate_params {
-    contract_term_billing_cycle_on_renewal?: number;
-  }
-  export interface subscription_create_sub_for_customer_estimate_params {
-    trial_end_action?: string;
   }
   export interface addons_create_sub_for_customer_estimate_params {
     id?: string;
@@ -1904,6 +1923,15 @@ export namespace _estimate {
   export interface notes_to_remove_create_invoice_params {
     entity_id?: string;
   }
+  export interface tax_providers_fields_create_invoice_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_invoice_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_invoice_params {
+    field_value?: string;
+  }
   export interface invoice_create_invoice_for_items_params {
     customer_id?: string;
   }
@@ -2053,5 +2081,14 @@ export namespace _estimate {
   }
   export interface discounts_create_invoice_for_items_params {
     item_price_id?: string;
+  }
+  export interface tax_providers_fields_create_invoice_for_items_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_invoice_for_items_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_invoice_for_items_params {
+    field_value?: string;
   }
 }

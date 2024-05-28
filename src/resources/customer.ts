@@ -497,6 +497,7 @@ export namespace _customer {
     payment_intent?: payment_intent_create_params;
     billing_address?: billing_address_create_params;
     entity_identifiers?: Array<entity_identifiers_create_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_params>;
   }
   export interface customer_list_params {
     limit?: number;
@@ -544,6 +545,7 @@ export namespace _customer {
     meta_data?: any;
     fraud_flag?: string;
     consolidated_invoicing?: boolean;
+    tax_providers_fields?: Array<tax_providers_fields_update_params>;
   }
   export interface update_payment_method_params {
     payment_method?: payment_method_update_payment_method_params;
@@ -559,6 +561,7 @@ export namespace _customer {
     einvoicing_method?: string;
     billing_address?: billing_address_update_billing_info_params;
     entity_identifiers?: Array<entity_identifiers_update_billing_info_params>;
+    tax_providers_fields?: Array<tax_providers_fields_update_billing_info_params>;
   }
   export interface assign_payment_role_params {
     payment_source_id: string;
@@ -616,6 +619,7 @@ export namespace _customer {
   export interface move_params {
     id_at_from_site: string;
     from_site: string;
+    tax_providers_fields?: Array<tax_providers_fields_move_params>;
   }
   export interface change_billing_date_params {
     billing_date?: number;
@@ -627,6 +631,7 @@ export namespace _customer {
   export interface merge_params {
     from_customer_id: string;
     to_customer_id: string;
+    tax_providers_fields?: Array<tax_providers_fields_merge_params>;
   }
   export interface relationships_params {
     parent_id?: string;
@@ -860,6 +865,15 @@ export namespace _customer {
   export interface entity_identifiers_create_params {
     standard?: string;
   }
+  export interface tax_providers_fields_create_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_value?: string;
+  }
   export interface relationship_customer_list_params {
     parent_id?: filter._string;
   }
@@ -868,6 +882,15 @@ export namespace _customer {
   }
   export interface relationship_customer_list_params {
     invoice_owner_id?: filter._string;
+  }
+  export interface tax_providers_fields_update_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_value?: string;
   }
   export interface payment_method_update_payment_method_params {
     type: string;
@@ -949,6 +972,15 @@ export namespace _customer {
   }
   export interface entity_identifiers_update_billing_info_params {
     standard?: string;
+  }
+  export interface tax_providers_fields_update_billing_info_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_update_billing_info_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_update_billing_info_params {
+    field_value?: string;
   }
   export interface contact_add_contact_params {
     id?: string;
@@ -1114,6 +1146,24 @@ export namespace _customer {
   }
   export interface invoice_allocations_collect_payment_params {
     allocation_amount?: number;
+  }
+  export interface tax_providers_fields_move_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_move_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_move_params {
+    field_value?: string;
+  }
+  export interface tax_providers_fields_merge_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_merge_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_merge_params {
+    field_value?: string;
   }
   export interface parent_account_access_relationships_params {
     portal_edit_child_subscriptions?: string;

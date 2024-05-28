@@ -7,6 +7,7 @@ export {_advance_invoice_schedule} from "./resources/advance_invoice_schedule";
 export {_customer} from "./resources/customer";
 export {_hierarchy} from "./resources/hierarchy";
 export {_contact} from "./resources/contact";
+export {_business_entity_transfer} from "./resources/business_entity_transfer";
 export {_token} from "./resources/token";
 export {_payment_source} from "./resources/payment_source";
 export {_third_party_payment_method} from "./resources/third_party_payment_method";
@@ -61,6 +62,7 @@ export {_entitlement} from "./resources/entitlement";
 export {_in_app_subscription} from "./resources/in_app_subscription";
 export {_non_subscription} from "./resources/non_subscription";
 export {_entitlement_override} from "./resources/entitlement_override";
+export {_business_entity} from "./resources/business_entity";
 export {_purchase} from "./resources/purchase";
 export {_payment_voucher} from "./resources/payment_voucher";
 export {_ramp} from "./resources/ramp";
@@ -104,6 +106,9 @@ export class ChargeBee {
     }
     get contact() {
         return resources.Contact;
+    }
+    get business_entity_transfer() {
+        return resources.BusinessEntityTransfer;
     }
     get token() {
         return resources.Token;
@@ -266,6 +271,9 @@ export class ChargeBee {
     }
     get entitlement_override() {
         return resources.EntitlementOverride;
+    }
+    get business_entity() {
+        return resources.BusinessEntity;
     }
     get purchase() {
         return resources.Purchase;

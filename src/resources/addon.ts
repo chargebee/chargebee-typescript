@@ -199,6 +199,7 @@ export namespace _addon {
     proration_type?: string;
     status?: string;
     tiers?: Array<tiers_create_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_params>;
   }
   export interface update_params {
     name?: string;
@@ -241,6 +242,7 @@ export namespace _addon {
     price_in_decimal?: string;
     proration_type?: string;
     tiers?: Array<tiers_update_params>;
+    tax_providers_fields?: Array<tax_providers_fields_update_params>;
   }
   export interface addon_list_params {
     limit?: number;
@@ -286,6 +288,15 @@ export namespace _addon {
   export interface tiers_create_params {
     price_in_decimal?: string;
   }
+  export interface tax_providers_fields_create_params {
+    provider_name: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_id: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_value: string;
+  }
   export interface tiers_update_params {
     starting_unit?: number;
   }
@@ -303,5 +314,14 @@ export namespace _addon {
   }
   export interface tiers_update_params {
     price_in_decimal?: string;
+  }
+  export interface tax_providers_fields_update_params {
+    provider_name: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_id: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_value: string;
   }
 }

@@ -138,14 +138,12 @@ export namespace _feature {
     name: string;
     description?: string;
     type?: string;
-    status?: string;
     unit?: string;
     levels?: Array<levels_create_params>;
   }
   export interface update_params {
     name?: string;
     description?: string;
-    status?: string;
     unit?: string;
     levels?: Array<levels_update_params>;
   }

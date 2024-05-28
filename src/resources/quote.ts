@@ -480,6 +480,7 @@ export namespace _quote {
     shipping_address?: shipping_address_create_for_onetime_charges_params;
     addons?: Array<addons_create_for_onetime_charges_params>;
     charges?: Array<charges_create_for_onetime_charges_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_for_onetime_charges_params>;
   }
   export interface edit_one_time_quote_params {
     po_number?: string;
@@ -491,6 +492,7 @@ export namespace _quote {
     shipping_address?: shipping_address_edit_one_time_quote_params;
     addons?: Array<addons_edit_one_time_quote_params>;
     charges?: Array<charges_edit_one_time_quote_params>;
+    tax_providers_fields?: Array<tax_providers_fields_edit_one_time_quote_params>;
   }
   export interface create_sub_items_for_customer_quote_params {
     name?: string;
@@ -586,6 +588,7 @@ export namespace _quote {
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
     charges?: Array<charges_create_for_charge_items_and_charges_params>;
     discounts?: Array<discounts_create_for_charge_items_and_charges_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_for_charge_items_and_charges_params>;
   }
   export interface edit_for_charge_items_and_charges_params {
     po_number?: string;
@@ -599,6 +602,7 @@ export namespace _quote {
     item_tiers?: Array<item_tiers_edit_for_charge_items_and_charges_params>;
     charges?: Array<charges_edit_for_charge_items_and_charges_params>;
     discounts?: Array<discounts_edit_for_charge_items_and_charges_params>;
+    tax_providers_fields?: Array<tax_providers_fields_edit_for_charge_items_and_charges_params>;
   }
   export interface quote_list_params {
     limit?: number;
@@ -1353,6 +1357,15 @@ export namespace _quote {
   export interface charges_create_for_onetime_charges_params {
     service_period?: number;
   }
+  export interface tax_providers_fields_create_for_onetime_charges_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_for_onetime_charges_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_for_onetime_charges_params {
+    field_value?: string;
+  }
   export interface shipping_address_edit_one_time_quote_params {
     first_name?: string;
   }
@@ -1434,6 +1447,15 @@ export namespace _quote {
   export interface charges_edit_one_time_quote_params {
     service_period?: number;
   }
+  export interface tax_providers_fields_edit_one_time_quote_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_edit_one_time_quote_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_edit_one_time_quote_params {
+    field_value?: string;
+  }
   export interface subscription_create_sub_items_for_customer_quote_params {
     id?: string;
   }
@@ -1453,7 +1475,6 @@ export namespace _quote {
     start_date?: number;
   }
   export interface subscription_create_sub_items_for_customer_quote_params {
-    offline_payment_method?: string;
     contract_term_billing_cycle_on_renewal?: number;
   }
   export interface shipping_address_create_sub_items_for_customer_quote_params {
@@ -1607,7 +1628,6 @@ export namespace _quote {
     start_date?: number;
   }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
-    offline_payment_method?: string;
     contract_term_billing_cycle_on_renewal?: number;
   }
   export interface shipping_address_edit_create_sub_customer_quote_for_items_params {
@@ -2291,6 +2311,15 @@ export namespace _quote {
   export interface discounts_create_for_charge_items_and_charges_params {
     item_price_id?: string;
   }
+  export interface tax_providers_fields_create_for_charge_items_and_charges_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_for_charge_items_and_charges_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_for_charge_items_and_charges_params {
+    field_value?: string;
+  }
   export interface shipping_address_edit_for_charge_items_and_charges_params {
     first_name?: string;
   }
@@ -2404,6 +2433,15 @@ export namespace _quote {
   }
   export interface discounts_edit_for_charge_items_and_charges_params {
     item_price_id?: string;
+  }
+  export interface tax_providers_fields_edit_for_charge_items_and_charges_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_edit_for_charge_items_and_charges_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_edit_for_charge_items_and_charges_params {
+    field_value?: string;
   }
   export interface subscription_convert_params {
     id?: string;

@@ -243,6 +243,7 @@ export namespace _plan {
     status?: string;
     claim_url?: string;
     tiers?: Array<tiers_create_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_params>;
     applicable_addons?: Array<applicable_addons_create_params>;
     event_based_addons?: Array<event_based_addons_create_params>;
     attached_addons?: Array<attached_addons_create_params>;
@@ -298,6 +299,7 @@ export namespace _plan {
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     tiers?: Array<tiers_update_params>;
+    tax_providers_fields?: Array<tax_providers_fields_update_params>;
     applicable_addons?: Array<applicable_addons_update_params>;
     attached_addons?: Array<attached_addons_update_params>;
     event_based_addons?: Array<event_based_addons_update_params>;
@@ -349,6 +351,15 @@ export namespace _plan {
   export interface tiers_create_params {
     price_in_decimal?: string;
   }
+  export interface tax_providers_fields_create_params {
+    provider_name: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_id: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_value: string;
+  }
   export interface applicable_addons_create_params {
     id?: string;
   }
@@ -399,6 +410,15 @@ export namespace _plan {
   }
   export interface tiers_update_params {
     price_in_decimal?: string;
+  }
+  export interface tax_providers_fields_update_params {
+    provider_name: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_id: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_value: string;
   }
   export interface applicable_addons_update_params {
     id?: string;

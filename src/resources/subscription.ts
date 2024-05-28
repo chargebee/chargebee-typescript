@@ -650,7 +650,6 @@ export class Discount extends Model {
 export namespace _subscription {
   export interface create_params {
     id?: string;
-    business_entity_id?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_quantity_in_decimal?: string;
@@ -697,13 +696,13 @@ export namespace _subscription {
     statement_descriptor?: statement_descriptor_create_params;
     contract_term?: contract_term_create_params;
     entity_identifiers?: Array<entity_identifiers_create_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_params>;
     addons?: Array<addons_create_params>;
     event_based_addons?: Array<event_based_addons_create_params>;
     coupons?: Array<coupons_create_params>;
   }
   export interface create_for_customer_params {
     id?: string;
-    business_entity_id?: string;
     plan_id: string;
     plan_quantity?: number;
     plan_quantity_in_decimal?: string;
@@ -763,7 +762,6 @@ export namespace _subscription {
     auto_collection?: string;
     terms_to_charge?: number;
     billing_alignment_mode?: string;
-    offline_payment_method?: string;
     po_number?: string;
     coupon_ids?: Array<string>;
     payment_source_id?: string;
@@ -1511,6 +1509,15 @@ export namespace _subscription {
   }
   export interface entity_identifiers_create_params {
     standard?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_value?: string;
   }
   export interface addons_create_params {
     id?: string;

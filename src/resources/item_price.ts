@@ -201,6 +201,7 @@ export namespace _item_price {
     tax_detail?: tax_detail_create_params;
     accounting_detail?: accounting_detail_create_params;
     tiers?: Array<tiers_create_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_params>;
   }
   export interface update_params {
     name?: string;
@@ -231,6 +232,7 @@ export namespace _item_price {
     tax_detail?: tax_detail_update_params;
     accounting_detail?: accounting_detail_update_params;
     tiers?: Array<tiers_update_params>;
+    tax_providers_fields?: Array<tax_providers_fields_update_params>;
   }
   export interface item_price_list_params {
     limit?: number;
@@ -323,6 +325,15 @@ export namespace _item_price {
   export interface tiers_create_params {
     price_in_decimal?: string;
   }
+  export interface tax_providers_fields_create_params {
+    provider_name: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_id: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_value: string;
+  }
   export interface tax_detail_update_params {
     tax_profile_id?: string;
   }
@@ -379,5 +390,14 @@ export namespace _item_price {
   }
   export interface tiers_update_params {
     price_in_decimal?: string;
+  }
+  export interface tax_providers_fields_update_params {
+    provider_name: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_id: string;
+  }
+  export interface tax_providers_fields_update_params {
+    field_value: string;
   }
 }

@@ -58,6 +58,13 @@ export class Result {
         );
         return _contact;
     }
+    get business_entity_transfer(): resources.BusinessEntityTransfer {
+        let _business_entity_transfer = this.get(
+            'business_entity_transfer',
+            'BusinessEntityTransfer'
+        );
+        return _business_entity_transfer;
+    }
     get token(): resources.Token {
         let _token = this.get(
             'token',
@@ -105,7 +112,7 @@ export class Result {
         let _invoice = this.get(
             'invoice',
             'Invoice',
-            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice'}
+            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice', 'site_details_at_creation': 'InvoiceSiteDetailsAtCreation'}
         );
         return _invoice;
     }
@@ -127,7 +134,7 @@ export class Result {
         let _credit_note = this.get(
             'credit_note',
             'CreditNote',
-            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress'}
+            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress', 'site_details_at_creation': 'CreditNoteSiteDetailsAtCreation'}
         );
         return _credit_note;
     }
@@ -500,6 +507,13 @@ export class Result {
         );
         return _entitlement_override;
     }
+    get business_entity(): resources.BusinessEntity {
+        let _business_entity = this.get(
+            'business_entity',
+            'BusinessEntity'
+        );
+        return _business_entity;
+    }
     get purchase(): resources.Purchase {
         let _purchase = this.get(
             'purchase',
@@ -567,7 +581,7 @@ export class Result {
         let _invoices = this.get_list(
             'invoices',
             'Invoice',
-            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice'}
+            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice', 'site_details_at_creation': 'InvoiceSiteDetailsAtCreation'}
         );
         return _invoices;
     }
@@ -575,7 +589,7 @@ export class Result {
         let _credit_notes = this.get_list(
             'credit_notes',
             'CreditNote',
-            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress'}
+            {'einvoice': 'CreditNoteEinvoice', 'line_items': 'CreditNoteLineItem', 'discounts': 'CreditNoteDiscount', 'line_item_discounts': 'CreditNoteLineItemDiscount', 'line_item_tiers': 'CreditNoteLineItemTier', 'taxes': 'CreditNoteTax', 'line_item_taxes': 'CreditNoteLineItemTax', 'linked_refunds': 'CreditNoteLinkedRefund', 'allocations': 'CreditNoteAllocation', 'shipping_address': 'CreditNoteShippingAddress', 'billing_address': 'CreditNoteBillingAddress', 'site_details_at_creation': 'CreditNoteSiteDetailsAtCreation'}
         );
         return _credit_notes;
     }

@@ -70,6 +70,7 @@ export class Invoice extends Model {
   public vat_number_prefix?: string;
   public channel?: string;
   public business_entity_id?: string;
+  public site_details_at_creation?: SiteDetailsAtCreation;
 
   
 
@@ -674,6 +675,11 @@ export class Einvoice extends Model {
   public message?: string;
 } // ~Einvoice
 
+export class SiteDetailsAtCreation extends Model {
+  public timezone?: string;
+  public organization_address?: any;
+} // ~SiteDetailsAtCreation
+
 
 
   // REQUEST PARAMS
@@ -708,6 +714,7 @@ export namespace _invoice {
     payment_intent?: payment_intent_create_params;
     addons?: Array<addons_create_params>;
     charges?: Array<charges_create_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_params>;
     notes_to_remove?: Array<notes_to_remove_create_params>;
   }
   export interface create_for_charge_items_and_charges_params {
@@ -740,6 +747,7 @@ export namespace _invoice {
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
     charges?: Array<charges_create_for_charge_items_and_charges_params>;
     notes_to_remove?: Array<notes_to_remove_create_for_charge_items_and_charges_params>;
+    tax_providers_fields?: Array<tax_providers_fields_create_for_charge_items_and_charges_params>;
     discounts?: Array<discounts_create_for_charge_items_and_charges_params>;
   }
   export interface charge_params {
@@ -763,6 +771,7 @@ export namespace _invoice {
     invoice_date?: number;
     payment_source_id?: string;
     payment_initiator?: string;
+    tax_providers_fields?: Array<tax_providers_fields_charge_params>;
   }
   export interface charge_addon_params {
     customer_id?: string;
@@ -957,17 +966,12 @@ export namespace _invoice {
   export interface void_invoice_params {
     comment?: string;
     void_reason_code?: string;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
-    create_credit_note?: boolean;
   }
   export interface write_off_params {
     comment?: string;
   }
   export interface delete_params {
     comment?: string;
-    claim_credits?: boolean;
   }
   export interface update_details_params {
     vat_number?: string;
@@ -1248,6 +1252,15 @@ export namespace _invoice {
   }
   export interface charges_create_params {
     date_to?: number;
+  }
+  export interface tax_providers_fields_create_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_params {
+    field_value?: string;
   }
   export interface notes_to_remove_create_params {
     entity_type?: string;
@@ -1549,6 +1562,15 @@ export namespace _invoice {
   export interface notes_to_remove_create_for_charge_items_and_charges_params {
     entity_id?: string;
   }
+  export interface tax_providers_fields_create_for_charge_items_and_charges_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_create_for_charge_items_and_charges_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_create_for_charge_items_and_charges_params {
+    field_value?: string;
+  }
   export interface discounts_create_for_charge_items_and_charges_params {
     percentage?: number;
   }
@@ -1560,6 +1582,15 @@ export namespace _invoice {
   }
   export interface discounts_create_for_charge_items_and_charges_params {
     item_price_id?: string;
+  }
+  export interface tax_providers_fields_charge_params {
+    provider_name?: string;
+  }
+  export interface tax_providers_fields_charge_params {
+    field_id?: string;
+  }
+  export interface tax_providers_fields_charge_params {
+    field_value?: string;
   }
   export interface item_price_create_for_charge_item_params {
     item_price_id: string;
@@ -1833,9 +1864,6 @@ export namespace _invoice {
   }
   export interface line_item_tiers_import_invoice_params {
     unit_amount_in_decimal?: string;
-  }
-  export interface discounts_import_invoice_params {
-    line_item_id?: string;
   }
   export interface discounts_import_invoice_params {
     entity_type: string;
