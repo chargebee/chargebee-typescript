@@ -51,6 +51,7 @@ export namespace _purchase {
     customer_id: string;
     payment_source_id?: string;
     invoice_info?: invoice_info_create_params;
+    statement_descriptor?: statement_descriptor_create_params;
     installment_info?: installment_info_create_params;
     purchase_items?: Array<purchase_items_create_params>;
     item_tiers?: Array<item_tiers_create_params>;
@@ -76,6 +77,9 @@ export namespace _purchase {
   }
   export interface invoice_info_create_params {
     notes?: string;
+  }
+  export interface statement_descriptor_create_params {
+    descriptor?: string;
   }
   export interface installment_info_create_params {
     config_id?: string;

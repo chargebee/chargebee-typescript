@@ -65,10 +65,12 @@ export {_entitlement_override} from "./resources/entitlement_override";
 export {_business_entity} from "./resources/business_entity";
 export {_purchase} from "./resources/purchase";
 export {_payment_voucher} from "./resources/payment_voucher";
+export {_currency} from "./resources/currency";
 export {_ramp} from "./resources/ramp";
 export {_installment_config} from "./resources/installment_config";
 export {_installment} from "./resources/installment";
 export {_installment_detail} from "./resources/installment_detail";
+export {_pricing_page_session} from "./resources/pricing_page_session";
 
 interface Conf {
     api_key: string
@@ -281,6 +283,9 @@ export class ChargeBee {
     get payment_voucher() {
         return resources.PaymentVoucher;
     }
+    get currency() {
+        return resources.Currency;
+    }
     get ramp() {
         return resources.Ramp;
     }
@@ -292,6 +297,9 @@ export class ChargeBee {
     }
     get installment_detail() {
         return resources.InstallmentDetail;
+    }
+    get pricing_page_session() {
+        return resources.PricingPageSession;
     }
 }
 

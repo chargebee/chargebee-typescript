@@ -71,6 +71,7 @@ export class Invoice extends Model {
   public channel?: string;
   public business_entity_id?: string;
   public site_details_at_creation?: SiteDetailsAtCreation;
+  public tax_origin?: TaxOrigin;
 
   
 
@@ -679,6 +680,11 @@ export class SiteDetailsAtCreation extends Model {
   public timezone?: string;
   public organization_address?: any;
 } // ~SiteDetailsAtCreation
+
+export class TaxOrigin extends Model {
+  public country?: string;
+  public registration_number?: string;
+} // ~TaxOrigin
 
 
 

@@ -1130,6 +1130,7 @@ export namespace _subscription {
     resume_date?: number;
   }
   export interface cancel_params {
+    cancel_option?: string;
     end_of_term?: boolean;
     cancel_at?: number;
     credit_option_for_current_term_charges?: string;
@@ -1142,6 +1143,7 @@ export namespace _subscription {
     event_based_addons?: Array<event_based_addons_cancel_params>;
   }
   export interface cancel_for_items_params {
+    cancel_option?: string;
     end_of_term?: boolean;
     cancel_at?: number;
     credit_option_for_current_term_charges?: string;
@@ -1181,10 +1183,13 @@ export namespace _subscription {
     company?: string;
   }
   export interface customer_create_params {
-    taxability?: string;
+    phone?: string;
   }
   export interface customer_create_params {
     locale?: string;
+  }
+  export interface customer_create_params {
+    taxability?: string;
   }
   export interface customer_create_params {
     entity_code?: string;
@@ -1197,9 +1202,6 @@ export namespace _subscription {
   }
   export interface customer_create_params {
     taxjar_exemption_category?: string;
-  }
-  export interface customer_create_params {
-    phone?: string;
   }
   export interface customer_create_params {
     auto_collection?: string;
@@ -2612,10 +2614,13 @@ export namespace _subscription {
     company?: string;
   }
   export interface customer_import_subscription_params {
-    taxability?: string;
+    phone?: string;
   }
   export interface customer_import_subscription_params {
     locale?: string;
+  }
+  export interface customer_import_subscription_params {
+    taxability?: string;
   }
   export interface customer_import_subscription_params {
     entity_code?: string;
@@ -2628,9 +2633,6 @@ export namespace _subscription {
   }
   export interface customer_import_subscription_params {
     taxjar_exemption_category?: string;
-  }
-  export interface customer_import_subscription_params {
-    phone?: string;
   }
   export interface customer_import_subscription_params {
     customer_type?: string;

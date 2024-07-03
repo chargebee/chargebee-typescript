@@ -561,13 +561,13 @@ export namespace _hosted_page {
     company?: string;
   }
   export interface customer_checkout_new_params {
-    taxability?: string;
+    phone?: string;
   }
   export interface customer_checkout_new_params {
     locale?: string;
   }
   export interface customer_checkout_new_params {
-    phone?: string;
+    taxability?: string;
   }
   export interface customer_checkout_new_params {
     vat_number?: string;
@@ -738,13 +738,13 @@ export namespace _hosted_page {
     company?: string;
   }
   export interface customer_checkout_one_time_params {
-    taxability?: string;
+    phone?: string;
   }
   export interface customer_checkout_one_time_params {
     locale?: string;
   }
   export interface customer_checkout_one_time_params {
-    phone?: string;
+    taxability?: string;
   }
   export interface customer_checkout_one_time_params {
     vat_number?: string;
@@ -927,13 +927,13 @@ export namespace _hosted_page {
     company?: string;
   }
   export interface customer_checkout_one_time_for_items_params {
-    taxability?: string;
+    phone?: string;
   }
   export interface customer_checkout_one_time_for_items_params {
     locale?: string;
   }
   export interface customer_checkout_one_time_for_items_params {
-    phone?: string;
+    taxability?: string;
   }
   export interface customer_checkout_one_time_for_items_params {
     vat_number?: string;
@@ -1203,13 +1203,13 @@ export namespace _hosted_page {
     company?: string;
   }
   export interface customer_checkout_new_for_items_params {
-    taxability?: string;
+    phone?: string;
   }
   export interface customer_checkout_new_for_items_params {
     locale?: string;
   }
   export interface customer_checkout_new_for_items_params {
-    phone?: string;
+    taxability?: string;
   }
   export interface customer_checkout_new_for_items_params {
     vat_number?: string;

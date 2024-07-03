@@ -383,6 +383,7 @@ export namespace _estimate {
     invoice_immediately?: boolean;
   }
   export interface cancel_subscription_params {
+    cancel_option?: string;
     end_of_term?: boolean;
     cancel_at?: number;
     credit_option_for_current_term_charges?: string;
@@ -395,6 +396,7 @@ export namespace _estimate {
     event_based_addons?: Array<event_based_addons_cancel_subscription_params>;
   }
   export interface cancel_subscription_for_items_params {
+    cancel_option?: string;
     end_of_term?: boolean;
     cancel_at?: number;
     credit_option_for_current_term_charges?: string;
