@@ -1,6 +1,6 @@
 {
    "name": "chargebee-typescript",
-   "version": "2.34.0",
+   "version": "2.35.0",
    "description": "A library in typescript for integrating with Chargebee.",
    "keywords": [
       "payments",
@@ -20,11 +20,11 @@
       "tsc": "tsc --pretty"
    },
    "dependencies": {
-      "@types/q": "^1.5.2",
       "q": ">=1.0.1"
    },
    "devDependencies": {
       "@types/node": "^13.13.52",
+      "@types/q": "^1.5.2",
       "typescript": "^3.9.3"
    },
    "directories": {

@@ -1,3 +1,8 @@
+### v2.35.0 (2024-07-04)
+* * *
+
+* Moved @types/q from dependencies to devDependencies to fix https://github.com/chargebee/chargebee-typescript/issues/55.
+
 ### v2.34.0 (2024-07-03)
 * * *
 
