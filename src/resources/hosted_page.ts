@@ -400,6 +400,8 @@ export namespace _hosted_page {
     coupon_ids?: Array<string>;
     reactivate?: boolean;
     force_term_reset?: boolean;
+    change_option?: string;
+    changes_scheduled_at?: number;
     redirect_url?: string;
     cancel_url?: string;
     pass_thru_content?: string;
