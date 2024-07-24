@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class ItemPrice extends Model {
   public id: string;
@@ -46,13 +45,12 @@ export class ItemPrice extends Model {
   public parent_item_id?: string;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _item_price.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class ItemPriceApi extends Api {
+  public create(params?: _item_price.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -60,10 +58,10 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(item_price_id: string, params?: any):RequestWrapper {
+  public retrieve(item_price_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -71,10 +69,10 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(item_price_id: string, params?: _item_price.update_params):RequestWrapper {
+  public update(item_price_id: string, params?: _item_price.update_params):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -82,10 +80,10 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _item_price.item_price_list_params):RequestWrapper<ListResult> {
+  public list(params?: _item_price.item_price_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -93,10 +91,10 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(item_price_id: string, params?: any):RequestWrapper {
+  public delete(item_price_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -104,10 +102,10 @@ export class ItemPrice extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static find_applicable_items(item_price_id: string, params?: _item_price.item_price_find_applicable_items_params):RequestWrapper<ListResult> {
+  public find_applicable_items(item_price_id: string, params?: _item_price.item_price_find_applicable_items_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'find_applicable_items',
       'httpMethod': 'GET',
@@ -115,10 +113,10 @@ export class ItemPrice extends Model {
       'urlSuffix': '/applicable_items',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static find_applicable_item_prices(item_price_id: string, params?: _item_price.item_price_find_applicable_item_prices_params):RequestWrapper<ListResult> {
+  public find_applicable_item_prices(item_price_id: string, params?: _item_price.item_price_find_applicable_item_prices_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'find_applicable_item_prices',
       'httpMethod': 'GET',
@@ -126,9 +124,8 @@ export class ItemPrice extends Model {
       'urlSuffix': '/applicable_item_prices',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~ItemPrice
 
 export class Tier extends Model {

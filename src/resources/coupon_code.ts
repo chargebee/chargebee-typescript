@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class CouponCode extends Model {
   public code: string;
@@ -11,13 +10,12 @@ export class CouponCode extends Model {
   public coupon_id: string;
   public coupon_set_id: string;
   public coupon_set_name: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _coupon_code.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class CouponCodeApi extends Api {
+  public create(params?: _coupon_code.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -25,10 +23,10 @@ export class CouponCode extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(coupon_code_id: string, params?: any):RequestWrapper {
+  public retrieve(coupon_code_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_code_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -36,10 +34,10 @@ export class CouponCode extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _coupon_code.coupon_code_list_params):RequestWrapper<ListResult> {
+  public list(params?: _coupon_code.coupon_code_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -47,10 +45,10 @@ export class CouponCode extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static archive(coupon_code_id: string, params?: any):RequestWrapper {
+  public archive(coupon_code_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_code_id, params], {
       'methodName': 'archive',
       'httpMethod': 'POST',
@@ -58,9 +56,8 @@ export class CouponCode extends Model {
       'urlSuffix': '/archive',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~CouponCode
 
 

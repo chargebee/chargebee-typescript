@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class Purchase extends Model {
   public id?: string;
@@ -11,13 +9,12 @@ export class Purchase extends Model {
   public modified_at?: number;
   public subscription_ids?: Array<string>;
   public invoice_ids?: Array<string>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _purchase.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class PurchaseApi extends Api {
+  public create(params?: _purchase.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -25,10 +22,10 @@ export class Purchase extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static estimate(params?: _purchase.estimate_params):RequestWrapper {
+  public estimate(params?: _purchase.estimate_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'estimate',
       'httpMethod': 'POST',
@@ -36,7 +33,7 @@ export class Purchase extends Model {
       'urlSuffix': '/estimate',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
 } // ~Purchase

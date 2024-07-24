@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
 import {ProcessWait} from "../process_wait";
+import { Api } from './api'
 
 export class Export extends Model {
   public id: string;
@@ -12,40 +11,41 @@ export class Export extends Model {
   public status: string;
   public created_at: number;
   public download?: Download;
+}
 
-  public static wait_for_export_completion(exportId: string): ProcessWait {
+// OPERATIONS
+//-----------
+export class ExportApi extends Api {
+  public wait_for_export_completion(exportId: string): ProcessWait {
     let count = 0;
-    let export_retrieve = Export.retrieve(exportId);
+    let export_retrieve = this.retrieve(exportId);
 
-    let ret = function(deferred, _self) {
+    let ret = function (deferred, _self) {
       export_retrieve.request(
-      function(error, result) {
-        if (error) {
-          deferred.reject(error);
-        } else {
-          let exportObj = result.export;
-          if (exportObj.status === 'completed') {
-            deferred.resolve(result);
-          } else if (exportObj.status === 'in_process') {
-            if (count++ > 30) {
-              throw new Error("Export is taking too long");
-            }
-            setTimeout(function(){
-              ret(deferred, _self);
-            }, _self.env.exportWaitInMillis);
+        function (error, result) {
+          if (error) {
+            deferred.reject(error);
           } else {
-            deferred.reject(result);
+            let exportObj = result.export;
+            if (exportObj.status === 'completed') {
+              deferred.resolve(result);
+            } else if (exportObj.status === 'in_process') {
+              if (count++ > 30) {
+                throw new Error("Export is taking too long");
+              }
+              setTimeout(function () {
+                ret(deferred, _self);
+              }, _self.env.exportWaitInMillis);
+            } else {
+              deferred.reject(result);
+            }
           }
-        }
-      });
+        });
     };
-    return new ProcessWait(ret, ChargeBee._env);
+    return new ProcessWait(ret, this._env);
   }
 
-  // OPERATIONS
-  //-----------
-
-  public static retrieve(export_id: string, params?: any):RequestWrapper {
+  public retrieve(export_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([export_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -53,10 +53,10 @@ export class Export extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static revenue_recognition(params?: _export.revenue_recognition_params):RequestWrapper {
+  public revenue_recognition(params?: _export.revenue_recognition_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'revenue_recognition',
       'httpMethod': 'POST',
@@ -64,10 +64,10 @@ export class Export extends Model {
       'urlSuffix': '/revenue_recognition',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static deferred_revenue(params?: _export.deferred_revenue_params):RequestWrapper {
+  public deferred_revenue(params?: _export.deferred_revenue_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'deferred_revenue',
       'httpMethod': 'POST',
@@ -75,10 +75,10 @@ export class Export extends Model {
       'urlSuffix': '/deferred_revenue',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static plans(params?: _export.plans_params):RequestWrapper {
+  public plans(params?: _export.plans_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'plans',
       'httpMethod': 'POST',
@@ -86,10 +86,10 @@ export class Export extends Model {
       'urlSuffix': '/plans',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static addons(params?: _export.addons_params):RequestWrapper {
+  public addons(params?: _export.addons_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'addons',
       'httpMethod': 'POST',
@@ -97,10 +97,10 @@ export class Export extends Model {
       'urlSuffix': '/addons',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static coupons(params?: _export.coupons_params):RequestWrapper {
+  public coupons(params?: _export.coupons_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'coupons',
       'httpMethod': 'POST',
@@ -108,10 +108,10 @@ export class Export extends Model {
       'urlSuffix': '/coupons',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static customers(params?: _export.customers_params):RequestWrapper {
+  public customers(params?: _export.customers_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'customers',
       'httpMethod': 'POST',
@@ -119,10 +119,10 @@ export class Export extends Model {
       'urlSuffix': '/customers',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static subscriptions(params?: _export.subscriptions_params):RequestWrapper {
+  public subscriptions(params?: _export.subscriptions_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'subscriptions',
       'httpMethod': 'POST',
@@ -130,10 +130,10 @@ export class Export extends Model {
       'urlSuffix': '/subscriptions',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static invoices(params?: _export.invoices_params):RequestWrapper {
+  public invoices(params?: _export.invoices_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'invoices',
       'httpMethod': 'POST',
@@ -141,10 +141,10 @@ export class Export extends Model {
       'urlSuffix': '/invoices',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static credit_notes(params?: _export.credit_notes_params):RequestWrapper {
+  public credit_notes(params?: _export.credit_notes_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'credit_notes',
       'httpMethod': 'POST',
@@ -152,10 +152,10 @@ export class Export extends Model {
       'urlSuffix': '/credit_notes',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static transactions(params?: _export.transactions_params):RequestWrapper {
+  public transactions(params?: _export.transactions_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'transactions',
       'httpMethod': 'POST',
@@ -163,10 +163,10 @@ export class Export extends Model {
       'urlSuffix': '/transactions',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static orders(params?: _export.orders_params):RequestWrapper {
+  public orders(params?: _export.orders_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'orders',
       'httpMethod': 'POST',
@@ -174,10 +174,10 @@ export class Export extends Model {
       'urlSuffix': '/orders',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static item_families(params?: _export.item_families_params):RequestWrapper {
+  public item_families(params?: _export.item_families_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'item_families',
       'httpMethod': 'POST',
@@ -185,10 +185,10 @@ export class Export extends Model {
       'urlSuffix': '/item_families',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static items(params?: _export.items_params):RequestWrapper {
+  public items(params?: _export.items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'items',
       'httpMethod': 'POST',
@@ -196,10 +196,10 @@ export class Export extends Model {
       'urlSuffix': '/items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static item_prices(params?: _export.item_prices_params):RequestWrapper {
+  public item_prices(params?: _export.item_prices_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'item_prices',
       'httpMethod': 'POST',
@@ -207,10 +207,10 @@ export class Export extends Model {
       'urlSuffix': '/item_prices',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static attached_items(params?: _export.attached_items_params):RequestWrapper {
+  public attached_items(params?: _export.attached_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'attached_items',
       'httpMethod': 'POST',
@@ -218,10 +218,10 @@ export class Export extends Model {
       'urlSuffix': '/attached_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static differential_prices(params?: _export.differential_prices_params):RequestWrapper {
+  public differential_prices(params?: _export.differential_prices_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'differential_prices',
       'httpMethod': 'POST',
@@ -229,10 +229,10 @@ export class Export extends Model {
       'urlSuffix': '/differential_prices',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static price_variants(params?: _export.price_variants_params):RequestWrapper {
+  public price_variants(params?: _export.price_variants_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'price_variants',
       'httpMethod': 'POST',
@@ -240,9 +240,8 @@ export class Export extends Model {
       'urlSuffix': '/price_variants',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Export
 
 export class Download extends Model {

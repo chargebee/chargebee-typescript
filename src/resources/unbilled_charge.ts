@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class UnbilledCharge extends Model {
   public id?: string;
@@ -30,13 +29,12 @@ export class UnbilledCharge extends Model {
   public is_advance_charge?: boolean;
   public business_entity_id?: string;
   public deleted: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create_unbilled_charge(params?: _unbilled_charge.create_unbilled_charge_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class UnbilledChargeApi extends Api {
+  public create_unbilled_charge(params?: _unbilled_charge.create_unbilled_charge_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_unbilled_charge',
       'httpMethod': 'POST',
@@ -44,10 +42,10 @@ export class UnbilledCharge extends Model {
       'urlSuffix': '/create',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create(params?: _unbilled_charge.create_params):RequestWrapper {
+  public create(params?: _unbilled_charge.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -55,10 +53,10 @@ export class UnbilledCharge extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static invoice_unbilled_charges(params?: _unbilled_charge.invoice_unbilled_charges_params):RequestWrapper {
+  public invoice_unbilled_charges(params?: _unbilled_charge.invoice_unbilled_charges_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'invoice_unbilled_charges',
       'httpMethod': 'POST',
@@ -66,10 +64,10 @@ export class UnbilledCharge extends Model {
       'urlSuffix': '/invoice_unbilled_charges',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(unbilled_charge_id: string, params?: any):RequestWrapper {
+  public delete(unbilled_charge_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([unbilled_charge_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -77,10 +75,10 @@ export class UnbilledCharge extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _unbilled_charge.unbilled_charge_list_params):RequestWrapper<ListResult> {
+  public list(params?: _unbilled_charge.unbilled_charge_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -88,10 +86,10 @@ export class UnbilledCharge extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static invoice_now_estimate(params?: _unbilled_charge.invoice_now_estimate_params):RequestWrapper {
+  public invoice_now_estimate(params?: _unbilled_charge.invoice_now_estimate_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'invoice_now_estimate',
       'httpMethod': 'POST',
@@ -99,9 +97,8 @@ export class UnbilledCharge extends Model {
       'urlSuffix': '/invoice_now_estimate',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~UnbilledCharge
 
 export class Tier extends Model {

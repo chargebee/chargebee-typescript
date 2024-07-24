@@ -1,20 +1,16 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class PaymentReferenceNumber extends Model {
   public id: string;
   public type: string;
   public number: string;
   public invoice_id?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class PaymentReferenceNumberApi extends Api {
 } // ~PaymentReferenceNumber
 
 

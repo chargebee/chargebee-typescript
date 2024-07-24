@@ -1,5 +1,75 @@
 import {Util} from "./util";
-import * as resources from "./resources";
+import { SubscriptionApi } from './resources/subscription'
+import { CustomerApi } from './resources/customer'
+import { ContractTermApi } from './resources/contract_term'
+import { DiscountApi } from './resources/discount'
+import { AdvanceInvoiceScheduleApi } from './resources/advance_invoice_schedule'
+import { HierarchyApi } from './resources/hierarchy'
+import { ContactApi } from './resources/contact'
+import { BusinessEntityTransferApi } from './resources/business_entity_transfer'
+import { TokenApi } from './resources/token'
+import { PaymentSourceApi } from './resources/payment_source'
+import { ThirdPartyPaymentMethodApi } from './resources/third_party_payment_method'
+import { VirtualBankAccountApi } from './resources/virtual_bank_account'
+import { CardApi } from './resources/card'
+import { PromotionalCreditApi } from './resources/promotional_credit'
+import { InvoiceApi } from './resources/invoice'
+import { CreditNoteApi } from './resources/credit_note'
+import { UnbilledChargeApi } from './resources/unbilled_charge'
+import { OrderApi } from './resources/order'
+import { GiftApi } from './resources/gift'
+import { TransactionApi } from './resources/transaction'
+import { HostedPageApi } from './resources/hosted_page'
+import { EstimateApi } from './resources/estimate'
+import { QuoteApi } from './resources/quote'
+import { PlanApi } from './resources/plan'
+import { AddonApi } from './resources/addon'
+import { CouponApi } from './resources/coupon'
+import { CouponSetApi } from './resources/coupon_set'
+import { CouponCodeApi } from './resources/coupon_code'
+import { AddressApi } from './resources/address'
+import { UsageApi } from './resources/usage'
+import { EventApi } from './resources/event'
+import { CommentApi } from './resources/comment'
+import { PortalSessionApi } from './resources/portal_session'
+import { SiteMigrationDetailApi } from './resources/site_migration_detail'
+import { ResourceMigrationApi } from './resources/resource_migration'
+import { TimeMachineApi } from './resources/time_machine'
+import { ExportApi } from './resources/export'
+import { PaymentIntentApi } from './resources/payment_intent'
+import { ItemFamilyApi } from './resources/item_family'
+import { ItemApi } from './resources/item'
+import { PriceVariantApi } from './resources/price_variant'
+import { ItemPriceApi } from './resources/item_price'
+import { AttachedItemApi } from './resources/attached_item'
+import { DifferentialPriceApi } from './resources/differential_price'
+import { FeatureApi } from './resources/feature'
+import { ItemEntitlementApi } from './resources/item_entitlement'
+import { EntitlementApi } from './resources/entitlement'
+import { SubscriptionEntitlementApi } from './resources/subscription_entitlement'
+import { InAppSubscriptionApi } from './resources/in_app_subscription'
+import { NonSubscriptionApi } from './resources/non_subscription'
+import { EntitlementOverrideApi } from './resources/entitlement_override'
+import { BusinessEntityApi } from './resources/business_entity'
+import { PurchaseApi } from './resources/purchase'
+import { PaymentVoucherApi } from './resources/payment_voucher'
+import { CurrencyApi } from './resources/currency'
+import { RampApi } from './resources/ramp'
+import { InstallmentConfigApi } from './resources/installment_config'
+import { InstallmentApi } from './resources/installment'
+import { PricingPageSessionApi } from './resources/pricing_page_session'
+import { InstallmentDetailApi } from './resources/installment_detail'
+import { ImpactedItemPriceApi } from './resources/impacted_item_price'
+import { ImpactedSubscriptionApi } from './resources/impacted_subscription'
+import { ImpactedItemApi } from './resources/impacted_item'
+import { AttributeApi } from './resources/attribute'
+import { GatewayErrorDetailApi } from './resources/gateway_error_detail'
+import { DownloadApi } from './resources/download'
+import { QuotedSubscriptionApi } from './resources/quoted_subscription'
+import { QuotedChargeApi } from './resources/quoted_charge'
+import { QuoteLineGroupApi } from './resources/quote_line_group'
+import { TaxWithheldApi } from './resources/tax_withheld'
+import { PaymentReferenceNumberApi } from './resources/payment_reference_number'
 export {_subscription} from "./resources/subscription";
 export {_contract_term} from "./resources/contract_term";
 export {_discount} from "./resources/discount";
@@ -77,229 +147,241 @@ interface Conf {
     site: string
 }
 
+export interface Environment extends Conf {
+    readonly protocol: string,
+    readonly hostSuffix: string,
+    readonly apiPath: string,
+    readonly timeout: number,
+    readonly clientVersion: string,
+    readonly port: number,
+    readonly timemachineWaitInMillis: number,
+    readonly exportWaitInMillis: number
+}
+
 export class ChargeBee {
-    static _env = require('./environment');
     static _api_version = 'v2';
-    public configure(conf: Partial<typeof ChargeBee._env & Conf>) {
-        Util.extend(true, ChargeBee._env, conf)
+
+    _env = require('./environment');
+
+    public configure(conf: Partial<Environment>) {
+        Util.extend(true, this._env, conf)
     }
 
     public updateRequestTimeoutInMillis(timeout){
-        ChargeBee._env.timeout = timeout;
+        this._env.timeout = timeout;
     }
 
     get subscription() {
-        return resources.Subscription;
+        return new SubscriptionApi(this._env);
     }
     get contract_term() {
-        return resources.ContractTerm;
+        return new ContractTermApi(this._env);
     }
     get discount() {
-        return resources.Discount;
+        return new DiscountApi(this._env);
     }
     get advance_invoice_schedule() {
-        return resources.AdvanceInvoiceSchedule;
+        return new AdvanceInvoiceScheduleApi(this._env);
     }
     get customer() {
-        return resources.Customer;
+        return new CustomerApi(this._env);
     }
     get hierarchy() {
-        return resources.Hierarchy;
+        return new HierarchyApi(this._env);
     }
     get contact() {
-        return resources.Contact;
+        return new ContactApi(this._env);
     }
     get business_entity_transfer() {
-        return resources.BusinessEntityTransfer;
+        return new BusinessEntityTransferApi(this._env);
     }
     get token() {
-        return resources.Token;
+        return new TokenApi(this._env);
     }
     get payment_source() {
-        return resources.PaymentSource;
+        return new PaymentSourceApi(this._env);
     }
     get third_party_payment_method() {
-        return resources.ThirdPartyPaymentMethod;
+        return new ThirdPartyPaymentMethodApi(this._env);
     }
     get virtual_bank_account() {
-        return resources.VirtualBankAccount;
+        return new VirtualBankAccountApi(this._env);
     }
     get card() {
-        return resources.Card;
+        return new CardApi(this._env);
     }
     get promotional_credit() {
-        return resources.PromotionalCredit;
+        return new PromotionalCreditApi(this._env);
     }
     get invoice() {
-        return resources.Invoice;
+        return new InvoiceApi(this._env);
     }
     get payment_reference_number() {
-        return resources.PaymentReferenceNumber;
+        return new PaymentReferenceNumberApi(this._env);
     }
     get tax_withheld() {
-        return resources.TaxWithheld;
+        return new TaxWithheldApi(this._env);
     }
     get credit_note() {
-        return resources.CreditNote;
+        return new CreditNoteApi(this._env);
     }
     get unbilled_charge() {
-        return resources.UnbilledCharge;
+        return new UnbilledChargeApi(this._env);
     }
     get order() {
-        return resources.Order;
+        return new OrderApi(this._env);
     }
     get gift() {
-        return resources.Gift;
+        return new GiftApi(this._env);
     }
     get transaction() {
-        return resources.Transaction;
+        return new TransactionApi(this._env);
     }
     get hosted_page() {
-        return resources.HostedPage;
+        return new HostedPageApi(this._env);
     }
     get estimate() {
-        return resources.Estimate;
+        return new EstimateApi(this._env);
     }
     get quote() {
-        return resources.Quote;
+        return new QuoteApi(this._env);
     }
     get quoted_subscription() {
-        return resources.QuotedSubscription;
+        return new QuotedSubscriptionApi(this._env);
     }
     get quoted_charge() {
-        return resources.QuotedCharge;
+        return new QuotedChargeApi(this._env);
     }
     get quote_line_group() {
-        return resources.QuoteLineGroup;
+        return new QuoteLineGroupApi(this._env);
     }
     get plan() {
-        return resources.Plan;
+        return new PlanApi(this._env);
     }
     get addon() {
-        return resources.Addon;
+        return new AddonApi(this._env);
     }
     get coupon() {
-        return resources.Coupon;
+        return new CouponApi(this._env);
     }
     get coupon_set() {
-        return resources.CouponSet;
+        return new CouponSetApi(this._env);
     }
     get coupon_code() {
-        return resources.CouponCode;
+        return new CouponCodeApi(this._env);
     }
     get address() {
-        return resources.Address;
+        return new AddressApi(this._env);
     }
     get usage() {
-        return resources.Usage;
+        return new UsageApi(this._env);
     }
     get event() {
-        return resources.Event;
+        return new EventApi(this._env);
     }
     get comment() {
-        return resources.Comment;
+        return new CommentApi(this._env);
     }
     get download() {
-        return resources.Download;
+        return new DownloadApi(this._env);
     }
     get portal_session() {
-        return resources.PortalSession;
+        return new PortalSessionApi(this._env);
     }
     get site_migration_detail() {
-        return resources.SiteMigrationDetail;
+        return new SiteMigrationDetailApi(this._env);
     }
     get resource_migration() {
-        return resources.ResourceMigration;
+        return new ResourceMigrationApi(this._env);
     }
     get time_machine() {
-        return resources.TimeMachine;
+        return new TimeMachineApi(this._env);
     }
     get export() {
-        return resources.Export;
+        return new ExportApi(this._env);
     }
     get payment_intent() {
-        return resources.PaymentIntent;
+        return new PaymentIntentApi(this._env);
     }
     get gateway_error_detail() {
-        return resources.GatewayErrorDetail;
+        return new GatewayErrorDetailApi(this._env);
     }
     get item_family() {
-        return resources.ItemFamily;
+        return new ItemFamilyApi(this._env);
     }
     get item() {
-        return resources.Item;
+        return new ItemApi(this._env);
     }
     get price_variant() {
-        return resources.PriceVariant;
+        return new PriceVariantApi(this._env);
     }
     get attribute() {
-        return resources.Attribute;
+        return new AttributeApi(this._env);
     }
     get item_price() {
-        return resources.ItemPrice;
+        return new ItemPriceApi(this._env);
     }
     get attached_item() {
-        return resources.AttachedItem;
+        return new AttachedItemApi(this._env);
     }
     get differential_price() {
-        return resources.DifferentialPrice;
+        return new DifferentialPriceApi(this._env);
     }
     get feature() {
-        return resources.Feature;
+        return new FeatureApi(this._env);
     }
     get impacted_subscription() {
-        return resources.ImpactedSubscription;
+        return new ImpactedSubscriptionApi(this._env);
     }
     get impacted_item() {
-        return resources.ImpactedItem;
+        return new ImpactedItemApi(this._env);
     }
     get impacted_item_price() {
-        return resources.ImpactedItemPrice;
+        return new ImpactedItemPriceApi(this._env);
     }
     get subscription_entitlement() {
-        return resources.SubscriptionEntitlement;
+        return new SubscriptionEntitlementApi(this._env);
     }
     get item_entitlement() {
-        return resources.ItemEntitlement;
+        return new ItemEntitlementApi(this._env);
     }
     get entitlement() {
-        return resources.Entitlement;
+        return new EntitlementApi(this._env);
     }
     get in_app_subscription() {
-        return resources.InAppSubscription;
+        return new InAppSubscriptionApi(this._env);
     }
     get non_subscription() {
-        return resources.NonSubscription;
+        return new NonSubscriptionApi(this._env);
     }
     get entitlement_override() {
-        return resources.EntitlementOverride;
+        return new EntitlementOverrideApi(this._env);
     }
     get business_entity() {
-        return resources.BusinessEntity;
+        return new BusinessEntityApi(this._env);
     }
     get purchase() {
-        return resources.Purchase;
+        return new PurchaseApi(this._env);
     }
     get payment_voucher() {
-        return resources.PaymentVoucher;
+        return new PaymentVoucherApi(this._env);
     }
     get currency() {
-        return resources.Currency;
+        return new CurrencyApi(this._env);
     }
     get ramp() {
-        return resources.Ramp;
+        return new RampApi(this._env);
     }
     get installment_config() {
-        return resources.InstallmentConfig;
+        return new InstallmentConfigApi(this._env);
     }
     get installment() {
-        return resources.Installment;
+        return new InstallmentApi(this._env);
     }
     get installment_detail() {
-        return resources.InstallmentDetail;
+        return new InstallmentDetailApi(this._env)
     }
     get pricing_page_session() {
-        return resources.PricingPageSession;
+        return new PricingPageSessionApi(this._env);
     }
 }
-

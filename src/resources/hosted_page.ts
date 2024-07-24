@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class HostedPage extends Model {
   public id?: string;
@@ -19,13 +18,12 @@ export class HostedPage extends Model {
   public resource_version?: number;
   public checkout_info?: any;
   public business_entity_id?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static checkout_new(params?: _hosted_page.checkout_new_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class HostedPageApi extends Api {
+  public checkout_new(params?: _hosted_page.checkout_new_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_new',
       'httpMethod': 'POST',
@@ -33,10 +31,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_new',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static checkout_one_time(params?: _hosted_page.checkout_one_time_params):RequestWrapper {
+  public checkout_one_time(params?: _hosted_page.checkout_one_time_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_one_time',
       'httpMethod': 'POST',
@@ -44,10 +42,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_one_time',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static checkout_one_time_for_items(params?: _hosted_page.checkout_one_time_for_items_params):RequestWrapper {
+  public checkout_one_time_for_items(params?: _hosted_page.checkout_one_time_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_one_time_for_items',
       'httpMethod': 'POST',
@@ -55,10 +53,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_one_time_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static checkout_new_for_items(params?: _hosted_page.checkout_new_for_items_params):RequestWrapper {
+  public checkout_new_for_items(params?: _hosted_page.checkout_new_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_new_for_items',
       'httpMethod': 'POST',
@@ -66,10 +64,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_new_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static checkout_existing(params?: _hosted_page.checkout_existing_params):RequestWrapper {
+  public checkout_existing(params?: _hosted_page.checkout_existing_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_existing',
       'httpMethod': 'POST',
@@ -77,10 +75,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_existing',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static checkout_existing_for_items(params?: _hosted_page.checkout_existing_for_items_params):RequestWrapper {
+  public checkout_existing_for_items(params?: _hosted_page.checkout_existing_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_existing_for_items',
       'httpMethod': 'POST',
@@ -88,10 +86,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_existing_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_card(params?: _hosted_page.update_card_params):RequestWrapper {
+  public update_card(params?: _hosted_page.update_card_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update_card',
       'httpMethod': 'POST',
@@ -99,10 +97,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/update_card',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_payment_method(params?: _hosted_page.update_payment_method_params):RequestWrapper {
+  public update_payment_method(params?: _hosted_page.update_payment_method_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update_payment_method',
       'httpMethod': 'POST',
@@ -110,10 +108,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/update_payment_method',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static manage_payment_sources(params?: _hosted_page.manage_payment_sources_params):RequestWrapper {
+  public manage_payment_sources(params?: _hosted_page.manage_payment_sources_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'manage_payment_sources',
       'httpMethod': 'POST',
@@ -121,10 +119,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/manage_payment_sources',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static collect_now(params?: _hosted_page.collect_now_params):RequestWrapper {
+  public collect_now(params?: _hosted_page.collect_now_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'collect_now',
       'httpMethod': 'POST',
@@ -132,10 +130,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/collect_now',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static accept_quote(params?: _hosted_page.accept_quote_params):RequestWrapper {
+  public accept_quote(params?: _hosted_page.accept_quote_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'accept_quote',
       'httpMethod': 'POST',
@@ -143,10 +141,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/accept_quote',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static extend_subscription(params?: _hosted_page.extend_subscription_params):RequestWrapper {
+  public extend_subscription(params?: _hosted_page.extend_subscription_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'extend_subscription',
       'httpMethod': 'POST',
@@ -154,10 +152,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/extend_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static checkout_gift(params?: _hosted_page.checkout_gift_params):RequestWrapper {
+  public checkout_gift(params?: _hosted_page.checkout_gift_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_gift',
       'httpMethod': 'POST',
@@ -165,10 +163,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_gift',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static checkout_gift_for_items(params?: _hosted_page.checkout_gift_for_items_params):RequestWrapper {
+  public checkout_gift_for_items(params?: _hosted_page.checkout_gift_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'checkout_gift_for_items',
       'httpMethod': 'POST',
@@ -176,10 +174,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_gift_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static claim_gift(params?: _hosted_page.claim_gift_params):RequestWrapper {
+  public claim_gift(params?: _hosted_page.claim_gift_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'claim_gift',
       'httpMethod': 'POST',
@@ -187,10 +185,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/claim_gift',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve_agreement_pdf(params?: _hosted_page.retrieve_agreement_pdf_params):RequestWrapper {
+  public retrieve_agreement_pdf(params?: _hosted_page.retrieve_agreement_pdf_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'retrieve_agreement_pdf',
       'httpMethod': 'POST',
@@ -198,10 +196,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/retrieve_agreement_pdf',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static acknowledge(hosted_page_id: string, params?: any):RequestWrapper {
+  public acknowledge(hosted_page_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([hosted_page_id, params], {
       'methodName': 'acknowledge',
       'httpMethod': 'POST',
@@ -209,10 +207,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/acknowledge',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(hosted_page_id: string, params?: any):RequestWrapper {
+  public retrieve(hosted_page_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([hosted_page_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -220,10 +218,10 @@ export class HostedPage extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _hosted_page.hosted_page_list_params):RequestWrapper<ListResult> {
+  public list(params?: _hosted_page.hosted_page_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -231,10 +229,10 @@ export class HostedPage extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static pre_cancel(params?: _hosted_page.pre_cancel_params):RequestWrapper {
+  public pre_cancel(params?: _hosted_page.pre_cancel_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'pre_cancel',
       'httpMethod': 'POST',
@@ -242,10 +240,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/pre_cancel',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static events(params?: _hosted_page.events_params):RequestWrapper {
+  public events(params?: _hosted_page.events_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'events',
       'httpMethod': 'POST',
@@ -253,10 +251,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/events',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static view_voucher(params?: _hosted_page.view_voucher_params):RequestWrapper {
+  public view_voucher(params?: _hosted_page.view_voucher_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'view_voucher',
       'httpMethod': 'POST',
@@ -264,9 +262,8 @@ export class HostedPage extends Model {
       'urlSuffix': '/view_voucher',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~HostedPage
 
 

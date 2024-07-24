@@ -2,8 +2,7 @@ import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class SubscriptionEntitlement extends Model {
   public subscription_id: string;
@@ -16,13 +15,12 @@ export class SubscriptionEntitlement extends Model {
   public is_enabled: boolean;
   public expires_at?: number;
   public components?: Component;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static subscription_entitlements_for_subscription(subscription_id: string, params?: _subscription_entitlement.subscription_entitlement_subscription_entitlements_for_subscription_params):RequestWrapper<ListResult> {
+// OPERATIONS
+//-----------
+export class SubscriptionEntitlementApi extends Api {
+  public subscription_entitlements_for_subscription(subscription_id: string, params?: _subscription_entitlement.subscription_entitlement_subscription_entitlements_for_subscription_params):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'subscription_entitlements_for_subscription',
       'httpMethod': 'GET',
@@ -30,10 +28,10 @@ export class SubscriptionEntitlement extends Model {
       'urlSuffix': '/subscription_entitlements',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static set_subscription_entitlement_availability(subscription_id: string, params?: _subscription_entitlement.set_subscription_entitlement_availability_params):RequestWrapper {
+  public set_subscription_entitlement_availability(subscription_id: string, params?: _subscription_entitlement.set_subscription_entitlement_availability_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'set_subscription_entitlement_availability',
       'httpMethod': 'POST',
@@ -41,9 +39,8 @@ export class SubscriptionEntitlement extends Model {
       'urlSuffix': '/subscription_entitlements/set_availability',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~SubscriptionEntitlement
 
 export class Component extends Model {

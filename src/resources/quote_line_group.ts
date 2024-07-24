@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class QuoteLineGroup extends Model {
   public version?: number;
@@ -19,12 +16,11 @@ export class QuoteLineGroup extends Model {
   public line_item_discounts?: Array<LineItemDiscount>;
   public taxes?: Array<Tax>;
   public line_item_taxes?: Array<LineItemTax>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class QuoteLineGroupApi extends Api {
 } // ~QuoteLineGroup
 
 export class LineItem extends Model {

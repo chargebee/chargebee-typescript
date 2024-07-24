@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Usage extends Model {
   public id?: string;
@@ -18,13 +17,12 @@ export class Usage extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public created_at: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(subscription_id: string, params?: _usage.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class UsageApi extends Api {
+  public create(subscription_id: string, params?: _usage.create_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -32,10 +30,10 @@ export class Usage extends Model {
       'urlSuffix': '/usages',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(subscription_id: string, params?: _usage.retrieve_params):RequestWrapper {
+  public retrieve(subscription_id: string, params?: _usage.retrieve_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -43,10 +41,10 @@ export class Usage extends Model {
       'urlSuffix': '/usages',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(subscription_id: string, params?: _usage.delete_params):RequestWrapper {
+  public delete(subscription_id: string, params?: _usage.delete_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -54,10 +52,10 @@ export class Usage extends Model {
       'urlSuffix': '/delete_usage',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _usage.usage_list_params):RequestWrapper<ListResult> {
+  public list(params?: _usage.usage_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -65,10 +63,10 @@ export class Usage extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static pdf(params?: _usage.pdf_params):RequestWrapper {
+  public pdf(params?: _usage.pdf_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'pdf',
       'httpMethod': 'POST',
@@ -76,9 +74,8 @@ export class Usage extends Model {
       'urlSuffix': '/pdf',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Usage
 
 

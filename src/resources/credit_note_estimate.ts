@@ -1,8 +1,4 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
 
 export class CreditNoteEstimate extends Model {
   public reference_invoice_id: string;
@@ -22,7 +18,7 @@ export class CreditNoteEstimate extends Model {
   public round_off_amount?: number;
   public customer_id?: string;
 
-  
+
 
   // OPERATIONS
   //-----------

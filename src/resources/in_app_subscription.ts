@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class InAppSubscription extends Model {
   public app_id: string;
@@ -11,13 +9,12 @@ export class InAppSubscription extends Model {
   public plan_id?: string;
   public store_status?: string;
   public invoice_id?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static process_receipt(in_app_subscription_id: string, params?: _in_app_subscription.process_receipt_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class InAppSubscriptionApi extends Api {
+  public process_receipt(in_app_subscription_id: string, params?: _in_app_subscription.process_receipt_params):RequestWrapper {
     return new RequestWrapper([in_app_subscription_id, params], {
       'methodName': 'process_receipt',
       'httpMethod': 'POST',
@@ -25,10 +22,10 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/process_purchase_command',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static import_receipt(in_app_subscription_id: string, params?: _in_app_subscription.import_receipt_params):RequestWrapper {
+  public import_receipt(in_app_subscription_id: string, params?: _in_app_subscription.import_receipt_params):RequestWrapper {
     return new RequestWrapper([in_app_subscription_id, params], {
       'methodName': 'import_receipt',
       'httpMethod': 'POST',
@@ -36,10 +33,10 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/import_receipt',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static import_subscription(in_app_subscription_id: string, params?: _in_app_subscription.import_subscription_params):RequestWrapper {
+  public import_subscription(in_app_subscription_id: string, params?: _in_app_subscription.import_subscription_params):RequestWrapper {
     return new RequestWrapper([in_app_subscription_id, params], {
       'methodName': 'import_subscription',
       'httpMethod': 'POST',
@@ -47,10 +44,10 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/import_subscription',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve_store_subs(in_app_subscription_id: string, params?: _in_app_subscription.retrieve_store_subs_params):RequestWrapper {
+  public retrieve_store_subs(in_app_subscription_id: string, params?: _in_app_subscription.retrieve_store_subs_params):RequestWrapper {
     return new RequestWrapper([in_app_subscription_id, params], {
       'methodName': 'retrieve_store_subs',
       'httpMethod': 'POST',
@@ -58,9 +55,8 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/retrieve',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~InAppSubscription
 
 

@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class BusinessEntity extends Model {
   public id: string;
@@ -13,13 +12,12 @@ export class BusinessEntity extends Model {
   public created_at: number;
   public resource_version?: number;
   public updated_at?: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create_transfers(params?: _business_entity.create_transfers_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class BusinessEntityApi extends Api {
+  public create_transfers(params?: _business_entity.create_transfers_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_transfers',
       'httpMethod': 'POST',
@@ -27,10 +25,10 @@ export class BusinessEntity extends Model {
       'urlSuffix': '/transfers',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static get_transfers(params?: _business_entity.business_entity_get_transfers_params):RequestWrapper<ListResult> {
+  public get_transfers(params?: _business_entity.business_entity_get_transfers_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'get_transfers',
       'httpMethod': 'GET',
@@ -38,9 +36,8 @@ export class BusinessEntity extends Model {
       'urlSuffix': '/transfers',
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~BusinessEntity
 
 

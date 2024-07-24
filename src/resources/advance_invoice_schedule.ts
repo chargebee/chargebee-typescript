@@ -1,20 +1,16 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class AdvanceInvoiceSchedule extends Model {
   public id: string;
   public schedule_type?: string;
   public fixed_interval_schedule?: FixedIntervalSchedule;
   public specific_dates_schedule?: SpecificDatesSchedule;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class AdvanceInvoiceScheduleApi extends Api {
 } // ~AdvanceInvoiceSchedule
 
 export class FixedIntervalSchedule extends Model {

@@ -1,9 +1,7 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
 import {ProcessWait} from "../process_wait";
+import { Api } from './api'
 
 export class TimeMachine extends Model {
   public name: string;
@@ -13,10 +11,14 @@ export class TimeMachine extends Model {
   public failure_code?: string;
   public failure_reason?: string;
   public error_json?: string;
+}
 
-  public static wait_for_time_travel_completion(): ProcessWait {
+// OPERATIONS
+//-----------
+export class TimeMachineApi extends Api {
+  public wait_for_time_travel_completion(): ProcessWait {
     let count = 0;
-    let time_machine_retrieve = TimeMachine.retrieve("delorean");
+    let time_machine_retrieve = this.retrieve("delorean");
     let ret = function (deferred, _self) {
       time_machine_retrieve.request(
       function(error, result) {
@@ -39,13 +41,10 @@ export class TimeMachine extends Model {
         }
       });
     };
-    return new ProcessWait(ret, ChargeBee._env);
+    return new ProcessWait(ret, this._env);
   }
 
-  // OPERATIONS
-  //-----------
-
-  public static retrieve(time_machine_id: string, params?: any):RequestWrapper {
+  public retrieve(time_machine_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([time_machine_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -53,10 +52,10 @@ export class TimeMachine extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static start_afresh(time_machine_id: string, params?: _time_machine.start_afresh_params):RequestWrapper {
+  public start_afresh(time_machine_id: string, params?: _time_machine.start_afresh_params):RequestWrapper {
     return new RequestWrapper([time_machine_id, params], {
       'methodName': 'start_afresh',
       'httpMethod': 'POST',
@@ -64,10 +63,10 @@ export class TimeMachine extends Model {
       'urlSuffix': '/start_afresh',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static travel_forward(time_machine_id: string, params?: _time_machine.travel_forward_params):RequestWrapper {
+  public travel_forward(time_machine_id: string, params?: _time_machine.travel_forward_params):RequestWrapper {
     return new RequestWrapper([time_machine_id, params], {
       'methodName': 'travel_forward',
       'httpMethod': 'POST',
@@ -75,9 +74,8 @@ export class TimeMachine extends Model {
       'urlSuffix': '/travel_forward',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~TimeMachine
 
 

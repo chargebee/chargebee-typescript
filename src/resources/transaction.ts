@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Transaction extends Model {
   public id: string;
@@ -52,13 +51,12 @@ export class Transaction extends Model {
   public payment_method_details?: string;
   public error_detail?: GatewayErrorDetail;
   public custom_payment_method_name?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create_authorization(params?: _transaction.create_authorization_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class TransactionApi extends Api {
+  public create_authorization(params?: _transaction.create_authorization_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_authorization',
       'httpMethod': 'POST',
@@ -66,10 +64,10 @@ export class Transaction extends Model {
       'urlSuffix': '/create_authorization',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static void_transaction(transaction_id: string, params?: any):RequestWrapper {
+  public void_transaction(transaction_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([transaction_id, params], {
       'methodName': 'void_transaction',
       'httpMethod': 'POST',
@@ -77,10 +75,10 @@ export class Transaction extends Model {
       'urlSuffix': '/void',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static record_refund(transaction_id: string, params?: _transaction.record_refund_params):RequestWrapper {
+  public record_refund(transaction_id: string, params?: _transaction.record_refund_params):RequestWrapper {
     return new RequestWrapper([transaction_id, params], {
       'methodName': 'record_refund',
       'httpMethod': 'POST',
@@ -88,10 +86,10 @@ export class Transaction extends Model {
       'urlSuffix': '/record_refund',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static refund(transaction_id: string, params?: _transaction.refund_params):RequestWrapper {
+  public refund(transaction_id: string, params?: _transaction.refund_params):RequestWrapper {
     return new RequestWrapper([transaction_id, params], {
       'methodName': 'refund',
       'httpMethod': 'POST',
@@ -99,10 +97,10 @@ export class Transaction extends Model {
       'urlSuffix': '/refund',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _transaction.transaction_list_params):RequestWrapper<ListResult> {
+  public list(params?: _transaction.transaction_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -110,10 +108,10 @@ export class Transaction extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static transactions_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
+  public transactions_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'transactions_for_customer',
       'httpMethod': 'GET',
@@ -121,10 +119,10 @@ export class Transaction extends Model {
       'urlSuffix': '/transactions',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static transactions_for_subscription(subscription_id: string, params?: any):RequestWrapper<ListResult> {
+  public transactions_for_subscription(subscription_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'transactions_for_subscription',
       'httpMethod': 'GET',
@@ -132,10 +130,10 @@ export class Transaction extends Model {
       'urlSuffix': '/transactions',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static payments_for_invoice(invoice_id: string, params?: any):RequestWrapper<ListResult> {
+  public payments_for_invoice(invoice_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'payments_for_invoice',
       'httpMethod': 'GET',
@@ -143,10 +141,10 @@ export class Transaction extends Model {
       'urlSuffix': '/payments',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(transaction_id: string, params?: any):RequestWrapper {
+  public retrieve(transaction_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([transaction_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -154,10 +152,10 @@ export class Transaction extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete_offline_transaction(transaction_id: string, params?: _transaction.delete_offline_transaction_params):RequestWrapper {
+  public delete_offline_transaction(transaction_id: string, params?: _transaction.delete_offline_transaction_params):RequestWrapper {
     return new RequestWrapper([transaction_id, params], {
       'methodName': 'delete_offline_transaction',
       'httpMethod': 'POST',
@@ -165,9 +163,8 @@ export class Transaction extends Model {
       'urlSuffix': '/delete_offline_transaction',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Transaction
 
 export class LinkedInvoice extends Model {

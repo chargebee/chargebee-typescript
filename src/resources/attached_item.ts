@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class AttachedItem extends Model {
   public id: string;
@@ -20,13 +19,12 @@ export class AttachedItem extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public channel?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(item_id: string, params?: _attached_item.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class AttachedItemApi extends Api {
+  public create(item_id: string, params?: _attached_item.create_params):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -34,10 +32,10 @@ export class AttachedItem extends Model {
       'urlSuffix': '/attached_items',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(attached_item_id: string, params?: _attached_item.update_params):RequestWrapper {
+  public update(attached_item_id: string, params?: _attached_item.update_params):RequestWrapper {
     return new RequestWrapper([attached_item_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -45,10 +43,10 @@ export class AttachedItem extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(attached_item_id: string, params?: _attached_item.retrieve_params):RequestWrapper {
+  public retrieve(attached_item_id: string, params?: _attached_item.retrieve_params):RequestWrapper {
     return new RequestWrapper([attached_item_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -56,10 +54,10 @@ export class AttachedItem extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(attached_item_id: string, params?: _attached_item.delete_params):RequestWrapper {
+  public delete(attached_item_id: string, params?: _attached_item.delete_params):RequestWrapper {
     return new RequestWrapper([attached_item_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -67,10 +65,10 @@ export class AttachedItem extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(item_id: string, params?: _attached_item.attached_item_list_params):RequestWrapper<ListResult> {
+  public list(item_id: string, params?: _attached_item.attached_item_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_id, params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -78,9 +76,8 @@ export class AttachedItem extends Model {
       'urlSuffix': '/attached_items',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~AttachedItem
 
 

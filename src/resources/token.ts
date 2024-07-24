@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class Token extends Model {
   public id: string;
@@ -17,12 +14,11 @@ export class Token extends Model {
   public updated_at?: number;
   public created_at: number;
   public expired_at?: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class TokenApi extends Api {
 } // ~Token
 
 

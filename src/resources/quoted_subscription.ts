@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class QuotedSubscription extends Model {
   public id: string;
@@ -28,12 +25,11 @@ export class QuotedSubscription extends Model {
   public subscription_items?: Array<SubscriptionItem>;
   public item_tiers?: Array<ItemTier>;
   public quoted_contract_term?: QuotedContractTerm;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class QuotedSubscriptionApi extends Api {
 } // ~QuotedSubscription
 
 export class Addon extends Model {

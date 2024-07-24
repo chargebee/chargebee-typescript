@@ -1,20 +1,16 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class InstallmentDetail extends Model {
   public id?: string;
   public invoice_id?: string;
   public amount?: number;
   public installments?: Array<Installment>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class InstallmentDetailApi extends Api {
 } // ~InstallmentDetail
 
 export class Installment extends Model {

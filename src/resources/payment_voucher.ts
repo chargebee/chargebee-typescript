@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class PaymentVoucher extends Model {
   public id: string;
@@ -26,13 +25,12 @@ export class PaymentVoucher extends Model {
   public updated_at?: number;
   public customer_id: string;
   public linked_invoices?: Array<LinkedInvoice>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _payment_voucher.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class PaymentVoucherApi extends Api {
+  public create(params?: _payment_voucher.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -40,10 +38,10 @@ export class PaymentVoucher extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(payment_voucher_id: string, params?: any):RequestWrapper {
+  public retrieve(payment_voucher_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([payment_voucher_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -51,10 +49,10 @@ export class PaymentVoucher extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static payment_vouchers_for_invoice(invoice_id: string, params?: _payment_voucher.payment_voucher_payment_vouchers_for_invoice_params):RequestWrapper<ListResult> {
+  public payment_vouchers_for_invoice(invoice_id: string, params?: _payment_voucher.payment_voucher_payment_vouchers_for_invoice_params):RequestWrapper<ListResult> {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'payment_vouchers_for_invoice',
       'httpMethod': 'GET',
@@ -62,10 +60,10 @@ export class PaymentVoucher extends Model {
       'urlSuffix': '/payment_vouchers',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static payment_vouchers_for_customer(customer_id: string, params?: _payment_voucher.payment_voucher_payment_vouchers_for_customer_params):RequestWrapper<ListResult> {
+  public payment_vouchers_for_customer(customer_id: string, params?: _payment_voucher.payment_voucher_payment_vouchers_for_customer_params):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'payment_vouchers_for_customer',
       'httpMethod': 'GET',
@@ -73,9 +71,8 @@ export class PaymentVoucher extends Model {
       'urlSuffix': '/payment_vouchers',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~PaymentVoucher
 
 export class LinkedInvoice extends Model {

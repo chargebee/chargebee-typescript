@@ -6,6 +6,7 @@ import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
 import {Result} from "../result";
 import {Util} from "../util";
+import { Api } from './api'
 
 export class Event extends Model {
   public id: string;
@@ -23,14 +24,14 @@ export class Event extends Model {
     return new Result(this.values['content']);
   }
 
-  set content(content) {}
-  
-  public static deserialize(json: string): resources.Event {
+  set content(content) {
+  }
+
+  public deserialize(json: string): resources.Event {
     let webhook_data;
     try {
-      webhook_data =  JSON.parse(json);
-    }
-    catch (Error) {
+      webhook_data = JSON.parse(json);
+    } catch (Error) {
       throw ("Invalid webhook object to deserialize. " + Error.message);
     }
 
@@ -39,14 +40,15 @@ export class Event extends Model {
       throw ("API version " + "[" + api_version.toUpperCase() + "] in response does not match with client library API version [" + ChargeBee._api_version.toUpperCase() + "]")
     }
 
-    let event_result = new Result({'event': webhook_data});
+    let event_result = new Result({ 'event': webhook_data });
     return event_result.event;
   }
+}
 
-  // OPERATIONS
-  //-----------
-
-  public static list(params?: _event.event_list_params):RequestWrapper<ListResult> {
+// OPERATIONS
+//-----------
+export class EventApi extends Api {
+  public list(params?: _event.event_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -54,10 +56,10 @@ export class Event extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(event_id: string, params?: any):RequestWrapper {
+  public retrieve(event_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([event_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -65,9 +67,8 @@ export class Event extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Event
 
 export class Webhook extends Model {
