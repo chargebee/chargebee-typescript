@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Customer extends Model {
   public id: string;
@@ -72,13 +71,12 @@ export class Customer extends Model {
   public vat_number_prefix?: string;
   public entity_identifier_scheme?: string;
   public entity_identifier_standard?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _customer.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class CustomerApi extends Api {
+  public create(params?: _customer.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -86,10 +84,10 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _customer.customer_list_params):RequestWrapper<ListResult> {
+  public list(params?: _customer.customer_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -97,10 +95,10 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(customer_id: string, params?: any):RequestWrapper {
+  public retrieve(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -108,10 +106,10 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(customer_id: string, params?: _customer.update_params):RequestWrapper {
+  public update(customer_id: string, params?: _customer.update_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -119,10 +117,10 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_payment_method(customer_id: string, params?: _customer.update_payment_method_params):RequestWrapper {
+  public update_payment_method(customer_id: string, params?: _customer.update_payment_method_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update_payment_method',
       'httpMethod': 'POST',
@@ -130,10 +128,10 @@ export class Customer extends Model {
       'urlSuffix': '/update_payment_method',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_billing_info(customer_id: string, params?: _customer.update_billing_info_params):RequestWrapper {
+  public update_billing_info(customer_id: string, params?: _customer.update_billing_info_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update_billing_info',
       'httpMethod': 'POST',
@@ -141,10 +139,10 @@ export class Customer extends Model {
       'urlSuffix': '/update_billing_info',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static contacts_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
+  public contacts_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'contacts_for_customer',
       'httpMethod': 'GET',
@@ -152,10 +150,10 @@ export class Customer extends Model {
       'urlSuffix': '/contacts',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static assign_payment_role(customer_id: string, params?: _customer.assign_payment_role_params):RequestWrapper {
+  public assign_payment_role(customer_id: string, params?: _customer.assign_payment_role_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'assign_payment_role',
       'httpMethod': 'POST',
@@ -163,10 +161,10 @@ export class Customer extends Model {
       'urlSuffix': '/assign_payment_role',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static add_contact(customer_id: string, params?: _customer.add_contact_params):RequestWrapper {
+  public add_contact(customer_id: string, params?: _customer.add_contact_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'add_contact',
       'httpMethod': 'POST',
@@ -174,10 +172,10 @@ export class Customer extends Model {
       'urlSuffix': '/add_contact',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_contact(customer_id: string, params?: _customer.update_contact_params):RequestWrapper {
+  public update_contact(customer_id: string, params?: _customer.update_contact_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update_contact',
       'httpMethod': 'POST',
@@ -185,10 +183,10 @@ export class Customer extends Model {
       'urlSuffix': '/update_contact',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete_contact(customer_id: string, params?: _customer.delete_contact_params):RequestWrapper {
+  public delete_contact(customer_id: string, params?: _customer.delete_contact_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'delete_contact',
       'httpMethod': 'POST',
@@ -196,10 +194,10 @@ export class Customer extends Model {
       'urlSuffix': '/delete_contact',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static add_promotional_credits(customer_id: string, params?: _customer.add_promotional_credits_params):RequestWrapper {
+  public add_promotional_credits(customer_id: string, params?: _customer.add_promotional_credits_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'add_promotional_credits',
       'httpMethod': 'POST',
@@ -207,10 +205,10 @@ export class Customer extends Model {
       'urlSuffix': '/add_promotional_credits',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static deduct_promotional_credits(customer_id: string, params?: _customer.deduct_promotional_credits_params):RequestWrapper {
+  public deduct_promotional_credits(customer_id: string, params?: _customer.deduct_promotional_credits_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'deduct_promotional_credits',
       'httpMethod': 'POST',
@@ -218,10 +216,10 @@ export class Customer extends Model {
       'urlSuffix': '/deduct_promotional_credits',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static set_promotional_credits(customer_id: string, params?: _customer.set_promotional_credits_params):RequestWrapper {
+  public set_promotional_credits(customer_id: string, params?: _customer.set_promotional_credits_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'set_promotional_credits',
       'httpMethod': 'POST',
@@ -229,10 +227,10 @@ export class Customer extends Model {
       'urlSuffix': '/set_promotional_credits',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static record_excess_payment(customer_id: string, params?: _customer.record_excess_payment_params):RequestWrapper {
+  public record_excess_payment(customer_id: string, params?: _customer.record_excess_payment_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'record_excess_payment',
       'httpMethod': 'POST',
@@ -240,10 +238,10 @@ export class Customer extends Model {
       'urlSuffix': '/record_excess_payment',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static collect_payment(customer_id: string, params?: _customer.collect_payment_params):RequestWrapper {
+  public collect_payment(customer_id: string, params?: _customer.collect_payment_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'collect_payment',
       'httpMethod': 'POST',
@@ -251,10 +249,10 @@ export class Customer extends Model {
       'urlSuffix': '/collect_payment',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(customer_id: string, params?: _customer.delete_params):RequestWrapper {
+  public delete(customer_id: string, params?: _customer.delete_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -262,10 +260,10 @@ export class Customer extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static move(params?: _customer.move_params):RequestWrapper {
+  public move(params?: _customer.move_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'move',
       'httpMethod': 'POST',
@@ -273,10 +271,10 @@ export class Customer extends Model {
       'urlSuffix': '/move',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static change_billing_date(customer_id: string, params?: _customer.change_billing_date_params):RequestWrapper {
+  public change_billing_date(customer_id: string, params?: _customer.change_billing_date_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'change_billing_date',
       'httpMethod': 'POST',
@@ -284,10 +282,10 @@ export class Customer extends Model {
       'urlSuffix': '/change_billing_date',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static merge(params?: _customer.merge_params):RequestWrapper {
+  public merge(params?: _customer.merge_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'merge',
       'httpMethod': 'POST',
@@ -295,10 +293,10 @@ export class Customer extends Model {
       'urlSuffix': '/merge',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static clear_personal_data(customer_id: string, params?: any):RequestWrapper {
+  public clear_personal_data(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'clear_personal_data',
       'httpMethod': 'POST',
@@ -306,10 +304,10 @@ export class Customer extends Model {
       'urlSuffix': '/clear_personal_data',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static relationships(customer_id: string, params?: _customer.relationships_params):RequestWrapper {
+  public relationships(customer_id: string, params?: _customer.relationships_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'relationships',
       'httpMethod': 'POST',
@@ -317,10 +315,10 @@ export class Customer extends Model {
       'urlSuffix': '/relationships',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete_relationship(customer_id: string, params?: any):RequestWrapper {
+  public delete_relationship(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'delete_relationship',
       'httpMethod': 'POST',
@@ -328,10 +326,10 @@ export class Customer extends Model {
       'urlSuffix': '/delete_relationship',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static hierarchy(customer_id: string, params?: _customer.hierarchy_params):RequestWrapper {
+  public hierarchy(customer_id: string, params?: _customer.hierarchy_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'hierarchy',
       'httpMethod': 'GET',
@@ -339,10 +337,10 @@ export class Customer extends Model {
       'urlSuffix': '/hierarchy',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_hierarchy_settings(customer_id: string, params?: _customer.update_hierarchy_settings_params):RequestWrapper {
+  public update_hierarchy_settings(customer_id: string, params?: _customer.update_hierarchy_settings_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update_hierarchy_settings',
       'httpMethod': 'POST',
@@ -350,9 +348,8 @@ export class Customer extends Model {
       'urlSuffix': '/update_hierarchy_settings',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Customer
 
 export class BillingAddress extends Model {

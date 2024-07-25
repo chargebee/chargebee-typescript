@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class Card extends Model {
   public payment_source_id: string;
@@ -33,13 +31,12 @@ export class Card extends Model {
   public powered_by?: string;
   public customer_id: string;
   public masked_number?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static retrieve(card_id: string, params?: any):RequestWrapper {
+// OPERATIONS
+//-----------
+export class CardApi extends Api {
+  public retrieve(card_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([card_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -47,10 +44,10 @@ export class Card extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_card_for_customer(customer_id: string, params?: _card.update_card_for_customer_params):RequestWrapper {
+  public update_card_for_customer(customer_id: string, params?: _card.update_card_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update_card_for_customer',
       'httpMethod': 'POST',
@@ -58,10 +55,10 @@ export class Card extends Model {
       'urlSuffix': '/credit_card',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static switch_gateway_for_customer(customer_id: string, params?: _card.switch_gateway_for_customer_params):RequestWrapper {
+  public switch_gateway_for_customer(customer_id: string, params?: _card.switch_gateway_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'switch_gateway_for_customer',
       'httpMethod': 'POST',
@@ -69,10 +66,10 @@ export class Card extends Model {
       'urlSuffix': '/switch_gateway',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static copy_card_for_customer(customer_id: string, params?: _card.copy_card_for_customer_params):RequestWrapper {
+  public copy_card_for_customer(customer_id: string, params?: _card.copy_card_for_customer_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'copy_card_for_customer',
       'httpMethod': 'POST',
@@ -80,10 +77,10 @@ export class Card extends Model {
       'urlSuffix': '/copy_card',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete_card_for_customer(customer_id: string, params?: any):RequestWrapper {
+  public delete_card_for_customer(customer_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'delete_card_for_customer',
       'httpMethod': 'POST',
@@ -91,9 +88,8 @@ export class Card extends Model {
       'urlSuffix': '/delete_card',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Card
 
 

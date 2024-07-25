@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class Currency extends Model {
   public id?: string;
@@ -11,13 +9,12 @@ export class Currency extends Model {
   public currency_code?: string;
   public is_base_currency?: boolean;
   public manual_exchange_rate?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static list(params?: any):RequestWrapper{
+// OPERATIONS
+//-----------
+export class CurrencyApi extends Api {
+  public list(params?: any):RequestWrapper{
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -25,10 +22,10 @@ export class Currency extends Model {
       'urlSuffix': '/list',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(currency_id: string, params?: any):RequestWrapper {
+  public retrieve(currency_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([currency_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -36,10 +33,10 @@ export class Currency extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create(params?: _currency.create_params):RequestWrapper {
+  public create(params?: _currency.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -47,10 +44,10 @@ export class Currency extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(currency_id: string, params?: _currency.update_params):RequestWrapper {
+  public update(currency_id: string, params?: _currency.update_params):RequestWrapper {
     return new RequestWrapper([currency_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -58,10 +55,10 @@ export class Currency extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static add_schedule(currency_id: string, params?: _currency.add_schedule_params):RequestWrapper {
+  public add_schedule(currency_id: string, params?: _currency.add_schedule_params):RequestWrapper {
     return new RequestWrapper([currency_id, params], {
       'methodName': 'add_schedule',
       'httpMethod': 'POST',
@@ -69,10 +66,10 @@ export class Currency extends Model {
       'urlSuffix': '/add_schedule',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static remove_schedule(currency_id: string, params?: any):RequestWrapper {
+  public remove_schedule(currency_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([currency_id, params], {
       'methodName': 'remove_schedule',
       'httpMethod': 'POST',
@@ -80,9 +77,8 @@ export class Currency extends Model {
       'urlSuffix': '/remove_schedule',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Currency
 
 

@@ -1,21 +1,18 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class PricingPageSession extends Model {
   public id?: string;
   public url?: string;
   public created_at?: number;
   public expires_at?: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create_for_new_subscription(params?: _pricing_page_session.create_for_new_subscription_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class PricingPageSessionApi extends Api {
+  public create_for_new_subscription(params?: _pricing_page_session.create_for_new_subscription_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_for_new_subscription',
       'httpMethod': 'POST',
@@ -23,10 +20,10 @@ export class PricingPageSession extends Model {
       'urlSuffix': '/create_for_new_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_for_existing_subscription(params?: _pricing_page_session.create_for_existing_subscription_params):RequestWrapper {
+  public create_for_existing_subscription(params?: _pricing_page_session.create_for_existing_subscription_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_for_existing_subscription',
       'httpMethod': 'POST',
@@ -34,9 +31,8 @@ export class PricingPageSession extends Model {
       'urlSuffix': '/create_for_existing_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~PricingPageSession
 
 

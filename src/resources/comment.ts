@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Comment extends Model {
   public id: string;
@@ -13,13 +12,12 @@ export class Comment extends Model {
   public created_at: number;
   public type: string;
   public entity_id: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _comment.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class CommentApi extends Api {
+  public create(params?: _comment.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -27,10 +25,10 @@ export class Comment extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(comment_id: string, params?: any):RequestWrapper {
+  public retrieve(comment_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([comment_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -38,10 +36,10 @@ export class Comment extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _comment.comment_list_params):RequestWrapper<ListResult> {
+  public list(params?: _comment.comment_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -49,10 +47,10 @@ export class Comment extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(comment_id: string, params?: any):RequestWrapper {
+  public delete(comment_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([comment_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -60,9 +58,8 @@ export class Comment extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Comment
 
 

@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class CsvTaxRule extends Model {
   public tax_profile_name?: string;
@@ -38,13 +36,12 @@ export class CsvTaxRule extends Model {
   public service_type?: string;
   public rule_weight?: number;
   public overwrite: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _csv_tax_rule.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class CsvTaxRuleApi extends Api {
+  public create(params?: _csv_tax_rule.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -52,9 +49,8 @@ export class CsvTaxRule extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~CsvTaxRule
 
 

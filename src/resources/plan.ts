@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Plan extends Model {
   public id: string;
@@ -62,13 +61,12 @@ export class Plan extends Model {
   public event_based_addons?: Array<EventBasedAddon>;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _plan.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class PlanApi extends Api {
+  public create(params?: _plan.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -76,10 +74,10 @@ export class Plan extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(plan_id: string, params?: _plan.update_params):RequestWrapper {
+  public update(plan_id: string, params?: _plan.update_params):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -87,10 +85,10 @@ export class Plan extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _plan.plan_list_params):RequestWrapper<ListResult> {
+  public list(params?: _plan.plan_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -98,10 +96,10 @@ export class Plan extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(plan_id: string, params?: any):RequestWrapper {
+  public retrieve(plan_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -109,10 +107,10 @@ export class Plan extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(plan_id: string, params?: any):RequestWrapper {
+  public delete(plan_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -120,10 +118,10 @@ export class Plan extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static copy(params?: _plan.copy_params):RequestWrapper {
+  public copy(params?: _plan.copy_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'copy',
       'httpMethod': 'POST',
@@ -131,10 +129,10 @@ export class Plan extends Model {
       'urlSuffix': '/copy',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static unarchive(plan_id: string, params?: any):RequestWrapper {
+  public unarchive(plan_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([plan_id, params], {
       'methodName': 'unarchive',
       'httpMethod': 'POST',
@@ -142,9 +140,8 @@ export class Plan extends Model {
       'urlSuffix': '/unarchive',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Plan
 
 export class Tier extends Model {

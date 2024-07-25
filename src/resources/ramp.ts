@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Ramp extends Model {
   public id: string;
@@ -23,13 +22,12 @@ export class Ramp extends Model {
   public coupons_to_remove?: Array<string>;
   public discounts_to_remove?: Array<string>;
   public deleted: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create_for_subscription(subscription_id: string, params?: _ramp.create_for_subscription_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class RampApi extends Api {
+  public create_for_subscription(subscription_id: string, params?: _ramp.create_for_subscription_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'create_for_subscription',
       'httpMethod': 'POST',
@@ -37,10 +35,10 @@ export class Ramp extends Model {
       'urlSuffix': '/create_ramp',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(ramp_id: string, params?: any):RequestWrapper {
+  public retrieve(ramp_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([ramp_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -48,10 +46,10 @@ export class Ramp extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(ramp_id: string, params?: any):RequestWrapper {
+  public delete(ramp_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([ramp_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -59,10 +57,10 @@ export class Ramp extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _ramp.ramp_list_params):RequestWrapper<ListResult> {
+  public list(params?: _ramp.ramp_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -70,9 +68,8 @@ export class Ramp extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Ramp
 
 export class ItemsToAdd extends Model {

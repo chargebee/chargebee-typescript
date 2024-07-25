@@ -1,8 +1,7 @@
 import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class PaymentIntent extends Model {
   public id: string;
@@ -23,13 +22,12 @@ export class PaymentIntent extends Model {
   public gateway?: string;
   public active_payment_attempt?: PaymentAttempt;
   public business_entity_id?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _payment_intent.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class PaymentIntentApi extends Api {
+  public create(params?: _payment_intent.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -37,10 +35,10 @@ export class PaymentIntent extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(payment_intent_id: string, params?: _payment_intent.update_params):RequestWrapper {
+  public update(payment_intent_id: string, params?: _payment_intent.update_params):RequestWrapper {
     return new RequestWrapper([payment_intent_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -48,10 +46,10 @@ export class PaymentIntent extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(payment_intent_id: string, params?: any):RequestWrapper {
+  public retrieve(payment_intent_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([payment_intent_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -59,9 +57,8 @@ export class PaymentIntent extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~PaymentIntent
 
 export class PaymentAttempt extends Model {

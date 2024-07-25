@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class PortalSession extends Model {
   public id: string;
@@ -18,13 +16,12 @@ export class PortalSession extends Model {
   public login_ipaddress?: string;
   public logout_ipaddress?: string;
   public linked_customers?: Array<LinkedCustomer>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _portal_session.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class PortalSessionApi extends Api {
+  public create(params?: _portal_session.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -32,10 +29,10 @@ export class PortalSession extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(portal_session_id: string, params?: any):RequestWrapper {
+  public retrieve(portal_session_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([portal_session_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -43,10 +40,10 @@ export class PortalSession extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static logout(portal_session_id: string, params?: any):RequestWrapper {
+  public logout(portal_session_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([portal_session_id, params], {
       'methodName': 'logout',
       'httpMethod': 'POST',
@@ -54,10 +51,10 @@ export class PortalSession extends Model {
       'urlSuffix': '/logout',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static activate(portal_session_id: string, params?: _portal_session.activate_params):RequestWrapper {
+  public activate(portal_session_id: string, params?: _portal_session.activate_params):RequestWrapper {
     return new RequestWrapper([portal_session_id, params], {
       'methodName': 'activate',
       'httpMethod': 'POST',
@@ -65,9 +62,8 @@ export class PortalSession extends Model {
       'urlSuffix': '/activate',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~PortalSession
 
 export class LinkedCustomer extends Model {

@@ -1,19 +1,15 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class ImpactedSubscription extends Model {
   public count?: number;
   public download?: Download;
   public subscription_ids?: any;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class ImpactedSubscriptionApi extends Api {
 } // ~ImpactedSubscription
 
 export class Download extends Model {

@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class Address extends Model {
   public label: string;
@@ -21,13 +19,12 @@ export class Address extends Model {
   public zip?: string;
   public validation_status?: string;
   public subscription_id: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static retrieve(params?: _address.retrieve_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class AddressApi extends Api {
+  public retrieve(params?: _address.retrieve_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -35,10 +32,10 @@ export class Address extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(params?: _address.update_params):RequestWrapper {
+  public update(params?: _address.update_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -46,9 +43,8 @@ export class Address extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Address
 
 

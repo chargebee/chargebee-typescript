@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Quote extends Model {
   public id: string;
@@ -44,13 +43,12 @@ export class Quote extends Model {
   public contract_term_end?: number;
   public contract_term_termination_fee?: number;
   public business_entity_id: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static retrieve(quote_id: string, params?: any):RequestWrapper {
+// OPERATIONS
+//-----------
+export class QuoteApi extends Api {
+  public retrieve(quote_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -58,10 +56,10 @@ export class Quote extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_sub_for_customer_quote(customer_id: string, params?: _quote.create_sub_for_customer_quote_params):RequestWrapper {
+  public create_sub_for_customer_quote(customer_id: string, params?: _quote.create_sub_for_customer_quote_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'create_sub_for_customer_quote',
       'httpMethod': 'POST',
@@ -69,10 +67,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_subscription_quote',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static edit_create_sub_for_customer_quote(quote_id: string, params?: _quote.edit_create_sub_for_customer_quote_params):RequestWrapper {
+  public edit_create_sub_for_customer_quote(quote_id: string, params?: _quote.edit_create_sub_for_customer_quote_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'edit_create_sub_for_customer_quote',
       'httpMethod': 'POST',
@@ -80,10 +78,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_create_subscription_quote',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_subscription_quote(params?: _quote.update_subscription_quote_params):RequestWrapper {
+  public update_subscription_quote(params?: _quote.update_subscription_quote_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update_subscription_quote',
       'httpMethod': 'POST',
@@ -91,10 +89,10 @@ export class Quote extends Model {
       'urlSuffix': '/update_subscription_quote',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static edit_update_subscription_quote(quote_id: string, params?: _quote.edit_update_subscription_quote_params):RequestWrapper {
+  public edit_update_subscription_quote(quote_id: string, params?: _quote.edit_update_subscription_quote_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'edit_update_subscription_quote',
       'httpMethod': 'POST',
@@ -102,10 +100,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_update_subscription_quote',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_for_onetime_charges(params?: _quote.create_for_onetime_charges_params):RequestWrapper {
+  public create_for_onetime_charges(params?: _quote.create_for_onetime_charges_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_for_onetime_charges',
       'httpMethod': 'POST',
@@ -113,10 +111,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_for_onetime_charges',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static edit_one_time_quote(quote_id: string, params?: _quote.edit_one_time_quote_params):RequestWrapper {
+  public edit_one_time_quote(quote_id: string, params?: _quote.edit_one_time_quote_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'edit_one_time_quote',
       'httpMethod': 'POST',
@@ -124,10 +122,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_one_time_quote',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_sub_items_for_customer_quote(customer_id: string, params?: _quote.create_sub_items_for_customer_quote_params):RequestWrapper {
+  public create_sub_items_for_customer_quote(customer_id: string, params?: _quote.create_sub_items_for_customer_quote_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'create_sub_items_for_customer_quote',
       'httpMethod': 'POST',
@@ -135,10 +133,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_subscription_quote_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static edit_create_sub_customer_quote_for_items(quote_id: string, params?: _quote.edit_create_sub_customer_quote_for_items_params):RequestWrapper {
+  public edit_create_sub_customer_quote_for_items(quote_id: string, params?: _quote.edit_create_sub_customer_quote_for_items_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'edit_create_sub_customer_quote_for_items',
       'httpMethod': 'POST',
@@ -146,10 +144,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_create_subscription_quote_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_subscription_quote_for_items(params?: _quote.update_subscription_quote_for_items_params):RequestWrapper {
+  public update_subscription_quote_for_items(params?: _quote.update_subscription_quote_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'update_subscription_quote_for_items',
       'httpMethod': 'POST',
@@ -157,10 +155,10 @@ export class Quote extends Model {
       'urlSuffix': '/update_subscription_quote_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static edit_update_subscription_quote_for_items(quote_id: string, params?: _quote.edit_update_subscription_quote_for_items_params):RequestWrapper {
+  public edit_update_subscription_quote_for_items(quote_id: string, params?: _quote.edit_update_subscription_quote_for_items_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'edit_update_subscription_quote_for_items',
       'httpMethod': 'POST',
@@ -168,10 +166,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_update_subscription_quote_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_for_charge_items_and_charges(params?: _quote.create_for_charge_items_and_charges_params):RequestWrapper {
+  public create_for_charge_items_and_charges(params?: _quote.create_for_charge_items_and_charges_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_for_charge_items_and_charges',
       'httpMethod': 'POST',
@@ -179,10 +177,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_for_charge_items_and_charges',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static edit_for_charge_items_and_charges(quote_id: string, params?: _quote.edit_for_charge_items_and_charges_params):RequestWrapper {
+  public edit_for_charge_items_and_charges(quote_id: string, params?: _quote.edit_for_charge_items_and_charges_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'edit_for_charge_items_and_charges',
       'httpMethod': 'POST',
@@ -190,10 +188,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_for_charge_items_and_charges',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _quote.quote_list_params):RequestWrapper<ListResult> {
+  public list(params?: _quote.quote_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -201,10 +199,10 @@ export class Quote extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static quote_line_groups_for_quote(quote_id: string, params?: any):RequestWrapper<ListResult> {
+  public quote_line_groups_for_quote(quote_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'quote_line_groups_for_quote',
       'httpMethod': 'GET',
@@ -212,10 +210,10 @@ export class Quote extends Model {
       'urlSuffix': '/quote_line_groups',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static convert(quote_id: string, params?: _quote.convert_params):RequestWrapper {
+  public convert(quote_id: string, params?: _quote.convert_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'convert',
       'httpMethod': 'POST',
@@ -223,10 +221,10 @@ export class Quote extends Model {
       'urlSuffix': '/convert',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_status(quote_id: string, params?: _quote.update_status_params):RequestWrapper {
+  public update_status(quote_id: string, params?: _quote.update_status_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'update_status',
       'httpMethod': 'POST',
@@ -234,10 +232,10 @@ export class Quote extends Model {
       'urlSuffix': '/update_status',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static extend_expiry_date(quote_id: string, params?: _quote.extend_expiry_date_params):RequestWrapper {
+  public extend_expiry_date(quote_id: string, params?: _quote.extend_expiry_date_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'extend_expiry_date',
       'httpMethod': 'POST',
@@ -245,10 +243,10 @@ export class Quote extends Model {
       'urlSuffix': '/extend_expiry_date',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(quote_id: string, params?: _quote.delete_params):RequestWrapper {
+  public delete(quote_id: string, params?: _quote.delete_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -256,10 +254,10 @@ export class Quote extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static pdf(quote_id: string, params?: _quote.pdf_params):RequestWrapper {
+  public pdf(quote_id: string, params?: _quote.pdf_params):RequestWrapper {
     return new RequestWrapper([quote_id, params], {
       'methodName': 'pdf',
       'httpMethod': 'POST',
@@ -267,9 +265,8 @@ export class Quote extends Model {
       'urlSuffix': '/pdf',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Quote
 
 export class LineItem extends Model {

@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Addon extends Model {
   public id: string;
@@ -50,13 +49,12 @@ export class Addon extends Model {
   public tax_providers_fields?: Array<TaxProvidersField>;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _addon.create_params):RequestWrapper {
+// Addon operations
+//-----------
+export class AddonApi extends Api {
+  public create(params?: _addon.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -64,10 +62,10 @@ export class Addon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(addon_id: string, params?: _addon.update_params):RequestWrapper {
+  public update(addon_id: string, params?: _addon.update_params):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -75,10 +73,10 @@ export class Addon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _addon.addon_list_params):RequestWrapper<ListResult> {
+  public list(params?: _addon.addon_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -86,10 +84,10 @@ export class Addon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(addon_id: string, params?: any):RequestWrapper {
+  public retrieve(addon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -97,10 +95,10 @@ export class Addon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(addon_id: string, params?: any):RequestWrapper {
+  public delete(addon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -108,10 +106,10 @@ export class Addon extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static copy(params?: _addon.copy_params):RequestWrapper {
+  public copy(params?: _addon.copy_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'copy',
       'httpMethod': 'POST',
@@ -119,10 +117,10 @@ export class Addon extends Model {
       'urlSuffix': '/copy',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static unarchive(addon_id: string, params?: any):RequestWrapper {
+  public unarchive(addon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([addon_id, params], {
       'methodName': 'unarchive',
       'httpMethod': 'POST',
@@ -130,9 +128,8 @@ export class Addon extends Model {
       'urlSuffix': '/unarchive',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Addon
 
 export class Tier extends Model {

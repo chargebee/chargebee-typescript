@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class GatewayErrorDetail extends Model {
   public request_id?: string;
@@ -18,12 +15,11 @@ export class GatewayErrorDetail extends Model {
   public recommendation_message?: string;
   public processor_error_code?: string;
   public processor_error_message?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class GatewayErrorDetailApi extends Api {
 } // ~GatewayErrorDetail
 
 

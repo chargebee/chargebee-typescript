@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Order extends Model {
   public id: string;
@@ -62,13 +61,12 @@ export class Order extends Model {
   public resend_reason?: string;
   public resent_orders?: Array<ResentOrder>;
   public business_entity_id?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _order.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class OrderApi extends Api {
+  public create(params?: _order.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -76,10 +74,10 @@ export class Order extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(order_id: string, params?: _order.update_params):RequestWrapper {
+  public update(order_id: string, params?: _order.update_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -87,10 +85,10 @@ export class Order extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static import_order(params?: _order.import_order_params):RequestWrapper {
+  public import_order(params?: _order.import_order_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'import_order',
       'httpMethod': 'POST',
@@ -98,10 +96,10 @@ export class Order extends Model {
       'urlSuffix': '/import_order',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static assign_order_number(order_id: string, params?: any):RequestWrapper {
+  public assign_order_number(order_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'assign_order_number',
       'httpMethod': 'POST',
@@ -109,10 +107,10 @@ export class Order extends Model {
       'urlSuffix': '/assign_order_number',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static cancel(order_id: string, params?: _order.cancel_params):RequestWrapper {
+  public cancel(order_id: string, params?: _order.cancel_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'cancel',
       'httpMethod': 'POST',
@@ -120,10 +118,10 @@ export class Order extends Model {
       'urlSuffix': '/cancel',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_refundable_credit_note(order_id: string, params?: _order.create_refundable_credit_note_params):RequestWrapper {
+  public create_refundable_credit_note(order_id: string, params?: _order.create_refundable_credit_note_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'create_refundable_credit_note',
       'httpMethod': 'POST',
@@ -131,10 +129,10 @@ export class Order extends Model {
       'urlSuffix': '/create_refundable_credit_note',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static reopen(order_id: string, params?: _order.reopen_params):RequestWrapper {
+  public reopen(order_id: string, params?: _order.reopen_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'reopen',
       'httpMethod': 'POST',
@@ -142,10 +140,10 @@ export class Order extends Model {
       'urlSuffix': '/reopen',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(order_id: string, params?: any):RequestWrapper {
+  public retrieve(order_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -153,10 +151,10 @@ export class Order extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(order_id: string, params?: any):RequestWrapper {
+  public delete(order_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -164,10 +162,10 @@ export class Order extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _order.order_list_params):RequestWrapper<ListResult> {
+  public list(params?: _order.order_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -175,10 +173,10 @@ export class Order extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static orders_for_invoice(invoice_id: string, params?: any):RequestWrapper<ListResult> {
+  public orders_for_invoice(invoice_id: string, params?: any):RequestWrapper<ListResult> {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'orders_for_invoice',
       'httpMethod': 'GET',
@@ -186,10 +184,10 @@ export class Order extends Model {
       'urlSuffix': '/orders',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static resend(order_id: string, params?: _order.resend_params):RequestWrapper {
+  public resend(order_id: string, params?: _order.resend_params):RequestWrapper {
     return new RequestWrapper([order_id, params], {
       'methodName': 'resend',
       'httpMethod': 'POST',
@@ -197,9 +195,8 @@ export class Order extends Model {
       'urlSuffix': '/resend',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Order
 
 export class OrderLineItem extends Model {

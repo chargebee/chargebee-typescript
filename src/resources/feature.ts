@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Feature extends Model {
   public id: string;
@@ -16,13 +15,12 @@ export class Feature extends Model {
   public updated_at?: number;
   public created_at: number;
   public levels?: Array<Level>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static list(params?: _feature.feature_list_params):RequestWrapper<ListResult> {
+// OPERATIONS
+//-----------
+export class FeatureApi extends Api {
+  public list(params?: _feature.feature_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -30,10 +28,10 @@ export class Feature extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create(params?: _feature.create_params):RequestWrapper {
+  public create(params?: _feature.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -41,10 +39,10 @@ export class Feature extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(feature_id: string, params?: _feature.update_params):RequestWrapper {
+  public update(feature_id: string, params?: _feature.update_params):RequestWrapper {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -52,10 +50,10 @@ export class Feature extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(feature_id: string, params?: any):RequestWrapper {
+  public retrieve(feature_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -63,10 +61,10 @@ export class Feature extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(feature_id: string, params?: any):RequestWrapper {
+  public delete(feature_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -74,10 +72,10 @@ export class Feature extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static activate(feature_id: string, params?: any):RequestWrapper {
+  public activate(feature_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'activate',
       'httpMethod': 'POST',
@@ -85,10 +83,10 @@ export class Feature extends Model {
       'urlSuffix': '/activate_command',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static archive(feature_id: string, params?: any):RequestWrapper {
+  public archive(feature_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'archive',
       'httpMethod': 'POST',
@@ -96,10 +94,10 @@ export class Feature extends Model {
       'urlSuffix': '/archive_command',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static reactivate(feature_id: string, params?: any):RequestWrapper {
+  public reactivate(feature_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'reactivate',
       'httpMethod': 'POST',
@@ -107,9 +105,8 @@ export class Feature extends Model {
       'urlSuffix': '/reactivate_command',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Feature
 
 export class Level extends Model {

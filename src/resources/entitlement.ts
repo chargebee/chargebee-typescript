@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Entitlement extends Model {
   public id: string;
@@ -13,13 +12,12 @@ export class Entitlement extends Model {
   public feature_name?: string;
   public value?: string;
   public name?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static list(params?: _entitlement.entitlement_list_params):RequestWrapper<ListResult> {
+// OPERATIONS
+//-----------
+export class EntitlementApi extends Api {
+  public list(params?: _entitlement.entitlement_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -27,10 +25,10 @@ export class Entitlement extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create(params?: _entitlement.create_params):RequestWrapper {
+  public create(params?: _entitlement.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -38,9 +36,8 @@ export class Entitlement extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Entitlement
 
 

@@ -1,9 +1,7 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class EntitlementOverride extends Model {
   public id: string;
@@ -14,13 +12,12 @@ export class EntitlementOverride extends Model {
   public value?: string;
   public name?: string;
   public expires_at?: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static add_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.add_entitlement_override_for_subscription_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class EntitlementOverrideApi extends Api {
+  public add_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.add_entitlement_override_for_subscription_params):RequestWrapper {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'add_entitlement_override_for_subscription',
       'httpMethod': 'POST',
@@ -28,10 +25,10 @@ export class EntitlementOverride extends Model {
       'urlSuffix': '/entitlement_overrides',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.entitlement_override_list_entitlement_override_for_subscription_params):RequestWrapper<ListResult> {
+  public list_entitlement_override_for_subscription(subscription_id: string, params?: _entitlement_override.entitlement_override_list_entitlement_override_for_subscription_params):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'list_entitlement_override_for_subscription',
       'httpMethod': 'GET',
@@ -39,7 +36,7 @@ export class EntitlementOverride extends Model {
       'urlSuffix': '/entitlement_overrides',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
 } // ~EntitlementOverride

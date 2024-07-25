@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class TaxWithheld extends Model {
   public id: string;
@@ -17,12 +14,11 @@ export class TaxWithheld extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public exchange_rate?: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class TaxWithheldApi extends Api {
 } // ~TaxWithheld
 
 

@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class InstallmentConfig extends Model {
   public id: string;
@@ -15,13 +13,12 @@ export class InstallmentConfig extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public installments?: Array<Installment>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _installment_config.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class InstallmentConfigApi extends Api {
+  public create(params?: _installment_config.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -29,10 +26,10 @@ export class InstallmentConfig extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(installment_config_id: string, params?: any):RequestWrapper {
+  public retrieve(installment_config_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([installment_config_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -40,10 +37,10 @@ export class InstallmentConfig extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(installment_config_id: string, params?: any):RequestWrapper {
+  public delete(installment_config_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([installment_config_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -51,9 +48,8 @@ export class InstallmentConfig extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~InstallmentConfig
 
 export class Installment extends Model {

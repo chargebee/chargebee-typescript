@@ -1,8 +1,6 @@
-import * as resources from ".";
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class ResourceMigration extends Model {
   public from_site: string;
@@ -12,13 +10,12 @@ export class ResourceMigration extends Model {
   public errors?: string;
   public created_at: number;
   public updated_at: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static retrieve_latest(params?: _resource_migration.retrieve_latest_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class ResourceMigrationApi extends Api {
+  public retrieve_latest(params?: _resource_migration.retrieve_latest_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'retrieve_latest',
       'httpMethod': 'GET',
@@ -26,9 +23,8 @@ export class ResourceMigration extends Model {
       'urlSuffix': '/retrieve_latest',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~ResourceMigration
 
 

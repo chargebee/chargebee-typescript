@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class DifferentialPrice extends Model {
   public id: string;
@@ -19,13 +18,12 @@ export class DifferentialPrice extends Model {
   public tiers?: Array<Tier>;
   public currency_code: string;
   public parent_periods?: Array<ParentPeriod>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(item_price_id: string, params?: _differential_price.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class DifferentialPriceApi extends Api {
+  public create(item_price_id: string, params?: _differential_price.create_params):RequestWrapper {
     return new RequestWrapper([item_price_id, params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -33,10 +31,10 @@ export class DifferentialPrice extends Model {
       'urlSuffix': '/differential_prices',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(differential_price_id: string, params?: _differential_price.retrieve_params):RequestWrapper {
+  public retrieve(differential_price_id: string, params?: _differential_price.retrieve_params):RequestWrapper {
     return new RequestWrapper([differential_price_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -44,10 +42,10 @@ export class DifferentialPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(differential_price_id: string, params?: _differential_price.update_params):RequestWrapper {
+  public update(differential_price_id: string, params?: _differential_price.update_params):RequestWrapper {
     return new RequestWrapper([differential_price_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -55,10 +53,10 @@ export class DifferentialPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(differential_price_id: string, params?: _differential_price.delete_params):RequestWrapper {
+  public delete(differential_price_id: string, params?: _differential_price.delete_params):RequestWrapper {
     return new RequestWrapper([differential_price_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -66,10 +64,10 @@ export class DifferentialPrice extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _differential_price.differential_price_list_params):RequestWrapper<ListResult> {
+  public list(params?: _differential_price.differential_price_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -77,9 +75,8 @@ export class DifferentialPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~DifferentialPrice
 
 export class Tier extends Model {

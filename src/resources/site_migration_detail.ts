@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class SiteMigrationDetail extends Model {
   public entity_id: string;
@@ -12,13 +11,12 @@ export class SiteMigrationDetail extends Model {
   public migrated_at: number;
   public entity_type: string;
   public status: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static list(params?: _site_migration_detail.site_migration_detail_list_params):RequestWrapper<ListResult> {
+// OPERATIONS
+//-----------
+export class SiteMigrationDetailApi extends Api {
+  public list(params?: _site_migration_detail.site_migration_detail_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -26,9 +24,8 @@ export class SiteMigrationDetail extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~SiteMigrationDetail
 
 

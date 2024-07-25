@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class VirtualBankAccount extends Model {
   public id: string;
@@ -21,13 +20,12 @@ export class VirtualBankAccount extends Model {
   public created_at: number;
   public reference_id: string;
   public deleted: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create_using_permanent_token(params?: _virtual_bank_account.create_using_permanent_token_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class VirtualBankAccountApi extends Api {
+  public create_using_permanent_token(params?: _virtual_bank_account.create_using_permanent_token_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_using_permanent_token',
       'httpMethod': 'POST',
@@ -35,10 +33,10 @@ export class VirtualBankAccount extends Model {
       'urlSuffix': '/create_using_permanent_token',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create(params?: _virtual_bank_account.create_params):RequestWrapper {
+  public create(params?: _virtual_bank_account.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -46,10 +44,10 @@ export class VirtualBankAccount extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(virtual_bank_account_id: string, params?: any):RequestWrapper {
+  public retrieve(virtual_bank_account_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([virtual_bank_account_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -57,10 +55,10 @@ export class VirtualBankAccount extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _virtual_bank_account.virtual_bank_account_list_params):RequestWrapper<ListResult> {
+  public list(params?: _virtual_bank_account.virtual_bank_account_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -68,10 +66,10 @@ export class VirtualBankAccount extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(virtual_bank_account_id: string, params?: any):RequestWrapper {
+  public delete(virtual_bank_account_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([virtual_bank_account_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -79,10 +77,10 @@ export class VirtualBankAccount extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete_local(virtual_bank_account_id: string, params?: any):RequestWrapper {
+  public delete_local(virtual_bank_account_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([virtual_bank_account_id, params], {
       'methodName': 'delete_local',
       'httpMethod': 'POST',
@@ -90,9 +88,8 @@ export class VirtualBankAccount extends Model {
       'urlSuffix': '/delete_local',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~VirtualBankAccount
 
 

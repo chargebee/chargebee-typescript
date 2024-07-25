@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Item extends Model {
   public id: string;
@@ -30,13 +29,12 @@ export class Item extends Model {
   public channel?: string;
   public applicable_items?: Array<ApplicableItem>;
   public metadata?: any;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _item.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class ItemApi extends Api {
+  public create(params?: _item.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -44,10 +42,10 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(item_id: string, params?: any):RequestWrapper {
+  public retrieve(item_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -55,10 +53,10 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(item_id: string, params?: _item.update_params):RequestWrapper {
+  public update(item_id: string, params?: _item.update_params):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -66,10 +64,10 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _item.item_list_params):RequestWrapper<ListResult> {
+  public list(params?: _item.item_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -77,10 +75,10 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(item_id: string, params?: any):RequestWrapper {
+  public delete(item_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -88,7 +86,7 @@ export class Item extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
 } // ~Item

@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class ContractTerm extends Model {
   public id: string;
@@ -17,12 +14,11 @@ export class ContractTerm extends Model {
   public created_at: number;
   public subscription_id: string;
   public remaining_billing_cycles?: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class ContractTermApi extends Api {
 } // ~ContractTerm
 
 

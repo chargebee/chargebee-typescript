@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Gift extends Model {
   public id: string;
@@ -17,13 +16,12 @@ export class Gift extends Model {
   public gifter: Gifter;
   public gift_receiver: GiftReceiver;
   public gift_timelines?: Array<GiftTimeline>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _gift.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class GiftApi extends Api {
+  public create(params?: _gift.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -31,10 +29,10 @@ export class Gift extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_for_items(params?: _gift.create_for_items_params):RequestWrapper {
+  public create_for_items(params?: _gift.create_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_for_items',
       'httpMethod': 'POST',
@@ -42,10 +40,10 @@ export class Gift extends Model {
       'urlSuffix': '/create_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(gift_id: string, params?: any):RequestWrapper {
+  public retrieve(gift_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -53,10 +51,10 @@ export class Gift extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _gift.gift_list_params):RequestWrapper<ListResult> {
+  public list(params?: _gift.gift_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -64,10 +62,10 @@ export class Gift extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static claim(gift_id: string, params?: any):RequestWrapper {
+  public claim(gift_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'claim',
       'httpMethod': 'POST',
@@ -75,10 +73,10 @@ export class Gift extends Model {
       'urlSuffix': '/claim',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static cancel(gift_id: string, params?: any):RequestWrapper {
+  public cancel(gift_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'cancel',
       'httpMethod': 'POST',
@@ -86,10 +84,10 @@ export class Gift extends Model {
       'urlSuffix': '/cancel',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_gift(gift_id: string, params?: _gift.update_gift_params):RequestWrapper {
+  public update_gift(gift_id: string, params?: _gift.update_gift_params):RequestWrapper {
     return new RequestWrapper([gift_id, params], {
       'methodName': 'update_gift',
       'httpMethod': 'POST',
@@ -97,9 +95,8 @@ export class Gift extends Model {
       'urlSuffix': '/update_gift',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Gift
 
 export class Gifter extends Model {

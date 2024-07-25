@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class PriceVariant extends Model {
   public id: string;
@@ -16,13 +15,12 @@ export class PriceVariant extends Model {
   public updated_at?: number;
   public archived_at?: number;
   public attributes?: Array<Attribute>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _price_variant.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class PriceVariantApi extends Api {
+  public create(params?: _price_variant.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -30,10 +28,10 @@ export class PriceVariant extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(price_variant_id: string, params?: any):RequestWrapper {
+  public retrieve(price_variant_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([price_variant_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -41,10 +39,10 @@ export class PriceVariant extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(price_variant_id: string, params?: _price_variant.update_params):RequestWrapper {
+  public update(price_variant_id: string, params?: _price_variant.update_params):RequestWrapper {
     return new RequestWrapper([price_variant_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -52,10 +50,10 @@ export class PriceVariant extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(price_variant_id: string, params?: any):RequestWrapper {
+  public delete(price_variant_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([price_variant_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -63,10 +61,10 @@ export class PriceVariant extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _price_variant.price_variant_list_params):RequestWrapper<ListResult> {
+  public list(params?: _price_variant.price_variant_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -74,9 +72,8 @@ export class PriceVariant extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~PriceVariant
 
 export class Attribute extends Model {

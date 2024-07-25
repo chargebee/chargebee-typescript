@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class Discount extends Model {
   public id: string;
@@ -22,12 +19,11 @@ export class Discount extends Model {
   public applied_count?: number;
   public coupon_id: string;
   public index: number;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class DiscountApi extends Api {
 } // ~Discount
 
 

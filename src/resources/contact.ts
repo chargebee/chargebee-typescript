@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class Contact extends Model {
   public id: string;
@@ -14,12 +11,11 @@ export class Contact extends Model {
   public enabled: boolean;
   public send_account_email: boolean;
   public send_billing_email: boolean;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class ContactApi extends Api {
 } // ~Contact
 
 

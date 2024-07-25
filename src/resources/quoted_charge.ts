@@ -1,8 +1,5 @@
-import * as resources from ".";
-import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class QuotedCharge extends Model {
   public charges?: Array<Charge>;
@@ -10,12 +7,11 @@ export class QuotedCharge extends Model {
   public invoice_items?: Array<InvoiceItem>;
   public item_tiers?: Array<ItemTier>;
   public coupons?: Array<Coupon>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
+// OPERATIONS
+//-----------
+export class QuotedChargeApi extends Api {
 } // ~QuotedCharge
 
 export class Charge extends Model {

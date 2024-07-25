@@ -1,5 +1,5 @@
 {
-   "name": "chargebee-typescript",
+   "name": "@coosto/chargebee-typescript",
    "version": "2.36.0",
    "description": "A library in typescript for integrating with Chargebee.",
    "keywords": [
@@ -11,6 +11,13 @@
    ],
    "homepage": "http://github.com/chargebee/chargebee-typescript",
    "author": "Navaneedhan <navaneedhan@chargebee.com> (https://www.chargebee.com)",
+   "contributors": [
+      {
+         "name": "Francisco Soler",
+         "email": "francisco.soler@coosto.com",
+         "url": "https://www.coosto.com"
+      }
+   ],
    "main": "lib/chargebee.js",
    "types": "lib/chargebee.d.ts",
    "files": [
@@ -34,8 +41,11 @@
       "type": "git",
       "url": "http://github.com/chargebee/chargebee-typescript.git"
    },
+   "publishConfig": {
+      "registry": "https://nr0.coosto.com"
+   },
    "engines": {
-      "node": ">=8.0.0"
+      "node": ">=8.3.0"
    },
    "bugs": {
       "url": "http://support.chargebee.com",

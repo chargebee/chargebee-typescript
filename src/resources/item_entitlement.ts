@@ -1,9 +1,7 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
-import {filter} from "../filter";
+import { Api } from './api'
 
 export class ItemEntitlement extends Model {
   public id: string;
@@ -13,13 +11,12 @@ export class ItemEntitlement extends Model {
   public feature_name?: string;
   public value?: string;
   public name?: string;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static item_entitlements_for_item(item_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_item_params):RequestWrapper<ListResult> {
+// OPERATIONS
+//-----------
+export class ItemEntitlementApi extends Api {
+  public item_entitlements_for_item(item_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_item_params):RequestWrapper<ListResult> {
     return new RequestWrapper([item_id, params], {
       'methodName': 'item_entitlements_for_item',
       'httpMethod': 'GET',
@@ -27,10 +24,10 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static item_entitlements_for_feature(feature_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_feature_params):RequestWrapper<ListResult> {
+  public item_entitlements_for_feature(feature_id: string, params?: _item_entitlement.item_entitlement_item_entitlements_for_feature_params):RequestWrapper<ListResult> {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'item_entitlements_for_feature',
       'httpMethod': 'GET',
@@ -38,10 +35,10 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static add_item_entitlements(feature_id: string, params?: _item_entitlement.add_item_entitlements_params):RequestWrapper {
+  public add_item_entitlements(feature_id: string, params?: _item_entitlement.add_item_entitlements_params):RequestWrapper {
     return new RequestWrapper([feature_id, params], {
       'methodName': 'add_item_entitlements',
       'httpMethod': 'POST',
@@ -49,10 +46,10 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static upsert_or_remove_item_entitlements_for_item(item_id: string, params?: _item_entitlement.upsert_or_remove_item_entitlements_for_item_params):RequestWrapper {
+  public upsert_or_remove_item_entitlements_for_item(item_id: string, params?: _item_entitlement.upsert_or_remove_item_entitlements_for_item_params):RequestWrapper {
     return new RequestWrapper([item_id, params], {
       'methodName': 'upsert_or_remove_item_entitlements_for_item',
       'httpMethod': 'POST',
@@ -60,9 +57,8 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~ItemEntitlement
 
 

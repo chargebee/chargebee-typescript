@@ -1,9 +1,8 @@
-import * as resources from ".";
 import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
-import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
+import { Api } from './api'
 
 export class Coupon extends Model {
   public id: string;
@@ -38,13 +37,12 @@ export class Coupon extends Model {
   public invoice_notes?: string;
   public meta_data?: any;
   public coupon_constraints?: Array<CouponConstraint>;
+}
 
-  
-
-  // OPERATIONS
-  //-----------
-
-  public static create(params?: _coupon.create_params):RequestWrapper {
+// OPERATIONS
+//-----------
+export class CouponApi extends Api {
+  public create(params?: _coupon.create_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create',
       'httpMethod': 'POST',
@@ -52,10 +50,10 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static create_for_items(params?: _coupon.create_for_items_params):RequestWrapper {
+  public create_for_items(params?: _coupon.create_for_items_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'create_for_items',
       'httpMethod': 'POST',
@@ -63,10 +61,10 @@ export class Coupon extends Model {
       'urlSuffix': '/create_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update_for_items(coupon_id: string, params?: _coupon.update_for_items_params):RequestWrapper {
+  public update_for_items(coupon_id: string, params?: _coupon.update_for_items_params):RequestWrapper {
     return new RequestWrapper([coupon_id, params], {
       'methodName': 'update_for_items',
       'httpMethod': 'POST',
@@ -74,10 +72,10 @@ export class Coupon extends Model {
       'urlSuffix': '/update_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static list(params?: _coupon.coupon_list_params):RequestWrapper<ListResult> {
+  public list(params?: _coupon.coupon_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -85,10 +83,10 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static retrieve(coupon_id: string, params?: any):RequestWrapper {
+  public retrieve(coupon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -96,10 +94,10 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static update(coupon_id: string, params?: _coupon.update_params):RequestWrapper {
+  public update(coupon_id: string, params?: _coupon.update_params):RequestWrapper {
     return new RequestWrapper([coupon_id, params], {
       'methodName': 'update',
       'httpMethod': 'POST',
@@ -107,10 +105,10 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static delete(coupon_id: string, params?: any):RequestWrapper {
+  public delete(coupon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_id, params], {
       'methodName': 'delete',
       'httpMethod': 'POST',
@@ -118,10 +116,10 @@ export class Coupon extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static copy(params?: _coupon.copy_params):RequestWrapper {
+  public copy(params?: _coupon.copy_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'copy',
       'httpMethod': 'POST',
@@ -129,10 +127,10 @@ export class Coupon extends Model {
       'urlSuffix': '/copy',
       'hasIdInUrl': false,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
 
-  public static unarchive(coupon_id: string, params?: any):RequestWrapper {
+  public unarchive(coupon_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([coupon_id, params], {
       'methodName': 'unarchive',
       'httpMethod': 'POST',
@@ -140,9 +138,8 @@ export class Coupon extends Model {
       'urlSuffix': '/unarchive',
       'hasIdInUrl': true,
       'isListReq': false,
-    }, ChargeBee._env)
+    }, this._env)
   }
-
 } // ~Coupon
 
 export class ItemConstraint extends Model {
