@@ -1,4 +1,4 @@
-let environment = {
+export const DEFAULTS: Environment = {
     protocol: 'https',
     hostSuffix: '.chargebee.com',
     apiPath: '/api/v2',
@@ -8,4 +8,14 @@ let environment = {
     timemachineWaitInMillis: 3000,
     exportWaitInMillis: 3000
 }
-module.exports = environment
+
+export interface Environment {
+    protocol: string,
+    hostSuffix: string,
+    apiPath: string,
+    timeout: number,
+    clientVersion: string,
+    port: number,
+    timemachineWaitInMillis: number,
+    exportWaitInMillis: number
+}

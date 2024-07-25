@@ -70,6 +70,7 @@ import { QuotedChargeApi } from './resources/quoted_charge'
 import { QuoteLineGroupApi } from './resources/quote_line_group'
 import { TaxWithheldApi } from './resources/tax_withheld'
 import { PaymentReferenceNumberApi } from './resources/payment_reference_number'
+import { DEFAULTS, Environment } from './environment'
 export {_subscription} from "./resources/subscription";
 export {_contract_term} from "./resources/contract_term";
 export {_discount} from "./resources/discount";
@@ -147,23 +148,12 @@ interface Conf {
     site: string
 }
 
-export interface Environment extends Conf {
-    readonly protocol: string,
-    readonly hostSuffix: string,
-    readonly apiPath: string,
-    readonly timeout: number,
-    readonly clientVersion: string,
-    readonly port: number,
-    readonly timemachineWaitInMillis: number,
-    readonly exportWaitInMillis: number
-}
-
 export class ChargeBee {
     static _api_version = 'v2';
 
-    _env = require('./environment');
+    protected _env: Environment = { ...DEFAULTS }
 
-    public configure(conf: Partial<Environment>) {
+    public configure(conf: Partial<Environment> & Conf) {
         Util.extend(true, this._env, conf)
     }
 
