@@ -189,12 +189,12 @@ export class Result {
             'subscription_estimate',
             {'shipping_address': 'SubscriptionEstimateShippingAddress', 'contract_term': 'SubscriptionEstimateContractTerm'}
         );
-        _estimate.init_dependant(
+        _estimate.init_dependant_extended(
             this.response['estimate'],
             'invoice_estimate',
             {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
         );
-        _estimate.init_dependant(
+        _estimate.init_dependant_extended(
             this.response['estimate'],
             'next_invoice_estimate',
             {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
@@ -464,6 +464,13 @@ export class Result {
         );
         return _impacted_item_price;
     }
+    get metadata(): resources.Metadata {
+        let _metadata = this.get(
+            'metadata',
+            'Metadata'
+        );
+        return _metadata;
+    }
     get subscription_entitlement(): resources.SubscriptionEntitlement {
         let _subscription_entitlement = this.get(
             'subscription_entitlement',
@@ -540,7 +547,7 @@ export class Result {
         let _ramp = this.get(
             'ramp',
             'Ramp',
-            {'items_to_add': 'RampItemsToAdd', 'items_to_update': 'RampItemsToUpdate', 'coupons_to_add': 'RampCouponsToAdd', 'discounts_to_add': 'RampDiscountsToAdd', 'item_tiers': 'RampItemTier'}
+            {'items_to_add': 'RampItemsToAdd', 'items_to_update': 'RampItemsToUpdate', 'coupons_to_add': 'RampCouponsToAdd', 'discounts_to_add': 'RampDiscountsToAdd', 'item_tiers': 'RampItemTier', 'status_transition_reason': 'RampStatusTransitionReason'}
         );
         return _ramp;
     }

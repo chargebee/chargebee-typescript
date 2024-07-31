@@ -23,6 +23,7 @@ export class Ramp extends Model {
   public coupons_to_remove?: Array<string>;
   public discounts_to_remove?: Array<string>;
   public deleted: boolean;
+  public status_transition_reason?: StatusTransitionReason;
 
   
 
@@ -137,6 +138,11 @@ export class ItemTier extends Model {
   public price_in_decimal?: string;
   public index: number;
 } // ~ItemTier
+
+export class StatusTransitionReason extends Model {
+  public code?: string;
+  public message?: string;
+} // ~StatusTransitionReason
 
 
 

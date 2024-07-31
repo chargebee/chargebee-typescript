@@ -9,6 +9,7 @@ export class PriceVariant extends Model {
   public id: string;
   public name: string;
   public external_name?: string;
+  public variant_group?: string;
   public description?: string;
   public status?: string;
   public created_at: number;
@@ -95,12 +96,14 @@ export namespace _price_variant {
     name: string;
     external_name?: string;
     description?: string;
+    variant_group?: string;
     attributes?: Array<attributes_create_params>;
   }
   export interface update_params {
     name?: string;
     external_name?: string;
     description?: string;
+    variant_group?: string;
     status?: string;
     attributes?: Array<attributes_update_params>;
   }

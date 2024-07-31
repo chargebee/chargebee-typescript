@@ -14,6 +14,8 @@ export class EntitlementOverride extends Model {
   public value?: string;
   public name?: string;
   public expires_at?: number;
+  public effective_from?: number;
+  public schedule_status?: string;
 
   
 
@@ -65,6 +67,10 @@ export namespace _entitlement_override {
      * @deprecated Please refer API docs to use other attributes
      */
     include_drafts?: boolean;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    include_scheduled_overrides?: boolean;
   }
   export interface entitlement_overrides_add_entitlement_override_for_subscription_params {
     feature_id: string;
@@ -74,5 +80,8 @@ export namespace _entitlement_override {
   }
   export interface entitlement_overrides_add_entitlement_override_for_subscription_params {
     expires_at?: number;
+  }
+  export interface entitlement_overrides_add_entitlement_override_for_subscription_params {
+    effective_from?: number;
   }
 }

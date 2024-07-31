@@ -14,6 +14,8 @@ export class SubscriptionEntitlement extends Model {
   public name?: string;
   public is_overridden: boolean;
   public is_enabled: boolean;
+  public effective_from?: number;
+  public schedule_status?: string;
   public expires_at?: number;
   public components?: Component;
 
@@ -67,6 +69,10 @@ export namespace _subscription_entitlement {
      * @deprecated Please refer API docs to use other attributes
      */
     embed?: string;
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    include_scheduled_overrides?: boolean;
   }
   export interface set_subscription_entitlement_availability_params {
     is_enabled: boolean;

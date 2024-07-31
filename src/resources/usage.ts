@@ -108,8 +108,9 @@ export namespace _usage {
     limit?: number;
     offset?: string;
     id?: filter._string;
-    subscription_id: filter._string;
+    subscription_id?: filter._string;
     usage_date?: filter._timestamp;
+    updated_at?: filter._timestamp;
     item_price_id?: filter._string;
     invoice_id?: filter._string;
     source?: filter._enum;

@@ -55,6 +55,12 @@ export class Model {
         }
     }
 
+    init_dependant_extended(obj, type, sub_types = {}) {
+        if (!Util.isEmptyObject(obj) &&  !Util.isEmptyObject(obj[type]) && Util.isObject(obj) && !Util.isEmptyObject(this.dependant_types[type])) {
+            this[type] = new (resources)[this.dependant_types[type]](obj[type], sub_types);
+        }
+    }
+
     public init_dependant_list(obj, type, sub_types = {}) {
         if(!Util.isEmptyObject(obj) && !Util.isEmptyObject(obj[type]) && Util.isArray(obj[type]) && !Util.isEmptyObject(this.dependant_types[type])) {
             let dependant_objs = [];
