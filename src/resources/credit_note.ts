@@ -47,7 +47,7 @@ export class CreditNote extends Model {
   public local_currency_exchange_rate?: number;
   public create_reason_code?: string;
   public vat_number_prefix?: string;
-  public business_entity_id: string;
+  public business_entity_id?: string;
   public shipping_address?: ShippingAddress;
   public billing_address?: BillingAddress;
   public site_details_at_creation?: SiteDetailsAtCreation;

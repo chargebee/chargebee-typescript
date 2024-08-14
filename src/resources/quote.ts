@@ -43,7 +43,7 @@ export class Quote extends Model {
   public contract_term_start?: number;
   public contract_term_end?: number;
   public contract_term_termination_fee?: number;
-  public business_entity_id: string;
+  public business_entity_id?: string;
 
   
 

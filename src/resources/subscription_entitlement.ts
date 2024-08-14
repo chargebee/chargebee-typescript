@@ -10,6 +10,7 @@ export class SubscriptionEntitlement extends Model {
   public feature_id?: string;
   public feature_name?: string;
   public feature_unit?: string;
+  public feature_type?: string;
   public value?: string;
   public name?: string;
   public is_overridden: boolean;

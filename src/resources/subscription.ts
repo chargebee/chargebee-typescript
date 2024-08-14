@@ -917,6 +917,7 @@ export namespace _subscription {
     auto_close_invoices?: boolean;
     trial_end_action?: string;
     payment_initiator?: string;
+    invoice_usages?: boolean;
     card?: card_update_for_items_params;
     payment_method?: payment_method_update_for_items_params;
     payment_intent?: payment_intent_update_for_items_params;

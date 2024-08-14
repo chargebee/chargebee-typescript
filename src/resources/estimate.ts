@@ -350,6 +350,7 @@ export namespace _estimate {
     include_delayed_charges?: boolean;
     use_existing_balances?: boolean;
     invoice_immediately?: boolean;
+    invoice_usages?: boolean;
     subscription?: subscription_update_subscription_for_items_params;
     billing_address?: billing_address_update_subscription_for_items_params;
     shipping_address?: shipping_address_update_subscription_for_items_params;
