@@ -1,6 +1,6 @@
 {
    "name": "chargebee-typescript",
-   "version": "2.38.0",
+   "version": "2.39.0",
    "description": "A library in typescript for integrating with Chargebee.",
    "keywords": [
       "payments",

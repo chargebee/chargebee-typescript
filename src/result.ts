@@ -479,6 +479,13 @@ export class Result {
         );
         return _subscription_entitlement;
     }
+    get customer_entitlement(): resources.CustomerEntitlement {
+        let _customer_entitlement = this.get(
+            'customer_entitlement',
+            'CustomerEntitlement'
+        );
+        return _customer_entitlement;
+    }
     get item_entitlement(): resources.ItemEntitlement {
         let _item_entitlement = this.get(
             'item_entitlement',

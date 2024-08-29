@@ -91,6 +91,17 @@ export class Transaction extends Model {
     }, ChargeBee._env)
   }
 
+  public static reconcile(transaction_id: string, params?: _transaction.reconcile_params):RequestWrapper {
+    return new RequestWrapper([transaction_id, params], {
+      'methodName': 'reconcile',
+      'httpMethod': 'POST',
+      'urlPrefix': '/transactions',
+      'urlSuffix': '/reconcile',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static refund(transaction_id: string, params?: _transaction.refund_params):RequestWrapper {
     return new RequestWrapper([transaction_id, params], {
       'methodName': 'refund',
@@ -240,6 +251,11 @@ export namespace _transaction {
     reference_number?: string;
     custom_payment_method_id?: string;
     comment?: string;
+  }
+  export interface reconcile_params {
+    id_at_gateway?: string;
+    customer_id?: string;
+    status?: string;
   }
   export interface refund_params {
     amount?: number;

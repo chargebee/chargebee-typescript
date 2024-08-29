@@ -58,6 +58,7 @@ export {_impacted_item} from "./resources/impacted_item";
 export {_impacted_item_price} from "./resources/impacted_item_price";
 export {_metadata} from "./resources/metadata";
 export {_subscription_entitlement} from "./resources/subscription_entitlement";
+export {_customer_entitlement} from "./resources/customer_entitlement";
 export {_item_entitlement} from "./resources/item_entitlement";
 export {_entitlement} from "./resources/entitlement";
 export {_in_app_subscription} from "./resources/in_app_subscription";
@@ -262,6 +263,9 @@ export class ChargeBee {
     }
     get subscription_entitlement() {
         return resources.SubscriptionEntitlement;
+    }
+    get customer_entitlement() {
+        return resources.CustomerEntitlement;
     }
     get item_entitlement() {
         return resources.ItemEntitlement;

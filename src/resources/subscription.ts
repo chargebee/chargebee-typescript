@@ -61,6 +61,7 @@ export class Subscription extends Model {
   public due_since?: number;
   public total_dues?: number;
   public mrr?: number;
+  public arr?: number;
   public exchange_rate?: number;
   public base_currency_code?: string;
   public addons?: Array<Addon>;

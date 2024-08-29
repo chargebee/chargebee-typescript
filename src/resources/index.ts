@@ -206,6 +206,7 @@ export {Download as ImpactedItemPriceDownload} from "./impacted_item_price";
 export {Metadata} from "./metadata";
 export {SubscriptionEntitlement} from "./subscription_entitlement";
 export {Component as SubscriptionEntitlementComponent} from "./subscription_entitlement";
+export {CustomerEntitlement} from "./customer_entitlement";
 export {ItemEntitlement} from "./item_entitlement";
 export {Entitlement} from "./entitlement";
 export {InAppSubscription} from "./in_app_subscription";

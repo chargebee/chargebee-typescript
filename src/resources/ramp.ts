@@ -41,6 +41,17 @@ export class Ramp extends Model {
     }, ChargeBee._env)
   }
 
+  public static update(ramp_id: string, params?: _ramp.update_params):RequestWrapper {
+    return new RequestWrapper([ramp_id, params], {
+      'methodName': 'update',
+      'httpMethod': 'POST',
+      'urlPrefix': '/ramps',
+      'urlSuffix': '/update',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
   public static retrieve(ramp_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([ramp_id, params], {
       'methodName': 'retrieve',
@@ -162,6 +173,18 @@ export namespace _ramp {
     coupons_to_add?: Array<coupons_to_add_create_for_subscription_params>;
     discounts_to_add?: Array<discounts_to_add_create_for_subscription_params>;
   }
+  export interface update_params {
+    effective_from: number;
+    description?: string;
+    coupons_to_remove?: Array<string>;
+    discounts_to_remove?: Array<string>;
+    items_to_remove?: Array<string>;
+    items_to_add?: Array<items_to_add_update_params>;
+    items_to_update?: Array<items_to_update_update_params>;
+    item_tiers?: Array<item_tiers_update_params>;
+    coupons_to_add?: Array<coupons_to_add_update_params>;
+    discounts_to_add?: Array<discounts_to_add_update_params>;
+  }
   export interface ramp_list_params {
     limit?: number;
     offset?: string;
@@ -264,6 +287,99 @@ export namespace _ramp {
     included_in_mrr?: boolean;
   }
   export interface discounts_to_add_create_for_subscription_params {
+    item_price_id?: string;
+  }
+  export interface items_to_add_update_params {
+    item_price_id: string;
+  }
+  export interface items_to_add_update_params {
+    quantity?: number;
+  }
+  export interface items_to_add_update_params {
+    quantity_in_decimal?: string;
+  }
+  export interface items_to_add_update_params {
+    unit_price?: number;
+  }
+  export interface items_to_add_update_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface items_to_add_update_params {
+    billing_cycles?: number;
+  }
+  export interface items_to_add_update_params {
+    service_period_days?: number;
+  }
+  export interface items_to_update_update_params {
+    item_price_id: string;
+  }
+  export interface items_to_update_update_params {
+    quantity?: number;
+  }
+  export interface items_to_update_update_params {
+    quantity_in_decimal?: string;
+  }
+  export interface items_to_update_update_params {
+    unit_price?: number;
+  }
+  export interface items_to_update_update_params {
+    unit_price_in_decimal?: string;
+  }
+  export interface items_to_update_update_params {
+    billing_cycles?: number;
+  }
+  export interface items_to_update_update_params {
+    service_period_days?: number;
+  }
+  export interface item_tiers_update_params {
+    item_price_id?: string;
+  }
+  export interface item_tiers_update_params {
+    starting_unit?: number;
+  }
+  export interface item_tiers_update_params {
+    ending_unit?: number;
+  }
+  export interface item_tiers_update_params {
+    price?: number;
+  }
+  export interface item_tiers_update_params {
+    starting_unit_in_decimal?: string;
+  }
+  export interface item_tiers_update_params {
+    ending_unit_in_decimal?: string;
+  }
+  export interface item_tiers_update_params {
+    price_in_decimal?: string;
+  }
+  export interface coupons_to_add_update_params {
+    coupon_id?: string;
+  }
+  export interface coupons_to_add_update_params {
+    apply_till?: number;
+  }
+  export interface discounts_to_add_update_params {
+    apply_on: string;
+  }
+  export interface discounts_to_add_update_params {
+    duration_type: string;
+  }
+  export interface discounts_to_add_update_params {
+    percentage?: number;
+  }
+  export interface discounts_to_add_update_params {
+    amount?: number;
+  }
+  export interface discounts_to_add_update_params {
+    period?: number;
+  }
+  export interface discounts_to_add_update_params {
+    period_unit?: string;
+  }
+  export interface discounts_to_add_update_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_to_add_update_params {
     item_price_id?: string;
   }
 }
