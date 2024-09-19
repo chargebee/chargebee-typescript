@@ -452,12 +452,23 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
-  public static installments(invoice_id: string, params?: _invoice.installments_params):RequestWrapper {
+  public static apply_payment_schedule_scheme(invoice_id: string, params?: _invoice.apply_payment_schedule_scheme_params):RequestWrapper {
     return new RequestWrapper([invoice_id, params], {
-      'methodName': 'installments',
+      'methodName': 'apply_payment_schedule_scheme',
       'httpMethod': 'POST',
       'urlPrefix': '/invoices',
-      'urlSuffix': '/installments',
+      'urlSuffix': '/apply_payment_schedule_scheme',
+      'hasIdInUrl': true,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static payment_schedules(invoice_id: string, params?: any):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'payment_schedules',
+      'httpMethod': 'GET',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/payment_schedules',
       'hasIdInUrl': true,
       'isListReq': false,
     }, ChargeBee._env)
@@ -988,8 +999,8 @@ export namespace _invoice {
     shipping_address?: shipping_address_update_details_params;
     statement_descriptor?: statement_descriptor_update_details_params;
   }
-  export interface installments_params {
-    config_id: string;
+  export interface apply_payment_schedule_scheme_params {
+    scheme_id: string;
     amount?: number;
   }
   export interface shipping_address_create_params {

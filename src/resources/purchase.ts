@@ -51,8 +51,8 @@ export namespace _purchase {
     customer_id: string;
     payment_source_id?: string;
     invoice_info?: invoice_info_create_params;
+    payment_schedule?: payment_schedule_create_params;
     statement_descriptor?: statement_descriptor_create_params;
-    installment_info?: installment_info_create_params;
     purchase_items?: Array<purchase_items_create_params>;
     item_tiers?: Array<item_tiers_create_params>;
     shipping_addresses?: Array<shipping_addresses_create_params>;
@@ -78,14 +78,14 @@ export namespace _purchase {
   export interface invoice_info_create_params {
     notes?: string;
   }
+  export interface payment_schedule_create_params {
+    scheme_id?: string;
+  }
+  export interface payment_schedule_create_params {
+    amount?: number;
+  }
   export interface statement_descriptor_create_params {
     descriptor?: string;
-  }
-  export interface installment_info_create_params {
-    config_id?: string;
-  }
-  export interface installment_info_create_params {
-    amount?: number;
   }
   export interface purchase_items_create_params {
     index: number;

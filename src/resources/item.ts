@@ -29,6 +29,8 @@ export class Item extends Model {
   public archived_at?: number;
   public channel?: string;
   public applicable_items?: Array<ApplicableItem>;
+  public bundle_items?: Array<BundleItem>;
+  public bundle_configuration?: BundleConfiguration;
   public metadata?: any;
 
   
@@ -97,6 +99,17 @@ export class ApplicableItem extends Model {
   public id?: string;
 } // ~ApplicableItem
 
+export class BundleItem extends Model {
+  public item_id: string;
+  public item_type?: string;
+  public quantity?: number;
+  public price_allocation?: number;
+} // ~BundleItem
+
+export class BundleConfiguration extends Model {
+  public type?: string;
+} // ~BundleConfiguration
+
 
 
   // REQUEST PARAMS
@@ -123,6 +136,8 @@ export namespace _item {
     metered?: boolean;
     usage_calculation?: string;
     metadata?: any;
+    bundle_configuration?: bundle_configuration_create_params;
+    bundle_items_to_add?: Array<bundle_items_to_add_create_params>;
   }
   export interface update_params {
     name?: string;
@@ -144,10 +159,15 @@ export namespace _item {
     metadata?: any;
     included_in_mrr?: boolean;
     status?: string;
+    bundle_configuration?: bundle_configuration_update_params;
+    bundle_items_to_add?: Array<bundle_items_to_add_update_params>;
+    bundle_items_to_update?: Array<bundle_items_to_update_update_params>;
+    bundle_items_to_remove?: Array<bundle_items_to_remove_update_params>;
   }
   export interface item_list_params {
     limit?: number;
     offset?: string;
+    bundle_configuration?: bundle_configuration_item_list_params;
     id?: filter._string;
     item_family_id?: filter._string;
     type?: filter._enum;
@@ -163,5 +183,56 @@ export namespace _item {
     channel?: filter._enum;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
+  }
+  export interface bundle_configuration_create_params {
+    type?: string;
+  }
+  export interface bundle_items_to_add_create_params {
+    item_id?: string;
+  }
+  export interface bundle_items_to_add_create_params {
+    item_type?: string;
+  }
+  export interface bundle_items_to_add_create_params {
+    quantity?: number;
+  }
+  export interface bundle_items_to_add_create_params {
+    price_allocation?: number;
+  }
+  export interface bundle_configuration_update_params {
+    type?: string;
+  }
+  export interface bundle_items_to_add_update_params {
+    item_id?: string;
+  }
+  export interface bundle_items_to_add_update_params {
+    item_type?: string;
+  }
+  export interface bundle_items_to_add_update_params {
+    quantity?: number;
+  }
+  export interface bundle_items_to_add_update_params {
+    price_allocation?: number;
+  }
+  export interface bundle_items_to_update_update_params {
+    item_id?: string;
+  }
+  export interface bundle_items_to_update_update_params {
+    item_type?: string;
+  }
+  export interface bundle_items_to_update_update_params {
+    quantity?: number;
+  }
+  export interface bundle_items_to_update_update_params {
+    price_allocation?: number;
+  }
+  export interface bundle_items_to_remove_update_params {
+    item_id?: string;
+  }
+  export interface bundle_items_to_remove_update_params {
+    item_type?: string;
+  }
+  export interface bundle_configuration_item_list_params {
+    type?: filter._enum;
   }
 }

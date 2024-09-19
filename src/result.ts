@@ -123,6 +123,14 @@ export class Result {
         );
         return _payment_reference_number;
     }
+    get payment_schedule(): resources.PaymentSchedule {
+        let _payment_schedule = this.get(
+            'payment_schedule',
+            'PaymentSchedule',
+            {'schedule_entries': 'PaymentScheduleScheduleEntry'}
+        );
+        return _payment_schedule;
+    }
     get tax_withheld(): resources.TaxWithheld {
         let _tax_withheld = this.get(
             'tax_withheld',
@@ -390,7 +398,7 @@ export class Result {
         let _item = this.get(
             'item',
             'Item',
-            {'applicable_items': 'ItemApplicableItem'}
+            {'applicable_items': 'ItemApplicableItem', 'bundle_items': 'ItemBundleItem', 'bundle_configuration': 'ItemBundleConfiguration'}
         );
         return _item;
     }
@@ -558,28 +566,13 @@ export class Result {
         );
         return _ramp;
     }
-    get installment_config(): resources.InstallmentConfig {
-        let _installment_config = this.get(
-            'installment_config',
-            'InstallmentConfig',
-            {'installments': 'InstallmentConfigInstallment'}
+    get payment_schedule_scheme(): resources.PaymentScheduleScheme {
+        let _payment_schedule_scheme = this.get(
+            'payment_schedule_scheme',
+            'PaymentScheduleScheme',
+            {'preferred_schedules': 'PaymentScheduleSchemePreferredSchedule'}
         );
-        return _installment_config;
-    }
-    get installment(): resources.Installment {
-        let _installment = this.get(
-            'installment',
-            'Installment'
-        );
-        return _installment;
-    }
-    get installment_detail(): resources.InstallmentDetail {
-        let _installment_detail = this.get(
-            'installment_detail',
-            'InstallmentDetail',
-            {'installments': 'InstallmentDetailInstallment'}
-        );
-        return _installment_detail;
+        return _payment_schedule_scheme;
     }
     get pricing_page_session(): resources.PricingPageSession {
         let _pricing_page_session = this.get(
@@ -612,6 +605,14 @@ export class Result {
             {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice', 'site_details_at_creation': 'InvoiceSiteDetailsAtCreation', 'tax_origin': 'InvoiceTaxOrigin'}
         );
         return _invoices;
+    }
+    get payment_schedules(): resources.PaymentSchedule[] {
+        let _payment_schedules = this.get_list(
+            'payment_schedules',
+            'PaymentSchedule',
+            {'schedule_entries': 'PaymentScheduleScheduleEntry'}
+        );
+        return _payment_schedules;
     }
     get credit_notes(): resources.CreditNote[] {
         let _credit_notes = this.get_list(

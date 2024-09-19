@@ -16,6 +16,7 @@ export {_card} from "./resources/card";
 export {_promotional_credit} from "./resources/promotional_credit";
 export {_invoice} from "./resources/invoice";
 export {_payment_reference_number} from "./resources/payment_reference_number";
+export {_payment_schedule} from "./resources/payment_schedule";
 export {_tax_withheld} from "./resources/tax_withheld";
 export {_credit_note} from "./resources/credit_note";
 export {_unbilled_charge} from "./resources/unbilled_charge";
@@ -69,9 +70,7 @@ export {_purchase} from "./resources/purchase";
 export {_payment_voucher} from "./resources/payment_voucher";
 export {_currency} from "./resources/currency";
 export {_ramp} from "./resources/ramp";
-export {_installment_config} from "./resources/installment_config";
-export {_installment} from "./resources/installment";
-export {_installment_detail} from "./resources/installment_detail";
+export {_payment_schedule_scheme} from "./resources/payment_schedule_scheme";
 export {_pricing_page_session} from "./resources/pricing_page_session";
 
 interface Conf {
@@ -137,6 +136,9 @@ export class ChargeBee {
     }
     get payment_reference_number() {
         return resources.PaymentReferenceNumber;
+    }
+    get payment_schedule() {
+        return resources.PaymentSchedule;
     }
     get tax_withheld() {
         return resources.TaxWithheld;
@@ -297,14 +299,8 @@ export class ChargeBee {
     get ramp() {
         return resources.Ramp;
     }
-    get installment_config() {
-        return resources.InstallmentConfig;
-    }
-    get installment() {
-        return resources.Installment;
-    }
-    get installment_detail() {
-        return resources.InstallmentDetail;
+    get payment_schedule_scheme() {
+        return resources.PaymentScheduleScheme;
     }
     get pricing_page_session() {
         return resources.PricingPageSession;
