@@ -184,7 +184,7 @@ export class Core {
                     }
                 }
             }
-            else if(key === "meta_data") {
+            else if(key === "meta_data" || key === "metadata") { // metadata is encoded as a JSON string instead of URL-encoded.
                 let attrVal="";
                 if(value !== null) {
                     attrVal = encodeURIComponent(Object.prototype.toString.call(value) === "[object String]" ? Util.trim(value) : JSON.stringify(value));
