@@ -33,6 +33,7 @@ export class ItemPrice extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public created_at: number;
+  public usage_accumulation_reset_frequency?: string;
   public archived_at?: number;
   public invoice_notes?: string;
   public tiers?: Array<Tier>;
@@ -187,6 +188,7 @@ export namespace _item_price {
     metadata?: any;
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
+    usage_accumulation_reset_frequency?: string;
     pricing_model?: string;
     price?: number;
     price_in_decimal?: string;
@@ -210,6 +212,7 @@ export namespace _item_price {
     price_variant_id?: string;
     status?: string;
     external_name?: string;
+    usage_accumulation_reset_frequency?: string;
     currency_code?: string;
     invoice_notes?: string;
     is_taxable?: boolean;

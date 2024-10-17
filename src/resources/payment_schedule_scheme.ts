@@ -6,6 +6,7 @@ import {filter} from "../filter";
 
 export class PaymentScheduleScheme extends Model {
   public id: string;
+  public name?: string;
   public description?: string;
   public number_of_schedules: number;
   public period_unit: string;

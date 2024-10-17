@@ -86,6 +86,7 @@ export class SubscriptionItem extends Model {
   public charge_once?: boolean;
   public charge_on_option?: string;
   public proration_type?: string;
+  public usage_accumulation_reset_frequency?: string;
 } // ~SubscriptionItem
 
 export class ItemTier extends Model {

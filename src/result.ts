@@ -190,7 +190,7 @@ export class Result {
             'estimate',
             'Estimate',
             {},
-            {'subscription_estimate': 'SubscriptionEstimate', 'subscription_estimates': 'SubscriptionEstimate', 'invoice_estimate': 'InvoiceEstimate', 'invoice_estimates': 'InvoiceEstimate', 'next_invoice_estimate': 'InvoiceEstimate', 'credit_note_estimates': 'CreditNoteEstimate', 'unbilled_charge_estimates': 'UnbilledCharge'}
+            {'subscription_estimate': 'SubscriptionEstimate', 'subscription_estimates': 'SubscriptionEstimate', 'invoice_estimate': 'InvoiceEstimate', 'invoice_estimates': 'InvoiceEstimate', 'payment_schedule_estimates': 'PaymentScheduleEstimate', 'next_invoice_estimate': 'InvoiceEstimate', 'credit_note_estimates': 'CreditNoteEstimate', 'unbilled_charge_estimates': 'UnbilledCharge'}
         );
         _estimate.init_dependant(
             this.response['estimate'],
@@ -216,6 +216,11 @@ export class Result {
             this.response['estimate'],
             'invoice_estimates',
             {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
+        );
+        _estimate.init_dependant_list(
+            this.response['estimate'],
+            'payment_schedule_estimates',
+            {'schedule_entries': 'PaymentScheduleEstimateScheduleEntry'}
         );
         _estimate.init_dependant_list(
             this.response['estimate'],

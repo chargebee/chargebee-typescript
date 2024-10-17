@@ -619,6 +619,7 @@ export namespace _quote {
   }
   export interface convert_params {
     invoice_date?: number;
+    invoice_immediately?: boolean;
     create_pending_invoices?: boolean;
     first_invoice_pending?: boolean;
     subscription?: subscription_convert_params;

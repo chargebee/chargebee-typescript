@@ -53,11 +53,13 @@ export namespace _pricing_page_session {
     customer?: customer_create_for_new_subscription_params;
     billing_address?: billing_address_create_for_new_subscription_params;
     shipping_address?: shipping_address_create_for_new_subscription_params;
+    discounts?: Array<discounts_create_for_new_subscription_params>;
   }
   export interface create_for_existing_subscription_params {
     redirect_url?: string;
     pricing_page?: pricing_page_create_for_existing_subscription_params;
     subscription?: subscription_create_for_existing_subscription_params;
+    discounts?: Array<discounts_create_for_existing_subscription_params>;
   }
   export interface pricing_page_create_for_new_subscription_params {
     id: string;
@@ -170,10 +172,64 @@ export namespace _pricing_page_session {
   export interface shipping_address_create_for_new_subscription_params {
     validation_status?: string;
   }
+  export interface discounts_create_for_new_subscription_params {
+    apply_on: string;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    duration_type: string;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    percentage?: number;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    amount?: number;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    period?: number;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    period_unit?: string;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    item_price_id?: string;
+  }
+  export interface discounts_create_for_new_subscription_params {
+    label?: string;
+  }
   export interface pricing_page_create_for_existing_subscription_params {
     id: string;
   }
   export interface subscription_create_for_existing_subscription_params {
     id: string;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    apply_on: string;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    duration_type: string;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    percentage?: number;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    amount?: number;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    period?: number;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    period_unit?: string;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    included_in_mrr?: boolean;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    item_price_id?: string;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    label?: string;
   }
 }

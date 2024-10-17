@@ -120,6 +120,8 @@ export {Tax as InvoiceEstimateTax} from "./invoice_estimate";
 export {LineItemTax as InvoiceEstimateLineItemTax} from "./invoice_estimate";
 export {LineItemTier as InvoiceEstimateLineItemTier} from "./invoice_estimate";
 export {LineItemDiscount as InvoiceEstimateLineItemDiscount} from "./invoice_estimate";
+export {PaymentScheduleEstimate} from "./payment_schedule_estimate";
+export {ScheduleEntry as PaymentScheduleEstimateScheduleEntry} from "./payment_schedule_estimate";
 export {SubscriptionEstimate} from "./subscription_estimate";
 export {ShippingAddress as SubscriptionEstimateShippingAddress} from "./subscription_estimate";
 export {ContractTerm as SubscriptionEstimateContractTerm} from "./subscription_estimate";

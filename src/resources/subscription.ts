@@ -521,6 +521,7 @@ export class SubscriptionItem extends Model {
   public charge_once?: boolean;
   public charge_on_option?: string;
   public proration_type?: string;
+  public usage_accumulation_reset_frequency?: string;
 } // ~SubscriptionItem
 
 export class ItemTier extends Model {
@@ -1897,6 +1898,9 @@ export namespace _subscription {
      */
     apply_till?: number;
   }
+  export interface subscription_items_create_with_items_params {
+    usage_accumulation_reset_frequency?: string;
+  }
   export interface card_update_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -2526,6 +2530,9 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     apply_till?: number;
+  }
+  export interface subscription_items_update_for_items_params {
+    usage_accumulation_reset_frequency?: string;
   }
   export interface contract_term_reactivate_params {
     action_at_term_end?: string;

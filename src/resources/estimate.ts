@@ -10,6 +10,7 @@ export class Estimate extends Model {
   public subscription_estimates?: Array<resources.SubscriptionEstimate>;
   public invoice_estimate?: resources.InvoiceEstimate;
   public invoice_estimates?: Array<resources.InvoiceEstimate>;
+  public payment_schedule_estimates?: Array<resources.PaymentScheduleEstimate>;
   public next_invoice_estimate?: resources.InvoiceEstimate;
   public credit_note_estimates?: Array<resources.CreditNoteEstimate>;
   public unbilled_charge_estimates?: Array<resources.UnbilledCharge>;
@@ -223,6 +224,17 @@ export class Estimate extends Model {
       'httpMethod': 'POST',
       'urlPrefix': '/estimates',
       'urlSuffix': '/create_invoice_for_items',
+      'hasIdInUrl': false,
+      'isListReq': false,
+    }, ChargeBee._env)
+  }
+
+  public static payment_schedules(params?: _estimate.payment_schedules_params):RequestWrapper {
+    return new RequestWrapper([params], {
+      'methodName': 'payment_schedules',
+      'httpMethod': 'POST',
+      'urlPrefix': '/estimates',
+      'urlSuffix': '/payment_schedules',
       'hasIdInUrl': false,
       'isListReq': false,
     }, ChargeBee._env)
@@ -479,6 +491,12 @@ export namespace _estimate {
     notes_to_remove?: Array<notes_to_remove_create_invoice_for_items_params>;
     discounts?: Array<discounts_create_invoice_for_items_params>;
     tax_providers_fields?: Array<tax_providers_fields_create_invoice_for_items_params>;
+  }
+  export interface payment_schedules_params {
+    scheme_id: string;
+    amount?: number;
+    invoice_id?: string;
+    payment_schedule_start_date?: number;
   }
   export interface subscription_create_subscription_params {
     id?: string;
