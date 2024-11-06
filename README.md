@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This repository contains the code for [chargebee-typescript](https://www.npmjs.com/package/chargebee-typescript) SDK which is deprecated. This will continue to receive updates till September 30, 2025. If you are using this, we request you to migrate to [chargebee](https://www.npmjs.com/package/chargebee) package by following [this migration guide](https://github.com/chargebee/chargebee-node/wiki/Migration-guide-for-v3) before September 30, 2025.
+
 # Chargebee Typescript Client Library - API V2
 
 [![npm](https://img.shields.io/npm/v/chargebee-typescript.svg?maxAge=2)](https://www.npmjs.com/package/chargebee-typescript)
