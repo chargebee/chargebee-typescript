@@ -497,6 +497,9 @@ export namespace _payment_source {
     cvv?: string;
   }
   export interface card_create_card_params {
+    preferred_scheme?: string;
+  }
+  export interface card_create_card_params {
     billing_addr1?: string;
   }
   export interface card_create_card_params {

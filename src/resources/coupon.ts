@@ -16,6 +16,7 @@ export class Coupon extends Model {
   public currency_code?: string;
   public duration_type: string;
   public duration_month?: number;
+  public valid_from?: number;
   public valid_till?: number;
   public max_redemptions?: number;
   public status?: string;
@@ -213,6 +214,7 @@ export namespace _coupon {
     apply_on: string;
     duration_type?: string;
     duration_month?: number;
+    valid_from?: number;
     valid_till?: number;
     max_redemptions?: number;
     invoice_notes?: string;
@@ -239,6 +241,7 @@ export namespace _coupon {
     apply_on?: string;
     duration_type?: string;
     duration_month?: number;
+    valid_from?: number;
     valid_till?: number;
     max_redemptions?: number;
     invoice_notes?: string;

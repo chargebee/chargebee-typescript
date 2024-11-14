@@ -20,6 +20,7 @@ export class AttachedItem extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public channel?: string;
+  public business_entity_id?: string;
 
   
 
@@ -97,6 +98,7 @@ export namespace _attached_item {
     quantity_in_decimal?: string;
     charge_on_event?: string;
     charge_once?: boolean;
+    business_entity_id?: string;
   }
   export interface update_params {
     parent_item_id: string;

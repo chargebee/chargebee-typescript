@@ -32,6 +32,7 @@ export class Item extends Model {
   public bundle_items?: Array<BundleItem>;
   public bundle_configuration?: BundleConfiguration;
   public metadata?: any;
+  public business_entity_id?: string;
 
   
 
@@ -136,6 +137,7 @@ export namespace _item {
     metered?: boolean;
     usage_calculation?: string;
     metadata?: any;
+    business_entity_id?: string;
     bundle_configuration?: bundle_configuration_create_params;
     bundle_items_to_add?: Array<bundle_items_to_add_create_params>;
   }
@@ -181,6 +183,8 @@ export namespace _item {
     metered?: filter._boolean;
     usage_calculation?: filter._enum;
     channel?: filter._enum;
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }

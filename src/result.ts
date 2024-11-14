@@ -586,6 +586,29 @@ export class Result {
         );
         return _pricing_page_session;
     }
+    get omnichannel_subscription(): resources.OmnichannelSubscription {
+        let _omnichannel_subscription = this.get(
+            'omnichannel_subscription',
+            'OmnichannelSubscription',
+            {'omnichannel_subscription_items': 'OmnichannelSubscriptionOmnichannelSubscriptionItem'}
+        );
+        return _omnichannel_subscription;
+    }
+    get omnichannel_transaction(): resources.OmnichannelTransaction {
+        let _omnichannel_transaction = this.get(
+            'omnichannel_transaction',
+            'OmnichannelTransaction'
+        );
+        return _omnichannel_transaction;
+    }
+    get recorded_purchase(): resources.RecordedPurchase {
+        let _recorded_purchase = this.get(
+            'recorded_purchase',
+            'RecordedPurchase',
+            {'linked_omnichannel_subscriptions': 'RecordedPurchaseLinkedOmnichannelSubscription', 'error_detail': 'RecordedPurchaseErrorDetail'}
+        );
+        return _recorded_purchase;
+    }
 
     get advance_invoice_schedules(): resources.AdvanceInvoiceSchedule[] {
         let _advance_invoice_schedules = this.get_list(

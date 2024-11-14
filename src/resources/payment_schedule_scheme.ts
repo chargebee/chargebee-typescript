@@ -71,6 +71,13 @@ export namespace _payment_schedule_scheme {
     number_of_schedules: number;
     period_unit: string;
     period?: number;
-    description?: string;
+    name: string;
+    flexible_schedules?: Array<flexible_schedules_create_params>;
+  }
+  export interface flexible_schedules_create_params {
+    period?: number;
+  }
+  export interface flexible_schedules_create_params {
+    amount_percentage?: number;
   }
 }

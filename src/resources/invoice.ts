@@ -1082,6 +1082,9 @@ export namespace _invoice {
     cvv?: string;
   }
   export interface card_create_params {
+    preferred_scheme?: string;
+  }
+  export interface card_create_params {
     billing_addr1?: string;
   }
   export interface card_create_params {
@@ -1362,6 +1365,9 @@ export namespace _invoice {
   }
   export interface card_create_for_charge_items_and_charges_params {
     cvv?: string;
+  }
+  export interface card_create_for_charge_items_and_charges_params {
+    preferred_scheme?: string;
   }
   export interface card_create_for_charge_items_and_charges_params {
     billing_addr1?: string;

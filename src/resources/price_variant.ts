@@ -17,6 +17,7 @@ export class PriceVariant extends Model {
   public updated_at?: number;
   public archived_at?: number;
   public attributes?: Array<Attribute>;
+  public business_entity_id?: string;
 
   
 
@@ -97,6 +98,7 @@ export namespace _price_variant {
     external_name?: string;
     description?: string;
     variant_group?: string;
+    business_entity_id?: string;
     attributes?: Array<attributes_create_params>;
   }
   export interface update_params {
@@ -115,6 +117,8 @@ export namespace _price_variant {
     status?: filter._enum;
     updated_at?: filter._timestamp;
     created_at?: filter._timestamp;
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }

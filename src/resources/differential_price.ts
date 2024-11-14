@@ -19,6 +19,7 @@ export class DifferentialPrice extends Model {
   public tiers?: Array<Tier>;
   public currency_code: string;
   public parent_periods?: Array<ParentPeriod>;
+  public business_entity_id?: string;
 
   
 
@@ -106,6 +107,7 @@ export namespace _differential_price {
     parent_item_id: string;
     price?: number;
     price_in_decimal?: string;
+    business_entity_id?: string;
     parent_periods?: Array<parent_periods_create_params>;
     tiers?: Array<tiers_create_params>;
   }

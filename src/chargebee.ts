@@ -72,6 +72,9 @@ export {_currency} from "./resources/currency";
 export {_ramp} from "./resources/ramp";
 export {_payment_schedule_scheme} from "./resources/payment_schedule_scheme";
 export {_pricing_page_session} from "./resources/pricing_page_session";
+export {_omnichannel_subscription} from "./resources/omnichannel_subscription";
+export {_omnichannel_transaction} from "./resources/omnichannel_transaction";
+export {_recorded_purchase} from "./resources/recorded_purchase";
 
 interface Conf {
     api_key: string
@@ -304,6 +307,15 @@ export class ChargeBee {
     }
     get pricing_page_session() {
         return resources.PricingPageSession;
+    }
+    get omnichannel_subscription() {
+        return resources.OmnichannelSubscription;
+    }
+    get omnichannel_transaction() {
+        return resources.OmnichannelTransaction;
+    }
+    get recorded_purchase() {
+        return resources.RecordedPurchase;
     }
 }
 

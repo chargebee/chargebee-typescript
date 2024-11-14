@@ -13,6 +13,7 @@ export class ItemFamily extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public channel?: string;
+  public business_entity_id?: string;
 
   
 
@@ -86,6 +87,7 @@ export namespace _item_family {
     id: string;
     name: string;
     description?: string;
+    business_entity_id?: string;
   }
   export interface item_family_list_params {
     limit?: number;
@@ -93,6 +95,8 @@ export namespace _item_family {
     id?: filter._string;
     name?: filter._string;
     updated_at?: filter._timestamp;
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
   }
   export interface update_params {
     name?: string;

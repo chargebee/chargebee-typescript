@@ -1284,6 +1284,9 @@ export namespace _subscription {
     cvv?: string;
   }
   export interface card_create_params {
+    preferred_scheme?: string;
+  }
+  export interface card_create_params {
     billing_addr1?: string;
   }
   export interface card_create_params {
@@ -1935,6 +1938,9 @@ export namespace _subscription {
     cvv?: string;
   }
   export interface card_update_params {
+    preferred_scheme?: string;
+  }
+  export interface card_update_params {
     billing_addr1?: string;
   }
   export interface card_update_params {
@@ -2224,6 +2230,9 @@ export namespace _subscription {
   }
   export interface card_update_for_items_params {
     cvv?: string;
+  }
+  export interface card_update_for_items_params {
+    preferred_scheme?: string;
   }
   export interface card_update_for_items_params {
     billing_addr1?: string;
@@ -2716,6 +2725,9 @@ export namespace _subscription {
   }
   export interface card_import_subscription_params {
     cvv?: string;
+  }
+  export interface card_import_subscription_params {
+    preferred_scheme?: string;
   }
   export interface card_import_subscription_params {
     billing_addr1?: string;

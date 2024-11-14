@@ -47,6 +47,7 @@ export class ItemPrice extends Model {
   public parent_item_id?: string;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
+  public business_entity_id?: string;
 
   
 
@@ -189,6 +190,7 @@ export namespace _item_price {
     show_description_in_invoices?: boolean;
     show_description_in_quotes?: boolean;
     usage_accumulation_reset_frequency?: string;
+    business_entity_id?: string;
     pricing_model?: string;
     price?: number;
     price_in_decimal?: string;
@@ -252,6 +254,8 @@ export namespace _item_price {
     trial_period_unit?: filter._enum;
     status?: filter._enum;
     updated_at?: filter._timestamp;
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
     period_unit?: filter._enum;
     period?: filter._number;
     channel?: filter._enum;

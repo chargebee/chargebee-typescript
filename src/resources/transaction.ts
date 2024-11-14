@@ -199,7 +199,7 @@ export class LinkedCreditNote extends Model {
   public cn_date?: number;
   public cn_total?: number;
   public cn_status: string;
-  public cn_reference_invoice_id: string;
+  public cn_reference_invoice_id?: string;
 } // ~LinkedCreditNote
 
 export class LinkedRefund extends Model {

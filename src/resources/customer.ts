@@ -683,6 +683,9 @@ export namespace _customer {
     cvv?: string;
   }
   export interface card_create_params {
+    preferred_scheme?: string;
+  }
+  export interface card_create_params {
     billing_addr1?: string;
   }
   export interface card_create_params {
@@ -1092,6 +1095,9 @@ export namespace _customer {
   }
   export interface card_collect_payment_params {
     cvv?: string;
+  }
+  export interface card_collect_payment_params {
+    preferred_scheme?: string;
   }
   export interface card_collect_payment_params {
     billing_addr1?: string;

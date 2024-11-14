@@ -333,15 +333,21 @@ export namespace _export {
     order?: order_orders_params;
   }
   export interface item_families_params {
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
     item_family?: item_family_item_families_params;
   }
   export interface items_params {
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
     item?: item_items_params;
   }
   export interface item_prices_params {
     item_family_id?: filter._string;
     item_type?: filter._enum;
     currency_code?: filter._string;
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
     item_price?: item_price_item_prices_params;
   }
   export interface attached_items_params {
@@ -353,6 +359,8 @@ export namespace _export {
     item_id?: filter._string;
   }
   export interface price_variants_params {
+    business_entity_id?: filter._string;
+    include_site_level_resources?: filter._boolean;
     price_variant?: price_variant_price_variants_params;
   }
   export interface invoice_revenue_recognition_params {

@@ -115,6 +115,7 @@ export namespace _card {
     expiry_month: number;
     expiry_year: number;
     cvv?: string;
+    preferred_scheme?: string;
     billing_addr1?: string;
     billing_addr2?: string;
     billing_city?: string;
