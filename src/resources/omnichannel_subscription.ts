@@ -12,7 +12,8 @@ export class OmnichannelSubscription extends Model {
   public source: string;
   public customer_id?: string;
   public created_at: number;
-  public omnichannel_subscription_items: Array<OmnichannelSubscriptionItem>;
+  public resource_version?: number;
+  public omnichannel_subscription_items: Array<resources.OmnichannelSubscriptionItem>;
 
   
 
@@ -30,7 +31,7 @@ export class OmnichannelSubscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static list(params?: any):RequestWrapper<ListResult>{
+  public static list(params?: _omnichannel_subscription.omnichannel_subscription_list_params):RequestWrapper<ListResult> {
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
@@ -54,22 +55,15 @@ export class OmnichannelSubscription extends Model {
 
 } // ~OmnichannelSubscription
 
-export class OmnichannelSubscriptionItem extends Model {
-  public id: string;
-  public id_at_source: string;
-  public status: string;
-  public current_term_start?: number;
-  public current_term_end?: number;
-  public expired_at?: number;
-  public expiration_reason?: string;
-  public cancelled_at?: number;
-  public cancellation_reason?: string;
-} // ~OmnichannelSubscriptionItem
-
 
 
   // REQUEST PARAMS
   //---------------
 
 export namespace _omnichannel_subscription {
+  export interface omnichannel_subscription_list_params {
+    limit?: number;
+    offset?: string;
+    customer_id?: filter._string;
+  }
 }

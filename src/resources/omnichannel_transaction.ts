@@ -14,6 +14,7 @@ export class OmnichannelTransaction extends Model {
   public type: string;
   public transacted_at: number;
   public created_at: number;
+  public resource_version?: number;
 
   
 

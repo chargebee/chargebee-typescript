@@ -590,7 +590,13 @@ export class Result {
         let _omnichannel_subscription = this.get(
             'omnichannel_subscription',
             'OmnichannelSubscription',
-            {'omnichannel_subscription_items': 'OmnichannelSubscriptionOmnichannelSubscriptionItem'}
+            {},
+            {'omnichannel_subscription_items': 'OmnichannelSubscriptionItem'}
+        );
+        _omnichannel_subscription.init_dependant_list(
+            this.response['omnichannel_subscription'],
+            'omnichannel_subscription_items',
+            {}
         );
         return _omnichannel_subscription;
     }
@@ -600,6 +606,13 @@ export class Result {
             'OmnichannelTransaction'
         );
         return _omnichannel_transaction;
+    }
+    get omnichannel_subscription_item(): resources.OmnichannelSubscriptionItem {
+        let _omnichannel_subscription_item = this.get(
+            'omnichannel_subscription_item',
+            'OmnichannelSubscriptionItem'
+        );
+        return _omnichannel_subscription_item;
     }
     get recorded_purchase(): resources.RecordedPurchase {
         let _recorded_purchase = this.get(

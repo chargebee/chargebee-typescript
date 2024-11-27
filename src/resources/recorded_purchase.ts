@@ -12,6 +12,7 @@ export class RecordedPurchase extends Model {
   public status: string;
   public omnichannel_transaction_id?: string;
   public created_at: number;
+  public resource_version?: number;
   public linked_omnichannel_subscriptions?: Array<LinkedOmnichannelSubscription>;
   public error_detail?: ErrorDetail;
 

@@ -73,7 +73,6 @@ export class Subscription extends Model {
   public referral_info?: ReferralInfo;
   public invoice_notes?: string;
   public meta_data?: any;
-  public metadata?: any;
   public deleted: boolean;
   public changes_scheduled_at?: number;
   public contract_term?: ContractTerm;
@@ -84,6 +83,11 @@ export class Subscription extends Model {
   public auto_close_invoices?: boolean;
   public discounts?: Array<Discount>;
   public business_entity_id?: string;
+    /**
+    * @deprecated use meta_data instead
+    */
+    public metadata?: any;
+    
 
   
 

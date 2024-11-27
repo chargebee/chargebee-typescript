@@ -373,6 +373,7 @@ export namespace _hosted_page {
     reactivate_from?: number;
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
+    replace_coupon_list?: boolean;
     reactivate?: boolean;
     force_term_reset?: boolean;
     redirect_url?: string;
@@ -398,6 +399,7 @@ export namespace _hosted_page {
     reactivate_from?: number;
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
+    replace_coupon_list?: boolean;
     reactivate?: boolean;
     force_term_reset?: boolean;
     change_option?: string;
@@ -1185,6 +1187,9 @@ export namespace _hosted_page {
   }
   export interface subscription_checkout_new_for_items_params {
     invoice_notes?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
+    po_number?: string;
   }
   export interface subscription_checkout_new_for_items_params {
     contract_term_billing_cycle_on_renewal?: number;
