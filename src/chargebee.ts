@@ -53,6 +53,7 @@ export {_attribute} from "./resources/attribute";
 export {_item_price} from "./resources/item_price";
 export {_attached_item} from "./resources/attached_item";
 export {_differential_price} from "./resources/differential_price";
+export {_configuration} from "./resources/configuration";
 export {_feature} from "./resources/feature";
 export {_impacted_subscription} from "./resources/impacted_subscription";
 export {_impacted_item} from "./resources/impacted_item";
@@ -251,6 +252,9 @@ export class ChargeBee {
     }
     get differential_price() {
         return resources.DifferentialPrice;
+    }
+    get configuration() {
+        return resources.Configuration;
     }
     get feature() {
         return resources.Feature;

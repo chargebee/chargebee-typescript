@@ -252,6 +252,7 @@ export class Discount extends Model {
   public amount: number;
   public description?: string;
   public entity_type: string;
+  public discount_type?: string;
   public entity_id?: string;
   public coupon_set_code?: string;
 } // ~Discount

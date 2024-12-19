@@ -14,6 +14,7 @@ export class OmnichannelSubscriptionItem extends Model {
   public expiration_reason?: string;
   public cancelled_at?: number;
   public cancellation_reason?: string;
+  public grace_period_expires_at?: number;
   public resource_version?: number;
 
   

@@ -44,6 +44,7 @@ export class Quote extends Model {
   public contract_term_end?: number;
   public contract_term_termination_fee?: number;
   public business_entity_id?: string;
+  public deleted: boolean;
 
   
 
@@ -303,6 +304,7 @@ export class Discount extends Model {
   public amount: number;
   public description?: string;
   public entity_type: string;
+  public discount_type?: string;
   public entity_id?: string;
   public coupon_set_code?: string;
 } // ~Discount

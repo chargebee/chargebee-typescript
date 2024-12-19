@@ -14,6 +14,7 @@ export class OmnichannelSubscription extends Model {
   public created_at: number;
   public resource_version?: number;
   public omnichannel_subscription_items: Array<resources.OmnichannelSubscriptionItem>;
+  public initial_purchase_transaction?: OmnichannelTransaction;
 
   
 
@@ -54,6 +55,19 @@ export class OmnichannelSubscription extends Model {
   }
 
 } // ~OmnichannelSubscription
+
+export class OmnichannelTransaction extends Model {
+  public id: string;
+  public id_at_source: string;
+  public app_id: string;
+  public price_currency: string;
+  public price_units: number;
+  public price_nanos: number;
+  public type: string;
+  public transacted_at: number;
+  public created_at: number;
+  public resource_version?: number;
+} // ~OmnichannelTransaction
 
 
 

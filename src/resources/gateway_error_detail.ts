@@ -18,6 +18,7 @@ export class GatewayErrorDetail extends Model {
   public recommendation_message?: string;
   public processor_error_code?: string;
   public processor_error_message?: string;
+  public error_cause_id?: string;
 
   
 

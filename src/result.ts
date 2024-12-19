@@ -10,7 +10,7 @@ export class Result {
         let _subscription = this.get(
             'subscription',
             'Subscription',
-            {'subscription_items': 'SubscriptionSubscriptionItem', 'item_tiers': 'SubscriptionItemTier', 'charged_items': 'SubscriptionChargedItem', 'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'contract_term': 'SubscriptionContractTerm', 'discounts': 'SubscriptionDiscount'}
+            {'subscription_items': 'SubscriptionSubscriptionItem', 'item_tiers': 'SubscriptionItemTier', 'charged_items': 'SubscriptionChargedItem', 'addons': 'SubscriptionAddon', 'event_based_addons': 'SubscriptionEventBasedAddon', 'charged_event_based_addons': 'SubscriptionChargedEventBasedAddon', 'coupons': 'SubscriptionCoupon', 'shipping_address': 'SubscriptionShippingAddress', 'referral_info': 'SubscriptionReferralInfo', 'billing_override': 'SubscriptionBillingOverride', 'contract_term': 'SubscriptionContractTerm', 'discounts': 'SubscriptionDiscount'}
         );
         return _subscription;
     }
@@ -445,6 +445,13 @@ export class Result {
         );
         return _differential_price;
     }
+    get configuration(): resources.Configuration {
+        let _configuration = this.get(
+            'configuration',
+            'Configuration'
+        );
+        return _configuration;
+    }
     get feature(): resources.Feature {
         let _feature = this.get(
             'feature',
@@ -678,6 +685,14 @@ export class Result {
             {}
         );
         return _downloads;
+    }
+    get configurations(): resources.Configuration[] {
+        let _configurations = this.get_list(
+            'configurations',
+            'Configuration',
+            {}
+        );
+        return _configurations;
     }
     get in_app_subscriptions(): resources.InAppSubscription[] {
         let _in_app_subscriptions = this.get_list(

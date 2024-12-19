@@ -71,6 +71,7 @@ export class Subscription extends Model {
   public coupons?: Array<Coupon>;
   public shipping_address?: ShippingAddress;
   public referral_info?: ReferralInfo;
+  public billing_override?: BillingOverride;
   public invoice_notes?: string;
   public meta_data?: any;
   public deleted: boolean;
@@ -513,6 +514,9 @@ export class SubscriptionItem extends Model {
   public unit_price?: number;
   public unit_price_in_decimal?: string;
   public amount?: number;
+  public current_term_start?: number;
+  public current_term_end?: number;
+  public next_billing_at?: number;
   public amount_in_decimal?: string;
   public billing_period?: number;
   public billing_period_unit?: string;
@@ -614,6 +618,11 @@ export class ReferralInfo extends Model {
   public destination_url?: string;
   public post_purchase_widget_enabled: boolean;
 } // ~ReferralInfo
+
+export class BillingOverride extends Model {
+  public max_excess_payment_usage?: number;
+  public max_refundable_credits_usage?: number;
+} // ~BillingOverride
 
 export class ContractTerm extends Model {
   public id: string;
@@ -791,6 +800,7 @@ export namespace _subscription {
     statement_descriptor?: statement_descriptor_create_with_items_params;
     payment_intent?: payment_intent_create_with_items_params;
     contract_term?: contract_term_create_with_items_params;
+    billing_override?: billing_override_create_with_items_params;
     subscription_items?: Array<subscription_items_create_with_items_params>;
     discounts?: Array<discounts_create_with_items_params>;
     item_tiers?: Array<item_tiers_create_with_items_params>;
@@ -932,6 +942,7 @@ export namespace _subscription {
     statement_descriptor?: statement_descriptor_update_for_items_params;
     customer?: customer_update_for_items_params;
     contract_term?: contract_term_update_for_items_params;
+    billing_override?: billing_override_update_for_items_params;
     subscription_items?: Array<subscription_items_update_for_items_params>;
     discounts?: Array<discounts_update_for_items_params>;
     item_tiers?: Array<item_tiers_update_for_items_params>;
@@ -1809,6 +1820,12 @@ export namespace _subscription {
   export interface contract_term_create_with_items_params {
     cancellation_cutoff_period?: number;
   }
+  export interface billing_override_create_with_items_params {
+    max_excess_payment_usage?: number;
+  }
+  export interface billing_override_create_with_items_params {
+    max_refundable_credits_usage?: number;
+  }
   export interface subscription_items_create_with_items_params {
     item_price_id: string;
   }
@@ -2438,6 +2455,12 @@ export namespace _subscription {
      * @deprecated Please refer API docs to use other attributes
      */
     contract_start?: number;
+  }
+  export interface billing_override_update_for_items_params {
+    max_excess_payment_usage?: number;
+  }
+  export interface billing_override_update_for_items_params {
+    max_refundable_credits_usage?: number;
   }
   export interface subscription_items_update_for_items_params {
     item_price_id: string;

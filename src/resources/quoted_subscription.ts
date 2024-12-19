@@ -74,6 +74,9 @@ export class SubscriptionItem extends Model {
   public unit_price?: number;
   public unit_price_in_decimal?: string;
   public amount?: number;
+  public current_term_start?: number;
+  public current_term_end?: number;
+  public next_billing_at?: number;
   public amount_in_decimal?: string;
   public billing_period?: number;
   public billing_period_unit?: string;
