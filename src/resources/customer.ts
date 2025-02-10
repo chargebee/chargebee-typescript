@@ -86,6 +86,14 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "exemption_details": 0,
+        "meta_data": 0,
+        "additional_information": 1,
+        "billing_address": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -97,6 +105,10 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -108,6 +120,10 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -119,6 +135,12 @@ export class Customer extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "exemption_details": 0,
+        "meta_data": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -130,6 +152,11 @@ export class Customer extends Model {
       'urlSuffix': '/update_payment_method',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -141,6 +168,10 @@ export class Customer extends Model {
       'urlSuffix': '/update_billing_info',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -152,6 +183,10 @@ export class Customer extends Model {
       'urlSuffix': '/contacts',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -163,6 +198,10 @@ export class Customer extends Model {
       'urlSuffix': '/assign_payment_role',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -174,6 +213,10 @@ export class Customer extends Model {
       'urlSuffix': '/add_contact',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -185,6 +228,10 @@ export class Customer extends Model {
       'urlSuffix': '/update_contact',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -196,6 +243,10 @@ export class Customer extends Model {
       'urlSuffix': '/delete_contact',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -207,6 +258,10 @@ export class Customer extends Model {
       'urlSuffix': '/add_promotional_credits',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -218,6 +273,10 @@ export class Customer extends Model {
       'urlSuffix': '/deduct_promotional_credits',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -229,6 +288,10 @@ export class Customer extends Model {
       'urlSuffix': '/set_promotional_credits',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -240,6 +303,10 @@ export class Customer extends Model {
       'urlSuffix': '/record_excess_payment',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -251,6 +318,11 @@ export class Customer extends Model {
       'urlSuffix': '/collect_payment',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -262,6 +334,10 @@ export class Customer extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -273,6 +349,10 @@ export class Customer extends Model {
       'urlSuffix': '/move',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -284,6 +364,10 @@ export class Customer extends Model {
       'urlSuffix': '/change_billing_date',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -295,6 +379,10 @@ export class Customer extends Model {
       'urlSuffix': '/merge',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -306,6 +394,10 @@ export class Customer extends Model {
       'urlSuffix': '/clear_personal_data',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -317,6 +409,10 @@ export class Customer extends Model {
       'urlSuffix': '/relationships',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -328,6 +424,10 @@ export class Customer extends Model {
       'urlSuffix': '/delete_relationship',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -339,6 +439,10 @@ export class Customer extends Model {
       'urlSuffix': '/hierarchy',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -350,6 +454,10 @@ export class Customer extends Model {
       'urlSuffix': '/update_hierarchy_settings',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -619,7 +727,6 @@ export namespace _customer {
   export interface move_params {
     id_at_from_site: string;
     from_site: string;
-    tax_providers_fields?: Array<tax_providers_fields_move_params>;
   }
   export interface change_billing_date_params {
     billing_date?: number;
@@ -631,7 +738,6 @@ export namespace _customer {
   export interface merge_params {
     from_customer_id: string;
     to_customer_id: string;
-    tax_providers_fields?: Array<tax_providers_fields_merge_params>;
   }
   export interface relationships_params {
     parent_id?: string;
@@ -1152,24 +1258,6 @@ export namespace _customer {
   }
   export interface invoice_allocations_collect_payment_params {
     allocation_amount?: number;
-  }
-  export interface tax_providers_fields_move_params {
-    provider_name?: string;
-  }
-  export interface tax_providers_fields_move_params {
-    field_id?: string;
-  }
-  export interface tax_providers_fields_move_params {
-    field_value?: string;
-  }
-  export interface tax_providers_fields_merge_params {
-    provider_name?: string;
-  }
-  export interface tax_providers_fields_merge_params {
-    field_id?: string;
-  }
-  export interface tax_providers_fields_merge_params {
-    field_value?: string;
   }
   export interface parent_account_access_relationships_params {
     portal_edit_child_subscriptions?: string;

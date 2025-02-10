@@ -47,6 +47,7 @@ export class ItemPrice extends Model {
   public parent_item_id?: string;
   public show_description_in_invoices?: boolean;
   public show_description_in_quotes?: boolean;
+  public deleted: boolean;
   public business_entity_id?: string;
 
   
@@ -62,6 +63,11 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "metadata": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -73,6 +79,10 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -84,6 +94,11 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "metadata": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -95,6 +110,10 @@ export class ItemPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -106,6 +125,10 @@ export class ItemPrice extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -117,6 +140,10 @@ export class ItemPrice extends Model {
       'urlSuffix': '/applicable_items',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -128,6 +155,10 @@ export class ItemPrice extends Model {
       'urlSuffix': '/applicable_item_prices',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

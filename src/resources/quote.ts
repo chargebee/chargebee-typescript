@@ -59,6 +59,10 @@ export class Quote extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -70,6 +74,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_subscription_quote',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -81,6 +89,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_create_subscription_quote',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -92,6 +104,10 @@ export class Quote extends Model {
       'urlSuffix': '/update_subscription_quote',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -103,6 +119,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_update_subscription_quote',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -114,6 +134,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_for_onetime_charges',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -125,6 +149,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_one_time_quote',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -136,6 +164,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_subscription_quote_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -147,6 +179,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_create_subscription_quote_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -158,6 +194,10 @@ export class Quote extends Model {
       'urlSuffix': '/update_subscription_quote_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -169,6 +209,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_update_subscription_quote_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -180,6 +224,10 @@ export class Quote extends Model {
       'urlSuffix': '/create_for_charge_items_and_charges',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -191,6 +239,10 @@ export class Quote extends Model {
       'urlSuffix': '/edit_for_charge_items_and_charges',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -202,6 +254,10 @@ export class Quote extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -213,6 +269,10 @@ export class Quote extends Model {
       'urlSuffix': '/quote_line_groups',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -224,6 +284,10 @@ export class Quote extends Model {
       'urlSuffix': '/convert',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -235,6 +299,10 @@ export class Quote extends Model {
       'urlSuffix': '/update_status',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -246,6 +314,10 @@ export class Quote extends Model {
       'urlSuffix': '/extend_expiry_date',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -257,6 +329,10 @@ export class Quote extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -268,6 +344,10 @@ export class Quote extends Model {
       'urlSuffix': '/pdf',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

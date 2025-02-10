@@ -54,6 +54,10 @@ export class Event extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -65,6 +69,10 @@ export class Event extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

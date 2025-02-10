@@ -6,8 +6,9 @@ export class ListResult {
     public list: Result[];
     public next_offset: any;
     readonly responseHeaders: any;
+    readonly responseStatusCode: number | string;
 
-    constructor(response, responseHeaders?) {
+    constructor(response, responseHeaders?, responseStatusCode?) {
       this.list = [];
       this.next_offset = response.next_offset;
       
@@ -20,10 +21,17 @@ export class ListResult {
       if (responseHeaders) {
         this.responseHeaders = responseHeaders;
       }
+      if(responseStatusCode){
+        this.responseStatusCode = responseStatusCode;
+      }
      return this;
     }
 
     getResponseHeaders(){
         return this.responseHeaders;
     }
+
+    getResponseStatusCode(){
+      return this.responseStatusCode;
+  }
 }

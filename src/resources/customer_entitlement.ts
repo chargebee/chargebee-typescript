@@ -26,6 +26,10 @@ export class CustomerEntitlement extends Model {
       'urlSuffix': '/customer_entitlements',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

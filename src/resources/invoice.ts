@@ -51,6 +51,7 @@ export class Invoice extends Model {
   public line_item_discounts?: Array<LineItemDiscount>;
   public taxes?: Array<Tax>;
   public line_item_taxes?: Array<LineItemTax>;
+  public line_item_credits?: Array<LineItemCredit>;
   public line_item_tiers?: Array<LineItemTier>;
   public linked_payments?: Array<LinkedPayment>;
   public dunning_attempts?: Array<DunningAttempt>;
@@ -86,6 +87,12 @@ export class Invoice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 1,
+        "billing_address": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -97,6 +104,12 @@ export class Invoice extends Model {
       'urlSuffix': '/create_for_charge_items_and_charges',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 1,
+        "billing_address": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -108,6 +121,10 @@ export class Invoice extends Model {
       'urlSuffix': '/charge',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -119,6 +136,10 @@ export class Invoice extends Model {
       'urlSuffix': '/charge_addon',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -130,6 +151,10 @@ export class Invoice extends Model {
       'urlSuffix': '/create_for_charge_item',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -141,6 +166,10 @@ export class Invoice extends Model {
       'urlSuffix': '/stop_dunning',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -152,6 +181,10 @@ export class Invoice extends Model {
       'urlSuffix': '/import_invoice',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -163,6 +196,10 @@ export class Invoice extends Model {
       'urlSuffix': '/apply_payments',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -174,6 +211,10 @@ export class Invoice extends Model {
       'urlSuffix': '/sync_usages',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -185,6 +226,10 @@ export class Invoice extends Model {
       'urlSuffix': '/delete_line_items',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -196,6 +241,10 @@ export class Invoice extends Model {
       'urlSuffix': '/apply_credits',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -207,6 +256,10 @@ export class Invoice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -218,6 +271,10 @@ export class Invoice extends Model {
       'urlSuffix': '/invoices',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -229,6 +286,10 @@ export class Invoice extends Model {
       'urlSuffix': '/invoices',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -240,6 +301,10 @@ export class Invoice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -251,6 +316,10 @@ export class Invoice extends Model {
       'urlSuffix': '/pdf',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -262,6 +331,10 @@ export class Invoice extends Model {
       'urlSuffix': '/download_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -273,6 +346,10 @@ export class Invoice extends Model {
       'urlSuffix': '/payment_reference_numbers',
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -284,6 +361,10 @@ export class Invoice extends Model {
       'urlSuffix': '/add_charge',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -295,6 +376,10 @@ export class Invoice extends Model {
       'urlSuffix': '/add_addon_charge',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -306,6 +391,10 @@ export class Invoice extends Model {
       'urlSuffix': '/add_charge_item',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -317,6 +406,10 @@ export class Invoice extends Model {
       'urlSuffix': '/close',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -328,6 +421,10 @@ export class Invoice extends Model {
       'urlSuffix': '/collect_payment',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -339,6 +436,10 @@ export class Invoice extends Model {
       'urlSuffix': '/record_payment',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -350,6 +451,10 @@ export class Invoice extends Model {
       'urlSuffix': '/record_tax_withheld',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -361,6 +466,10 @@ export class Invoice extends Model {
       'urlSuffix': '/remove_tax_withheld',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -372,6 +481,10 @@ export class Invoice extends Model {
       'urlSuffix': '/refund',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -383,6 +496,10 @@ export class Invoice extends Model {
       'urlSuffix': '/record_refund',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -394,6 +511,10 @@ export class Invoice extends Model {
       'urlSuffix': '/remove_payment',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -405,6 +526,10 @@ export class Invoice extends Model {
       'urlSuffix': '/remove_credit_note',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -416,6 +541,10 @@ export class Invoice extends Model {
       'urlSuffix': '/void',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -427,6 +556,10 @@ export class Invoice extends Model {
       'urlSuffix': '/write_off',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -438,6 +571,10 @@ export class Invoice extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -449,6 +586,10 @@ export class Invoice extends Model {
       'urlSuffix': '/update_details',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -460,6 +601,10 @@ export class Invoice extends Model {
       'urlSuffix': '/apply_payment_schedule_scheme',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -471,6 +616,10 @@ export class Invoice extends Model {
       'urlSuffix': '/payment_schedules',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -482,6 +631,10 @@ export class Invoice extends Model {
       'urlSuffix': '/resend_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -493,6 +646,10 @@ export class Invoice extends Model {
       'urlSuffix': '/send_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -566,6 +723,12 @@ export class LineItemTax extends Model {
   public local_currency_code?: string;
 } // ~LineItemTax
 
+export class LineItemCredit extends Model {
+  public cn_id: string;
+  public applied_amount: number;
+  public line_item_id?: string;
+} // ~LineItemCredit
+
 export class LineItemTier extends Model {
   public line_item_id?: string;
   public starting_unit: number;
@@ -604,6 +767,7 @@ export class AppliedCredit extends Model {
   public cn_create_reason_code?: string;
   public cn_date?: number;
   public cn_status: string;
+  public tax_application?: string;
 } // ~AppliedCredit
 
 export class AdjustmentCreditNote extends Model {

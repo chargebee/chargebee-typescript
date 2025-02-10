@@ -28,6 +28,11 @@ export class Estimate extends Model {
       'urlSuffix': '/create_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "exemption_details": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -39,6 +44,11 @@ export class Estimate extends Model {
       'urlSuffix': '/create_subscription_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "exemption_details": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -50,6 +60,10 @@ export class Estimate extends Model {
       'urlSuffix': '/create_subscription_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -61,6 +75,10 @@ export class Estimate extends Model {
       'urlSuffix': '/create_subscription_for_items_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -72,6 +90,10 @@ export class Estimate extends Model {
       'urlSuffix': '/update_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -83,6 +105,10 @@ export class Estimate extends Model {
       'urlSuffix': '/update_subscription_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -94,6 +120,10 @@ export class Estimate extends Model {
       'urlSuffix': '/renewal_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -105,6 +135,10 @@ export class Estimate extends Model {
       'urlSuffix': '/advance_invoice_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -116,6 +150,10 @@ export class Estimate extends Model {
       'urlSuffix': '/regenerate_invoice_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -127,6 +165,10 @@ export class Estimate extends Model {
       'urlSuffix': '/upcoming_invoices_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -138,6 +180,10 @@ export class Estimate extends Model {
       'urlSuffix': '/change_term_end_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -149,6 +195,10 @@ export class Estimate extends Model {
       'urlSuffix': '/cancel_subscription_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -160,6 +210,10 @@ export class Estimate extends Model {
       'urlSuffix': '/cancel_subscription_for_items_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -171,6 +225,10 @@ export class Estimate extends Model {
       'urlSuffix': '/pause_subscription_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -182,6 +240,10 @@ export class Estimate extends Model {
       'urlSuffix': '/resume_subscription_estimate',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -193,6 +255,11 @@ export class Estimate extends Model {
       'urlSuffix': '/gift_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -204,6 +271,11 @@ export class Estimate extends Model {
       'urlSuffix': '/gift_subscription_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -215,6 +287,10 @@ export class Estimate extends Model {
       'urlSuffix': '/create_invoice',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -226,6 +302,10 @@ export class Estimate extends Model {
       'urlSuffix': '/create_invoice_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -237,6 +317,10 @@ export class Estimate extends Model {
       'urlSuffix': '/payment_schedules',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

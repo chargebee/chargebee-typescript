@@ -44,6 +44,11 @@ export class PaymentSource extends Model {
       'urlSuffix': '/create_using_temp_token',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -55,6 +60,11 @@ export class PaymentSource extends Model {
       'urlSuffix': '/create_using_permanent_token',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -66,6 +76,10 @@ export class PaymentSource extends Model {
       'urlSuffix': '/create_using_token',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -77,6 +91,12 @@ export class PaymentSource extends Model {
       'urlSuffix': '/create_using_payment_intent',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_info": 1,
+        "additional_information": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -88,6 +108,11 @@ export class PaymentSource extends Model {
       'urlSuffix': '/create_voucher_payment_source',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "billing_address": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -99,6 +124,11 @@ export class PaymentSource extends Model {
       'urlSuffix': '/create_card',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "additional_information": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -110,6 +140,11 @@ export class PaymentSource extends Model {
       'urlSuffix': '/create_bank_account',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "billing_address": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -121,6 +156,12 @@ export class PaymentSource extends Model {
       'urlSuffix': '/update_card',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "gateway_meta_data": 0,
+        "additional_information": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -132,6 +173,10 @@ export class PaymentSource extends Model {
       'urlSuffix': '/update_bank_account',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -143,6 +188,10 @@ export class PaymentSource extends Model {
       'urlSuffix': '/verify_bank_account',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -154,6 +203,10 @@ export class PaymentSource extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -165,6 +218,10 @@ export class PaymentSource extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -176,6 +233,10 @@ export class PaymentSource extends Model {
       'urlSuffix': '/switch_gateway_account',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -187,6 +248,10 @@ export class PaymentSource extends Model {
       'urlSuffix': '/export_payment_source',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -198,6 +263,10 @@ export class PaymentSource extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -209,6 +278,10 @@ export class PaymentSource extends Model {
       'urlSuffix': '/delete_local',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

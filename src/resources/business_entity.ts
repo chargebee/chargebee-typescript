@@ -27,6 +27,10 @@ export class BusinessEntity extends Model {
       'urlSuffix': '/transfers',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -38,6 +42,10 @@ export class BusinessEntity extends Model {
       'urlSuffix': '/transfers',
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

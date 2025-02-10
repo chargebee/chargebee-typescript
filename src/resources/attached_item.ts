@@ -21,6 +21,7 @@ export class AttachedItem extends Model {
   public updated_at?: number;
   public channel?: string;
   public business_entity_id?: string;
+  public deleted: boolean;
 
   
 
@@ -35,6 +36,10 @@ export class AttachedItem extends Model {
       'urlSuffix': '/attached_items',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -46,6 +51,10 @@ export class AttachedItem extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -57,6 +66,10 @@ export class AttachedItem extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -68,6 +81,10 @@ export class AttachedItem extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -79,6 +96,10 @@ export class AttachedItem extends Model {
       'urlSuffix': '/attached_items',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

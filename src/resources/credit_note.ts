@@ -66,6 +66,10 @@ export class CreditNote extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -77,6 +81,10 @@ export class CreditNote extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -88,6 +96,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/pdf',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -99,6 +111,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/download_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -110,6 +126,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/refund',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -121,6 +141,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/record_refund',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -132,6 +156,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/void',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -143,6 +171,10 @@ export class CreditNote extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -154,6 +186,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/credit_notes',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -165,6 +201,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -176,6 +216,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/remove_tax_withheld_refund',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -187,6 +231,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/resend_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -198,6 +246,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/send_einvoice',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -209,6 +261,10 @@ export class CreditNote extends Model {
       'urlSuffix': '/import_credit_note',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -317,6 +373,7 @@ export class Allocation extends Model {
   public allocated_at: number;
   public invoice_date?: number;
   public invoice_status: string;
+  public tax_application?: string;
 } // ~Allocation
 
 export class ShippingAddress extends Model {

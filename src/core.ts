@@ -63,9 +63,9 @@ export class Core {
                     callBack(response, null);
                 } else {
                     if ('list' in response) {
-                        response = new ListResult(response, responseHeaders);
+                        response = new ListResult(response, responseHeaders, res.statusCode);
                     } else {
-                        response = new Result(response, responseHeaders);
+                        response = new Result(response, responseHeaders, res.statusCode);
                     }
                     callBack(null, response);
                 }
@@ -81,7 +81,7 @@ export class Core {
         }
     }
 
-    static makeApiRequest(env, callBack, httpMethod, urlPrefix, urlSuffix, urlIdParam, params, headers, isListReq) {
+    static makeApiRequest(env, callBack, httpMethod, urlPrefix, urlSuffix, urlIdParam, params, headers, isListReq, subDomain, isOperationNeedsJsonInput, jsonKeys) {
         let path = this.getApiURL(env, urlPrefix, urlSuffix, urlIdParam);
         if (typeof params === 'undefined' || params === null) {
             params = {};
@@ -92,21 +92,20 @@ export class Core {
             path += "?" + queryParam;
             params = {};
         }
-        let data = this.encodeParams(params);
+        let data = isOperationNeedsJsonInput ? JSON.stringify(params) : this.encodeParams(params,null,null,null,jsonKeys);
         let protocol = (env.protocol === 'http' ? this.http : this.https);
-
+        let ContentType = isOperationNeedsJsonInput ? 'application/json;charset=UTF-8' : 'application/x-www-form-urlencoded; charset=utf-8'
         Util.extend(true, headers, {
             'Authorization': 'Basic ' + Buffer.from(env.api_key + ':').toString('base64'),
             'Accept': 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+            'Content-Type': ContentType,
             "Content-Length": data.length,
             'User-Agent': "Chargebee-Typescript-Client " + env.clientVersion,
             'Lang-Version': process.version,
             'OS-Version': this.os.platform() + " " + this.os.arch() + " " + this.os.release()
         });
-
         let req = protocol.request({
-            "hostname": this.getHost(env),
+            "hostname": this.getHost(env, subDomain),
             "path": path,
             "method": httpMethod,
             "port": env.port,
@@ -127,7 +126,10 @@ export class Core {
             '/' + encodeURIComponent(urlIdParam).replace(/%2F/g,'/') : '') + (urlSuffix !== null ? urlSuffix : '');
     }
 
-    static getHost(env) {
+    static getHost(env, subDomain) {
+        if(subDomain != null) {
+            return env.site + "." + subDomain + env.hostSuffix;
+        }
         return env.site + env.hostSuffix;
     }
 
@@ -159,13 +161,14 @@ export class Core {
         return this.encodeParams(paramObj);
     }
 
-    static encodeParams(paramObj, serialized?, scope?, index?) {
+    static encodeParams(paramObj, serialized?, scope?, index?, jsonKeys?, level=0) {
         let key, value;
         if (typeof serialized === 'undefined' || serialized === null) {
             serialized = [];
         }
         for (key in paramObj) {
             value = paramObj[key]
+            var originalKey = key;
             if (scope) {
                 key = "" + scope + "[" + key + "]"
             }
@@ -173,10 +176,17 @@ export class Core {
                 key = key + "[" + index + "]"
             }
 
-            if (Util.isArray(value)) {
+            if (jsonKeys && jsonKeys[originalKey] === level) {
+                let attrVal = '';
+                if (value !== null) {
+                    attrVal = encodeURIComponent(Object.prototype.toString.call(value) === '[object String]' ? Util.trim(value) : JSON.stringify(value));
+                }
+                serialized.push(encodeURIComponent(key) + '=' + attrVal);
+            }
+            else if (Util.isArray(value)) {
                 for (let arrIdx = 0; arrIdx < value.length; arrIdx++) {
                     if (typeof value[arrIdx] === 'object' || Util.isArray(value[arrIdx])) {
-                        this.encodeParams(value[arrIdx], serialized, key, arrIdx)
+                        this.encodeParams(value[arrIdx], serialized, key, arrIdx, jsonKeys, level+1)
                     } else {
                         if (typeof value[arrIdx] !== 'undefined') {
                             serialized.push(encodeURIComponent(key + "[" + arrIdx + "]") + "=" + encodeURIComponent(Util.trim(value[arrIdx]) !== '' ? value[arrIdx] : ''));
@@ -184,14 +194,8 @@ export class Core {
                     }
                 }
             }
-            else if(key === "meta_data" || key === "metadata") { // metadata is encoded as a JSON string instead of URL-encoded.
-                let attrVal="";
-                if(value !== null) {
-                    attrVal = encodeURIComponent(Object.prototype.toString.call(value) === "[object String]" ? Util.trim(value) : JSON.stringify(value));
-                }
-                serialized.push(encodeURIComponent(key) + "=" + attrVal);
-            } else if (typeof value === 'object' && !Util.isArray(value)) {
-                this.encodeParams(value, serialized, key);
+            else if (typeof value === 'object' && !Util.isArray(value)) {
+                this.encodeParams(value, serialized, key, undefined, jsonKeys, level+1);
             } else {
                 if (typeof value !== 'undefined') {
                     serialized.push(encodeURIComponent(key) + "=" + encodeURIComponent(Util.trim(value) !== '' ? value : ''));

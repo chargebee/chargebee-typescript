@@ -27,6 +27,10 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -38,6 +42,10 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -49,6 +57,10 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -60,6 +72,10 @@ export class ItemEntitlement extends Model {
       'urlSuffix': '/item_entitlements',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

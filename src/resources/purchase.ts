@@ -25,6 +25,11 @@ export class Purchase extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "meta_data": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -36,6 +41,11 @@ export class Purchase extends Model {
       'urlSuffix': '/estimate',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "exemption_details": 1,
+      }
     }, ChargeBee._env)
   }
 

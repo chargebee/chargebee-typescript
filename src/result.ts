@@ -5,6 +5,7 @@ import { IdempotencyConstants } from "./idempotency_constants";
 export class Result {
     readonly #_response: any;
     readonly responseHeaders: any;
+    readonly responseStatusCode: number | string;
 
     get subscription(): resources.Subscription {
         let _subscription = this.get(
@@ -112,7 +113,7 @@ export class Result {
         let _invoice = this.get(
             'invoice',
             'Invoice',
-            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice', 'site_details_at_creation': 'InvoiceSiteDetailsAtCreation', 'tax_origin': 'InvoiceTaxOrigin'}
+            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_credits': 'InvoiceLineItemCredit', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice', 'site_details_at_creation': 'InvoiceSiteDetailsAtCreation', 'tax_origin': 'InvoiceTaxOrigin'}
         );
         return _invoice;
     }
@@ -197,15 +198,15 @@ export class Result {
             'subscription_estimate',
             {'shipping_address': 'SubscriptionEstimateShippingAddress', 'contract_term': 'SubscriptionEstimateContractTerm'}
         );
-        _estimate.init_dependant_extended(
+        _estimate.init_dependant(
             this.response['estimate'],
             'invoice_estimate',
-            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
+            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
         );
-        _estimate.init_dependant_extended(
+        _estimate.init_dependant(
             this.response['estimate'],
             'next_invoice_estimate',
-            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
+            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
         );
         _estimate.init_dependant_list(
             this.response['estimate'],
@@ -215,7 +216,7 @@ export class Result {
         _estimate.init_dependant_list(
             this.response['estimate'],
             'invoice_estimates',
-            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
+            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount'}
         );
         _estimate.init_dependant_list(
             this.response['estimate'],
@@ -629,6 +630,20 @@ export class Result {
         );
         return _recorded_purchase;
     }
+    get rule(): resources.Rule {
+        let _rule = this.get(
+            'rule',
+            'Rule'
+        );
+        return _rule;
+    }
+    get usage_event(): resources.UsageEvent {
+        let _usage_event = this.get(
+            'usage_event',
+            'UsageEvent'
+        );
+        return _usage_event;
+    }
 
     get advance_invoice_schedules(): resources.AdvanceInvoiceSchedule[] {
         let _advance_invoice_schedules = this.get_list(
@@ -650,7 +665,7 @@ export class Result {
         let _invoices = this.get_list(
             'invoices',
             'Invoice',
-            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice', 'site_details_at_creation': 'InvoiceSiteDetailsAtCreation', 'tax_origin': 'InvoiceTaxOrigin'}
+            {'line_items': 'InvoiceLineItem', 'discounts': 'InvoiceDiscount', 'line_item_discounts': 'InvoiceLineItemDiscount', 'taxes': 'InvoiceTax', 'line_item_taxes': 'InvoiceLineItemTax', 'line_item_credits': 'InvoiceLineItemCredit', 'line_item_tiers': 'InvoiceLineItemTier', 'linked_payments': 'InvoiceLinkedPayment', 'dunning_attempts': 'InvoiceDunningAttempt', 'applied_credits': 'InvoiceAppliedCredit', 'adjustment_credit_notes': 'InvoiceAdjustmentCreditNote', 'issued_credit_notes': 'InvoiceIssuedCreditNote', 'linked_orders': 'InvoiceLinkedOrder', 'notes': 'InvoiceNote', 'shipping_address': 'InvoiceShippingAddress', 'statement_descriptor': 'InvoiceStatementDescriptor', 'billing_address': 'InvoiceBillingAddress', 'einvoice': 'InvoiceEinvoice', 'site_details_at_creation': 'InvoiceSiteDetailsAtCreation', 'tax_origin': 'InvoiceTaxOrigin'}
         );
         return _invoices;
     }
@@ -707,11 +722,14 @@ export class Result {
         return this.#_response;
     }
 
-    constructor(response, responseHeaders?) {
+    constructor(response, responseHeaders?, responseStatusCode?) {
         this.#_response = response;
         if (responseHeaders) {
           this.responseHeaders = responseHeaders;
-      }
+        }
+        if(responseStatusCode){
+            this.responseStatusCode = responseStatusCode;
+        }
     }
 
     getResponseHeaders(){
@@ -750,5 +768,8 @@ export class Result {
 
     private toString(...args) {
         return JSON.stringify(this.response, null, 2);
+    }
+    getResponseStatusCode(){
+        return this.responseStatusCode;
     }
 }

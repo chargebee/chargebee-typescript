@@ -23,6 +23,10 @@ export class PricingPageSession extends Model {
       'urlSuffix': '/create_for_new_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -34,6 +38,10 @@ export class PricingPageSession extends Model {
       'urlSuffix': '/create_for_existing_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

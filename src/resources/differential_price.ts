@@ -20,6 +20,7 @@ export class DifferentialPrice extends Model {
   public currency_code: string;
   public parent_periods?: Array<ParentPeriod>;
   public business_entity_id?: string;
+  public deleted: boolean;
 
   
 
@@ -34,6 +35,11 @@ export class DifferentialPrice extends Model {
       'urlSuffix': '/differential_prices',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "period": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -45,6 +51,10 @@ export class DifferentialPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -56,6 +66,11 @@ export class DifferentialPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "period": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -67,6 +82,10 @@ export class DifferentialPrice extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -78,6 +97,10 @@ export class DifferentialPrice extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

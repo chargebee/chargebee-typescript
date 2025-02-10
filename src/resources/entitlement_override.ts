@@ -30,6 +30,10 @@ export class EntitlementOverride extends Model {
       'urlSuffix': '/entitlement_overrides',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -41,6 +45,10 @@ export class EntitlementOverride extends Model {
       'urlSuffix': '/entitlement_overrides',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

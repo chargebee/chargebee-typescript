@@ -39,6 +39,7 @@ export class Coupon extends Model {
   public invoice_notes?: string;
   public meta_data?: any;
   public coupon_constraints?: Array<CouponConstraint>;
+  public deleted: boolean;
 
   
 
@@ -53,6 +54,11 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "meta_data": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -64,6 +70,15 @@ export class Coupon extends Model {
       'urlSuffix': '/create_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "meta_data": 0,
+        "item_price_ids": 1,
+        "item_family_ids": 1,
+        "currencies": 1,
+        "item_price_periods": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -75,6 +90,15 @@ export class Coupon extends Model {
       'urlSuffix': '/update_for_items',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "meta_data": 0,
+        "item_price_ids": 1,
+        "item_family_ids": 1,
+        "currencies": 1,
+        "item_price_periods": 1,
+      }
     }, ChargeBee._env)
   }
 
@@ -86,6 +110,10 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -97,6 +125,10 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -108,6 +140,11 @@ export class Coupon extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "meta_data": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -119,6 +156,10 @@ export class Coupon extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -130,6 +171,10 @@ export class Coupon extends Model {
       'urlSuffix': '/copy',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -141,6 +186,10 @@ export class Coupon extends Model {
       'urlSuffix': '/unarchive',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -179,9 +228,6 @@ export namespace _coupon {
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
     discount_quantity?: number;
     apply_on: string;
     duration_type?: string;
@@ -207,9 +253,6 @@ export namespace _coupon {
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
     discount_quantity?: number;
     apply_on: string;
     duration_type?: string;
@@ -234,9 +277,6 @@ export namespace _coupon {
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
     discount_quantity?: number;
     apply_on?: string;
     duration_type?: string;
@@ -275,9 +315,6 @@ export namespace _coupon {
     discount_amount?: number;
     currency_code?: string;
     discount_percentage?: number;
-    /**
-     * @deprecated Please refer API docs to use other attributes
-     */
     discount_quantity?: number;
     apply_on?: string;
     duration_type?: string;

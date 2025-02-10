@@ -33,6 +33,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_new',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -44,6 +48,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_one_time',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -55,6 +63,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_one_time_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -66,6 +78,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_new_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -77,6 +93,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_existing',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -88,6 +108,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_existing_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -99,6 +123,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/update_card',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -110,6 +138,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/update_payment_method',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -121,6 +153,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/manage_payment_sources',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -132,6 +168,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/collect_now',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -143,6 +183,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/accept_quote',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -154,6 +198,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/extend_subscription',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -165,6 +213,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_gift',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -176,6 +228,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/checkout_gift_for_items',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -187,6 +243,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/claim_gift',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -198,6 +258,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/retrieve_agreement_pdf',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -209,6 +273,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/acknowledge',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -220,6 +288,10 @@ export class HostedPage extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -231,6 +303,10 @@ export class HostedPage extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -242,6 +318,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/pre_cancel',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -253,6 +333,11 @@ export class HostedPage extends Model {
       'urlSuffix': '/events',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "event_data": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -264,6 +349,10 @@ export class HostedPage extends Model {
       'urlSuffix': '/view_voucher',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

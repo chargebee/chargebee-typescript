@@ -23,6 +23,10 @@ export class NonSubscription extends Model {
       'urlSuffix': '/one_time_purchase',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

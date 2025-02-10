@@ -32,6 +32,7 @@ export class Item extends Model {
   public bundle_items?: Array<BundleItem>;
   public bundle_configuration?: BundleConfiguration;
   public metadata?: any;
+  public deleted: boolean;
   public business_entity_id?: string;
 
   
@@ -47,6 +48,11 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "metadata": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -58,6 +64,10 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -69,6 +79,11 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+        "metadata": 0,
+      }
     }, ChargeBee._env)
   }
 
@@ -80,6 +95,10 @@ export class Item extends Model {
       'urlSuffix': null,
       'hasIdInUrl': false,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -91,6 +110,10 @@ export class Item extends Model {
       'urlSuffix': '/delete',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

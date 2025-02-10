@@ -19,6 +19,7 @@ export class RequestWrapper<T = Result> {
         if (this.apiCall.hasIdInUrl) {
             RequestWrapper.validateIdParam(this.args[0])
         }
+        
     }
 
     private static validateIdParam(idParam: string) {
@@ -70,7 +71,7 @@ export class RequestWrapper<T = Result> {
                 deferred.resolve(response);
             }
         }
-        Core.makeApiRequest(env, callBackWrapper, this.apiCall.httpMethod, this.apiCall.urlPrefix, this.apiCall.urlSuffix, urlIdParam, params, this.httpHeaders, this.apiCall.isListReq);
+        Core.makeApiRequest(env, callBackWrapper, this.apiCall.httpMethod, this.apiCall.urlPrefix, this.apiCall.urlSuffix, urlIdParam, params, this.httpHeaders, this.apiCall.isListReq, this.apiCall.subDomain, this.apiCall.isOperationNeedsJsonInput, this.apiCall.jsonKeys);
         return deferred.promise;
     };
 }

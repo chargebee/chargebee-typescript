@@ -18,6 +18,7 @@ export class InvoiceEstimate extends Model {
   public taxes?: Array<Tax>;
   public line_item_taxes?: Array<LineItemTax>;
   public line_item_tiers?: Array<LineItemTier>;
+  public line_item_credits?: Array<LineItemCredit>;
   public line_item_discounts?: Array<LineItemDiscount>;
   public round_off_amount?: number;
   public customer_id?: string;
@@ -100,6 +101,12 @@ export class LineItemTier extends Model {
   public quantity_used_in_decimal?: string;
   public unit_amount_in_decimal?: string;
 } // ~LineItemTier
+
+export class LineItemCredit extends Model {
+  public cn_id: string;
+  public applied_amount: number;
+  public line_item_id?: string;
+} // ~LineItemCredit
 
 export class LineItemDiscount extends Model {
   public line_item_id: string;

@@ -26,6 +26,10 @@ export class ResourceMigration extends Model {
       'urlSuffix': '/retrieve_latest',
       'hasIdInUrl': false,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

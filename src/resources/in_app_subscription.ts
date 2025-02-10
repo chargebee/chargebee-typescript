@@ -25,6 +25,10 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/process_purchase_command',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -36,6 +40,10 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/import_receipt',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -47,6 +55,10 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/import_subscription',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -58,6 +70,10 @@ export class InAppSubscription extends Model {
       'urlSuffix': '/retrieve',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 

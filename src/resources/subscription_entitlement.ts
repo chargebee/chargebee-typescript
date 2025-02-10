@@ -33,6 +33,10 @@ export class SubscriptionEntitlement extends Model {
       'urlSuffix': '/subscription_entitlements',
       'hasIdInUrl': true,
       'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
@@ -44,6 +48,10 @@ export class SubscriptionEntitlement extends Model {
       'urlSuffix': '/subscription_entitlements/set_availability',
       'hasIdInUrl': true,
       'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
     }, ChargeBee._env)
   }
 
