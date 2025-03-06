@@ -28,6 +28,7 @@ export class Purchase extends Model {
       'subDomain': null,
       'isOperationNeedsJsonInput': false,
       'jsonKeys': { 
+        "additional_information": 1,
         "meta_data": 1,
       }
     }, ChargeBee._env)
@@ -63,6 +64,7 @@ export namespace _purchase {
     invoice_info?: invoice_info_create_params;
     payment_schedule?: payment_schedule_create_params;
     statement_descriptor?: statement_descriptor_create_params;
+    payment_intent?: payment_intent_create_params;
     purchase_items?: Array<purchase_items_create_params>;
     item_tiers?: Array<item_tiers_create_params>;
     shipping_addresses?: Array<shipping_addresses_create_params>;
@@ -96,6 +98,30 @@ export namespace _purchase {
   }
   export interface statement_descriptor_create_params {
     descriptor?: string;
+  }
+  export interface payment_intent_create_params {
+    id?: string;
+  }
+  export interface payment_intent_create_params {
+    gateway_account_id?: string;
+  }
+  export interface payment_intent_create_params {
+    gw_token?: string;
+  }
+  export interface payment_intent_create_params {
+    payment_method_type?: string;
+  }
+  export interface payment_intent_create_params {
+    reference_id?: string;
+  }
+  export interface payment_intent_create_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
+    gw_payment_method_id?: string;
+  }
+  export interface payment_intent_create_params {
+    additional_information?: any;
   }
   export interface purchase_items_create_params {
     index: number;

@@ -2017,6 +2017,9 @@ export namespace _invoice {
   export interface line_items_import_invoice_params {
     tax10_amount?: number;
   }
+  export interface line_items_import_invoice_params {
+    created_at?: number;
+  }
   export interface payment_reference_numbers_import_invoice_params {
     id?: string;
   }
