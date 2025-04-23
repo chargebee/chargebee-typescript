@@ -22,6 +22,7 @@ export class InvoiceEstimate extends Model {
   public line_item_discounts?: Array<LineItemDiscount>;
   public round_off_amount?: number;
   public customer_id?: string;
+  public line_item_addresses?: Array<LineItemAddress>;
 
   
 
@@ -47,7 +48,8 @@ export class LineItem extends Model {
   public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
-  public usage_percentage?: string;
+  public metered?: boolean;
+  public percentage?: string;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;
@@ -100,6 +102,8 @@ export class LineItemTier extends Model {
   public ending_unit_in_decimal?: string;
   public quantity_used_in_decimal?: string;
   public unit_amount_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~LineItemTier
 
 export class LineItemCredit extends Model {
@@ -115,6 +119,24 @@ export class LineItemDiscount extends Model {
   public entity_id?: string;
   public discount_amount: number;
 } // ~LineItemDiscount
+
+export class LineItemAddress extends Model {
+  public line_item_id?: string;
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~LineItemAddress
 
 
 

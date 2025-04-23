@@ -444,6 +444,7 @@ export namespace _payment_source {
     limit?: number;
     offset?: string;
     subscription_id?: string;
+    include_deleted?: boolean;
     customer_id?: filter._string;
     type?: filter._enum;
     status?: filter._enum;

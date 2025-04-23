@@ -370,7 +370,8 @@ export class LineItem extends Model {
   public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
-  public usage_percentage?: string;
+  public metered?: boolean;
+  public percentage?: string;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;
@@ -431,6 +432,8 @@ export class LineItemTier extends Model {
   public ending_unit_in_decimal?: string;
   public quantity_used_in_decimal?: string;
   public unit_amount_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~LineItemTier
 
 export class ShippingAddress extends Model {
@@ -1692,6 +1695,12 @@ export namespace _quote {
   export interface item_tiers_create_sub_items_for_customer_quote_params {
     price_in_decimal?: string;
   }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+    package_size?: number;
+  }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
     id?: string;
   }
@@ -1844,6 +1853,12 @@ export namespace _quote {
   }
   export interface item_tiers_edit_create_sub_customer_quote_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_edit_create_sub_customer_quote_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_edit_create_sub_customer_quote_for_items_params {
+    package_size?: number;
   }
   export interface subscription_update_subscription_quote_for_items_params {
     id: string;
@@ -2064,6 +2079,12 @@ export namespace _quote {
   export interface item_tiers_update_subscription_quote_for_items_params {
     price_in_decimal?: string;
   }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+    package_size?: number;
+  }
   export interface subscription_edit_update_subscription_quote_for_items_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -2280,6 +2301,12 @@ export namespace _quote {
   export interface item_tiers_edit_update_subscription_quote_for_items_params {
     price_in_decimal?: string;
   }
+  export interface item_tiers_edit_update_subscription_quote_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_edit_update_subscription_quote_for_items_params {
+    package_size?: number;
+  }
   export interface shipping_address_create_for_charge_items_and_charges_params {
     first_name?: string;
   }
@@ -2360,6 +2387,12 @@ export namespace _quote {
   }
   export interface item_tiers_create_for_charge_items_and_charges_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_create_for_charge_items_and_charges_params {
+    package_size?: number;
   }
   export interface charges_create_for_charge_items_and_charges_params {
     amount?: number;
@@ -2483,6 +2516,12 @@ export namespace _quote {
   }
   export interface item_tiers_edit_for_charge_items_and_charges_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_edit_for_charge_items_and_charges_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_edit_for_charge_items_and_charges_params {
+    package_size?: number;
   }
   export interface charges_edit_for_charge_items_and_charges_params {
     amount?: number;

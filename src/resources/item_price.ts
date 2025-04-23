@@ -171,6 +171,8 @@ export class Tier extends Model {
   public starting_unit_in_decimal?: string;
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~Tier
 
 export class TaxDetail extends Model {
@@ -363,6 +365,12 @@ export namespace _item_price {
   export interface tiers_create_params {
     price_in_decimal?: string;
   }
+  export interface tiers_create_params {
+    pricing_type?: string;
+  }
+  export interface tiers_create_params {
+    package_size?: number;
+  }
   export interface tax_providers_fields_create_params {
     provider_name: string;
   }
@@ -428,6 +436,12 @@ export namespace _item_price {
   }
   export interface tiers_update_params {
     price_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    pricing_type?: string;
+  }
+  export interface tiers_update_params {
+    package_size?: number;
   }
   export interface tax_providers_fields_update_params {
     provider_name: string;

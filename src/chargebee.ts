@@ -79,6 +79,7 @@ export {_omnichannel_subscription_item} from "./resources/omnichannel_subscripti
 export {_recorded_purchase} from "./resources/recorded_purchase";
 export {_rule} from "./resources/rule";
 export {_usage_event} from "./resources/usage_event";
+export {_omnichannel_subscription_item_scheduled_change} from "./resources/omnichannel_subscription_item_scheduled_change";
 
 interface Conf {
     api_key: string
@@ -332,6 +333,9 @@ export class ChargeBee {
     }
     get usage_event() {
         return resources.UsageEvent;
+    }
+    get omnichannel_subscription_item_scheduled_change() {
+        return resources.OmnichannelSubscriptionItemScheduledChange;
     }
 }
 

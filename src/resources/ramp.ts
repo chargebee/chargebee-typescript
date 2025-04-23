@@ -167,6 +167,8 @@ export class ItemTier extends Model {
   public starting_unit_in_decimal?: string;
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
   public index: number;
 } // ~ItemTier
 
@@ -279,6 +281,12 @@ export namespace _ramp {
   export interface item_tiers_create_for_subscription_params {
     price_in_decimal?: string;
   }
+  export interface item_tiers_create_for_subscription_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_create_for_subscription_params {
+    package_size?: number;
+  }
   export interface coupons_to_add_create_for_subscription_params {
     coupon_id?: string;
   }
@@ -371,6 +379,12 @@ export namespace _ramp {
   }
   export interface item_tiers_update_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_update_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_update_params {
+    package_size?: number;
   }
   export interface coupons_to_add_update_params {
     coupon_id?: string;

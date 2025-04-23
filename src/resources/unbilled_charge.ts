@@ -137,6 +137,8 @@ export class Tier extends Model {
   public ending_unit_in_decimal?: string;
   public quantity_used_in_decimal?: string;
   public unit_amount_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~Tier
 
 
@@ -286,6 +288,12 @@ export namespace _unbilled_charge {
   }
   export interface item_tiers_create_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_create_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_create_params {
+    package_size?: number;
   }
   export interface charges_create_params {
     amount?: number;

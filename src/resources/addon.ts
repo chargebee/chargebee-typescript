@@ -172,6 +172,8 @@ export class Tier extends Model {
   public starting_unit_in_decimal?: string;
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~Tier
 
 export class TaxProvidersField extends Model {

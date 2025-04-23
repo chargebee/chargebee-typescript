@@ -46,7 +46,8 @@ export class LineItem extends Model {
   public amount_in_decimal?: string;
   public discount_amount?: number;
   public item_level_discount_amount?: number;
-  public usage_percentage?: string;
+  public metered?: boolean;
+  public percentage?: string;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;
@@ -107,6 +108,8 @@ export class LineItemTier extends Model {
   public ending_unit_in_decimal?: string;
   public quantity_used_in_decimal?: string;
   public unit_amount_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~LineItemTier
 
 

@@ -113,6 +113,8 @@ export class Tier extends Model {
   public starting_unit_in_decimal?: string;
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~Tier
 
 export class ParentPeriod extends Model {
@@ -179,6 +181,12 @@ export namespace _differential_price {
   export interface tiers_create_params {
     price_in_decimal?: string;
   }
+  export interface tiers_create_params {
+    pricing_type?: string;
+  }
+  export interface tiers_create_params {
+    package_size?: number;
+  }
   export interface parent_periods_update_params {
     period_unit: string;
   }
@@ -202,5 +210,11 @@ export namespace _differential_price {
   }
   export interface tiers_update_params {
     price_in_decimal?: string;
+  }
+  export interface tiers_update_params {
+    pricing_type?: string;
+  }
+  export interface tiers_update_params {
+    package_size?: number;
   }
 }

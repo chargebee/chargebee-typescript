@@ -1187,6 +1187,12 @@ export namespace _hosted_page {
   export interface item_tiers_checkout_one_time_for_items_params {
     price_in_decimal?: string;
   }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_checkout_one_time_for_items_params {
+    package_size?: number;
+  }
   export interface charges_checkout_one_time_for_items_params {
     amount?: number;
   }
@@ -1508,6 +1514,12 @@ export namespace _hosted_page {
   export interface item_tiers_checkout_new_for_items_params {
     price_in_decimal?: string;
   }
+  export interface item_tiers_checkout_new_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_checkout_new_for_items_params {
+    package_size?: number;
+  }
   export interface entity_identifiers_checkout_new_for_items_params {
     id?: string;
   }
@@ -1786,6 +1798,12 @@ export namespace _hosted_page {
   }
   export interface item_tiers_checkout_existing_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_checkout_existing_for_items_params {
+    package_size?: number;
   }
   export interface entity_identifiers_checkout_existing_for_items_params {
     id?: string;

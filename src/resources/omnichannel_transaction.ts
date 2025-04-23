@@ -8,11 +8,11 @@ export class OmnichannelTransaction extends Model {
   public id: string;
   public id_at_source: string;
   public app_id: string;
-  public price_currency: string;
-  public price_units: number;
-  public price_nanos: number;
+  public price_currency?: string;
+  public price_units?: number;
+  public price_nanos?: number;
   public type: string;
-  public transacted_at: number;
+  public transacted_at?: number;
   public created_at: number;
   public resource_version?: number;
 

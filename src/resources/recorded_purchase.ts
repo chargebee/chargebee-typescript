@@ -71,11 +71,21 @@ export namespace _recorded_purchase {
     app_id: string;
     customer?: customer_create_params;
     apple_app_store?: apple_app_store_create_params;
+    google_play_store?: google_play_store_create_params;
   }
   export interface customer_create_params {
     id: string;
   }
   export interface apple_app_store_create_params {
     transaction_id?: string;
+  }
+  export interface apple_app_store_create_params {
+    receipt?: string;
+  }
+  export interface apple_app_store_create_params {
+    product_id?: string;
+  }
+  export interface google_play_store_create_params {
+    purchase_token?: string;
   }
 }

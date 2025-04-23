@@ -569,6 +569,7 @@ export namespace _estimate {
     invoice_date?: number;
     invoice?: invoice_create_invoice_for_items_params;
     shipping_address?: shipping_address_create_invoice_for_items_params;
+    billing_address?: billing_address_create_invoice_for_items_params;
     item_prices?: Array<item_prices_create_invoice_for_items_params>;
     item_tiers?: Array<item_tiers_create_invoice_for_items_params>;
     charges?: Array<charges_create_invoice_for_items_params>;
@@ -966,6 +967,12 @@ export namespace _estimate {
   export interface item_tiers_create_sub_item_estimate_params {
     price_in_decimal?: string;
   }
+  export interface item_tiers_create_sub_item_estimate_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_create_sub_item_estimate_params {
+    package_size?: number;
+  }
   export interface tax_providers_fields_create_sub_item_estimate_params {
     provider_name?: string;
   }
@@ -1265,6 +1272,12 @@ export namespace _estimate {
   }
   export interface item_tiers_create_sub_item_for_customer_estimate_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_create_sub_item_for_customer_estimate_params {
+    package_size?: number;
   }
   export interface subscription_update_subscription_params {
     id: string;
@@ -1616,6 +1629,12 @@ export namespace _estimate {
   }
   export interface item_tiers_update_subscription_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_update_subscription_for_items_params {
+    package_size?: number;
   }
   export interface subscription_items_update_subscription_for_items_params {
     proration_type?: string;
@@ -2088,6 +2107,30 @@ export namespace _estimate {
   export interface shipping_address_create_invoice_for_items_params {
     validation_status?: string;
   }
+  export interface billing_address_create_invoice_for_items_params {
+    line1?: string;
+  }
+  export interface billing_address_create_invoice_for_items_params {
+    line2?: string;
+  }
+  export interface billing_address_create_invoice_for_items_params {
+    line3?: string;
+  }
+  export interface billing_address_create_invoice_for_items_params {
+    city?: string;
+  }
+  export interface billing_address_create_invoice_for_items_params {
+    state_code?: string;
+  }
+  export interface billing_address_create_invoice_for_items_params {
+    zip?: string;
+  }
+  export interface billing_address_create_invoice_for_items_params {
+    country?: string;
+  }
+  export interface billing_address_create_invoice_for_items_params {
+    validation_status?: string;
+  }
   export interface item_prices_create_invoice_for_items_params {
     item_price_id?: string;
   }
@@ -2129,6 +2172,12 @@ export namespace _estimate {
   }
   export interface item_tiers_create_invoice_for_items_params {
     price_in_decimal?: string;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    pricing_type?: string;
+  }
+  export interface item_tiers_create_invoice_for_items_params {
+    package_size?: number;
   }
   export interface charges_create_invoice_for_items_params {
     amount?: number;

@@ -26,6 +26,7 @@ export class Item extends Model {
   public unit?: string;
   public metered: boolean;
   public usage_calculation?: string;
+  public is_percentage_pricing: boolean;
   public archived_at?: number;
   public channel?: string;
   public applicable_items?: Array<ApplicableItem>;
@@ -161,6 +162,7 @@ export namespace _item {
     usage_calculation?: string;
     metadata?: any;
     business_entity_id?: string;
+    is_percentage_pricing?: boolean;
     bundle_configuration?: bundle_configuration_create_params;
     bundle_items_to_add?: Array<bundle_items_to_add_create_params>;
   }
