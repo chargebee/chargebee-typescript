@@ -21,12 +21,12 @@ export class Item extends Model {
   public enabled_for_checkout: boolean;
   public enabled_in_portal: boolean;
   public included_in_mrr?: boolean;
-  public item_applicability: string;
+  public item_applicability?: string;
   public gift_claim_redirect_url?: string;
   public unit?: string;
   public metered: boolean;
   public usage_calculation?: string;
-  public is_percentage_pricing: boolean;
+  public is_percentage_pricing?: boolean;
   public archived_at?: number;
   public channel?: string;
   public applicable_items?: Array<ApplicableItem>;
