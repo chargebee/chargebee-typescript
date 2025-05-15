@@ -181,7 +181,7 @@ export namespace _pricing_page_session {
     validation_status?: string;
   }
   export interface discounts_create_for_new_subscription_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_create_for_new_subscription_params {
     duration_type: string;
@@ -214,7 +214,7 @@ export namespace _pricing_page_session {
     id: string;
   }
   export interface discounts_create_for_existing_subscription_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_create_for_existing_subscription_params {
     duration_type: string;

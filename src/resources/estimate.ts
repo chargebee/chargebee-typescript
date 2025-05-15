@@ -920,7 +920,7 @@ export namespace _estimate {
     item_type?: string;
   }
   export interface discounts_create_sub_item_estimate_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_create_sub_item_estimate_params {
     duration_type: string;
@@ -1226,7 +1226,7 @@ export namespace _estimate {
     item_type?: string;
   }
   export interface discounts_create_sub_item_for_customer_estimate_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_create_sub_item_for_customer_estimate_params {
     duration_type: string;
@@ -1580,7 +1580,7 @@ export namespace _estimate {
     item_type?: string;
   }
   export interface discounts_update_subscription_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_update_subscription_for_items_params {
     duration_type: string;

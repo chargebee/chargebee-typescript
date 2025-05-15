@@ -2032,7 +2032,7 @@ export namespace _subscription {
     item_type?: string;
   }
   export interface discounts_create_with_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_create_with_items_params {
     duration_type: string;
@@ -2677,7 +2677,7 @@ export namespace _subscription {
     item_type?: string;
   }
   export interface discounts_update_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_update_for_items_params {
     duration_type: string;
@@ -3514,7 +3514,7 @@ export namespace _subscription {
     item_type?: string;
   }
   export interface discounts_import_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_import_for_items_params {
     duration_type: string;

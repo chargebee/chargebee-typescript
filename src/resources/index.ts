@@ -253,3 +253,5 @@ export {UsageEvent} from "./usage_event";
 export {OmnichannelSubscriptionItemScheduledChange} from "./omnichannel_subscription_item_scheduled_change";
 export {CurrentState as OmnichannelSubscriptionItemScheduledChangeCurrentState} from "./omnichannel_subscription_item_scheduled_change";
 export {ScheduledState as OmnichannelSubscriptionItemScheduledChangeScheduledState} from "./omnichannel_subscription_item_scheduled_change";
+export {UsageFile} from "./usage_file";
+export {UploadDetail as UsageFileUploadDetail} from "./usage_file";

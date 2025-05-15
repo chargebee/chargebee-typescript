@@ -90,6 +90,7 @@ export namespace _omnichannel_subscription {
   export interface omnichannel_subscription_list_params {
     limit?: number;
     offset?: string;
+    source?: filter._enum;
     customer_id?: filter._string;
   }
 }

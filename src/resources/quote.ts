@@ -1648,7 +1648,7 @@ export namespace _quote {
     item_type?: string;
   }
   export interface discounts_create_sub_items_for_customer_quote_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_create_sub_items_for_customer_quote_params {
     duration_type: string;
@@ -1807,7 +1807,7 @@ export namespace _quote {
     item_type?: string;
   }
   export interface discounts_edit_create_sub_customer_quote_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_edit_create_sub_customer_quote_for_items_params {
     duration_type: string;
@@ -2029,7 +2029,7 @@ export namespace _quote {
     item_type?: string;
   }
   export interface discounts_update_subscription_quote_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_update_subscription_quote_for_items_params {
     duration_type: string;
@@ -2251,7 +2251,7 @@ export namespace _quote {
     item_type?: string;
   }
   export interface discounts_edit_update_subscription_quote_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_edit_update_subscription_quote_for_items_params {
     duration_type: string;

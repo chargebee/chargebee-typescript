@@ -13,7 +13,7 @@ export class VirtualBankAccount extends Model {
   public bank_name?: string;
   public account_number: string;
   public routing_number?: string;
-  public swift_code: string;
+  public swift_code?: string;
   public gateway: string;
   public gateway_account_id: string;
   public resource_version?: number;

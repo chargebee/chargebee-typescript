@@ -1467,7 +1467,7 @@ export namespace _hosted_page {
     item_type?: string;
   }
   export interface discounts_checkout_new_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_checkout_new_for_items_params {
     duration_type: string;
@@ -1749,7 +1749,7 @@ export namespace _hosted_page {
     item_type?: string;
   }
   export interface discounts_checkout_existing_for_items_params {
-    apply_on: string;
+    apply_on?: string;
   }
   export interface discounts_checkout_existing_for_items_params {
     duration_type: string;

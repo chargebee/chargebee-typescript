@@ -1044,6 +1044,7 @@ export namespace _invoice {
     taxes?: Array<taxes_import_invoice_params>;
     payments?: Array<payments_import_invoice_params>;
     notes?: Array<notes_import_invoice_params>;
+    line_item_addresses?: Array<line_item_addresses_import_invoice_params>;
   }
   export interface apply_payments_params {
     comment?: string;
@@ -2143,6 +2144,51 @@ export namespace _invoice {
   }
   export interface notes_import_invoice_params {
     note?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    line_item_id?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    first_name?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    last_name?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    email?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    company?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    phone?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    line1?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    line2?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    line3?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    city?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    state_code?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    state?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    zip?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    country?: string;
+  }
+  export interface line_item_addresses_import_invoice_params {
+    validation_status?: string;
   }
   export interface transactions_apply_payments_params {
     id?: string;

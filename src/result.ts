@@ -653,6 +653,14 @@ export class Result {
         );
         return _omnichannel_subscription_item_scheduled_change;
     }
+    get usage_file(): resources.UsageFile {
+        let _usage_file = this.get(
+            'usage_file',
+            'UsageFile',
+            {'upload_detail': 'UsageFileUploadDetail'}
+        );
+        return _usage_file;
+    }
 
     get advance_invoice_schedules(): resources.AdvanceInvoiceSchedule[] {
         let _advance_invoice_schedules = this.get_list(
