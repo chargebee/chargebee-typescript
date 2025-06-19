@@ -45,7 +45,7 @@ export class LineItem extends Model {
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public metered?: boolean;
-  public percentage?: string;
+  public is_percentage_pricing?: boolean;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;

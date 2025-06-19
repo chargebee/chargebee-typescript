@@ -18,9 +18,11 @@ export class OmnichannelSubscriptionItem extends Model {
   public cancelled_at?: number;
   public cancellation_reason?: string;
   public grace_period_expires_at?: number;
+  public resumes_at?: number;
   public has_scheduled_changes: boolean;
   public resource_version?: number;
   public upcoming_renewal?: UpcomingRenewal;
+  public linked_item?: LinkedItem;
 
   
 
@@ -49,6 +51,11 @@ export class UpcomingRenewal extends Model {
   public price_units?: number;
   public price_nanos?: number;
 } // ~UpcomingRenewal
+
+export class LinkedItem extends Model {
+  public id: string;
+  public linked_at?: number;
+} // ~LinkedItem
 
 
 

@@ -7,6 +7,7 @@ import {filter} from "../filter";
 export class Configuration extends Model {
   public domain?: string;
   public product_catalog_version?: string;
+  public chargebee_response_schema_type?: string;
 
   
 

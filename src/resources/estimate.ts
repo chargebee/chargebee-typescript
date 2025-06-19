@@ -397,6 +397,7 @@ export namespace _estimate {
     shipping_address?: shipping_address_create_sub_item_for_customer_estimate_params;
     billing_address?: billing_address_create_sub_item_for_customer_estimate_params;
     contract_term?: contract_term_create_sub_item_for_customer_estimate_params;
+    billing_override?: billing_override_create_sub_item_for_customer_estimate_params;
     subscription_items?: Array<subscription_items_create_sub_item_for_customer_estimate_params>;
     discounts?: Array<discounts_create_sub_item_for_customer_estimate_params>;
     item_tiers?: Array<item_tiers_create_sub_item_for_customer_estimate_params>;
@@ -451,6 +452,7 @@ export namespace _estimate {
     billing_address?: billing_address_update_subscription_for_items_params;
     shipping_address?: shipping_address_update_subscription_for_items_params;
     customer?: customer_update_subscription_for_items_params;
+    billing_override?: billing_override_update_subscription_for_items_params;
     subscription_items?: Array<subscription_items_update_subscription_for_items_params>;
     discounts?: Array<discounts_update_subscription_for_items_params>;
     item_tiers?: Array<item_tiers_update_subscription_for_items_params>;
@@ -1189,6 +1191,12 @@ export namespace _estimate {
   export interface contract_term_create_sub_item_for_customer_estimate_params {
     cancellation_cutoff_period?: number;
   }
+  export interface billing_override_create_sub_item_for_customer_estimate_params {
+    max_excess_payment_usage?: number;
+  }
+  export interface billing_override_create_sub_item_for_customer_estimate_params {
+    max_refundable_credits_usage?: number;
+  }
   export interface subscription_items_create_sub_item_for_customer_estimate_params {
     item_price_id: string;
   }
@@ -1539,6 +1547,12 @@ export namespace _estimate {
      * @deprecated Please refer API docs to use other attributes
      */
     taxability?: string;
+  }
+  export interface billing_override_update_subscription_for_items_params {
+    max_excess_payment_usage?: number;
+  }
+  export interface billing_override_update_subscription_for_items_params {
+    max_refundable_credits_usage?: number;
   }
   export interface subscription_items_update_subscription_for_items_params {
     item_price_id: string;

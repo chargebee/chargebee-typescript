@@ -28,6 +28,7 @@ export {_estimate} from "./resources/estimate";
 export {_quote} from "./resources/quote";
 export {_quoted_subscription} from "./resources/quoted_subscription";
 export {_quoted_charge} from "./resources/quoted_charge";
+export {_quoted_ramp} from "./resources/quoted_ramp";
 export {_quote_line_group} from "./resources/quote_line_group";
 export {_plan} from "./resources/plan";
 export {_addon} from "./resources/addon";
@@ -181,6 +182,9 @@ export class ChargeBee {
     }
     get quoted_charge() {
         return resources.QuotedCharge;
+    }
+    get quoted_ramp() {
+        return resources.QuotedRamp;
     }
     get quote_line_group() {
         return resources.QuoteLineGroup;

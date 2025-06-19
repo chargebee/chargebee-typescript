@@ -153,6 +153,10 @@ export {Addon as QuotedChargeAddon} from "./quoted_charge";
 export {InvoiceItem as QuotedChargeInvoiceItem} from "./quoted_charge";
 export {ItemTier as QuotedChargeItemTier} from "./quoted_charge";
 export {Coupon as QuotedChargeCoupon} from "./quoted_charge";
+export {QuotedRamp} from "./quoted_ramp";
+export {LineItem as QuotedRampLineItem} from "./quoted_ramp";
+export {Discount as QuotedRampDiscount} from "./quoted_ramp";
+export {ItemTier as QuotedRampItemTier} from "./quoted_ramp";
 export {QuoteLineGroup} from "./quote_line_group";
 export {LineItem as QuoteLineGroupLineItem} from "./quote_line_group";
 export {Discount as QuoteLineGroupDiscount} from "./quote_line_group";
@@ -245,6 +249,7 @@ export {OmnichannelTransaction as OmnichannelSubscriptionOmnichannelTransaction}
 export {OmnichannelTransaction} from "./omnichannel_transaction";
 export {OmnichannelSubscriptionItem} from "./omnichannel_subscription_item";
 export {UpcomingRenewal as OmnichannelSubscriptionItemUpcomingRenewal} from "./omnichannel_subscription_item";
+export {LinkedItem as OmnichannelSubscriptionItemLinkedItem} from "./omnichannel_subscription_item";
 export {RecordedPurchase} from "./recorded_purchase";
 export {LinkedOmnichannelSubscription as RecordedPurchaseLinkedOmnichannelSubscription} from "./recorded_purchase";
 export {ErrorDetail as RecordedPurchaseErrorDetail} from "./recorded_purchase";

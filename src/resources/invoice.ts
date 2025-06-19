@@ -174,6 +174,36 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
+  public static pause_dunning(invoice_id: string, params?: _invoice.pause_dunning_params):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'pause_dunning',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/pause_dunning',
+      'hasIdInUrl': true,
+      'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
+    }, ChargeBee._env)
+  }
+
+  public static resume_dunning(invoice_id: string, params?: _invoice.resume_dunning_params):RequestWrapper {
+    return new RequestWrapper([invoice_id, params], {
+      'methodName': 'resume_dunning',
+      'httpMethod': 'POST',
+      'urlPrefix': '/invoices',
+      'urlSuffix': '/resume_dunning',
+      'hasIdInUrl': true,
+      'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
+    }, ChargeBee._env)
+  }
+
   public static import_invoice(params?: _invoice.import_invoice_params):RequestWrapper {
     return new RequestWrapper([params], {
       'methodName': 'import_invoice',
@@ -294,7 +324,7 @@ export class Invoice extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(invoice_id: string, params?: any):RequestWrapper {
+  public static retrieve(invoice_id: string, params?: _invoice.retrieve_params):RequestWrapper {
     return new RequestWrapper([invoice_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -674,7 +704,7 @@ export class LineItem extends Model {
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public metered?: boolean;
-  public percentage?: string;
+  public is_percentage_pricing?: boolean;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;
@@ -804,9 +834,9 @@ export class LinkedOrder extends Model {
 } // ~LinkedOrder
 
 export class Note extends Model {
-  public entity_type: string;
   public note: string;
   public entity_id?: string;
+  public entity_type?: string;
 } // ~Note
 
 export class ShippingAddress extends Model {
@@ -1011,6 +1041,13 @@ export namespace _invoice {
   export interface stop_dunning_params {
     comment?: string;
   }
+  export interface pause_dunning_params {
+    expected_payment_date: number;
+    comment?: string;
+  }
+  export interface resume_dunning_params {
+    comment?: string;
+  }
   export interface import_invoice_params {
     id: string;
     currency_code?: string;
@@ -1087,6 +1124,9 @@ export namespace _invoice {
     void_reason_code?: filter._string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
+  }
+  export interface retrieve_params {
+    line_item?: line_item_retrieve_params;
   }
   export interface pdf_params {
     disposition_type?: string;
@@ -2204,6 +2244,12 @@ export namespace _invoice {
   }
   export interface einvoice_invoice_list_params {
     status?: filter._enum;
+  }
+  export interface line_item_retrieve_params {
+    subscription_id?: filter._string;
+  }
+  export interface line_item_retrieve_params {
+    customer_id?: filter._string;
   }
   export interface payment_reference_number_invoice_list_payment_reference_numbers_params {
     number?: filter._string;

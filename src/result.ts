@@ -259,6 +259,14 @@ export class Result {
         );
         return _quoted_charge;
     }
+    get quoted_ramp(): resources.QuotedRamp {
+        let _quoted_ramp = this.get(
+            'quoted_ramp',
+            'QuotedRamp',
+            {'line_items': 'QuotedRampLineItem', 'discounts': 'QuotedRampDiscount', 'item_tiers': 'QuotedRampItemTier'}
+        );
+        return _quoted_ramp;
+    }
     get quote_line_group(): resources.QuoteLineGroup {
         let _quote_line_group = this.get(
             'quote_line_group',
@@ -604,7 +612,7 @@ export class Result {
         _omnichannel_subscription.init_dependant_list(
             this.response['omnichannel_subscription'],
             'omnichannel_subscription_items',
-            {'upcoming_renewal': 'OmnichannelSubscriptionItemUpcomingRenewal'}
+            {'upcoming_renewal': 'OmnichannelSubscriptionItemUpcomingRenewal', 'linked_item': 'OmnichannelSubscriptionItemLinkedItem'}
         );
         return _omnichannel_subscription;
     }
@@ -619,7 +627,7 @@ export class Result {
         let _omnichannel_subscription_item = this.get(
             'omnichannel_subscription_item',
             'OmnichannelSubscriptionItem',
-            {'upcoming_renewal': 'OmnichannelSubscriptionItemUpcomingRenewal'}
+            {'upcoming_renewal': 'OmnichannelSubscriptionItemUpcomingRenewal', 'linked_item': 'OmnichannelSubscriptionItemLinkedItem'}
         );
         return _omnichannel_subscription_item;
     }

@@ -160,9 +160,9 @@ export namespace _item {
     included_in_mrr?: boolean;
     metered?: boolean;
     usage_calculation?: string;
+    is_percentage_pricing?: boolean;
     metadata?: any;
     business_entity_id?: string;
-    is_percentage_pricing?: boolean;
     bundle_configuration?: bundle_configuration_create_params;
     bundle_items_to_add?: Array<bundle_items_to_add_create_params>;
   }
@@ -186,6 +186,7 @@ export namespace _item {
     metadata?: any;
     included_in_mrr?: boolean;
     status?: string;
+    is_percentage_pricing?: boolean;
     bundle_configuration?: bundle_configuration_update_params;
     bundle_items_to_add?: Array<bundle_items_to_add_update_params>;
     bundle_items_to_update?: Array<bundle_items_to_update_update_params>;

@@ -178,7 +178,7 @@ export class Subscription extends Model {
     }, ChargeBee._env)
   }
 
-  public static contract_terms_for_subscription(subscription_id: string, params?: any):RequestWrapper<ListResult> {
+  public static contract_terms_for_subscription(subscription_id: string, params?: _subscription.subscription_contract_terms_for_subscription_params):RequestWrapper<ListResult> {
     return new RequestWrapper([subscription_id, params], {
       'methodName': 'contract_terms_for_subscription',
       'httpMethod': 'GET',
@@ -998,6 +998,12 @@ export namespace _subscription {
     override_relationship?: filter._boolean;
     business_entity_id?: filter._string;
     channel?: filter._enum;
+    "sort_by[asc]"?: string;
+    "sort_by[desc]"?: string;
+  }
+  export interface subscription_contract_terms_for_subscription_params {
+    limit?: number;
+    offset?: string;
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }

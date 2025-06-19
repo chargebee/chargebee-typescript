@@ -74,7 +74,7 @@ export class CreditNote extends Model {
     }, ChargeBee._env)
   }
 
-  public static retrieve(credit_note_id: string, params?: any):RequestWrapper {
+  public static retrieve(credit_note_id: string, params?: _credit_note.retrieve_params):RequestWrapper {
     return new RequestWrapper([credit_note_id, params], {
       'methodName': 'retrieve',
       'httpMethod': 'GET',
@@ -296,7 +296,7 @@ export class LineItem extends Model {
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public metered?: boolean;
-  public percentage?: string;
+  public is_percentage_pricing?: boolean;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;
@@ -462,6 +462,9 @@ export namespace _credit_note {
     comment?: string;
     line_items?: Array<line_items_create_params>;
   }
+  export interface retrieve_params {
+    line_item?: line_item_retrieve_params;
+  }
   export interface pdf_params {
     disposition_type?: string;
   }
@@ -565,6 +568,12 @@ export namespace _credit_note {
   }
   export interface line_items_create_params {
     entity_id?: string;
+  }
+  export interface line_item_retrieve_params {
+    subscription_id?: filter._string;
+  }
+  export interface line_item_retrieve_params {
+    customer_id?: filter._string;
   }
   export interface transaction_record_refund_params {
     amount?: number;

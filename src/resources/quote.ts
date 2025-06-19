@@ -45,6 +45,8 @@ export class Quote extends Model {
   public contract_term_termination_fee?: number;
   public business_entity_id?: string;
   public deleted: boolean;
+  public total_contract_value?: number;
+  public total_discount?: number;
 
   
 
@@ -371,7 +373,7 @@ export class LineItem extends Model {
   public discount_amount?: number;
   public item_level_discount_amount?: number;
   public metered?: boolean;
-  public percentage?: string;
+  public is_percentage_pricing?: boolean;
   public reference_line_item_id?: string;
   public description: string;
   public entity_description?: string;
@@ -588,12 +590,16 @@ export namespace _quote {
     terms_to_charge?: number;
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
+    billing_start_option?: string;
+    net_term_days?: number;
     subscription?: subscription_create_sub_items_for_customer_quote_params;
     shipping_address?: shipping_address_create_sub_items_for_customer_quote_params;
     contract_term?: contract_term_create_sub_items_for_customer_quote_params;
+    billing_address?: billing_address_create_sub_items_for_customer_quote_params;
     subscription_items?: Array<subscription_items_create_sub_items_for_customer_quote_params>;
     discounts?: Array<discounts_create_sub_items_for_customer_quote_params>;
     item_tiers?: Array<item_tiers_create_sub_items_for_customer_quote_params>;
+    coupons?: Array<coupons_create_sub_items_for_customer_quote_params>;
   }
   export interface edit_create_sub_customer_quote_for_items_params {
     notes?: string;
@@ -603,12 +609,16 @@ export namespace _quote {
     terms_to_charge?: number;
     billing_alignment_mode?: string;
     coupon_ids?: Array<string>;
+    billing_start_option?: string;
+    net_term_days?: number;
     subscription?: subscription_edit_create_sub_customer_quote_for_items_params;
     shipping_address?: shipping_address_edit_create_sub_customer_quote_for_items_params;
     contract_term?: contract_term_edit_create_sub_customer_quote_for_items_params;
+    billing_address?: billing_address_edit_create_sub_customer_quote_for_items_params;
     subscription_items?: Array<subscription_items_edit_create_sub_customer_quote_for_items_params>;
     discounts?: Array<discounts_edit_create_sub_customer_quote_for_items_params>;
     item_tiers?: Array<item_tiers_edit_create_sub_customer_quote_for_items_params>;
+    coupons?: Array<coupons_edit_create_sub_customer_quote_for_items_params>;
   }
   export interface update_subscription_quote_for_items_params {
     name?: string;
@@ -626,6 +636,7 @@ export namespace _quote {
     changes_scheduled_at?: number;
     force_term_reset?: boolean;
     reactivate?: boolean;
+    net_term_days?: number;
     subscription?: subscription_update_subscription_quote_for_items_params;
     billing_address?: billing_address_update_subscription_quote_for_items_params;
     shipping_address?: shipping_address_update_subscription_quote_for_items_params;
@@ -634,6 +645,7 @@ export namespace _quote {
     subscription_items?: Array<subscription_items_update_subscription_quote_for_items_params>;
     discounts?: Array<discounts_update_subscription_quote_for_items_params>;
     item_tiers?: Array<item_tiers_update_subscription_quote_for_items_params>;
+    coupons?: Array<coupons_update_subscription_quote_for_items_params>;
   }
   export interface edit_update_subscription_quote_for_items_params {
     notes?: string;
@@ -650,6 +662,7 @@ export namespace _quote {
     changes_scheduled_at?: number;
     force_term_reset?: boolean;
     reactivate?: boolean;
+    net_term_days?: number;
     subscription?: subscription_edit_update_subscription_quote_for_items_params;
     billing_address?: billing_address_edit_update_subscription_quote_for_items_params;
     shipping_address?: shipping_address_edit_update_subscription_quote_for_items_params;
@@ -658,6 +671,7 @@ export namespace _quote {
     subscription_items?: Array<subscription_items_edit_update_subscription_quote_for_items_params>;
     discounts?: Array<discounts_edit_update_subscription_quote_for_items_params>;
     item_tiers?: Array<item_tiers_edit_update_subscription_quote_for_items_params>;
+    coupons?: Array<coupons_edit_update_subscription_quote_for_items_params>;
   }
   export interface create_for_charge_items_and_charges_params {
     name?: string;
@@ -668,6 +682,7 @@ export namespace _quote {
     currency_code?: string;
     coupon?: string;
     coupon_ids?: Array<string>;
+    billing_address?: billing_address_create_for_charge_items_and_charges_params;
     shipping_address?: shipping_address_create_for_charge_items_and_charges_params;
     item_prices?: Array<item_prices_create_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_create_for_charge_items_and_charges_params>;
@@ -682,6 +697,7 @@ export namespace _quote {
     currency_code?: string;
     coupon?: string;
     coupon_ids?: Array<string>;
+    billing_address?: billing_address_edit_for_charge_items_and_charges_params;
     shipping_address?: shipping_address_edit_for_charge_items_and_charges_params;
     item_prices?: Array<item_prices_edit_for_charge_items_and_charges_params>;
     item_tiers?: Array<item_tiers_edit_for_charge_items_and_charges_params>;
@@ -1611,6 +1627,48 @@ export namespace _quote {
   export interface contract_term_create_sub_items_for_customer_quote_params {
     cancellation_cutoff_period?: number;
   }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    first_name?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    last_name?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    email?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    company?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    phone?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    line1?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    line2?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    line3?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    city?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    state_code?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    state?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    zip?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    country?: string;
+  }
+  export interface billing_address_create_sub_items_for_customer_quote_params {
+    validation_status?: string;
+  }
   export interface subscription_items_create_sub_items_for_customer_quote_params {
     item_price_id: string;
   }
@@ -1700,6 +1758,33 @@ export namespace _quote {
   }
   export interface item_tiers_create_sub_items_for_customer_quote_params {
     package_size?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    start_date?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    end_date?: number;
+  }
+  export interface subscription_items_create_sub_items_for_customer_quote_params {
+    ramp_tier_id?: string;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    start_date?: number;
+  }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    end_date?: number;
+  }
+  export interface item_tiers_create_sub_items_for_customer_quote_params {
+    ramp_tier_id?: string;
+  }
+  export interface coupons_create_sub_items_for_customer_quote_params {
+    id?: string;
+  }
+  export interface coupons_create_sub_items_for_customer_quote_params {
+    start_date?: number;
+  }
+  export interface coupons_create_sub_items_for_customer_quote_params {
+    end_date?: number;
   }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
     id?: string;
@@ -1770,6 +1855,48 @@ export namespace _quote {
   export interface contract_term_edit_create_sub_customer_quote_for_items_params {
     cancellation_cutoff_period?: number;
   }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    first_name?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    last_name?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    email?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    company?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    phone?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    line1?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    line2?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    line3?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    city?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    state_code?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    state?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    zip?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    country?: string;
+  }
+  export interface billing_address_edit_create_sub_customer_quote_for_items_params {
+    validation_status?: string;
+  }
   export interface subscription_items_edit_create_sub_customer_quote_for_items_params {
     item_price_id: string;
   }
@@ -1859,6 +1986,33 @@ export namespace _quote {
   }
   export interface item_tiers_edit_create_sub_customer_quote_for_items_params {
     package_size?: number;
+  }
+  export interface subscription_items_edit_create_sub_customer_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_items_edit_create_sub_customer_quote_for_items_params {
+    end_date?: number;
+  }
+  export interface subscription_items_edit_create_sub_customer_quote_for_items_params {
+    ramp_tier_id?: string;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    end_date?: number;
+  }
+  export interface item_tiers_edit_create_sub_customer_quote_for_items_params {
+    ramp_tier_id?: string;
+  }
+  export interface coupons_edit_create_sub_customer_quote_for_items_params {
+    id?: string;
+  }
+  export interface coupons_edit_create_sub_customer_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface coupons_edit_create_sub_customer_quote_for_items_params {
+    end_date?: number;
   }
   export interface subscription_update_subscription_quote_for_items_params {
     id: string;
@@ -2085,6 +2239,33 @@ export namespace _quote {
   export interface item_tiers_update_subscription_quote_for_items_params {
     package_size?: number;
   }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    end_date?: number;
+  }
+  export interface subscription_items_update_subscription_quote_for_items_params {
+    ramp_tier_id?: string;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
+    end_date?: number;
+  }
+  export interface item_tiers_update_subscription_quote_for_items_params {
+    ramp_tier_id?: string;
+  }
+  export interface coupons_update_subscription_quote_for_items_params {
+    id?: string;
+  }
+  export interface coupons_update_subscription_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface coupons_update_subscription_quote_for_items_params {
+    end_date?: number;
+  }
   export interface subscription_edit_update_subscription_quote_for_items_params {
     /**
      * @deprecated Please refer API docs to use other attributes
@@ -2307,6 +2488,75 @@ export namespace _quote {
   export interface item_tiers_edit_update_subscription_quote_for_items_params {
     package_size?: number;
   }
+  export interface subscription_items_edit_update_subscription_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface subscription_items_edit_update_subscription_quote_for_items_params {
+    end_date?: number;
+  }
+  export interface subscription_items_edit_update_subscription_quote_for_items_params {
+    ramp_tier_id?: string;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
+    end_date?: number;
+  }
+  export interface item_tiers_edit_update_subscription_quote_for_items_params {
+    ramp_tier_id?: string;
+  }
+  export interface coupons_edit_update_subscription_quote_for_items_params {
+    id?: string;
+  }
+  export interface coupons_edit_update_subscription_quote_for_items_params {
+    start_date?: number;
+  }
+  export interface coupons_edit_update_subscription_quote_for_items_params {
+    end_date?: number;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    first_name?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    last_name?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    email?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    company?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    phone?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    line1?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    line2?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    line3?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    city?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    state_code?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    state?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    zip?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    country?: string;
+  }
+  export interface billing_address_create_for_charge_items_and_charges_params {
+    validation_status?: string;
+  }
   export interface shipping_address_create_for_charge_items_and_charges_params {
     first_name?: string;
   }
@@ -2435,6 +2685,48 @@ export namespace _quote {
   }
   export interface tax_providers_fields_create_for_charge_items_and_charges_params {
     field_value?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    first_name?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    last_name?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    email?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    company?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    phone?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    line1?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    line2?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    line3?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    city?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    state_code?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    state?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    zip?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    country?: string;
+  }
+  export interface billing_address_edit_for_charge_items_and_charges_params {
+    validation_status?: string;
   }
   export interface shipping_address_edit_for_charge_items_and_charges_params {
     first_name?: string;
