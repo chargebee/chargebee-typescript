@@ -61,6 +61,7 @@ export namespace _purchase {
   export interface create_params {
     customer_id: string;
     payment_source_id?: string;
+    replace_primary_payment_source?: boolean;
     invoice_info?: invoice_info_create_params;
     payment_schedule?: payment_schedule_create_params;
     statement_descriptor?: statement_descriptor_create_params;

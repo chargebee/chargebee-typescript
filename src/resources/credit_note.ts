@@ -570,9 +570,15 @@ export namespace _credit_note {
     entity_id?: string;
   }
   export interface line_item_retrieve_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     subscription_id?: filter._string;
   }
   export interface line_item_retrieve_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     customer_id?: filter._string;
   }
   export interface transaction_record_refund_params {

@@ -2246,9 +2246,15 @@ export namespace _invoice {
     status?: filter._enum;
   }
   export interface line_item_retrieve_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     subscription_id?: filter._string;
   }
   export interface line_item_retrieve_params {
+    /**
+     * @deprecated Please refer API docs to use other attributes
+     */
     customer_id?: filter._string;
   }
   export interface payment_reference_number_invoice_list_payment_reference_numbers_params {

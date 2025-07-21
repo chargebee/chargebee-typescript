@@ -1009,6 +1009,8 @@ export namespace _subscription {
   }
   export interface remove_scheduled_cancellation_params {
     billing_cycles?: number;
+    contract_term_billing_cycle_on_renewal?: number;
+    contract_term?: contract_term_remove_scheduled_cancellation_params;
   }
   export interface remove_coupons_params {
     coupon_ids?: Array<string>;
@@ -2105,6 +2107,12 @@ export namespace _subscription {
   }
   export interface subscription_items_create_with_items_params {
     usage_accumulation_reset_frequency?: string;
+  }
+  export interface contract_term_remove_scheduled_cancellation_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_remove_scheduled_cancellation_params {
+    cancellation_cutoff_period?: number;
   }
   export interface card_update_params {
     /**

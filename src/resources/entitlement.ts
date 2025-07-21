@@ -74,6 +74,7 @@ export namespace _entitlement {
   }
   export interface create_params {
     action: string;
+    change_reason?: string;
     entitlements?: Array<entitlements_create_params>;
   }
   export interface entitlements_create_params {
@@ -87,5 +88,8 @@ export namespace _entitlement {
   }
   export interface entitlements_create_params {
     value?: string;
+  }
+  export interface entitlements_create_params {
+    apply_grandfathering?: boolean;
   }
 }

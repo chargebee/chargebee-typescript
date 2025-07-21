@@ -157,6 +157,9 @@ export {QuotedRamp} from "./quoted_ramp";
 export {LineItem as QuotedRampLineItem} from "./quoted_ramp";
 export {Discount as QuotedRampDiscount} from "./quoted_ramp";
 export {ItemTier as QuotedRampItemTier} from "./quoted_ramp";
+export {CouponApplicabilityMapping as QuotedRampCouponApplicabilityMapping} from "./quoted_ramp";
+export {BillingConfiguration} from "./billing_configuration";
+export {BillingDate as BillingConfigurationBillingDate} from "./billing_configuration";
 export {QuoteLineGroup} from "./quote_line_group";
 export {LineItem as QuoteLineGroupLineItem} from "./quote_line_group";
 export {Discount as QuoteLineGroupDiscount} from "./quote_line_group";
@@ -260,3 +263,4 @@ export {CurrentState as OmnichannelSubscriptionItemScheduledChangeCurrentState} 
 export {ScheduledState as OmnichannelSubscriptionItemScheduledChangeScheduledState} from "./omnichannel_subscription_item_scheduled_change";
 export {UsageFile} from "./usage_file";
 export {UploadDetail as UsageFileUploadDetail} from "./usage_file";
+export {Brand} from "./brand";

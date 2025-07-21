@@ -72,6 +72,7 @@ export namespace _recorded_purchase {
     customer?: customer_create_params;
     apple_app_store?: apple_app_store_create_params;
     google_play_store?: google_play_store_create_params;
+    omnichannel_subscription?: omnichannel_subscription_create_params;
   }
   export interface customer_create_params {
     id: string;
@@ -87,5 +88,8 @@ export namespace _recorded_purchase {
   }
   export interface google_play_store_create_params {
     purchase_token?: string;
+  }
+  export interface omnichannel_subscription_create_params {
+    id?: string;
   }
 }
