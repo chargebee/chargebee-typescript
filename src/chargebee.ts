@@ -29,6 +29,7 @@ export {_quote} from "./resources/quote";
 export {_quoted_subscription} from "./resources/quoted_subscription";
 export {_quoted_charge} from "./resources/quoted_charge";
 export {_quoted_ramp} from "./resources/quoted_ramp";
+export {_billing_configuration} from "./resources/billing_configuration";
 export {_quote_line_group} from "./resources/quote_line_group";
 export {_plan} from "./resources/plan";
 export {_addon} from "./resources/addon";
@@ -82,6 +83,7 @@ export {_rule} from "./resources/rule";
 export {_usage_event} from "./resources/usage_event";
 export {_omnichannel_subscription_item_scheduled_change} from "./resources/omnichannel_subscription_item_scheduled_change";
 export {_usage_file} from "./resources/usage_file";
+export {_brand} from "./resources/brand";
 
 interface Conf {
     api_key: string
@@ -185,6 +187,9 @@ export class ChargeBee {
     }
     get quoted_ramp() {
         return resources.QuotedRamp;
+    }
+    get billing_configuration() {
+        return resources.BillingConfiguration;
     }
     get quote_line_group() {
         return resources.QuoteLineGroup;
@@ -344,6 +349,9 @@ export class ChargeBee {
     }
     get usage_file() {
         return resources.UsageFile;
+    }
+    get brand() {
+        return resources.Brand;
     }
 }
 

@@ -446,6 +446,21 @@ export class Customer extends Model {
     }, ChargeBee._env)
   }
 
+  public static list_hierarchy_detail(customer_id: string, params?: _customer.customer_list_hierarchy_detail_params):RequestWrapper<ListResult> {
+    return new RequestWrapper([customer_id, params], {
+      'methodName': 'list_hierarchy_detail',
+      'httpMethod': 'GET',
+      'urlPrefix': '/customers',
+      'urlSuffix': '/hierarchy_detail',
+      'hasIdInUrl': true,
+      'isListReq': true,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
+    }, ChargeBee._env)
+  }
+
   public static update_hierarchy_settings(customer_id: string, params?: _customer.update_hierarchy_settings_params):RequestWrapper {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'update_hierarchy_settings',
@@ -748,6 +763,11 @@ export namespace _customer {
     child_account_access?: child_account_access_relationships_params;
   }
   export interface hierarchy_params {
+    hierarchy_operation_type: string;
+  }
+  export interface customer_list_hierarchy_detail_params {
+    limit?: number;
+    offset?: string;
     hierarchy_operation_type: string;
   }
   export interface update_hierarchy_settings_params {

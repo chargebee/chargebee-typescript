@@ -263,9 +263,17 @@ export class Result {
         let _quoted_ramp = this.get(
             'quoted_ramp',
             'QuotedRamp',
-            {'line_items': 'QuotedRampLineItem', 'discounts': 'QuotedRampDiscount', 'item_tiers': 'QuotedRampItemTier'}
+            {'line_items': 'QuotedRampLineItem', 'discounts': 'QuotedRampDiscount', 'item_tiers': 'QuotedRampItemTier', 'coupon_applicability_mappings': 'QuotedRampCouponApplicabilityMapping'}
         );
         return _quoted_ramp;
+    }
+    get billing_configuration(): resources.BillingConfiguration {
+        let _billing_configuration = this.get(
+            'billing_configuration',
+            'BillingConfiguration',
+            {'billing_dates': 'BillingConfigurationBillingDate'}
+        );
+        return _billing_configuration;
     }
     get quote_line_group(): resources.QuoteLineGroup {
         let _quote_line_group = this.get(
@@ -668,6 +676,13 @@ export class Result {
             {'upload_detail': 'UsageFileUploadDetail'}
         );
         return _usage_file;
+    }
+    get brand(): resources.Brand {
+        let _brand = this.get(
+            'brand',
+            'Brand'
+        );
+        return _brand;
     }
 
     get advance_invoice_schedules(): resources.AdvanceInvoiceSchedule[] {

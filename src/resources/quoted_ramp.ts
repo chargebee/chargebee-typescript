@@ -9,6 +9,7 @@ export class QuotedRamp extends Model {
   public line_items?: Array<LineItem>;
   public discounts?: Array<Discount>;
   public item_tiers?: Array<ItemTier>;
+  public coupon_applicability_mappings?: Array<CouponApplicabilityMapping>;
 
   
 
@@ -39,16 +40,10 @@ export class LineItem extends Model {
   public start_date?: number;
   public end_date?: number;
   public ramp_tier_id?: string;
-  public discount_amount?: number;
-  public md_discount_amount?: string;
-  public item_level_discount_amount?: number;
-  public md_item_level_discount_amount?: string;
   public discount_per_billing_cycle?: number;
   public discount_per_billing_cycle_in_decimal?: string;
   public item_level_discount_per_billing_cycle?: number;
   public item_level_discount_per_billing_cycle_in_decimal?: string;
-  public net_amount?: number;
-  public md_net_amount?: string;
   public amount_per_billing_cycle?: number;
   public amount_per_billing_cycle_in_decimal?: string;
   public net_amount_per_billing_cycle?: number;
@@ -57,7 +52,6 @@ export class LineItem extends Model {
 
 export class Discount extends Model {
   public id: string;
-  public name: string;
   public invoice_name?: string;
   public type: string;
   public percentage?: number;
@@ -69,7 +63,6 @@ export class Discount extends Model {
   public period_unit?: string;
   public included_in_mrr: boolean;
   public apply_on: string;
-  public apply_on_item_type?: string;
   public item_price_id?: string;
   public created_at: number;
   public updated_at?: number;
@@ -86,7 +79,14 @@ export class ItemTier extends Model {
   public ending_unit_in_decimal?: string;
   public price_in_decimal?: string;
   public ramp_tier_id?: string;
+  public pricing_type?: string;
+  public package_size?: number;
 } // ~ItemTier
+
+export class CouponApplicabilityMapping extends Model {
+  public coupon_id?: string;
+  public applicable_item_price_ids?: Array<string>;
+} // ~CouponApplicabilityMapping
 
 
 
