@@ -7,36 +7,37 @@ import {filter} from "../filter";
 
 export class Invoice extends Model {
   public id: string;
-  public po_number?: string;
   public customer_id: string;
+  public payment_owner?: string;
   public subscription_id?: string;
   public recurring: boolean;
   public status: string;
-  public vat_number?: string;
-  public price_type: string;
   public date?: number;
   public due_date?: number;
   public net_term_days?: number;
+  public po_number?: string;
+  public vat_number?: string;
+  public price_type: string;
   public exchange_rate?: number;
+  public local_currency_exchange_rate?: number;
   public currency_code: string;
+  public local_currency_code?: string;
+  public tax: number;
+  public sub_total: number;
+  public sub_total_in_local_currency?: number;
   public total?: number;
-  public amount_paid?: number;
+  public total_in_local_currency?: number;
+  public amount_due?: number;
   public amount_adjusted?: number;
+  public amount_paid?: number;
+  public paid_at?: number;
   public write_off_amount?: number;
   public credits_applied?: number;
-  public amount_due?: number;
-  public paid_at?: number;
   public dunning_status?: string;
   public next_retry_at?: number;
   public voided_at?: number;
   public resource_version?: number;
   public updated_at?: number;
-  public sub_total: number;
-  public sub_total_in_local_currency?: number;
-  public total_in_local_currency?: number;
-  public local_currency_code?: string;
-  public tax: number;
-  public local_currency_exchange_rate?: number;
   public first_invoice?: boolean;
   public new_sales_amount?: number;
   public has_advance_charges?: boolean;
@@ -47,12 +48,14 @@ export class Invoice extends Model {
   public amount_to_collect?: number;
   public round_off_amount?: number;
   public line_items?: Array<LineItem>;
-  public discounts?: Array<Discount>;
+  public line_item_tiers?: Array<LineItemTier>;
   public line_item_discounts?: Array<LineItemDiscount>;
-  public taxes?: Array<Tax>;
   public line_item_taxes?: Array<LineItemTax>;
   public line_item_credits?: Array<LineItemCredit>;
-  public line_item_tiers?: Array<LineItemTier>;
+  public line_item_addresses?: Array<LineItemAddress>;
+  public discounts?: Array<Discount>;
+  public taxes?: Array<Tax>;
+  public tax_origin?: TaxOrigin;
   public linked_payments?: Array<LinkedPayment>;
   public dunning_attempts?: Array<DunningAttempt>;
   public applied_credits?: Array<AppliedCredit>;
@@ -61,10 +64,9 @@ export class Invoice extends Model {
   public linked_orders?: Array<LinkedOrder>;
   public notes?: Array<Note>;
   public shipping_address?: ShippingAddress;
-  public statement_descriptor?: StatementDescriptor;
   public billing_address?: BillingAddress;
+  public statement_descriptor?: StatementDescriptor;
   public einvoice?: Einvoice;
-  public payment_owner?: string;
   public void_reason_code?: string;
   public deleted: boolean;
   public tax_category?: string;
@@ -72,8 +74,6 @@ export class Invoice extends Model {
   public channel?: string;
   public business_entity_id?: string;
   public site_details_at_creation?: SiteDetailsAtCreation;
-  public tax_origin?: TaxOrigin;
-  public line_item_addresses?: Array<LineItemAddress>;
 
   
 
@@ -714,14 +714,19 @@ export class LineItem extends Model {
   public customer_id?: string;
 } // ~LineItem
 
-export class Discount extends Model {
-  public amount: number;
-  public description?: string;
-  public entity_type: string;
-  public discount_type?: string;
-  public entity_id?: string;
-  public coupon_set_code?: string;
-} // ~Discount
+export class LineItemTier extends Model {
+  public line_item_id?: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public quantity_used: number;
+  public unit_amount: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public quantity_used_in_decimal?: string;
+  public unit_amount_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
+} // ~LineItemTier
 
 export class LineItemDiscount extends Model {
   public line_item_id: string;
@@ -730,12 +735,6 @@ export class LineItemDiscount extends Model {
   public entity_id?: string;
   public discount_amount: number;
 } // ~LineItemDiscount
-
-export class Tax extends Model {
-  public name: string;
-  public amount: number;
-  public description?: string;
-} // ~Tax
 
 export class LineItemTax extends Model {
   public line_item_id?: string;
@@ -761,19 +760,43 @@ export class LineItemCredit extends Model {
   public line_item_id?: string;
 } // ~LineItemCredit
 
-export class LineItemTier extends Model {
+export class LineItemAddress extends Model {
   public line_item_id?: string;
-  public starting_unit: number;
-  public ending_unit?: number;
-  public quantity_used: number;
-  public unit_amount: number;
-  public starting_unit_in_decimal?: string;
-  public ending_unit_in_decimal?: string;
-  public quantity_used_in_decimal?: string;
-  public unit_amount_in_decimal?: string;
-  public pricing_type?: string;
-  public package_size?: number;
-} // ~LineItemTier
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~LineItemAddress
+
+export class Discount extends Model {
+  public amount: number;
+  public description?: string;
+  public entity_type: string;
+  public discount_type?: string;
+  public entity_id?: string;
+  public coupon_set_code?: string;
+} // ~Discount
+
+export class Tax extends Model {
+  public name: string;
+  public amount: number;
+  public description?: string;
+} // ~Tax
+
+export class TaxOrigin extends Model {
+  public country?: string;
+  public registration_number?: string;
+} // ~TaxOrigin
 
 export class LinkedPayment extends Model {
   public txn_id: string;
@@ -857,11 +880,6 @@ export class ShippingAddress extends Model {
   public index: number;
 } // ~ShippingAddress
 
-export class StatementDescriptor extends Model {
-  public id: string;
-  public descriptor?: string;
-} // ~StatementDescriptor
-
 export class BillingAddress extends Model {
   public first_name?: string;
   public last_name?: string;
@@ -879,6 +897,11 @@ export class BillingAddress extends Model {
   public validation_status?: string;
 } // ~BillingAddress
 
+export class StatementDescriptor extends Model {
+  public id: string;
+  public descriptor?: string;
+} // ~StatementDescriptor
+
 export class Einvoice extends Model {
   public id: string;
   public reference_number?: string;
@@ -890,29 +913,6 @@ export class SiteDetailsAtCreation extends Model {
   public timezone?: string;
   public organization_address?: any;
 } // ~SiteDetailsAtCreation
-
-export class TaxOrigin extends Model {
-  public country?: string;
-  public registration_number?: string;
-} // ~TaxOrigin
-
-export class LineItemAddress extends Model {
-  public line_item_id?: string;
-  public first_name?: string;
-  public last_name?: string;
-  public email?: string;
-  public company?: string;
-  public phone?: string;
-  public line1?: string;
-  public line2?: string;
-  public line3?: string;
-  public city?: string;
-  public state_code?: string;
-  public state?: string;
-  public country?: string;
-  public zip?: string;
-  public validation_status?: string;
-} // ~LineItemAddress
 
 
 
@@ -1835,6 +1835,9 @@ export namespace _invoice {
     amount?: number;
   }
   export interface discounts_create_for_charge_items_and_charges_params {
+    quantity?: number;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
     apply_on: string;
   }
   export interface discounts_create_for_charge_items_and_charges_params {
@@ -2163,6 +2166,9 @@ export namespace _invoice {
   }
   export interface taxes_import_invoice_params {
     juris_code?: string;
+  }
+  export interface payments_import_invoice_params {
+    id?: string;
   }
   export interface payments_import_invoice_params {
     amount: number;

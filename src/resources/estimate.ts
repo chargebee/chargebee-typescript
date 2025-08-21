@@ -945,6 +945,9 @@ export namespace _estimate {
   export interface discounts_create_sub_item_estimate_params {
     item_price_id?: string;
   }
+  export interface discounts_create_sub_item_estimate_params {
+    quantity?: number;
+  }
   export interface subscription_items_create_sub_item_estimate_params {
     charge_on_option?: string;
   }
@@ -1256,6 +1259,9 @@ export namespace _estimate {
   }
   export interface discounts_create_sub_item_for_customer_estimate_params {
     item_price_id?: string;
+  }
+  export interface discounts_create_sub_item_for_customer_estimate_params {
+    quantity?: number;
   }
   export interface subscription_items_create_sub_item_for_customer_estimate_params {
     charge_on_option?: string;
@@ -1616,6 +1622,9 @@ export namespace _estimate {
   }
   export interface discounts_update_subscription_for_items_params {
     item_price_id?: string;
+  }
+  export interface discounts_update_subscription_for_items_params {
+    quantity?: number;
   }
   export interface discounts_update_subscription_for_items_params {
     operation_type: string;
@@ -2243,6 +2252,9 @@ export namespace _estimate {
   }
   export interface discounts_create_invoice_for_items_params {
     amount?: number;
+  }
+  export interface discounts_create_invoice_for_items_params {
+    quantity?: number;
   }
   export interface discounts_create_invoice_for_items_params {
     apply_on: string;

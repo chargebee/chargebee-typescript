@@ -1729,6 +1729,9 @@ export namespace _quote {
   export interface discounts_create_sub_items_for_customer_quote_params {
     item_price_id?: string;
   }
+  export interface discounts_create_sub_items_for_customer_quote_params {
+    quantity?: number;
+  }
   export interface subscription_items_create_sub_items_for_customer_quote_params {
     charge_on_option?: string;
   }
@@ -1956,6 +1959,9 @@ export namespace _quote {
   }
   export interface discounts_edit_create_sub_customer_quote_for_items_params {
     item_price_id?: string;
+  }
+  export interface discounts_edit_create_sub_customer_quote_for_items_params {
+    quantity?: number;
   }
   export interface subscription_items_edit_create_sub_customer_quote_for_items_params {
     charge_on_option?: string;
@@ -2207,6 +2213,9 @@ export namespace _quote {
     item_price_id?: string;
   }
   export interface discounts_update_subscription_quote_for_items_params {
+    quantity?: number;
+  }
+  export interface discounts_update_subscription_quote_for_items_params {
     operation_type: string;
   }
   export interface discounts_update_subscription_quote_for_items_params {
@@ -2456,6 +2465,9 @@ export namespace _quote {
     item_price_id?: string;
   }
   export interface discounts_edit_update_subscription_quote_for_items_params {
+    quantity?: number;
+  }
+  export interface discounts_edit_update_subscription_quote_for_items_params {
     operation_type: string;
   }
   export interface discounts_edit_update_subscription_quote_for_items_params {
@@ -2669,6 +2681,9 @@ export namespace _quote {
     percentage?: number;
   }
   export interface discounts_create_for_charge_items_and_charges_params {
+    quantity?: number;
+  }
+  export interface discounts_create_for_charge_items_and_charges_params {
     amount?: number;
   }
   export interface discounts_create_for_charge_items_and_charges_params {
@@ -2838,6 +2853,9 @@ export namespace _quote {
   }
   export interface discounts_edit_for_charge_items_and_charges_params {
     percentage?: number;
+  }
+  export interface discounts_edit_for_charge_items_and_charges_params {
+    quantity?: number;
   }
   export interface discounts_edit_for_charge_items_and_charges_params {
     amount?: number;

@@ -26,12 +26,12 @@ export class UsageFile extends Model {
   // OPERATIONS
   //-----------
 
-  public static upload(params?: _usage_file.upload_params):RequestWrapper {
+  public static upload_url(params?: _usage_file.upload_url_params):RequestWrapper {
     return new RequestWrapper([params], {
-      'methodName': 'upload',
+      'methodName': 'upload_url',
       'httpMethod': 'POST',
       'urlPrefix': '/usage_files',
-      'urlSuffix': '/upload',
+      'urlSuffix': '/upload_url',
       'hasIdInUrl': false,
       'isListReq': false,
       'subDomain':  'file-ingest',
@@ -41,12 +41,12 @@ export class UsageFile extends Model {
     }, ChargeBee._env)
   }
 
-  public static status(usage_file_id: string, params?: any):RequestWrapper {
+  public static processing_status(usage_file_id: string, params?: any):RequestWrapper {
     return new RequestWrapper([usage_file_id, params], {
-      'methodName': 'status',
+      'methodName': 'processing_status',
       'httpMethod': 'GET',
       'urlPrefix': '/usage_files',
-      'urlSuffix': '/status',
+      'urlSuffix': '/processing_status',
       'hasIdInUrl': true,
       'isListReq': false,
       'subDomain':  'file-ingest',
@@ -69,7 +69,7 @@ export class UploadDetail extends Model {
   //---------------
 
 export namespace _usage_file {
-  export interface upload_params {
+  export interface upload_url_params {
     file_name: string;
     mime_type: string;
   }

@@ -18,6 +18,7 @@ export class PromotionalCredit extends Model {
   public closing_balance: number;
   public done_by?: string;
   public created_at: number;
+  public business_entity_id?: string;
 
   
 

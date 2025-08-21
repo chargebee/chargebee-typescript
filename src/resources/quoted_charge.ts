@@ -10,6 +10,7 @@ export class QuotedCharge extends Model {
   public invoice_items?: Array<InvoiceItem>;
   public item_tiers?: Array<ItemTier>;
   public coupons?: Array<Coupon>;
+  public coupon_applicability_mappings?: Array<CouponApplicabilityMapping>;
 
   
 
@@ -63,6 +64,11 @@ export class ItemTier extends Model {
 export class Coupon extends Model {
   public coupon_id: string;
 } // ~Coupon
+
+export class CouponApplicabilityMapping extends Model {
+  public coupon_id?: string;
+  public applicable_item_price_ids?: Array<string>;
+} // ~CouponApplicabilityMapping
 
 
 

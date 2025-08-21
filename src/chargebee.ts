@@ -79,11 +79,17 @@ export {_omnichannel_subscription} from "./resources/omnichannel_subscription";
 export {_omnichannel_transaction} from "./resources/omnichannel_transaction";
 export {_omnichannel_subscription_item} from "./resources/omnichannel_subscription_item";
 export {_recorded_purchase} from "./resources/recorded_purchase";
+export {_omnichannel_one_time_order} from "./resources/omnichannel_one_time_order";
+export {_omnichannel_one_time_order_item} from "./resources/omnichannel_one_time_order_item";
 export {_rule} from "./resources/rule";
 export {_usage_event} from "./resources/usage_event";
 export {_omnichannel_subscription_item_scheduled_change} from "./resources/omnichannel_subscription_item_scheduled_change";
 export {_usage_file} from "./resources/usage_file";
 export {_brand} from "./resources/brand";
+export {_webhook_endpoint} from "./resources/webhook_endpoint";
+export {_impacted_customer} from "./resources/impacted_customer";
+export {_subscription_entitlements_updated_detail} from "./resources/subscription_entitlements_updated_detail";
+export {_subscription_entitlements_created_detail} from "./resources/subscription_entitlements_created_detail";
 
 interface Conf {
     api_key: string
@@ -338,6 +344,12 @@ export class ChargeBee {
     get recorded_purchase() {
         return resources.RecordedPurchase;
     }
+    get omnichannel_one_time_order() {
+        return resources.OmnichannelOneTimeOrder;
+    }
+    get omnichannel_one_time_order_item() {
+        return resources.OmnichannelOneTimeOrderItem;
+    }
     get rule() {
         return resources.Rule;
     }
@@ -352,6 +364,18 @@ export class ChargeBee {
     }
     get brand() {
         return resources.Brand;
+    }
+    get webhook_endpoint() {
+        return resources.WebhookEndpoint;
+    }
+    get impacted_customer() {
+        return resources.ImpactedCustomer;
+    }
+    get subscription_entitlements_updated_detail() {
+        return resources.SubscriptionEntitlementsUpdatedDetail;
+    }
+    get subscription_entitlements_created_detail() {
+        return resources.SubscriptionEntitlementsCreatedDetail;
     }
 }
 

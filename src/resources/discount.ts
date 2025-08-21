@@ -10,6 +10,7 @@ export class Discount extends Model {
   public type: string;
   public percentage?: number;
   public amount?: number;
+  public quantity?: number;
   public currency_code?: string;
   public duration_type: string;
   public period?: number;

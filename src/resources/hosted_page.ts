@@ -1239,6 +1239,9 @@ export namespace _hosted_page {
     amount?: number;
   }
   export interface discounts_checkout_one_time_for_items_params {
+    quantity?: number;
+  }
+  export interface discounts_checkout_one_time_for_items_params {
     apply_on: string;
   }
   export interface discounts_checkout_one_time_for_items_params {
@@ -1489,6 +1492,9 @@ export namespace _hosted_page {
   }
   export interface discounts_checkout_new_for_items_params {
     item_price_id?: string;
+  }
+  export interface discounts_checkout_new_for_items_params {
+    quantity?: number;
   }
   export interface subscription_items_checkout_new_for_items_params {
     charge_on_option?: string;
@@ -1771,6 +1777,9 @@ export namespace _hosted_page {
   }
   export interface discounts_checkout_existing_for_items_params {
     item_price_id?: string;
+  }
+  export interface discounts_checkout_existing_for_items_params {
+    quantity?: number;
   }
   export interface discounts_checkout_existing_for_items_params {
     operation_type: string;

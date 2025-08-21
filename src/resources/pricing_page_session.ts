@@ -205,6 +205,9 @@ export namespace _pricing_page_session {
     item_price_id?: string;
   }
   export interface discounts_create_for_new_subscription_params {
+    quantity?: number;
+  }
+  export interface discounts_create_for_new_subscription_params {
     label?: string;
   }
   export interface pricing_page_create_for_existing_subscription_params {
@@ -236,6 +239,9 @@ export namespace _pricing_page_session {
   }
   export interface discounts_create_for_existing_subscription_params {
     item_price_id?: string;
+  }
+  export interface discounts_create_for_existing_subscription_params {
+    quantity?: number;
   }
   export interface discounts_create_for_existing_subscription_params {
     label?: string;

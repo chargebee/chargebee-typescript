@@ -14,6 +14,7 @@ export class RecordedPurchase extends Model {
   public created_at: number;
   public resource_version?: number;
   public linked_omnichannel_subscriptions?: Array<LinkedOmnichannelSubscription>;
+  public linked_omnichannel_one_time_orders?: Array<LinkedOmnichannelOneTimeOrder>;
   public error_detail?: ErrorDetail;
 
   
@@ -57,6 +58,10 @@ export class LinkedOmnichannelSubscription extends Model {
   public omnichannel_subscription_id?: string;
 } // ~LinkedOmnichannelSubscription
 
+export class LinkedOmnichannelOneTimeOrder extends Model {
+  public omnichannel_one_time_order_id?: string;
+} // ~LinkedOmnichannelOneTimeOrder
+
 export class ErrorDetail extends Model {
   public error_message?: string;
 } // ~ErrorDetail
@@ -88,6 +93,12 @@ export namespace _recorded_purchase {
   }
   export interface google_play_store_create_params {
     purchase_token?: string;
+  }
+  export interface google_play_store_create_params {
+    product_id?: string;
+  }
+  export interface google_play_store_create_params {
+    order_id?: string;
   }
   export interface omnichannel_subscription_create_params {
     id?: string;
