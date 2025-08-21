@@ -1169,6 +1169,9 @@ export namespace _customer {
     id: string;
   }
   export interface transaction_record_excess_payment_params {
+    id?: string;
+  }
+  export interface transaction_record_excess_payment_params {
     amount: number;
   }
   export interface transaction_record_excess_payment_params {

@@ -218,6 +218,9 @@ export namespace _purchase {
     percentage?: number;
   }
   export interface discounts_create_params {
+    quantity?: number;
+  }
+  export interface discounts_create_params {
     amount?: number;
   }
   export interface discounts_create_params {
@@ -387,6 +390,9 @@ export namespace _purchase {
   }
   export interface discounts_estimate_params {
     percentage?: number;
+  }
+  export interface discounts_estimate_params {
+    quantity?: number;
   }
   export interface discounts_estimate_params {
     amount?: number;

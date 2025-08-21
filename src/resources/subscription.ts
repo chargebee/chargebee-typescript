@@ -813,6 +813,7 @@ export class Discount extends Model {
   public type: string;
   public percentage?: number;
   public amount?: number;
+  public quantity?: number;
   public currency_code?: string;
   public duration_type: string;
   public period?: number;
@@ -2063,6 +2064,9 @@ export namespace _subscription {
   export interface discounts_create_with_items_params {
     item_price_id?: string;
   }
+  export interface discounts_create_with_items_params {
+    quantity?: number;
+  }
   export interface subscription_items_create_with_items_params {
     charge_on_option?: string;
   }
@@ -2713,6 +2717,9 @@ export namespace _subscription {
   }
   export interface discounts_update_for_items_params {
     item_price_id?: string;
+  }
+  export interface discounts_update_for_items_params {
+    quantity?: number;
   }
   export interface discounts_update_for_items_params {
     operation_type: string;
@@ -3550,6 +3557,9 @@ export namespace _subscription {
   }
   export interface discounts_import_for_items_params {
     item_price_id?: string;
+  }
+  export interface discounts_import_for_items_params {
+    quantity?: number;
   }
   export interface charged_items_import_for_items_params {
     item_price_id?: string;

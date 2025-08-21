@@ -27,7 +27,6 @@ export class CreditNote extends Model {
   public resource_version?: number;
   public updated_at?: number;
   public channel?: string;
-  public einvoice?: Einvoice;
   public sub_total: number;
   public sub_total_in_local_currency?: number;
   public total_in_local_currency?: number;
@@ -35,11 +34,13 @@ export class CreditNote extends Model {
   public round_off_amount?: number;
   public fractional_correction?: number;
   public line_items?: Array<LineItem>;
-  public discounts?: Array<Discount>;
-  public line_item_discounts?: Array<LineItemDiscount>;
   public line_item_tiers?: Array<LineItemTier>;
-  public taxes?: Array<Tax>;
+  public line_item_discounts?: Array<LineItemDiscount>;
   public line_item_taxes?: Array<LineItemTax>;
+  public line_item_addresses?: Array<LineItemAddress>;
+  public discounts?: Array<Discount>;
+  public taxes?: Array<Tax>;
+  public tax_origin?: TaxOrigin;
   public linked_refunds?: Array<LinkedRefund>;
   public allocations?: Array<Allocation>;
   public deleted: boolean;
@@ -50,9 +51,8 @@ export class CreditNote extends Model {
   public business_entity_id?: string;
   public shipping_address?: ShippingAddress;
   public billing_address?: BillingAddress;
+  public einvoice?: Einvoice;
   public site_details_at_creation?: SiteDetailsAtCreation;
-  public tax_origin?: TaxOrigin;
-  public line_item_addresses?: Array<LineItemAddress>;
 
   
 
@@ -271,13 +271,6 @@ export class CreditNote extends Model {
 
 } // ~CreditNote
 
-export class Einvoice extends Model {
-  public id: string;
-  public reference_number?: string;
-  public status: string;
-  public message?: string;
-} // ~Einvoice
-
 export class LineItem extends Model {
   public id?: string;
   public subscription_id?: string;
@@ -306,23 +299,6 @@ export class LineItem extends Model {
   public customer_id?: string;
 } // ~LineItem
 
-export class Discount extends Model {
-  public amount: number;
-  public description?: string;
-  public entity_type: string;
-  public discount_type?: string;
-  public entity_id?: string;
-  public coupon_set_code?: string;
-} // ~Discount
-
-export class LineItemDiscount extends Model {
-  public line_item_id: string;
-  public discount_type: string;
-  public coupon_id?: string;
-  public entity_id?: string;
-  public discount_amount: number;
-} // ~LineItemDiscount
-
 export class LineItemTier extends Model {
   public line_item_id?: string;
   public starting_unit: number;
@@ -337,11 +313,13 @@ export class LineItemTier extends Model {
   public package_size?: number;
 } // ~LineItemTier
 
-export class Tax extends Model {
-  public name: string;
-  public amount: number;
-  public description?: string;
-} // ~Tax
+export class LineItemDiscount extends Model {
+  public line_item_id: string;
+  public discount_type: string;
+  public coupon_id?: string;
+  public entity_id?: string;
+  public discount_amount: number;
+} // ~LineItemDiscount
 
 export class LineItemTax extends Model {
   public line_item_id?: string;
@@ -360,6 +338,44 @@ export class LineItemTax extends Model {
   public tax_amount_in_local_currency?: number;
   public local_currency_code?: string;
 } // ~LineItemTax
+
+export class LineItemAddress extends Model {
+  public line_item_id?: string;
+  public first_name?: string;
+  public last_name?: string;
+  public email?: string;
+  public company?: string;
+  public phone?: string;
+  public line1?: string;
+  public line2?: string;
+  public line3?: string;
+  public city?: string;
+  public state_code?: string;
+  public state?: string;
+  public country?: string;
+  public zip?: string;
+  public validation_status?: string;
+} // ~LineItemAddress
+
+export class Discount extends Model {
+  public amount: number;
+  public description?: string;
+  public entity_type: string;
+  public discount_type?: string;
+  public entity_id?: string;
+  public coupon_set_code?: string;
+} // ~Discount
+
+export class Tax extends Model {
+  public name: string;
+  public amount: number;
+  public description?: string;
+} // ~Tax
+
+export class TaxOrigin extends Model {
+  public country?: string;
+  public registration_number?: string;
+} // ~TaxOrigin
 
 export class LinkedRefund extends Model {
   public txn_id: string;
@@ -415,33 +431,17 @@ export class BillingAddress extends Model {
   public validation_status?: string;
 } // ~BillingAddress
 
+export class Einvoice extends Model {
+  public id: string;
+  public reference_number?: string;
+  public status: string;
+  public message?: string;
+} // ~Einvoice
+
 export class SiteDetailsAtCreation extends Model {
   public timezone?: string;
   public organization_address?: any;
 } // ~SiteDetailsAtCreation
-
-export class TaxOrigin extends Model {
-  public country?: string;
-  public registration_number?: string;
-} // ~TaxOrigin
-
-export class LineItemAddress extends Model {
-  public line_item_id?: string;
-  public first_name?: string;
-  public last_name?: string;
-  public email?: string;
-  public company?: string;
-  public phone?: string;
-  public line1?: string;
-  public line2?: string;
-  public line3?: string;
-  public city?: string;
-  public state_code?: string;
-  public state?: string;
-  public country?: string;
-  public zip?: string;
-  public validation_status?: string;
-} // ~LineItemAddress
 
 
 
@@ -580,6 +580,9 @@ export namespace _credit_note {
      * @deprecated Please refer API docs to use other attributes
      */
     customer_id?: filter._string;
+  }
+  export interface transaction_record_refund_params {
+    id?: string;
   }
   export interface transaction_record_refund_params {
     amount?: number;
@@ -784,6 +787,9 @@ export namespace _credit_note {
   }
   export interface allocations_import_credit_note_params {
     allocated_at: number;
+  }
+  export interface linked_refunds_import_credit_note_params {
+    id?: string;
   }
   export interface linked_refunds_import_credit_note_params {
     amount: number;

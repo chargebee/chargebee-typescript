@@ -13,6 +13,7 @@ export class Comment extends Model {
   public created_at: number;
   public type: string;
   public entity_id: string;
+  public business_entity_id?: string;
 
   
 

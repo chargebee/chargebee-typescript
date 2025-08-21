@@ -18,7 +18,7 @@ export class CustomerEntitlement extends Model {
   // OPERATIONS
   //-----------
 
-  public static entitlements_for_customer(customer_id: string, params?: any):RequestWrapper<ListResult> {
+  public static entitlements_for_customer(customer_id: string, params?: _customer_entitlement.customer_entitlement_entitlements_for_customer_params):RequestWrapper<ListResult> {
     return new RequestWrapper([customer_id, params], {
       'methodName': 'entitlements_for_customer',
       'httpMethod': 'GET',
@@ -41,4 +41,9 @@ export class CustomerEntitlement extends Model {
   //---------------
 
 export namespace _customer_entitlement {
+  export interface customer_entitlement_entitlements_for_customer_params {
+    limit?: number;
+    offset?: string;
+    consolidate_entitlements?: boolean;
+  }
 }
