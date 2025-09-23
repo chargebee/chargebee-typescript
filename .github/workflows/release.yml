@@ -57,6 +57,6 @@ jobs:
           echo "✓ Tag and package version match correctly"
           
       - name: Publish to NPM
-        run: npm publish --tag latest --//registry.npmjs.org/:_authToken="$NPM_TOKEN"
+        run: npm publish --tag latest --//registry.npmjs.org/:_authToken="$NODE_AUTH_TOKEN"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
