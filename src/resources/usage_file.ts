@@ -19,6 +19,8 @@ export class UsageFile extends Model {
   public processing_completed_at?: number;
   public uploaded_by?: string;
   public uploaded_at?: number;
+  public error_file_path?: string;
+  public error_file_url?: string;
   public upload_details?: UploadDetail;
 
   

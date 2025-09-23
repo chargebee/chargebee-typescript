@@ -877,7 +877,6 @@ export class ShippingAddress extends Model {
   public country?: string;
   public zip?: string;
   public validation_status?: string;
-  public index: number;
 } // ~ShippingAddress
 
 export class BillingAddress extends Model {

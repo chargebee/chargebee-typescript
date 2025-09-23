@@ -1284,6 +1284,9 @@ export namespace _hosted_page {
     auto_collection?: string;
   }
   export interface subscription_checkout_new_for_items_params {
+    offline_payment_method?: string;
+  }
+  export interface subscription_checkout_new_for_items_params {
     invoice_notes?: string;
   }
   export interface subscription_checkout_new_for_items_params {

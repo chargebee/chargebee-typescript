@@ -14,7 +14,7 @@ export class OmnichannelSubscription extends Model {
   public created_at: number;
   public resource_version?: number;
   public omnichannel_subscription_items: Array<resources.OmnichannelSubscriptionItem>;
-  public initial_purchase_transaction?: OmnichannelTransaction;
+  public initial_purchase_transaction?: resources.OmnichannelTransaction;
 
   
 
@@ -66,20 +66,22 @@ export class OmnichannelSubscription extends Model {
     }, ChargeBee._env)
   }
 
-} // ~OmnichannelSubscription
+  public static move(omnichannel_subscription_id: string, params?: _omnichannel_subscription.move_params):RequestWrapper {
+    return new RequestWrapper([omnichannel_subscription_id, params], {
+      'methodName': 'move',
+      'httpMethod': 'POST',
+      'urlPrefix': '/omnichannel_subscriptions',
+      'urlSuffix': '/move',
+      'hasIdInUrl': true,
+      'isListReq': false,
+      'subDomain': null,
+      'isOperationNeedsJsonInput': false,
+      'jsonKeys': { 
+      }
+    }, ChargeBee._env)
+  }
 
-export class OmnichannelTransaction extends Model {
-  public id: string;
-  public id_at_source: string;
-  public app_id: string;
-  public price_currency?: string;
-  public price_units?: number;
-  public price_nanos?: number;
-  public type: string;
-  public transacted_at?: number;
-  public created_at: number;
-  public resource_version?: number;
-} // ~OmnichannelTransaction
+} // ~OmnichannelSubscription
 
 
 
@@ -92,5 +94,8 @@ export namespace _omnichannel_subscription {
     offset?: string;
     source?: filter._enum;
     customer_id?: filter._string;
+  }
+  export interface move_params {
+    to_customer_id: string;
   }
 }

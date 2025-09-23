@@ -22,6 +22,7 @@ export class Ramp extends Model {
   public items_to_remove?: Array<string>;
   public coupons_to_remove?: Array<string>;
   public discounts_to_remove?: Array<string>;
+  public contract_term?: ContractTerm;
   public deleted: boolean;
   public status_transition_reason?: StatusTransitionReason;
 
@@ -121,6 +122,9 @@ export class ItemsToAdd extends Model {
   public billing_cycles?: number;
   public service_period_days?: number;
   public metered_quantity?: string;
+  public charge_once?: boolean;
+  public charge_on_option?: string;
+  public charge_on_event?: string;
 } // ~ItemsToAdd
 
 export class ItemsToUpdate extends Model {
@@ -137,6 +141,9 @@ export class ItemsToUpdate extends Model {
   public billing_cycles?: number;
   public service_period_days?: number;
   public metered_quantity?: string;
+  public charge_once?: boolean;
+  public charge_on_option?: string;
+  public charge_on_event?: string;
 } // ~ItemsToUpdate
 
 export class CouponsToAdd extends Model {
@@ -172,6 +179,12 @@ export class ItemTier extends Model {
   public index: number;
 } // ~ItemTier
 
+export class ContractTerm extends Model {
+  public cancellation_cutoff_period?: number;
+  public renewal_billing_cycles?: number;
+  public action_at_term_end: string;
+} // ~ContractTerm
+
 export class StatusTransitionReason extends Model {
   public code?: string;
   public message?: string;
@@ -189,6 +202,7 @@ export namespace _ramp {
     coupons_to_remove?: Array<string>;
     discounts_to_remove?: Array<string>;
     items_to_remove?: Array<string>;
+    contract_term?: contract_term_create_for_subscription_params;
     items_to_add?: Array<items_to_add_create_for_subscription_params>;
     items_to_update?: Array<items_to_update_create_for_subscription_params>;
     item_tiers?: Array<item_tiers_create_for_subscription_params>;
@@ -201,6 +215,7 @@ export namespace _ramp {
     coupons_to_remove?: Array<string>;
     discounts_to_remove?: Array<string>;
     items_to_remove?: Array<string>;
+    contract_term?: contract_term_update_params;
     items_to_add?: Array<items_to_add_update_params>;
     items_to_update?: Array<items_to_update_update_params>;
     item_tiers?: Array<item_tiers_update_params>;
@@ -218,6 +233,15 @@ export namespace _ramp {
     "sort_by[asc]"?: string;
     "sort_by[desc]"?: string;
   }
+  export interface contract_term_create_for_subscription_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_create_for_subscription_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface contract_term_create_for_subscription_params {
+    renewal_billing_cycles?: number;
+  }
   export interface items_to_add_create_for_subscription_params {
     item_price_id: string;
   }
@@ -239,6 +263,15 @@ export namespace _ramp {
   export interface items_to_add_create_for_subscription_params {
     service_period_days?: number;
   }
+  export interface items_to_add_create_for_subscription_params {
+    charge_on_event?: string;
+  }
+  export interface items_to_add_create_for_subscription_params {
+    charge_once?: boolean;
+  }
+  export interface items_to_add_create_for_subscription_params {
+    charge_on_option?: string;
+  }
   export interface items_to_update_create_for_subscription_params {
     item_price_id: string;
   }
@@ -259,6 +292,15 @@ export namespace _ramp {
   }
   export interface items_to_update_create_for_subscription_params {
     service_period_days?: number;
+  }
+  export interface items_to_update_create_for_subscription_params {
+    charge_on_event?: string;
+  }
+  export interface items_to_update_create_for_subscription_params {
+    charge_once?: boolean;
+  }
+  export interface items_to_update_create_for_subscription_params {
+    charge_on_option?: string;
   }
   export interface item_tiers_create_for_subscription_params {
     item_price_id?: string;
@@ -317,6 +359,15 @@ export namespace _ramp {
   export interface discounts_to_add_create_for_subscription_params {
     item_price_id?: string;
   }
+  export interface contract_term_update_params {
+    action_at_term_end?: string;
+  }
+  export interface contract_term_update_params {
+    cancellation_cutoff_period?: number;
+  }
+  export interface contract_term_update_params {
+    renewal_billing_cycles?: number;
+  }
   export interface items_to_add_update_params {
     item_price_id: string;
   }
@@ -338,6 +389,15 @@ export namespace _ramp {
   export interface items_to_add_update_params {
     service_period_days?: number;
   }
+  export interface items_to_add_update_params {
+    charge_on_event?: string;
+  }
+  export interface items_to_add_update_params {
+    charge_once?: boolean;
+  }
+  export interface items_to_add_update_params {
+    charge_on_option?: string;
+  }
   export interface items_to_update_update_params {
     item_price_id: string;
   }
@@ -358,6 +418,15 @@ export namespace _ramp {
   }
   export interface items_to_update_update_params {
     service_period_days?: number;
+  }
+  export interface items_to_update_update_params {
+    charge_on_event?: string;
+  }
+  export interface items_to_update_update_params {
+    charge_once?: boolean;
+  }
+  export interface items_to_update_update_params {
+    charge_on_option?: string;
   }
   export interface item_tiers_update_params {
     item_price_id?: string;

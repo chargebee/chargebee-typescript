@@ -14,11 +14,11 @@ export class CreditNoteEstimate extends Model {
   public amount_allocated: number;
   public amount_available: number;
   public line_items?: Array<LineItem>;
+  public line_item_tiers?: Array<LineItemTier>;
+  public line_item_discounts?: Array<LineItemDiscount>;
+  public line_item_taxes?: Array<LineItemTax>;
   public discounts?: Array<Discount>;
   public taxes?: Array<Tax>;
-  public line_item_taxes?: Array<LineItemTax>;
-  public line_item_discounts?: Array<LineItemDiscount>;
-  public line_item_tiers?: Array<LineItemTier>;
   public round_off_amount?: number;
   public customer_id?: string;
 
@@ -57,20 +57,27 @@ export class LineItem extends Model {
   public customer_id?: string;
 } // ~LineItem
 
-export class Discount extends Model {
-  public amount: number;
-  public description?: string;
-  public entity_type: string;
-  public discount_type?: string;
-  public entity_id?: string;
-  public coupon_set_code?: string;
-} // ~Discount
+export class LineItemTier extends Model {
+  public line_item_id?: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public quantity_used: number;
+  public unit_amount: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public quantity_used_in_decimal?: string;
+  public unit_amount_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
+} // ~LineItemTier
 
-export class Tax extends Model {
-  public name: string;
-  public amount: number;
-  public description?: string;
-} // ~Tax
+export class LineItemDiscount extends Model {
+  public line_item_id: string;
+  public discount_type: string;
+  public coupon_id?: string;
+  public entity_id?: string;
+  public discount_amount: number;
+} // ~LineItemDiscount
 
 export class LineItemTax extends Model {
   public line_item_id?: string;
@@ -90,27 +97,20 @@ export class LineItemTax extends Model {
   public local_currency_code?: string;
 } // ~LineItemTax
 
-export class LineItemDiscount extends Model {
-  public line_item_id: string;
-  public discount_type: string;
-  public coupon_id?: string;
+export class Discount extends Model {
+  public amount: number;
+  public description?: string;
+  public entity_type: string;
+  public discount_type?: string;
   public entity_id?: string;
-  public discount_amount: number;
-} // ~LineItemDiscount
+  public coupon_set_code?: string;
+} // ~Discount
 
-export class LineItemTier extends Model {
-  public line_item_id?: string;
-  public starting_unit: number;
-  public ending_unit?: number;
-  public quantity_used: number;
-  public unit_amount: number;
-  public starting_unit_in_decimal?: string;
-  public ending_unit_in_decimal?: string;
-  public quantity_used_in_decimal?: string;
-  public unit_amount_in_decimal?: string;
-  public pricing_type?: string;
-  public package_size?: number;
-} // ~LineItemTier
+export class Tax extends Model {
+  public name: string;
+  public amount: number;
+  public description?: string;
+} // ~Tax
 
 
 

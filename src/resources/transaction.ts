@@ -275,6 +275,7 @@ export class GatewayErrorDetail extends Model {
   public processor_error_code?: string;
   public processor_error_message?: string;
   public error_cause_id?: string;
+  public processor_advice_code?: string;
 } // ~GatewayErrorDetail
 
 

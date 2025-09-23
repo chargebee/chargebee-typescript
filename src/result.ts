@@ -201,12 +201,12 @@ export class Result {
         _estimate.init_dependant(
             this.response['estimate'],
             'invoice_estimate',
-            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount', 'line_item_addresses': 'InvoiceEstimateLineItemAddress'}
+            {'line_items': 'InvoiceEstimateLineItem', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_addresses': 'InvoiceEstimateLineItemAddress', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax'}
         );
         _estimate.init_dependant(
             this.response['estimate'],
             'next_invoice_estimate',
-            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount', 'line_item_addresses': 'InvoiceEstimateLineItemAddress'}
+            {'line_items': 'InvoiceEstimateLineItem', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_addresses': 'InvoiceEstimateLineItemAddress', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax'}
         );
         _estimate.init_dependant_list(
             this.response['estimate'],
@@ -216,7 +216,7 @@ export class Result {
         _estimate.init_dependant_list(
             this.response['estimate'],
             'invoice_estimates',
-            {'line_items': 'InvoiceEstimateLineItem', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount', 'line_item_addresses': 'InvoiceEstimateLineItemAddress'}
+            {'line_items': 'InvoiceEstimateLineItem', 'line_item_tiers': 'InvoiceEstimateLineItemTier', 'line_item_discounts': 'InvoiceEstimateLineItemDiscount', 'line_item_taxes': 'InvoiceEstimateLineItemTax', 'line_item_credits': 'InvoiceEstimateLineItemCredit', 'line_item_addresses': 'InvoiceEstimateLineItemAddress', 'discounts': 'InvoiceEstimateDiscount', 'taxes': 'InvoiceEstimateTax'}
         );
         _estimate.init_dependant_list(
             this.response['estimate'],
@@ -226,7 +226,7 @@ export class Result {
         _estimate.init_dependant_list(
             this.response['estimate'],
             'credit_note_estimates',
-            {'line_items': 'CreditNoteEstimateLineItem', 'discounts': 'CreditNoteEstimateDiscount', 'taxes': 'CreditNoteEstimateTax', 'line_item_taxes': 'CreditNoteEstimateLineItemTax', 'line_item_discounts': 'CreditNoteEstimateLineItemDiscount', 'line_item_tiers': 'CreditNoteEstimateLineItemTier'}
+            {'line_items': 'CreditNoteEstimateLineItem', 'line_item_tiers': 'CreditNoteEstimateLineItemTier', 'line_item_discounts': 'CreditNoteEstimateLineItemDiscount', 'line_item_taxes': 'CreditNoteEstimateLineItemTax', 'discounts': 'CreditNoteEstimateDiscount', 'taxes': 'CreditNoteEstimateTax'}
         );
         _estimate.init_dependant_list(
             this.response['estimate'],
@@ -239,7 +239,7 @@ export class Result {
         let _quote = this.get(
             'quote',
             'Quote',
-            {'line_items': 'QuoteLineItem', 'discounts': 'QuoteDiscount', 'line_item_discounts': 'QuoteLineItemDiscount', 'taxes': 'QuoteTax', 'line_item_taxes': 'QuoteLineItemTax', 'line_item_tiers': 'QuoteLineItemTier', 'shipping_address': 'QuoteShippingAddress', 'billing_address': 'QuoteBillingAddress'}
+            {'line_items': 'QuoteLineItem', 'line_item_tiers': 'QuoteLineItemTier', 'line_item_discounts': 'QuoteLineItemDiscount', 'line_item_taxes': 'QuoteLineItemTax', 'discounts': 'QuoteDiscount', 'taxes': 'QuoteTax', 'shipping_address': 'QuoteShippingAddress', 'billing_address': 'QuoteBillingAddress'}
         );
         return _quote;
     }
@@ -279,7 +279,7 @@ export class Result {
         let _quote_line_group = this.get(
             'quote_line_group',
             'QuoteLineGroup',
-            {'line_items': 'QuoteLineGroupLineItem', 'discounts': 'QuoteLineGroupDiscount', 'line_item_discounts': 'QuoteLineGroupLineItemDiscount', 'taxes': 'QuoteLineGroupTax', 'line_item_taxes': 'QuoteLineGroupLineItemTax'}
+            {'line_items': 'QuoteLineGroupLineItem', 'line_item_discounts': 'QuoteLineGroupLineItemDiscount', 'line_item_taxes': 'QuoteLineGroupLineItemTax', 'discounts': 'QuoteLineGroupDiscount', 'taxes': 'QuoteLineGroupTax'}
         );
         return _quote_line_group;
     }
@@ -591,7 +591,7 @@ export class Result {
         let _ramp = this.get(
             'ramp',
             'Ramp',
-            {'items_to_add': 'RampItemsToAdd', 'items_to_update': 'RampItemsToUpdate', 'coupons_to_add': 'RampCouponsToAdd', 'discounts_to_add': 'RampDiscountsToAdd', 'item_tiers': 'RampItemTier', 'status_transition_reason': 'RampStatusTransitionReason'}
+            {'items_to_add': 'RampItemsToAdd', 'items_to_update': 'RampItemsToUpdate', 'coupons_to_add': 'RampCouponsToAdd', 'discounts_to_add': 'RampDiscountsToAdd', 'item_tiers': 'RampItemTier', 'contract_term': 'RampContractTerm', 'status_transition_reason': 'RampStatusTransitionReason'}
         );
         return _ramp;
     }
@@ -615,7 +615,12 @@ export class Result {
             'omnichannel_subscription',
             'OmnichannelSubscription',
             {},
-            {'omnichannel_subscription_items': 'OmnichannelSubscriptionItem'}
+            {'omnichannel_subscription_items': 'OmnichannelSubscriptionItem', 'initial_purchase_transaction': 'OmnichannelTransaction'}
+        );
+        _omnichannel_subscription.init_dependant(
+            this.response['omnichannel_subscription'],
+            'initial_purchase_transaction',
+            {'linked_omnichannel_subscriptions': 'OmnichannelTransactionLinkedOmnichannelSubscription', 'linked_omnichannel_one_time_orders': 'OmnichannelTransactionLinkedOmnichannelOneTimeOrder'}
         );
         _omnichannel_subscription.init_dependant_list(
             this.response['omnichannel_subscription'],
@@ -627,7 +632,8 @@ export class Result {
     get omnichannel_transaction(): resources.OmnichannelTransaction {
         let _omnichannel_transaction = this.get(
             'omnichannel_transaction',
-            'OmnichannelTransaction'
+            'OmnichannelTransaction',
+            {'linked_omnichannel_subscriptions': 'OmnichannelTransactionLinkedOmnichannelSubscription', 'linked_omnichannel_one_time_orders': 'OmnichannelTransactionLinkedOmnichannelOneTimeOrder'}
         );
         return _omnichannel_transaction;
     }
@@ -635,7 +641,13 @@ export class Result {
         let _omnichannel_subscription_item = this.get(
             'omnichannel_subscription_item',
             'OmnichannelSubscriptionItem',
-            {'upcoming_renewal': 'OmnichannelSubscriptionItemUpcomingRenewal', 'linked_item': 'OmnichannelSubscriptionItemLinkedItem'}
+            {},
+            {'omnichannel_subscription_item_offers': 'OmnichannelSubscriptionItemOffer'}
+        );
+        _omnichannel_subscription_item.init_dependant_list(
+            this.response['omnichannel_subscription_item'],
+            'omnichannel_subscription_item_offers',
+            {}
         );
         return _omnichannel_subscription_item;
     }
@@ -652,7 +664,12 @@ export class Result {
             'omnichannel_one_time_order',
             'OmnichannelOneTimeOrder',
             {},
-            {'omnichannel_one_time_order_items': 'OmnichannelOneTimeOrderItem'}
+            {'omnichannel_one_time_order_items': 'OmnichannelOneTimeOrderItem', 'purchase_transaction': 'OmnichannelTransaction'}
+        );
+        _omnichannel_one_time_order.init_dependant(
+            this.response['omnichannel_one_time_order'],
+            'purchase_transaction',
+            {'linked_omnichannel_subscriptions': 'OmnichannelTransactionLinkedOmnichannelSubscription', 'linked_omnichannel_one_time_orders': 'OmnichannelTransactionLinkedOmnichannelOneTimeOrder'}
         );
         _omnichannel_one_time_order.init_dependant_list(
             this.response['omnichannel_one_time_order'],
@@ -698,12 +715,35 @@ export class Result {
         );
         return _usage_file;
     }
+    get personalized_offer(): resources.PersonalizedOffer {
+        let _personalized_offer = this.get(
+            'personalized_offer',
+            'PersonalizedOffer',
+            {'content': 'PersonalizedOfferContent', 'options': 'PersonalizedOfferOption'}
+        );
+        return _personalized_offer;
+    }
     get brand(): resources.Brand {
         let _brand = this.get(
             'brand',
             'Brand'
         );
         return _brand;
+    }
+    get offer_fulfillment(): resources.OfferFulfillment {
+        let _offer_fulfillment = this.get(
+            'offer_fulfillment',
+            'OfferFulfillment',
+            {'error': 'OfferFulfillmentError'}
+        );
+        return _offer_fulfillment;
+    }
+    get offer_event(): resources.OfferEvent {
+        let _offer_event = this.get(
+            'offer_event',
+            'OfferEvent'
+        );
+        return _offer_event;
     }
     get webhook_endpoint(): resources.WebhookEndpoint {
         let _webhook_endpoint = this.get(
@@ -806,6 +846,14 @@ export class Result {
             {}
         );
         return _in_app_subscriptions;
+    }
+    get personalized_offers(): resources.PersonalizedOffer[] {
+        let _personalized_offers = this.get_list(
+            'personalized_offers',
+            'PersonalizedOffer',
+            {'content': 'PersonalizedOfferContent', 'options': 'PersonalizedOfferOption'}
+        );
+        return _personalized_offers;
     }
 
     get response() {

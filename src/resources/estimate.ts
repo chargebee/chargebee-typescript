@@ -790,6 +790,9 @@ export namespace _estimate {
     coupon?: string;
   }
   export interface subscription_create_sub_item_estimate_params {
+    offline_payment_method?: string;
+  }
+  export interface subscription_create_sub_item_estimate_params {
     free_period?: number;
   }
   export interface subscription_create_sub_item_estimate_params {
@@ -1121,6 +1124,9 @@ export namespace _estimate {
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
     start_date?: number;
+  }
+  export interface subscription_create_sub_item_for_customer_estimate_params {
+    offline_payment_method?: string;
   }
   export interface subscription_create_sub_item_for_customer_estimate_params {
     free_period?: number;
