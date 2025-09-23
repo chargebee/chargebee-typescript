@@ -15,6 +15,8 @@ export class OmnichannelTransaction extends Model {
   public transacted_at?: number;
   public created_at: number;
   public resource_version?: number;
+  public linked_omnichannel_subscriptions?: Array<LinkedOmnichannelSubscription>;
+  public linked_omnichannel_one_time_orders?: Array<LinkedOmnichannelOneTimeOrder>;
 
   
 
@@ -22,6 +24,14 @@ export class OmnichannelTransaction extends Model {
   //-----------
 
 } // ~OmnichannelTransaction
+
+export class LinkedOmnichannelSubscription extends Model {
+  public omnichannel_subscription_id?: string;
+} // ~LinkedOmnichannelSubscription
+
+export class LinkedOmnichannelOneTimeOrder extends Model {
+  public omnichannel_one_time_order_id?: string;
+} // ~LinkedOmnichannelOneTimeOrder
 
 
 

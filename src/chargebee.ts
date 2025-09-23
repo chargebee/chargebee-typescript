@@ -85,7 +85,10 @@ export {_rule} from "./resources/rule";
 export {_usage_event} from "./resources/usage_event";
 export {_omnichannel_subscription_item_scheduled_change} from "./resources/omnichannel_subscription_item_scheduled_change";
 export {_usage_file} from "./resources/usage_file";
+export {_personalized_offer} from "./resources/personalized_offer";
 export {_brand} from "./resources/brand";
+export {_offer_fulfillment} from "./resources/offer_fulfillment";
+export {_offer_event} from "./resources/offer_event";
 export {_webhook_endpoint} from "./resources/webhook_endpoint";
 export {_impacted_customer} from "./resources/impacted_customer";
 export {_subscription_entitlements_updated_detail} from "./resources/subscription_entitlements_updated_detail";
@@ -362,8 +365,17 @@ export class ChargeBee {
     get usage_file() {
         return resources.UsageFile;
     }
+    get personalized_offer() {
+        return resources.PersonalizedOffer;
+    }
     get brand() {
         return resources.Brand;
+    }
+    get offer_fulfillment() {
+        return resources.OfferFulfillment;
+    }
+    get offer_event() {
+        return resources.OfferEvent;
     }
     get webhook_endpoint() {
         return resources.WebhookEndpoint;

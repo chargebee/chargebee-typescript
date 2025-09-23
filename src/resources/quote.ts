@@ -30,11 +30,11 @@ export class Quote extends Model {
   public updated_at?: number;
   public vat_number_prefix?: string;
   public line_items?: Array<LineItem>;
-  public discounts?: Array<Discount>;
-  public line_item_discounts?: Array<LineItemDiscount>;
-  public taxes?: Array<Tax>;
-  public line_item_taxes?: Array<LineItemTax>;
   public line_item_tiers?: Array<LineItemTier>;
+  public line_item_discounts?: Array<LineItemDiscount>;
+  public line_item_taxes?: Array<LineItemTax>;
+  public discounts?: Array<Discount>;
+  public taxes?: Array<Tax>;
   public tax_category?: string;
   public currency_code: string;
   public notes?: any;
@@ -383,14 +383,19 @@ export class LineItem extends Model {
   public customer_id?: string;
 } // ~LineItem
 
-export class Discount extends Model {
-  public amount: number;
-  public description?: string;
-  public entity_type: string;
-  public discount_type?: string;
-  public entity_id?: string;
-  public coupon_set_code?: string;
-} // ~Discount
+export class LineItemTier extends Model {
+  public line_item_id?: string;
+  public starting_unit: number;
+  public ending_unit?: number;
+  public quantity_used: number;
+  public unit_amount: number;
+  public starting_unit_in_decimal?: string;
+  public ending_unit_in_decimal?: string;
+  public quantity_used_in_decimal?: string;
+  public unit_amount_in_decimal?: string;
+  public pricing_type?: string;
+  public package_size?: number;
+} // ~LineItemTier
 
 export class LineItemDiscount extends Model {
   public line_item_id: string;
@@ -399,12 +404,6 @@ export class LineItemDiscount extends Model {
   public entity_id?: string;
   public discount_amount: number;
 } // ~LineItemDiscount
-
-export class Tax extends Model {
-  public name: string;
-  public amount: number;
-  public description?: string;
-} // ~Tax
 
 export class LineItemTax extends Model {
   public line_item_id?: string;
@@ -424,19 +423,20 @@ export class LineItemTax extends Model {
   public local_currency_code?: string;
 } // ~LineItemTax
 
-export class LineItemTier extends Model {
-  public line_item_id?: string;
-  public starting_unit: number;
-  public ending_unit?: number;
-  public quantity_used: number;
-  public unit_amount: number;
-  public starting_unit_in_decimal?: string;
-  public ending_unit_in_decimal?: string;
-  public quantity_used_in_decimal?: string;
-  public unit_amount_in_decimal?: string;
-  public pricing_type?: string;
-  public package_size?: number;
-} // ~LineItemTier
+export class Discount extends Model {
+  public amount: number;
+  public description?: string;
+  public entity_type: string;
+  public discount_type?: string;
+  public entity_id?: string;
+  public coupon_set_code?: string;
+} // ~Discount
+
+export class Tax extends Model {
+  public name: string;
+  public amount: number;
+  public description?: string;
+} // ~Tax
 
 export class ShippingAddress extends Model {
   public first_name?: string;
@@ -453,7 +453,6 @@ export class ShippingAddress extends Model {
   public country?: string;
   public zip?: string;
   public validation_status?: string;
-  public index: number;
 } // ~ShippingAddress
 
 export class BillingAddress extends Model {
@@ -1577,6 +1576,9 @@ export namespace _quote {
     start_date?: number;
   }
   export interface subscription_create_sub_items_for_customer_quote_params {
+    offline_payment_method?: string;
+  }
+  export interface subscription_create_sub_items_for_customer_quote_params {
     contract_term_billing_cycle_on_renewal?: number;
   }
   export interface shipping_address_create_sub_items_for_customer_quote_params {
@@ -1806,6 +1808,9 @@ export namespace _quote {
   }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
     start_date?: number;
+  }
+  export interface subscription_edit_create_sub_customer_quote_for_items_params {
+    offline_payment_method?: string;
   }
   export interface subscription_edit_create_sub_customer_quote_for_items_params {
     contract_term_billing_cycle_on_renewal?: number;

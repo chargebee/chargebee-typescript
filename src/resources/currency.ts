@@ -1,15 +1,16 @@
 import * as resources from ".";
+import {ListResult} from '../list_result';
 import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
 
 export class Currency extends Model {
-  public id?: string;
+  public id: string;
   public enabled: boolean;
   public forex_type?: string;
-  public currency_code?: string;
-  public is_base_currency?: boolean;
+  public currency_code: string;
+  public is_base_currency: boolean;
   public manual_exchange_rate?: string;
 
   
@@ -17,14 +18,14 @@ export class Currency extends Model {
   // OPERATIONS
   //-----------
 
-  public static list(params?: any):RequestWrapper{
+  public static list(params?: any):RequestWrapper<ListResult>{
     return new RequestWrapper([params], {
       'methodName': 'list',
       'httpMethod': 'GET',
       'urlPrefix': '/currencies',
       'urlSuffix': '/list',
       'hasIdInUrl': false,
-      'isListReq': false,
+      'isListReq': true,
       'subDomain': null,
       'isOperationNeedsJsonInput': false,
       'jsonKeys': { 

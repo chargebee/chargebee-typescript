@@ -21,6 +21,7 @@ export class OmnichannelSubscriptionItem extends Model {
   public resumes_at?: number;
   public has_scheduled_changes: boolean;
   public resource_version?: number;
+  public omnichannel_subscription_item_offers: Array<resources.OmnichannelSubscriptionItemOffer>;
   public upcoming_renewal?: UpcomingRenewal;
   public linked_item?: LinkedItem;
 

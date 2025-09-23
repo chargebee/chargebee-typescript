@@ -767,7 +767,6 @@ export class ShippingAddress extends Model {
   public country?: string;
   public zip?: string;
   public validation_status?: string;
-  public index: number;
 } // ~ShippingAddress
 
 export class ReferralInfo extends Model {
@@ -948,6 +947,7 @@ export namespace _subscription {
     auto_collection?: string;
     terms_to_charge?: number;
     billing_alignment_mode?: string;
+    offline_payment_method?: string;
     po_number?: string;
     coupon_ids?: Array<string>;
     payment_source_id?: string;

@@ -25,7 +25,7 @@ export class Core {
             });
             res.on('end', function() {
                 try {
-                    response = JSON.parse(response);
+                    response = res.statusCode == 204 ? res : JSON.parse(response);
                 } catch (e) {
                     if (response.includes('503')) { 
                         return Core.throwError(

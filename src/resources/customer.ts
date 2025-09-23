@@ -533,6 +533,7 @@ export class Balance extends Model {
   public unbilled_charges: number;
   public currency_code: string;
   public balance_currency_code: string;
+  public business_entity_id?: string;
 } // ~Balance
 
 export class EntityIdentifier extends Model {
