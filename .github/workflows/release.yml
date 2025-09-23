@@ -1,0 +1,62 @@
+name: Publish TypeScript Package to NPM
+on:
+  push:
+    tags:
+      - 'v2.*'
+      
+jobs:
+  release:
+    if: startsWith(github.ref, 'refs/tags/v2')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+          
+      - name: Clean lib directory
+        run: rm -rf lib
+        
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build TypeScript
+        run: npx tsc
+        
+      - name: Verify build output
+        run: |
+          if [ ! -d "lib" ]; then
+            echo "ERROR: lib directory not created after build"
+            exit 1
+          fi
+          echo "Build successful - lib directory created"
+          
+      - name: Ensure package version matches tag and is 2.x.x
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG=${GITHUB_REF#refs/tags/}
+          echo "Detected package version: $VERSION"
+          echo "Git tag: $TAG"
+          
+          # Check if package.json version is 2.x.x
+          case "$VERSION" in
+            2.*) echo "✓ Package version is 2.x.x" ;;
+            *) echo "✗ ERROR: package.json version must be 2.x.x for v2 tags" && exit 1 ;;
+          esac
+          
+          # Check if tag matches package.json version
+          if [ "v$VERSION" != "$TAG" ]; then
+            echo "✗ ERROR: Tag '$TAG' does not match package.json version 'v$VERSION'"
+            exit 1
+          fi
+          
+          echo "✓ Tag and package version match correctly"
+          
+      - name: Publish to NPM
+        run: npm publish --tag latest --//registry.npmjs.org/:_authToken="$NPM_TOKEN"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
