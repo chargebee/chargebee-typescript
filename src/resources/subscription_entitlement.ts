@@ -9,6 +9,7 @@ export class SubscriptionEntitlement extends Model {
   public subscription_id: string;
   public feature_id?: string;
   public feature_name?: string;
+  public feature_type?: 'SWITCH' | 'QUANTITY' | 'RANGE' | 'CUSTOM';
   public feature_unit?: string;
   public feature_type?: string;
   public value?: string;
