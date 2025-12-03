@@ -22,7 +22,7 @@ jobs:
         run: rm -rf lib
         
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
         
       - name: Build TypeScript
         run: npx tsc
