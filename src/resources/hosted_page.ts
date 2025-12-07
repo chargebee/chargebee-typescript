@@ -4,7 +4,13 @@ import {RequestWrapper} from "../request_wrapper";
 import {Model} from "./model";
 import {ChargeBee} from "../chargebee";
 import {filter} from "../filter";
-
+class Content {
+  customer?: resources.Customer;
+  subscription?: resources.Subscription;
+  invoice?: resources.Invoice;
+  card?: resources.Card;
+  transactions: resources.Transaction[];
+}
 export class HostedPage extends Model {
   public id?: string;
   public type?: string;
@@ -19,7 +25,7 @@ export class HostedPage extends Model {
   public resource_version?: number;
   public checkout_info?: any;
   public business_entity_id?: string;
-
+  public content?: Content;
   
 
   // OPERATIONS
